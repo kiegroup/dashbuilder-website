@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.dashbuilder</groupId>
+  <artifactId>dashbuilder-website</artifactId>
+  <packaging>pom</packaging>
+  <version>999-SNAPSHOT</version>
+
+  <name>Dashbuilder website</name>
+  <description>
+    OptaPlanner solves planning problems.
+    This lightweight, embeddable planning engine implements powerful and scalable algorithms
+    to optimize business resource scheduling and planning.
+
+    This module builds the website.
+  </description>
+  <url>https://www.dashbuilder.org</url>
+  <inceptionYear>2006</inceptionYear>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <modules>
+    <module>dashbuilder-website-docs</module>
+    <module>dashbuilder-website-root</module>
+    <module>dashbuilder-website-assembly</module>
+  </modules>
+
+  <properties>
+    <maven_build_timestamp>${maven.build.timestamp}</maven_build_timestamp>
+    <!-- TODO: Upgrade with every product release. -->
+    <productDocsUrl>https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.11/html/developing_solvers_with_red_hat_build_of_dashbuilder_in_red_hat_process_automation_manager</productDocsUrl>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.github.eirslett</groupId>
+          <artifactId>frontend-maven-plugin</artifactId>
+          <version>1.10.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.3.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.jbake</groupId>
+          <artifactId>jbake-maven-plugin</artifactId>
+          <version>0.3.6-rc.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>xml-maven-plugin</artifactId>
+          <version>1.0.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

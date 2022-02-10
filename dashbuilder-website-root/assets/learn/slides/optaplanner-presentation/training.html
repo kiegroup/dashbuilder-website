@@ -1,0 +1,3673 @@
+<!doctype html>
+<!--
+  ~ Copyright 2015 Red Hat, Inc. and/or its affiliates.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>OptaPlanner Training presentation</title>
+    <meta name="description" content="This slide deck accompanies the in-depth OptaPlanner training.">
+    <link href="https://www.optaplanner.org/learn/slides/optaplanner-presentation/training.html" rel="canonical">
+
+    <link rel="stylesheet" href="website/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="website/reveal/css/reveal.css">
+    <link rel="stylesheet" href="website/reveal/css/theme/simple.css" id="theme">
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            document.write('<link rel="stylesheet" href="website/reveal/css/print/pdf.css">');
+        }
+    </script>
+    <link rel="stylesheet" href="website/highlight/highlight.css">
+    <link rel="stylesheet" href="website/optaplannerPresentation.css">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="reveal">
+<div class="watermark watermark-left">
+    <p>
+        <img src="extra/Presentation/twitterLogo.png"/>
+        @GeoffreyDeSmet
+    </p>
+</div>
+<div class="slides">
+
+    <section class="excludeFromPrintPdf">
+        <h2>
+            Presentation instructions
+        </h2>
+        <ul>
+            <li>Press the right arrow key to go to the first real slide</li>
+            <li>Press the down arrow key when you reach the desired training section</li>
+            <li>Press the escape key for an overview of all slides</li>
+        </ul>
+        <div style="margin-top: 50px;">
+            <p>Tips:</p>
+            <ul>
+                <li>Feel free to reuse slides to promote OptaPlanner</li>
+                <li><a href="?print-pdf">Print to PDF (Google Chrome recommended)</a></li>
+                <li>ODP/PPT/PPTX: Open the PDF in LibreOffice and copy the slides into a new ODP/PPT/PPTX file</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <figure>
+            <img src="PlannerIntroduction/optaPlannerLogo.png" alt="OptaPlanner"/>
+        </figure>
+        <h2>
+            Deep Dive Training
+        </h2>
+        <div style="margin-top: 80px;">
+            <p>
+                <span style="font-size: smaller">by</span> Geoffrey De Smet<br/>
+                <span style="font-size: smaller">OptaPlanner lead</span>
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h3>Welcome</h3>
+        <ul>
+            <li>Meet and greet</li>
+            <li>Working page (contains all urls):<br/>
+                TODO</li>
+            <li>Questions: just ask</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Agenda: Training</h3>
+        <ul>
+            <li><a href="#/trainingSession1">Session 1 Monday afternoon</a></li>
+            <li><a href="#/trainingSession2">Session 2 Tuesday morning</a></li>
+            <li><a href="#/trainingSession3">Session 3 Tuesday afternoon</a></li>
+            <li><a href="#/trainingSession4">Session 4 Wednesday morning</a></li>
+            <li><a href="#/trainingSession5">Session 5 Wednesday afternoon</a></li>
+            <li><a href="#/trainingSession6">Session 6 Thursday morning</a></li>
+            <li><a href="#/trainingSession7">Session 7 Thursday afternoon</a></li>
+            <li><a href="#/trainingSession8">Session 8 Friday morning</a></li>
+        </ul>
+    </section>
+
+    <section id="trainingSession1">
+        <section>
+            <h3>Agenda: Training session 1</h3>
+            <ul>
+                <li>Understanding planning problems</li>
+                <li>Quick start: Cloud Balancing</li>
+                <li>N queens</li>
+                <li>Exhaustive Search</li>
+            </ul>
+        </section>
+        <section>
+            <h2>
+                Understanding<br/>
+                planning problems
+            </h2>
+        </section>
+        <section>
+            <h3>Lab 0: Exercises on paper</h3>
+            <p>Is manually planning difficult?</p>
+        </section>
+        <section>
+            <h3>Lab0: N Queens</h3>
+            <ul>
+                <li>Place n queens on a n sizes chessboard</li>
+                <li>No 2 queens can attack each other</li>
+            </ul>
+            <div class="row">
+                <div class="col-md-6">
+                    <figure>
+                        <img src="UseCasesAndExamples/partiallySolvedNQueens04Explained.png"/>
+                        <p>Bad</p>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <figure>
+                        <img src="UseCasesAndExamples/solvedNQueens04.png"/>
+                        <p>Good</p>
+                    </figure>
+                </div>
+            </div>
+            <ul>
+                <li>Assignment: Solve 8 queens</li>
+                <li>Optional 1: Solve 9 queens too</li>
+                <li>Optional 2: Solve 8 queens and maximize number of queens that can attack each other as knight</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Lab0: TSP Lab</h3>
+            <ul>
+                <li>Connect all 68 dots with 1 tour.</li>
+                <li>Circle back to the origin.</li>
+                <li>Try to find the shortest tour</li>
+                <li>Check the score of your tour:
+                    <ul>
+                        <li>Run OptaPlannerExamplesApp</li>
+                        <li>Button <code>Traveling Salesman</code></li>
+                        <li>Button <code>Import</code>, directory <code>tutorial</code>, file <code>st68.tsp</code></li>
+                        <li>Right click on your each location in your tour in order</li>
+                        <li>(Don't left click, that adds a location.)</li>
+                        <li>To restart, just import the file again.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>What is business resource optimization?</h3>
+            <figure>
+                <img src="PlannerIntroduction/plannerExamplesAppScreenshot.png"/>
+                <p>TSP demo</p>
+            </figure>
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/tspOptimalSolutionVolatility_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/tspOptimalSolutionVolatility_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/tspOptimalSolutionVolatility_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/tspOptimalSolutionVolatility_3.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Lab: Open the latest Final documentation</h3>
+            <ul>
+                <li>Go to optaplanner.org and click on the big blue button.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Lab: Run the examples in an IDE</h3>
+            <ul>
+                <li>See docs section <i>1.5.2. Run the examples in an IDE (IntelliJ, Eclipse, NetBeans)</i></li>
+                <li>Optional: build it from source (docs <i>1.5.4. Build OptaPlanner from source</i>).</li>
+                <li>Run the N Queens example in your IDE.</li>
+            </ul>
+        </section>
+
+        <section>
+            <img src="PlannerIntroduction/whatIsAPlanningProblem_0.png" class="fullImage">
+            <img src="PlannerIntroduction/whatIsAPlanningProblem_1.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/whatIsAPlanningProblem_2.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/whatIsAPlanningProblem_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="PlannerIntroduction/useCaseOverview_0.png" class="fullImage">
+            <img src="PlannerIntroduction/useCaseOverview_1.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/useCaseOverview_2.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/useCaseOverview_3.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/useCaseOverview_4.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/useCaseOverview_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Planning problem use cases</h3>
+            <ul style="font-size: smaller;">
+                <li><b>Agenda scheduling</b>: doctor appointments, court hearings,<br/>maintenance jobs, TV advertisements, ...</li>
+                <li><b>Educational timetabling</b>: lectures, exams, conference presentations, ...</li>
+                <li><b>Task assignment</b>: affinity/skill matchmaking for tax audits, wage calc, ...</li>
+                <li><b>Employee shift rostering</b>: nurses, repairmen, help desk, firemen, ...</li>
+                <li><b>Vehicle routing</b>: route trucks, buses, trains, boats, airplanes, ...</li>
+                <li><b>Bin packing</b>: fill containers, trucks, ships, storage warehouses,<br/>cloud computers nodes, prisons, hospitals, ...</li>
+                <li><b>Job shop scheduling</b>: assembly lines for cars, furniture, books, ...</li>
+                <li><b>Cutting stock</b>: minimize waste while cutting paper, steel, carpet, ...</li>
+                <li><b>Sport scheduling</b>: football/baseball league, tennis court utilization, ...</li>
+                <li><b>Financial optimization</b>: investment portfolio balance, risk spreading, ...</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Vehicle routing</h3>
+        </section>
+        <section>
+            <h2>
+                TSP<br/>
+                is an academic problem
+            </h2>
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/vehicleRoutingValueProposition_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/vehicleRoutingValueProposition_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/vehicleRoutingValueProposition_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/vehicleRoutingValueProposition_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_5.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_6.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_7.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonVehicleRouting_8.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>
+                What is realistic<br/>
+                business resource optimization?
+            </h3>
+            <figure>
+                <img src="PlannerIntroduction/plannerExamplesAppScreenshot.png"/>
+                <p>VRP demo</p>
+            </figure>
+        </section>
+        <section>
+            <img src="extra/Blog/vrpPresumptions01.png" class="vrpPresumptionImage">
+            <img src="extra/Blog/vrpPresumptions02.png" class="vrpPresumptionImage fragment">
+            <p class="vrpPresumptionBottomPara fragment">Assumption: <b>An optimal VRP route uses only 1 vehicle.</b></p>
+        </section>
+        <section>
+            <p class="vrpPresumptionTopPara">Assumption: <b>An optimal VRP route uses only 1 vehicle. (false)</b></p>
+            <img src="extra/Blog/vrpPresumptions03.png" class="vrpPresumptionImage">
+            <img src="extra/Blog/vrpPresumptions04.png" class="vrpPresumptionImage fragment">
+            <p class="vrpPresumptionBottomPara fragment">Assumption: <b>An optimal VRP route has no crossing lines.</b></p>
+        </section>
+        <section>
+            <p class="vrpPresumptionTopPara">Assumption: <b>An optimal VRP route has no crossing lines. (false)</b></p>
+            <img src="extra/Blog/vrpPresumptions05.png" class="vrpPresumptionImage">
+            <img src="extra/Blog/vrpPresumptions06.png" class="vrpPresumptionImage fragment">
+            <p class="vrpPresumptionBottomPara fragment">Assumption: <b>An optimal, feasible VRP route with n vehicles is still optimal for n+1 vehicles.</b></p>
+        </section>
+        <section>
+            <p class="vrpPresumptionTopPara">Assumption: <b>An optimal, feasible VRP route with n vehicles is still optimal for n+1 vehicles. (false)</b></p>
+            <img src="extra/Blog/vrpPresumptions07.png" class="vrpPresumptionImage">
+            <p class="vrpPresumptionBottomPara fragment">Assumption: <b>An optimal VRP route has no crossing lines of the same color.</b></p>
+        </section>
+        <section>
+            <p class="vrpPresumptionTopPara">Assumption: <b>An optimal VRP route has no crossing lines of the same color. (false)</b></p>
+            <img src="extra/Blog/vrpPresumptions08.png" class="vrpPresumptionImage">
+            <img src="extra/Blog/vrpPresumptions09.png" class="vrpPresumptionImage fragment">
+            <p class="vrpPresumptionBottomPara fragment">Assumption: <b>We can focus on time windows before focusing on capacity (or vice versa).</b></p>
+        </section>
+        <section>
+            <p class="vrpPresumptionTopPara">Assumption: <b>We can focus on time windows before focusing on capacity (or vice versa). (false)</b></p>
+            <img src="extra/Blog/vrpPresumptions10.png" class="vrpPresumptionImage">
+            <img src="extra/Blog/vrpPresumptions11.png" class="vrpPresumptionImage fragment">
+            <p class="vrpPresumptionBottomPara fragment">Assumption: <b>Humans optimize VRP optimally.</b></p>
+        </section>
+        <section>
+            <p class="vrpPresumptionTopPara">Assumption: <b>Humans optimize VRP optimally. (false)</b></p>
+            <img src="extra/Blog/vrpPresumptions12.png" class="vrpPresumptionImage">
+            <p class="vrpPresumptionBottomPara">Can a manager reasonable judge if this is optimal?</p>
+        </section>
+
+        <section>
+            <h2>
+                Are planning problems<br/>
+                difficult to solve?
+            </h2>
+        </section>
+        <section>
+            <h3>What is business resource optimization?</h3>
+            <figure>
+                <img src="PlannerIntroduction/plannerExamplesAppScreenshot.png"/>
+                <p>Cloud Balancing demo</p>
+            </figure>
+        </section>
+        <section>
+            <img src="QuickStart/cloudOptimizationValueProposition_0.png" class="fullImage">
+            <img src="QuickStart/cloudOptimizationValueProposition_1.png" class="fullImage fragment">
+            <img src="QuickStart/cloudOptimizationValueProposition_2.png" class="fullImage fragment">
+            <img src="QuickStart/cloudOptimizationValueProposition_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceNpCompleteA_0.png" class="fullImage">
+            <img src="extra/Presentation/cloudBalanceNpCompleteA_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceNpCompleteB_0.png" class="fullImage">
+            <img src="extra/Presentation/cloudBalanceNpCompleteB_1.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteB_2.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteB_3.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteB_4.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteB_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceNpCompleteC_0.png" class="fullImage">
+            <img src="extra/Presentation/cloudBalanceNpCompleteC_1.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteC_2.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteC_3.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteC_4.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteC_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceNpCompleteD.png" class="fullImage">
+        </section>
+        <section>
+            <h3>
+                Find optimal solution and scale out<br/>
+                for an NP-complete problem?
+            </h3>
+            <p>⇔ Is P = NP?</p>
+            <ul>
+                <li>Unresolved since 1971</li>
+                <li>1&nbsp;000&nbsp;000&nbsp;$ reward since 2000
+                    <ul>
+                        <li>One of the 7 <a href="http://www.claymath.org/millennium-problems">Millennium Problems</a></li>
+                    </ul>
+                </li>
+                <li>Most believe P ≠ NP
+                    <ul>
+                        <li>⇔ <b>Impossible to find optimal solution and scale out</b></li>
+                    </ul>
+                </li>
+                <li>3000+ known NP-complete problems (<a href="https://en.wikipedia.org/wiki/List_of_NP-complete_problems">wikipedia</a>)</li>
+            </ul>
+        </section>
+        <section>
+            <img src="extra/Presentation/npCompleteInterconnection.png" class="fullImage">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceNpCompleteE_0.png" class="fullImage">
+            <img src="extra/Presentation/cloudBalanceNpCompleteE_1.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteE_2.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteE_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceNpCompleteF_0.png" class="fullImage">
+            <img src="extra/Presentation/cloudBalanceNpCompleteF_1.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteF_2.png" class="fullImage fragment">
+            <img src="extra/Presentation/cloudBalanceNpCompleteF_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h2>
+                Planning problems are<br/>
+                difficult to solve!
+            </h2>
+            <p>And humans aren't good at it</p>
+            <!-- Public domain from https://en.wikipedia.org/wiki/File:Ishihara_9.png -->
+            <img src="extra/Presentation/colorBlind.png">
+            <p>But they don't realize it<br/>(nor does their manager)</p>
+        </section>
+        <section>
+            <h3>Reuse optimization algorithms</h3>
+            <figure>
+                <img src="PlannerIntroduction/optaPlannerLogo.png"/>
+            </figure>
+            <p><b>Find better solutions in time and scale out</b></p>
+            <ul>
+                <li><b>Open source</b><br/>Apache License</li>
+                <li><b>Regular releases</b><br/>Download the zip or from Maven Central</li>
+                <li><b>Documented</b><br/>Reference manual, examples, ...</li>
+                <li><b>Quality coverage</b><br/>Unit, integration and stress tests</li>
+            </ul>
+        </section>
+        <section>
+            <img src="PlannerIntroduction/compatibility_0.png" class="fullImage">
+            <img src="PlannerIntroduction/compatibility_1.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/compatibility_2.png" class="fullImage fragment">
+            <img src="PlannerIntroduction/compatibility_3.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Cloud Balancing example</h3>
+            <h2>Domain model</h2>
+        </section>
+
+        <section>
+            <img src="QuickStart/cloudBalanceClassDiagram_0.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Computer</h3>
+            <pre xml:space="preserve"><code class="java">public class Computer {
+
+  private int cpuPower;
+  private int memory;
+  private int networkBandwidth;
+
+  private int cost;
+
+  // getters
+}</code></pre>
+        </section>
+
+        <section>
+            <img src="QuickStart/cloudBalanceClassDiagram_1.png" class="fullImage">
+            <img src="QuickStart/cloudBalanceClassDiagram_2.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Process is a planning entity</h3>
+            <pre xml:space="preserve"><code class="java">@PlanningEntity
+public class Process {
+
+  private int requiredCpuPower;
+  private int requiredMemory;
+  private int requiredNetworkBandwidth;
+
+  // getters
+
+  ...
+}</code></pre>
+        </section>
+        <section>
+            <h3>Process has a planning variable</h3>
+            <pre xml:space="preserve"><code class="java">@PlanningEntity
+public class Process {
+  ...
+
+  private Computer computer;
+
+  @PlanningVariable(valueRangeProviderRefs = {"computerRange"})
+  public Computer getComputer() {
+    return computer;
+  }
+  public void setComputer(Computer computer) {
+    this.computer = computer;
+  }
+
+}</code></pre>
+        </section>
+
+        <section>
+            <img src="QuickStart/cloudBalanceClassDiagram_3.png" class="fullImage">
+            <img src="QuickStart/cloudBalanceClassDiagram_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Solution CloudBalance</h3>
+        <pre xml:space="preserve"><code class="java">@PlanningSolution
+public class CloudBalance {
+
+  private List&lt;Computer&gt; computerList;
+  private List&lt;Process&gt; processList;
+
+  @ValueRangeProvider(id = "computerRange")
+  @ProblemFactCollectionProperty
+  public List&lt;Computer&gt; getComputerList() {
+    return computerList;
+  }
+
+  @PlanningEntityCollectionProperty
+  public List&lt;Process&gt; getProcessList() {
+    return processList;
+  }
+
+  ...
+}</code></pre>
+        </section>
+        <section>
+            <h3>Solution CloudBalance: score</h3>
+        <pre xml:space="preserve"><code class="java">@PlanningSolution
+public class CloudBalance {
+  ...
+
+  private HardSoftScore score;
+
+  @PlanningScore
+  public HardSoftScore getScore() {
+    return score;
+  }
+  public void setScore(HardSoftScore score) {
+    this.score = score;
+  }
+
+}</code></pre>
+        </section>
+
+        <section>
+            <h3>Cloud Balancing example</h3>
+            <h2>Score constraints</h2>
+        </section>
+        <section>
+            <h2>
+                Given 2 solutions<br/>
+                which one is better?
+            </h2>
+        </section>
+        <section>
+            <img src="QuickStart/scoreComparisonCloudBalancing_0.png" class="fullImage">
+            <img src="QuickStart/scoreComparisonCloudBalancing_1.png" class="fullImage fragment">
+            <img src="QuickStart/scoreComparisonCloudBalancing_2.png" class="fullImage fragment">
+            <img src="QuickStart/scoreComparisonCloudBalancing_3.png" class="fullImage fragment">
+            <img src="QuickStart/scoreComparisonCloudBalancing_4.png" class="fullImage fragment">
+            <img src="QuickStart/scoreComparisonCloudBalancing_5.png" class="fullImage fragment">
+            <img src="QuickStart/scoreComparisonCloudBalancing_6.png" class="fullImage fragment">
+            <img src="QuickStart/scoreComparisonCloudBalancing_7.png" class="fullImage fragment">
+            <img src="QuickStart/scoreComparisonCloudBalancing_8.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Score calculation</h3>
+            <ul>
+                <li>Easy Java</li>
+                <li>Incremental Java</li>
+                <li>ConstraintStreams (recommended)</li>
+                <li>Drools</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Easy Java score calculation</h3>
+            <ul>
+                <li>Easy to implement</li>
+                <li>Bridge an existing system</li>
+                <li>Slow</li>
+            </ul>
+            <pre xml:space="preserve"><code class="java">public class CloudBalancingEasyScoreCalculator
+    implements EasyScoreCalculator&lt;CloudBalance&gt; {
+
+  public HardSoftScore calculateScore(CloudBalance cb) {
+    ...
+    return HardSoftScore.valueOf(hardScore, softScore);
+  }
+
+}</code></pre>
+        </section>
+        <section>
+            <h3>Incremental Java score calculation</h3>
+            <ul>
+                <li>Fast
+                    <ul>
+                        <li>Solution changes ⇒ recalculate score delta only</li>
+                    </ul>
+                </li>
+                <li>Hard to implement
+                    <ul>
+                        <li>Much boilerplate code</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamIntroduction_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamIntroduction_1.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIntroduction_2.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIntroduction_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamFilter_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamFilter_1.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamFilter_2.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamFilter_3.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamFilter_4.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamFilter_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamIncrementalCalculation_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamIncrementalCalculation_1.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIncrementalCalculation_2.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIncrementalCalculation_3.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIncrementalCalculation_4.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIncrementalCalculation_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamJoinWithoutJoiners_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamJoinWithoutJoiners_1.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamJoinWithoutJoiners_2.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamJoinWithoutJoiners_3.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamJoinWithoutJoiners_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamJoinWithJoiners_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamJoinWithJoiners_1.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamJoinWithJoiners_2.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamJoinWithJoiners_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamGroupBy_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamGroupBy_1.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamGroupBy_2.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamGroupBy_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamIfExists_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamIfExists_1.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIfExists_2.png" class="fullImage fragment">
+            <img src="ConstraintStreams/constraintStreamIfExists_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ConstraintStreams/constraintStreamJustification_0.png" class="fullImage">
+            <img src="ConstraintStreams/constraintStreamJustification_1.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Drools score calculation</h3>
+            <ul>
+                <li>Incremental
+                    <ul>
+                        <li>No boilerplate code</li>
+                    </ul>
+                </li>
+                <li>Constraints in Drools Rule Language (DRL)
+                    <ul>
+                        <li>Declarative (like SQL, regular expression)</li>
+                    </ul>
+                </li>
+                <li>Integration opportunities
+                    <ul>
+                        <li>Drools Workbench</li>
+                        <li>Decision tables</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Drools score calculation: facts</h3>
+            <ul>
+                <li>Facts in DRL loaded from
+                    <ul>
+                        <li><code>@ProblemFact(Collection)Property</code></li>
+                        <li><code>@PlanningEntity(Collection)Property</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>DRL soft constraint: computer cost</h3>
+            <pre xml:space="preserve"><code class="drl">rule "computerCost"
+  when
+    // there is a computer
+    $s : Computer($c : cost)
+    // there is a processes on that computer
+    exists Process(computer == $s)
+  then
+    // lower soft score by the maintenance cost
+    scoreHolder.addSoftConstraintMatch(kcontext, - $c);
+end</code></pre>
+        </section>
+        <section>
+            <h3>DRL hard constraint: CPU power</h3>
+            <pre xml:space="preserve"><code class="drl">rule "requiredCpuPowerTotal"
+  when
+    // there is a computer
+    $s : Computer($cpu : cpuPower)
+    // with too little cpu for its processes
+    accumulate(
+      Process(computer == $s, $requiredCpu : requiredCpuPower);
+      $total : sum($requiredCpu);
+      $total > $cpu
+    )
+  then
+    // lower hard score by the excessive CPU usage
+    scoreHolder.addHardConstraintMatch(kcontext,
+        $cpu - $total);
+end</code></pre>
+        </section>
+        <section>
+            <h3>Score calculation must be flexible</h3>
+            <ul>
+                <li><b>Optimal solution for <i>almost</i> your business problem is useless</b></li>
+                <li>
+                    Model supports:
+                    <ul>
+                        <li>Reusing existing classes</li>
+                        <li>Rich, OO class hierarchies (including polymorphism)</li>
+                    </ul>
+                </li>
+                <li>
+                    Constraints supports:
+                    <ul>
+                        <li>Any constraint (no linear or quadratic restrictions!)</li>
+                        <li>Reusing existing code</li>
+                    </ul>
+                </li>
+                <li>
+                    Scoring supports:
+                    <ul>
+                        <li>Positive/negative mix</li>
+                        <li>Score weights</li>
+                        <li>Unlimited score levels</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Cloud Balancing example</h3>
+            <h2>Solving it</h2>
+        </section>
+        <section>
+            <img src="PlannerConfiguration/inputOutputOverview_0.png" class="fullImage">
+            <img src="PlannerConfiguration/inputOutputOverview_1.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/inputOutputOverview_2.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/inputOutputOverview_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Solver configuration by XML</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  &lt;solutionClass&gt;...CloudBalance&lt;/solutionClass&gt;
+  &lt;entityClass&gt;...Process&lt;/entityClass&gt;
+
+  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDrl&gt;...Constraints.drl&lt;/scoreDrl&gt;
+  &lt;/scoreDirectorFactory&gt;
+
+  &lt;!-- optimization algorithms are optional --&gt;
+&lt;/solver&gt;</code></pre>
+        </section>
+        <section>
+            <h3>Solving</h3>
+        <pre xml:space="preserve"><code class="java">SolverFactory&lt;CloudBalance&gt; factory
+        = SolverFactory.createFromXmlResource("...SolverConfig.xml");
+
+Solver&lt;CloudBalance&gt; solver = factory.buildSolver();
+CloudBalance problem = ... // Load problem
+CloudBalance solution = solver.solve(problem);</code></pre>
+        </section>
+        <section>
+            <h3>Lab901: Win US election with least votes</h3>
+            <ul>
+                <li>Game the system: gamer candidate should win election</li>
+                <li>Gamer candidate should have as little votes as possible</li>
+                <li>Decide winning candidate per federal state</li>
+                <li>Everyone votes</li>
+                <li>There are no 3rd party candidates</li>
+                <li>Get half of votes plus one for a state to win all its electoral votes</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Lab: Switch score calculation type</h3>
+            <ul>
+                <li>Edit Cloud Balancing's solver configuration xml</li>
+                <li>Switch to Easy Java Score calculation</li>
+                <li>Switch to Incremental Java Score calculation</li>
+                <li>Let them run each parallel windows.</li>
+                <li>What happens if the dataset size increases?</li>
+            </ul>
+        </section>
+        <section>
+            <h3>CB code overview</h3>
+            <p>In IDE</p>
+        </section>
+        <section>
+            <h3>Lab: Computer 0 bans memory-hungry processes</h3>
+            <ul>
+                <li>Computer 0 violates 1 hard constraint per process that requires more than 3GB RAM memory</li>
+                <li>Implement first in Easy Java Score Calculation</li>
+                <li>Optional: Then in Drools DRL</li>
+                <li>Optional: Then in Incremental Java Score Calculation</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>N Queens</h3>
+        </section>
+        <section>
+            <h3>N Queens demo</h3>
+            <figure>
+                <img src="PlannerIntroduction/plannerExamplesAppScreenshot.png"/>
+                <p>demo</p>
+            </figure>
+        </section>
+        <section>
+            <h3>N Queens</h3>
+            <ul>
+                <li>Imperfect example
+                    <ul>
+                        <li>Not NP-complete (shortcuts exist)</li>
+                        <li>Score function is too simple (too black and white)</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>What solution is better?</h3>
+            <figure>
+                <img src="extra/Presentation/someSolutionsNQueens04_0.png">
+            </figure>
+            <ul class="fragment">
+                <li>Need for <b>objective scoring</b></li>
+                <li>Better score ⇔ better solution</li>
+                <li>Highest score ⇔ optimal solution</li>
+            </ul>
+        </section>
+        <section>
+            <h3>N Queens</h3>
+            <ul>
+                <li>Hard constraints:
+                    <ul>
+                        <li>-1 for every pair of conflicting queens</li>
+                    </ul>
+                </li>
+                <li>Soft constraints:
+                    <ul>
+                        <li>None</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-6">
+                    <figure>
+                        <img src="UseCasesAndExamples/partiallySolvedNQueens04Explained.png"/>
+                        <p>Score = -2</p>
+                        <p>Conflicts: A-B, B-D</p>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <figure>
+                        <img src="UseCasesAndExamples/solvedNQueens04.png"/>
+                        <p>Score = 0</p>
+                        <p>No conflicts</p>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>How do we find the best solution?</h3>
+            <figure>
+                <img src="extra/Presentation/someSolutionsNQueens04_1.png">
+            </figure>
+            <ul class="fragment">
+                <li>Need for <b>optimization algorithms</b></li>
+                <li>Best solution in available time</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Lab: Reward knight attacks</h3>
+            <ul>
+                <li>Use N Queens example</li>
+                <li>Remove termination on bestScoreLimit.</li>
+                <li>For every pair of queens that can knight attack each other: +1 score</li>
+                <li>Implement with Drools score calculation</li>
+                <li>Optional: implement Easy Java Score calculation too</li>
+                <li>Optional: implement Incremental Java Score calculation too</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Exhaustive Search</h3>
+        </section>
+        <section>
+            <img src="extra/Presentation/bruteForceLogo.png" class="fullImage">
+        </section>
+        <section>
+            <h3>How many combinations for 100 queens?</h3>
+            <div style="float: right;">
+                <img src="UseCasesAndExamples/solvedNQueens04.png"/>
+            </div>
+            <div>
+                <ul>
+                    <li>1 queen per column</li>
+                    <li>100 queens ⇒ 100 variables</li>
+                    <li>100 rows ⇒ 100 values per variable</li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="row" style="padding-top: 30px;">
+                <div class="col-md-6">
+                    <figure>
+                        <img src="extra/Presentation/humans.png"/>
+                        <p class="attribution">Source: NASA (wikipedia)</p>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <p style="text-align: center;">
+                        &gt; humans?<br/>
+                        7&nbsp;000&nbsp;000&nbsp;000
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>How many combinations for 100 queens?</h3>
+            <div style="float: right;">
+                <img src="UseCasesAndExamples/solvedNQueens04.png"/>
+            </div>
+            <div>
+                <ul>
+                    <li>1 queen per column</li>
+                    <li>100 queens ⇒ 100 variables</li>
+                    <li>100 rows ⇒ 100 values per variable</li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="row" style="padding-top: 30px;">
+                <div class="col-md-6">
+                    <figure>
+                        <img src="extra/Presentation/universe.png" style="width: 200px; height: 200px;"/>
+                        <p class="attribution">Source: NASA and ESA (wikipedia)</p>
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <p style="text-align: center;">
+                        &gt; minimum atoms<br>
+                        in the observable universe?<br/>
+                        10<sup>80</sup>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>How many combinations for 100 queens?</h3>
+            <div style="float: right;">
+                <img src="UseCasesAndExamples/solvedNQueens04.png"/>
+            </div>
+            <div>
+                <ul>
+                    <li>1 queen per column</li>
+                    <li>100 queens ⇒ 100 variables</li>
+                    <li>100 rows ⇒ 100 values per variable</li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div style="padding-top: 30px;">
+                <p style="text-align: center;">
+                    100<sup>100</sup> = 10<sup>200</sup><br/>
+                </p>
+                <p class="math" style="text-align: center;">
+                    1&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000<br/>
+                    &nbsp;&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000<br/>
+                    &nbsp;&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000<br/>
+                    &nbsp;&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000&nbsp;0000000000
+                </p>
+            </div>
+        </section>
+        <section>
+            <h3>How many combinations for n queens?</h3>
+            <div style="float: right;">
+                <img src="UseCasesAndExamples/solvedNQueens04.png"/>
+            </div>
+            <div>
+                <ul>
+                    <li>1 queen per column</li>
+                    <li>n queens ⇒ n variables</li>
+                    <li>n rows ⇒ n values per variable</li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <div style="padding-top: 30px;">
+                <p style="text-align: center;">
+                    n<sup>n</sup>
+                </p>
+                <p style="text-align: center;">
+                    |valueSet|<sup>|variableSet|</sup>
+                </p>
+            </div>
+        </section>
+        <section>
+            <img src="ExhaustiveSearch/bruteForceNQueens04_0.png" class="fullImage">
+            <img src="ExhaustiveSearch/bruteForceNQueens04_1.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/bruteForceNQueens04_2.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/bruteForceNQueens04_3.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/bruteForceNQueens04_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>How long?</h3>
+            <p>Presume 10<sup>9</sup> scores/ms ⇒ 10<sup>20</sup> scores/year</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Queens</th>
+                    <th>Combinations</th>
+                    <th>Calculation time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>100</td>
+                    <td>100<sup>100</sup> = 10<sup>200</sup></td>
+                    <td>10<sup>180</sup> years</td>
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td>1000<sup>1000</sup> = 10<sup>3000</sup></td>
+                    <td>10<sup>2980</sup> years</td>
+                </tr>
+                <tr>
+                    <td>10000</td>
+                    <td>10000<sup>10000</sup> = 10<sup>40000</sup></td>
+                    <td>10<sup>39980</sup> years</td>
+                </tr>
+                </tbody>
+            </table>
+            <figure>
+                <img src="ExhaustiveSearch/exhaustiveSearchScalabilityNQueens.png" style="width: 200px;">
+                <p>Moore's law == a drop in the ocean</p>
+            </figure>
+        </section>
+        <section>
+            <h3>Brute Force scalability</h3>
+            <figure>
+                <img src="ExhaustiveSearch/exhaustiveSearchScalabilityNQueens.png">
+                <p style="font-size: small;">
+                    8 queens = 15.7 seconds<br/>
+                    9 queens = 2.5 minutes (times 10)<br/>
+                    10 queens = 0.83 hours (times 20)
+                </p>
+            </figure>
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceBruteForce.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Lab: Try Brute Force</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  ...
+  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRUTE_FORCE&lt;/exhaustiveSearchType&gt;
+  &lt;/exhaustiveSearch&gt;
+&lt;/solver&gt;</code></pre>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/cloudBalanceSearchSpaceSize_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/cloudBalanceSearchSpaceSize_1.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/cloudBalanceSearchSpaceSize_2.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Brute force scalability</h3>
+            <figure>
+                <img src="ExhaustiveSearch/exhaustiveSearchScalabilityCloudBalance.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>Plan 1200 processes with brute force?</h3>
+            <br/>
+            <figure>
+                <img src="extra/Presentation/bruteForceSolvingDialog.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>Branch And Bound</h3>
+        </section>
+        <section>
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_0.png" class="fullImage">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_1.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_2.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_3.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_4.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_5.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_6.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_7.png" class="fullImage fragment">
+            <img src="ExhaustiveSearch/depthFirstBranchAndBoundNQueens04_8.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Branch And Bound configuration</h3>
+            <ul>
+                <li><code>nodeExplorationType</code></li>
+                <li><code>entitySorterManner</code></li>
+                <li><code>valueSorterManner</code></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Lab: Try Branch And Bound</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  ...
+  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRANCH_AND_BOUND&lt;/exhaustiveSearchType&gt;
+  &lt;/exhaustiveSearch&gt;
+&lt;/solver&gt;</code></pre>
+            <ul>
+                <li>Optional: Try a different <code>nodeExplorationType</code></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Exhaustive Search doesn't scale</h3>
+            <ul>
+                <li>Branches explode exponentially</li>
+                <li>Not enough CPU</li>
+                <li>Not enough memory</li>
+            </ul>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/searchSpaceSizeCalculation_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/searchSpaceSizeCalculation_1.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/searchSpaceSizeCalculation_2.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/searchSpaceSizeCalculation_3.png" class="fullImage fragment">
+        </section>
+    </section>
+
+    <section id="trainingSession2">
+        <section>
+            <h3>Agenda: Training session 2</h3>
+            <ul>
+                <li>Domain modelling</li>
+                <li>Employee rostering</li>
+                <li>Curriculum course timetabling</li>
+                <li>Exam timetabling</li>
+
+                <li>Score calculation advanced</li>
+                <li>Tennis club scheduling</li>
+                <li>Overconstrained planning</li>
+                <li>Hospital bed planning</li>
+
+                <li>Methodology</li>
+
+                <li>Drools integration</li>
+                <li>Dinner party</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Domain modelling</h3>
+        </section>
+        <section>
+            <h3>Terminology</h3>
+            <ul>
+                <li>Problem fact</li>
+                <li>Planning entity class: Process</li>
+                <li>Planning entity: Process-7</li>
+                <li>Planning variable: Process.getComputer()</li>
+                <li>Planning value: Computer-3</li>
+                <li>Planning value range: from Computer-0 to Computer-8</li>
+            </ul>
+        </section>
+        <section>
+            <h3>What changes during planning?</h3>
+            <ul>
+                <li>Which class is a planning entity?</li>
+                <li>Which property is a planning variable?</li>
+            </ul>
+        </section>
+        <section>
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideA_0.png" class="fullImage">
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideA_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideA_2.png" class="fullImage fragment">
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideA_3.png" class="fullImage fragment">
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideA_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideB_0.png" class="fullImage">
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideB_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideB_2.png" class="fullImage fragment">
+            <img src="DesignPatterns/employeeShiftRosteringModelingGuideB_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="PlannerConfiguration/entityVariableAndValueExamples_0.png" class="fullImage">
+            <img src="PlannerConfiguration/entityVariableAndValueExamples_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Training lab2* exercises</h3>
+        </section>
+        <section>
+            <h3>The stage acting camp problem</h3>
+        </section>
+        <section>
+            <h3>The cinema room cleanup problem</h3>
+        </section>
+        <section>
+            <h3>The Court hearing problem</h3>
+        </section>
+        <section>
+            <h3>The Magistrate timetable problem</h3>
+        </section>
+        <section>
+            <h3>The credit card budget problem</h3>
+        </section>
+        <section>
+            <h3>The tax audit task assignment problem</h3>
+            <ul>
+                <li>Audit priority</li>
+                <li>Audit size</li>
+                <li>Auditor skill (= qualified)</li>
+                <li>Auditor affinity (= work faster)</li>
+                <li>Auditor full-time / part-time</li>
+            </ul>
+        </section>
+        <section>
+            <h3>ValueRangeProvider</h3>
+            <ul>
+                <li>From Solution</li>
+                <li>From Entity</li>
+            </ul>
+        </section>
+        <section>
+            <h3>ValueRangeProvider</h3>
+            <ul>
+                <li>Returns Collection</li>
+                <li>Returns ValueRange</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Planning clone</h3>
+        </section>
+        <section>
+            <img src="LocalSearch/localSearchScoreOverTime.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Working solution vs Best solution</h3>
+            <ul>
+                <li>Working solution is internal!</li>
+                <li>Best solution is given to you through <code>SolverEventListener</code></li>
+            </ul>
+        </section>
+        <section>
+            <img src="PlannerConfiguration/solutionCloning_0.png" class="fullImage">
+            <img src="PlannerConfiguration/solutionCloning_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Curriculum course timetabling</h3>
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/curriculumCourseClassDiagram_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/curriculumCourseClassDiagram_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/curriculumCourseClassDiagram_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/curriculumCourseClassDiagram_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Teacher, Course, Room</h3>
+            <pre xml:space="preserve"><code class="java">class Teacher {
+  ...
+}</code></pre>
+            <pre xml:space="preserve"><code class="java">class Course {
+  Teacher teacher;
+  ...
+}</code></pre>
+            <pre xml:space="preserve"><code class="java">class Period {
+  ...
+}</code></pre>
+            <pre xml:space="preserve"><code class="java">class Room {
+  ...
+}</code></pre>
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/curriculumCourseClassDiagram_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/curriculumCourseClassDiagram_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Lecture</h3>
+            <pre xml:space="preserve"><code class="java">@PlanningEntity
+class Lecture {
+  Course course;
+  int lectureIndexInCourse;
+
+  @PlanningVariable(...) Period period;
+  @PlanningVariable(...) Room room;
+  ...
+}</code></pre>
+        </section>
+        <section>
+            <h2>Lab: Unavailable period penalty</h2>
+            <ul>
+                <li>On curriculum course scheduling example</li>
+                <li>Add data: which course is unavailable during which period</li>
+                <li>Add constraint</li>
+            </ul>
+        </section>
+        <section>
+            <h3>With Java</h3>
+            <pre xml:space="preserve"><code class="java">class UnavailablePeriodPenalty {
+  Course course;
+  Period period;
+  ...
+}</code></pre>
+            <pre xml:space="preserve"><code class="java">public HardSoftScore calculateScore(Schedule schedule);
+  int hardScore = 0;
+  for (UnavailablePeriodPenalty penalty : schedule.getPenaltyList()) {
+    for (Lecture lecture : schedule.getLectureList()) {
+      if (penalty.getCourse() == lecture.getCourse()
+          &amp;&amp; penalty.getPeriod() == lecture.getPeriod()) {
+        hardScore--;
+      }
+    }
+  }
+  ...
+  return HardSoftScore.valueOf(hardScore, softScore);
+}</code></pre>
+        </section>
+        <section>
+            <h3>With Drools rule engine</h3>
+            <pre xml:space="preserve"><code class="java">class UnavailablePeriodPenalty {
+  Course course;
+  Period period;
+  ...
+}</code></pre>
+            <pre xml:space="preserve"><code class="java">rule "unavailablePeriodPenalty"
+  when
+    // When a course is unavailable for a certain period ...
+    UnavailablePeriodPenalty($c : course, $p : period)
+    // ... and a lecture of that course is scheduled in that period ...
+    Lecture(course == $c, period == $p)
+  then
+    // ... then we lose 1 hard score point
+    scoreHolder.addHardConstraintMatch(kcontext, -1);
+end</code></pre>
+        </section>
+        <section>
+            <h3>Explaining the score</h3>
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreVisualization_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreVisualization_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreVisualization_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreVisualization_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Heat map</h3>
+            <figure>
+                <img src="PlannerIntroduction/plannerExamplesAppScreenshot.png"/>
+                <p>Course scheduling demo</p>
+            </figure>
+        </section>
+        <section>
+            <h3>Employee rostering</h3>
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/employeeRosteringValueProposition_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/employeeRosteringValueProposition_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/employeeRosteringValueProposition_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/employeeRosteringValueProposition_3.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/employeeRosteringValueProposition_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_5.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_6.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_7.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComparisonEmployeeRostering_8.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/employeeRosteringClassDiagram_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/employeeRosteringClassDiagram_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/employeeRosteringClassDiagram_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/employeeRosteringClassDiagram_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="PlannerConfiguration/inputOutputOverviewEmployeeRostering_0.png" class="fullImage">
+            <img src="PlannerConfiguration/inputOutputOverviewEmployeeRostering_1.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/inputOutputOverviewEmployeeRostering_2.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/inputOutputOverviewEmployeeRostering_3.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Lab901: Facility Location Problem</h3>
+            <ul>
+                <li># stores at different location</li>
+                <li>Each store has a demand</li>
+                <li># potential warehouses</li>
+                <li>Each warehouse has a capacity and setup cost</li>
+                <li>Each store gets supplied by 1 warehouse</li>
+                <li>Distance between store and warehouse is also a cost</li>
+                <li>Decide which warehouses to buy</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Score calculation advanced</h3>
+        </section>
+        <section>
+            <img src="ScoreCalculation/positiveAndNegativeConstraints_0.png" class="fullImage">
+            <img src="ScoreCalculation/positiveAndNegativeConstraints_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/positiveAndNegativeConstraints_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/positiveAndNegativeConstraints_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/positiveAndNegativeConstraints_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/positiveAndNegativeConstraints_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Mirror principle</h3>
+            <ul>
+                <li>-1 for every pair of queens that can attack each other</li>
+                <li>+1 for every pair of queens that cannot attack each other</li>
+                <li>⇒ Same optimal solution</li>
+            </ul>
+            <ul class="fragment">
+                <li>Different <code>initializingScoreTrend</code></li>
+                <li>⇒ possibly different performance</li>
+                <li>Default to negative constraints (if it feels natural)</li>
+            </ul>
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreWeighting_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreWeighting_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreTradeoffInPerspective_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreTradeoffInPerspective_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreTradeoffInPerspective_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreTradeoffInPerspective_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreTradeoffInPerspective_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreWeightType_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreWeightType_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreWeightType_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreWeightType_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreWeightType_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreWeightType_5.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreWeightType_6.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreLevels_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreLevels_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreFoldingIsBroken_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreFoldingIsBroken_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreFoldingIsBroken_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreFoldingIsBroken_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreFoldingIsBroken_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreFoldingIsBroken_5.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreFoldingIsBroken_6.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreClassDiagram_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreClassDiagram_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreClassDiagram_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreClassDiagram_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Bendable score</h3>
+            <ul>
+                <li>Any number of score levels</li>
+                <li>Decide at bootstrap time</li>
+            </ul>
+        </section>
+        <section>
+            <img src="ScoreCalculation/paretoOptimizationScoring_0.png" class="fullImage">
+            <img src="ScoreCalculation/paretoOptimizationScoring_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreComposition_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreComposition_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComposition_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComposition_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreComposition_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Reuse existing business code</h3>
+            <pre xml:space="preserve"><code class="java">public class Nurse {
+
+  private Country country;
+
+  public boolean isHoliday(Date date) {
+    if (country == Country.BE) {
+      // true if date is 1-JAN, easter monday, 21-JUL, ...
+    } else if (country == Country.FR) {
+      // true if date is 1-JAN, easter monday, 14-JUL, ...
+    } else if (...) {
+      ...
+    }
+    ...
+  }
+
+}</code></pre>
+        </section>
+        <section>
+            <h3>Training lab1*</h3>
+        </section>
+        <section>
+            <h3>Do we need to implement all constraints?</h3>
+        </section>
+        <section>
+            <img src="ScoreCalculation/optimalWithIncompleteConstraints_0.png" class="fullImage">
+            <img src="ScoreCalculation/optimalWithIncompleteConstraints_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/optimalWithIncompleteConstraints_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/optimalWithIncompleteConstraints_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Fairness/load balancing</h3>
+        </section>
+        <section>
+            <img src="ScoreCalculation/fairnessScoreConstraintPitfall_0.png" class="fullImage">
+            <img src="ScoreCalculation/fairnessScoreConstraintPitfall_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraintPitfall_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraintPitfall_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraintPitfall_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraintPitfall_5.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraintPitfall_6.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/fairnessScoreConstraint_0.png" class="fullImage">
+            <img src="ScoreCalculation/fairnessScoreConstraint_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraint_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraint_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraint_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraint_5.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraint_6.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraint_7.png" class="fullImage fragment">
+            <img src="ScoreCalculation/fairnessScoreConstraint_8.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Lab: load balancing</h3>
+            <ul>
+                <li>Apply load balancing on FLP</li>
+                <li>Remove setupCost and normal distanceCost</li>
+                <li>Warehouse capacity hard constraint still applies!</li>
+                <li>Optional: load balance relative to warehouse capacity</li>
+                <li>Optional: use the distanceCost as the load in loading balancing</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Tennis club scheduling</h3>
+            <p>Demo</p>
+        </section>
+        <section>
+            <h3>ConstraintConfiguration</h3>
+        </section>
+        <section>
+            <img src="Integration/parameterizeTheScoreWeights_0.png" class="fullImage">
+            <img src="Integration/parameterizeTheScoreWeights_1.png" class="fullImage fragment">
+            <img src="Integration/parameterizeTheScoreWeights_2.png" class="fullImage fragment">
+            <img src="Integration/parameterizeTheScoreWeights_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Exam timetabling</h3>
+            <p>Demo</p>
+        </section>
+        <!-- TODO -->
+        <section>
+            <h3>Overconstrained planning</h3>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/overconstrainedPlanning_0.png" class="fullImage">
+            <img src="RepeatedPlanning/overconstrainedPlanning_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_3.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_4.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Overconstrained planning</h3>
+            <ul>
+                <li>@PlanningVariable(nullable=true)</li>
+                <li>Extra score level</li>
+                <li>Feasible &gt; Assigned &gt; Cheap</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Hospital bed planning</h3>
+            <p>Demo</p>
+        </section>
+        <section>
+            <h3>Lab: overconstrained FLP</h3>
+            <ul>
+                <li>Multiple all demands by 10</li>
+                <li>Solve it but don't break hard constraints</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Methodology</h3>
+        </section>
+        <section>
+            <img src="Development/methodologyOverview.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Config objects</h3>
+            <ul>
+                <li>Programmatic configuration</li>
+                <li>No XSD yet</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Termination</h3>
+            <ul>
+                <li>Normal termination types</li>
+                <li>Asynchronous termination from another thread</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Lab: programmatic configuration</h3>
+            <ul>
+                <li>Change code in <code>CloudBalancingApp.createSolver()</code></li>
+                <li>Ask termination time with<br/>
+                    <code>String s = JOptionPane.showInputDialog(<br/>null, "How many seconds?", "");</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Drools integration</h3>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/architectureOverview_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/architectureOverview_1.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/architectureOverview_2.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>ScoreDirectorFactoryConfig</h3>
+            <ul>
+                <li>setKieBase(...)</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Dinner party</h3>
+            <p>Demo</p>
+        </section>
+        <section>
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_0.png" class="fullImage">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_2.png" class="fullImage fragment">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="DesignPatterns/assigningTimeToPlanningEntities2_0.png" class="fullImage">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities2_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities2_2.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="DesignPatterns/chainedThroughTimeAutomaticCollapse_0.png" class="fullImage">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticCollapse_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticCollapse_2.png" class="fullImage fragment">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticCollapse_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLast_0.png" class="fullImage">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLast_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLast_2.png" class="fullImage fragment">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLast_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLastLoop_0.png" class="fullImage">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLastLoop_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLastLoop_2.png" class="fullImage fragment">
+            <img src="DesignPatterns/chainedThroughTimeAutomaticDelayUntilLastLoop_3.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Conference scheduling</h3>
+            <p>Demo</p>
+        </section>
+
+        <section>
+            <img src="UseCasesAndExamples/conferenceSchedulingValueProposition_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/conferenceSchedulingValueProposition_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingValueProposition_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingValueProposition_3.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <img src="UseCasesAndExamples/conferenceSchedulingClassDiagram_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/conferenceSchedulingClassDiagram_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingClassDiagram_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingClassDiagram_3.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Task assigning</h3>
+            <p>Demo</p>
+        </section>
+
+        <section>
+            <img src="UseCasesAndExamples/taskAssigningValueProposition_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/taskAssigningValueProposition_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/taskAssigningValueProposition_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/taskAssigningValueProposition_3.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/taskAssigningValueProposition_4.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/taskAssigningValueProposition_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/taskAssigningClassDiagram_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/taskAssigningClassDiagram_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/taskAssigningClassDiagram_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/taskAssigningClassDiagram_3.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/taskAssigningClassDiagram_4.png" class="fullImage fragment">
+        </section>
+    </section>
+
+    <section id="trainingSession3">
+        <section>
+            <h3>Agenda: Training session 3</h3>
+            <ul>
+                <li>Logging and scopes</li>
+                <li>Benchmarker</li>
+                <li>Construction Heuristics</li>
+                <li>Community</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Logging</h3>
+        </section>
+        <section>
+            <h3>Reproducibility is gold</h3>
+            <ul>
+                <li>Debugging</li>
+                <li>Support</li>
+                <li>Demos</li>
+                <li><b>Your sanity</b></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Reproducibility pitfalls</h3>
+            <ul>
+                <li><code>Random</code> calls that don't use the seeded <code>Random</code></li>
+                <li><code>HashMap</code> in Solution => Use <code>LinkedHashMap</code></li>
+                <li><code>HashSet</code> in Solution => Use <code>LinkedHashSet</code></li>
+                <li>Time gradient algorithms (Simulated Annealing)</li>
+                <li>Work stealing (<code>EnvironmentMode</code>)</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Logging levels</h3>
+            <p>What is the solver doing?</p>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/generalPhaseSequence_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/generalPhaseSequence_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/scopeOverview_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/scopeOverview_1.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/scopeOverview_2.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/scopeOverview_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Lab: Logging</h3>
+            <ul>
+                <li>Change <code>logback.xml</code></li>
+                <li>Try <code>info</code>, <code>debug</code> and <code>trace</code></li>
+                <li>Optional: open system monitor. What do you see?</li>
+                <li>Optional: open VisualVM. What do you see?</li>
+            </ul>
+        </section>
+        <section>
+            <h3>OptaPlanner hogs a CPU core</h3>
+            <ul>
+                <li><b>No IO</b>. OptaPlanner is not a webserver!<br/>⇒ Multithreading gain is lower.</li>
+                <li>Multithreaded solving is available now (to hog all your CPU cores)<br/>⇔ it does not break incremental score calculation</li>
+                <li>Memory is stable (except for Exhaustive Search)</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Score calculation speed</h3>
+            <ul>
+                <li>How many inner iterations per second?</li>
+                <li>&lt; 1000 ⇒ Too slow!</li>
+                <li>&gt; 10000 ⇒ OK</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Lab: Score calculation speed</h3>
+            <ul>
+                <li>Comment out constraints</li>
+                <li>How does the speed change?</li>
+                <li>Which constraint is the slowest? Is there a bottleneck?</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>What is the best optimization algorithm?</h3>
+        </section>
+        <section>
+            <h3>Optimization algorithms</h3>
+            <ul>
+                <li>
+                    Exhaustive Search
+                    <ul>
+                        <li>Brute Force</li>
+                        <li>Branch And Bound</li>
+                    </ul>
+                </li>
+                <li>
+                    Construction Heuristics
+                    <ul>
+                        <li>First Fit (Decreasing)</li>
+                        <li>Weakest/Strongest Fit (Decreasing)</li>
+                        <li>Cheapest Insertion</li>
+                    </ul>
+                </li>
+                <li>
+                    Metaheuristics (Local Search, ...)
+                    <ul>
+                        <li>Hill Climbing</li>
+                        <li>Tabu Search</li>
+                        <li>Strategic Oscillation Tabu Search</li>
+                        <li>Simulated Annealing</li>
+                        <li>Late Acceptance</li>
+                        <li>Step Counting Hill Climbing</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Too much choice</h3>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_1.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_2.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Which one do I need to use?</h3>
+            <p>Good answer: First Fit Decreasing with Late Acceptance</p>
+            <p>Better answer: try them all and use the best one</p>
+        </section>
+
+        <section>
+            <h3>Benchmarker</h3>
+        </section>
+        <section>
+            <img src="BenchmarkingAndTweaking/benchmarkOverview.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Benchmarker report</h3>
+            <p>Demo and statistics overview</p>
+        </section>
+        <section>
+            <h3>Summary statistics</h3>
+            <ul>
+                <li>Always generated</li>
+                <li>Only covers the end state</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Problem statistics</h3>
+            <ul>
+                <li>Per problem dataset</li>
+                <li>Not generated by default</li>
+                <li>Impact execution (<i>observer effect</i>)</li>
+                <li>Covers state during solving too</li>
+                <li>Available as CSV file</li>
+            </ul>
+        </section>
+        <section>
+            <img src="BenchmarkingAndTweaking/letTheBestScoreStatisticGuideYou_0.png" class="fullImage">
+            <img src="BenchmarkingAndTweaking/letTheBestScoreStatisticGuideYou_1.png" class="fullImage fragment">
+            <img src="BenchmarkingAndTweaking/letTheBestScoreStatisticGuideYou_2.png" class="fullImage fragment">
+            <img src="BenchmarkingAndTweaking/letTheBestScoreStatisticGuideYou_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Single statistics</h3>
+            <ul>
+                <li>Per problem dataset and solver configuration</li>
+                <li>Not generated by default</li>
+                <li>Impact execution (<i>observer effect</i>)</li>
+                <li>Covers state during solving too</li>
+                <li>Available as CSV file</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Benchmarker pitfalls</h3>
+            <ul>
+                <li>JVM warm up</li>
+                <li>Parallel benchmarking</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Lab Benchmarker</h3>
+            <ul>
+                <li>On Cloud Balancing</li>
+                <li>Compare Brute Force with Branch And Bound</li>
+                <li>Or different score directors</li>
+                <li>Use 30 second termination</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Blueprints</h3>
+            <p>Demo</p>
+        </section>
+        <section>
+            <h3>Matrix benchmarking</h3>
+            <p>Demo</p>
+        </section>
+        <section>
+            <h3>Benchmark aggregator</h3>
+        </section>
+        <section>
+            <img src="BenchmarkingAndTweaking/benchmarkAggregator.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Lab BenchmarkAggregator</h3>
+            <ul>
+                <li>Run the same benchmark twice</li>
+                <li>With different log levels or JDK</li>
+                <li>Aggregate report</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Construction Heuristics</h3>
+        </section>
+        <!-- TODO -->
+        <section>
+            <img src="extra/Presentation/firstFitLogo.png" class="fullImage">
+        </section>
+        <section>
+            <img src="ConstructionHeuristics/firstFitNQueens04_0.png" class="fullImage">
+            <img src="ConstructionHeuristics/firstFitNQueens04_1.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitNQueens04_2.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitNQueens04_3.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitNQueens04_4.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitNQueens04_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceFirstFit.png" class="fullImage">
+        </section>
+        <section>
+            <h3>First Fit config</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  ...
+
+  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;
+&lt;/solver&gt;</code></pre>
+        </section>
+        <section>
+            <h3>First Fit scalability</h3>
+            <figure>
+                <img src="ConstructionHeuristics/firstFitScalabilityCloudBalance.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>First Fit results</h3>
+            <figure>
+                <img src="extra/Presentation/cloudBalanceResults_0.png"/>
+                <p>All hard constraints satisfied: maintenance cost shown</p>
+            </figure>
+        </section>
+        <section>
+            <img src="extra/Presentation/firstFitDecreasingLogo.png" class="fullImage">
+        </section>
+        <section>
+            <img src="ConstructionHeuristics/firstFitDecreasingNQueens04_0.png" class="fullImage">
+            <img src="ConstructionHeuristics/firstFitDecreasingNQueens04_1.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitDecreasingNQueens04_2.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitDecreasingNQueens04_3.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitDecreasingNQueens04_4.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/firstFitDecreasingNQueens04_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceFirstFitDecreasing.png" class="fullImage">
+        </section>
+        <section>
+            <h3>First Fit Decreasing config</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  ...
+
+  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;
+&lt;/solver&gt;</code></pre>
+        </section>
+        <section>
+            <h3>DifficultyComparator</h3>
+            <pre xml:space="preserve"><code class="java">public class ProcessDifficultyComparator
+    implements Comparator&lt;Process&gt; {
+  public int compare(Process a, Process b) {
+    // Compare on requiredCpuPower * requiredMemory
+    //     * requiredNetworkBandwidth
+  }
+}
+
+@PlanningEntity(difficultyComparatorClass
+    = ProcessDifficultyComparator.class)
+public class Process  {
+  ...
+}</code></pre>
+        </section>
+        <section>
+            <h3>First Fit Decreasing scalability</h3>
+            <figure>
+                <img src="ConstructionHeuristics/firstFitDecreasingScalabilityCloudBalance.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>First Fit Decreasing results</h3>
+            <figure>
+                <img src="extra/Presentation/cloudBalanceResults_1.png"/>
+            </figure>
+        </section>
+        <section>
+            <!-- Note: the LS side doesn't do Nearby Selection so it's not representative -->
+            <img src="extra/Presentation/vrpCHEntitySortingLi1040.png">
+        </section>
+        <section>
+            <h3>Weakest Fit (Decreasing)</h3>
+        </section>
+        <section>
+            <h3>Strongest Fit (Decreasing)</h3>
+        </section>
+        <section>
+            <h3>Cheapest insertion</h3>
+        </section>
+        <section>
+            <img src="extra/Presentation/cheapestInsertionLogo.png" class="fullImage">
+        </section>
+        <section>
+            <img src="ConstructionHeuristics/cheapestInsertionNQueens04_0.png" class="fullImage">
+            <img src="ConstructionHeuristics/cheapestInsertionNQueens04_1.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/cheapestInsertionNQueens04_2.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/cheapestInsertionNQueens04_3.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/cheapestInsertionNQueens04_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Regret insertion</h3>
+            <p>Not yet supported</p>
+        </section>
+        <section>
+            <h3>Scaling Construction Heuristics</h3>
+            <p>If the Construction Heuristic takes too long, Local Search has too little time</p>
+        </section>
+        <section>
+            <img src="ConstructionHeuristics/multiVariableConstructionHeuristics_0.png" class="fullImage">
+            <img src="ConstructionHeuristics/multiVariableConstructionHeuristics_1.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/multiVariableConstructionHeuristics_2.png" class="fullImage fragment">
+            <img src="ConstructionHeuristics/multiVariableConstructionHeuristics_3.png" class="fullImage fragment">
+        </section>
+
+
+        <section>
+            <h3>Community</h3>
+        </section>
+        <section>
+            <h3>Build from source</h3>
+            <ul>
+                <li><a href="https://github.com/kiegroup/optaplanner">https://github.com/kiegroup/optaplanner</a></li>
+            </ul>
+            <pre xml:space="preserve"><code class="bash">$ git clone https://github.com/kiegroup/optaplanner.git
+...
+$ cd optaplanner
+$ mvn clean install -DskipTests
+...
+$ cd optaplanner-examples
+$ mvn exec:java
+...</code></pre>
+        </section>
+        <section>
+            <h3>Community publicity</h3>
+            <ul>
+                <li>Speaking at an event?</li>
+                <li>Wrote a public article or case study?</li>
+                <li>Made a video?</li>
+            </ul>
+            <p><b>Add it on optaplanner.org</b></p>
+            <p>How? By sending a Pull Request to add it in the <code>yml</code> file (or just mail me).</p>
+        </section>
+        <section>
+            <h3>Steal these slides</h3>
+            <ul>
+                <li>Most slides are images of <code>800*600</code></li>
+                <li>SVG sources are in<br/>
+                    https://github.com/kiegroup/optaplanner/tree/main/optaplanner-docs/src/modules/ROOT/images</li>
+                <li>Use Inkscape</li>
+                <li>Use Tango color palette</li>
+                <li>User layers to export a subset</li>
+                <li>Demos: see videos</li>
+            </ul>
+            <p>Anyone want to convert to odp/ppt and share?</p>
+        </section>
+        <section>
+            <img src="PlannerIntroduction/distributionZip.png" class="fullImage">
+        </section>
+        <section>
+            <img src="PlannerIntroduction/distributionZipProductized.png" class="fullImage">
+        </section>
+        <section>
+            <h3>OptaPlanner HUB</h3>
+        </section>
+    </section>
+
+    <section id="trainingSession4">
+        <section>
+            <h3>Agenda: Training session 4</h3>
+            <ul>
+                <li>Local Search</li>
+                <li>Score traps</li>
+
+                <li>Move selectors</li>
+                <li>Custom moves</li>
+
+                <li>Incremental score calculation</li>
+                <li>Machine Reassignment</li>
+                <li>Assertion modes</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Local Search</h3>
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalanceLocalSearch.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Construction Heuristics + Local Search</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+    ...
+
+    &lt;constructionHeuristic&gt;
+        &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+    &lt;/constructionHeuristic&gt;
+    &lt;localSearch&gt;
+        ...
+    &lt;localSearch&gt;
+&lt;/solver&gt;</code></pre>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/generalPhaseSequence_1.png" class="fullImage">
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/generalPhaseSequence_0.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Move types</h3>
+            <ul>
+                <li>Change move</li>
+                <li>Swap move</li>
+                <li>...</li>
+            </ul>
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/changeMove_0.png" class="fullImage">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/swapMove_0.png" class="fullImage">
+        </section>
+        <section>
+            <h3>All change moves</h3>
+            <div>
+                <div class="leftColumn">
+                    <figure>
+                        <img src="MoveAndNeighborhoodSelection/possibleMovesNQueens04.png">
+                    </figure>
+                </div>
+                <div class="rightColumn">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>n</th>
+                            <th># moves</th>
+                            <th># solutions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>4</td>
+                            <td>16</td>
+                            <td>256</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>64</td>
+                            <td>16777216</td>
+                        </tr>
+                        <tr>
+                            <td>64</td>
+                            <td>4096</td>
+                            <td>10<sup>116</sup></td>
+                        </tr>
+                        <tr>
+                            <td>n</td>
+                            <td>n<sup>2</sup></td>
+                            <td>n<sup>n</sup></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3>Multiple moves</h3>
+            <figure>
+                <img src="MoveAndNeighborhoodSelection/sequentialMovesNQueens04.png">
+                <p>Multiple moves can reach any solution</p>
+            </figure>
+        </section>
+
+        <section>
+            <img src="extra/Presentation/hillClimbingLogo.png" class="fullImage">
+        </section>
+        <section>
+            <img src="LocalSearch/hillClimbingNQueens04_0.png" class="fullImage">
+            <img src="LocalSearch/hillClimbingNQueens04_1.png" class="fullImage fragment">
+            <img src="LocalSearch/hillClimbingNQueens04_2.png" class="fullImage fragment">
+            <img src="LocalSearch/hillClimbingNQueens04_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="LocalSearch/hillClimbingGetsStuckInLocalOptimaNQueens04_0.png" class="fullImage">
+            <img src="LocalSearch/hillClimbingGetsStuckInLocalOptimaNQueens04_1.png" class="fullImage fragment">
+            <img src="LocalSearch/hillClimbingGetsStuckInLocalOptimaNQueens04_2.png" class="fullImage fragment">
+            <img src="LocalSearch/hillClimbingGetsStuckInLocalOptimaNQueens04_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/tabuSearchLogo.png" class="fullImage">
+        </section>
+        <section>
+            <img src="LocalSearch/entityTabuSearch_0.png" class="fullImage">
+            <img src="LocalSearch/entityTabuSearch_1.png" class="fullImage fragment">
+            <img src="LocalSearch/entityTabuSearch_2.png" class="fullImage fragment">
+            <img src="LocalSearch/entityTabuSearch_3.png" class="fullImage fragment">
+            <img src="LocalSearch/entityTabuSearch_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/simulatedAnnealingLogo.png" class="fullImage">
+        </section>
+        <section>
+            <img src="LocalSearch/simulatedAnnealing_0.png" class="fullImage">
+            <img src="LocalSearch/simulatedAnnealing_1.png" class="fullImage fragment">
+            <img src="LocalSearch/simulatedAnnealing_2.png" class="fullImage fragment">
+            <img src="LocalSearch/simulatedAnnealing_3.png" class="fullImage fragment">
+            <img src="LocalSearch/simulatedAnnealing_4.png" class="fullImage fragment">
+            <img src="LocalSearch/simulatedAnnealing_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="extra/Presentation/lateAcceptanceLogo.png" class="fullImage">
+        </section>
+        <section>
+            <img src="LocalSearch/lateAcceptance_0.png" class="fullImage">
+            <img src="LocalSearch/lateAcceptance_1.png" class="fullImage fragment">
+            <img src="LocalSearch/lateAcceptance_2.png" class="fullImage fragment">
+            <img src="LocalSearch/lateAcceptance_3.png" class="fullImage fragment">
+            <img src="LocalSearch/lateAcceptance_4.png" class="fullImage fragment">
+            <img src="LocalSearch/lateAcceptance_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Making moves</h3>
+            <figure>
+                <img src="LocalSearch/decideNextStepNQueens04.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>Making steps</h3>
+            <figure>
+                <img src="LocalSearch/allStepsNQueens04.png"/>
+            </figure>
+        </section>
+        <!-- TODO -->
+        <section>
+            <img src="extra/Presentation/hillClimbingLogo.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Hill Climbing config</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;localSearch&gt;
+  &lt;forager&gt;
+    &lt;!-- Untweaked standard value --&gt;
+    &lt;acceptedCountLimit&gt;1000&lt;/acceptedCountLimit&gt;
+  &lt;/forager&gt;
+&lt;/localSearch&gt;</code></pre>
+        </section>
+        <section>
+            <h3>Lab Hill Climbing</h3>
+        </section>
+        <section>
+            <img src="LocalSearch/localSearchScoreOverTime.png" class="fullImage">
+        </section>
+        <section>
+            <img src="extra/Presentation/tabuSearchLogo.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Tabu Search config</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;localSearch&gt;
+  &lt;acceptor&gt;
+    &lt;!-- Typical standard value --&gt;
+    &lt;entityTabuSize&gt;7&lt;/entityTabuSize&gt;
+  &lt;/acceptor&gt;
+  &lt;forager&gt;
+    &lt;!-- Typical value --&gt;
+    &lt;acceptedCountLimit&gt;1000&lt;/acceptedCountLimit&gt;
+  &lt;/forager&gt;
+&lt;/localSearch&gt;</code></pre>
+        </section>
+        <section>
+            <h3>Lab Tabu Search</h3>
+        </section>
+        <section>
+            <img src="extra/Presentation/simulatedAnnealingLogo.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Simulated Annealing config</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;localSearch&gt;
+  &lt;acceptor&gt;
+    &lt;!-- Tweaked value --&gt;
+    &lt;simulatedAnnealingStartingTemperature&gt;
+        0hard/400soft
+    &lt;/simulatedAnnealingStartingTemperature&gt;
+  &lt;/acceptor&gt;
+  &lt;forager&gt;
+    &lt;!-- Typical value --&gt;
+    &lt;acceptedCountLimit&gt;4&lt;/acceptedCountLimit&gt;
+  &lt;/forager&gt;
+&lt;/localSearch&gt;</code></pre>
+        </section>
+        <section>
+            <h3>Lab Simulated Annealing</h3>
+        </section>
+        <section>
+            <img src="extra/Presentation/lateAcceptanceLogo.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Late Acceptance config</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;localSearch&gt;
+  &lt;acceptor&gt;
+    &lt;!-- Typical standard value --&gt;
+    &lt;lateAcceptanceSize&gt;400&lt;/lateAcceptanceSize&gt;
+  &lt;/acceptor&gt;
+  &lt;forager&gt;
+    &lt;!-- Typical value --&gt;
+    &lt;acceptedCountLimit&gt;4&lt;/acceptedCountLimit&gt;
+  &lt;/forager&gt;
+&lt;/localSearch&gt;</code></pre>
+        </section>
+        <section>
+            <h3>Lab Late Acceptance</h3>
+        </section>
+        <section>
+            <h3>Local Search results</h3>
+            <figure>
+                <img src="extra/Presentation/cloudBalanceResults_2.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>Cost ($) reduction</h3>
+            <figure>
+                <img src="extra/Presentation/cloudBalanceResultsROI.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>Optimization algorithms</h3>
+            <ul>
+                <li>
+                    Exhaustive Search
+                    <ul>
+                        <li>Brute Force</li>
+                        <li>Branch And Bound</li>
+                    </ul>
+                </li>
+                <li>
+                    Construction Heuristics
+                    <ul>
+                        <li>First Fit (Decreasing)</li>
+                        <li>Weakest/Strongest Fit (Decreasing)</li>
+                        <li>Cheapest Insertion</li>
+                    </ul>
+                </li>
+                <li>
+                    Metaheuristics (Local Search, ...)
+                    <ul>
+                        <li>Hill Climbing</li>
+                        <li>Tabu Search</li>
+                        <li>Strategic Oscillation Tabu Search</li>
+                        <li>Simulated Annealing</li>
+                        <li>Late Acceptance</li>
+                        <li>Step Counting Hill Climbing</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_1.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_2.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/scalabilityOfOptimizationAlgorithms_3.png" class="fullImage fragment">
+        </section>
+
+
+        <section>
+            <h3>Score traps</h3>
+            <!-- TODO -->
+        </section>
+        <section>
+            <img src="ScoreCalculation/scoreTrap_0.png" class="fullImage">
+            <img src="ScoreCalculation/scoreTrap_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreTrap_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreTrap_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreTrap_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/scoreTrap_5.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Move selectors</h3>
+            <!-- TODO -->
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/changeMove.png" class="fullImage">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/swapMove.png" class="fullImage">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/selectorTree_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/selectorTree_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/selectorTree_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/selectorTree_3.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/selectorTree_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/cachedShuffledSelection_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/cachedShuffledSelection_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/cachedShuffledSelection_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/cachedShuffledSelection_3.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/cachedShuffledSelection_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/jitRandomSelection_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/jitRandomSelection_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/jitRandomSelection_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/jitRandomSelection_3.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/jitRandomSelection_4.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/jitRandomSelection_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/selectorProbabilityInUnion_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/selectorProbabilityInUnion_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/selectorProbabilityInUnion_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/selectorProbabilityInUnion_3.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/selectorProbabilityInUnion_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Cartesian Product</h3>
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/filteredSelection_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/filteredSelection_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/filteredSelection_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/filteredSelection_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/probabilisticSelection_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/probabilisticSelection_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/probabilisticSelection_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/probabilisticSelection_3.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/probabilisticSelection_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Mimic Selection</h3>
+        </section>
+        <section>
+            <h3>Limited Selection</h3>
+        </section>
+        <section>
+            <h3>Generic moves</h3>
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/changeMove.png" class="fullImage">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/swapMove.png" class="fullImage">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/pillarChangeMove.png" class="fullImage">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/pillarSwapMove.png" class="fullImage">
+        </section>
+        <section>
+            <h3>TailChainSwapMove</h3>
+        </section>
+        <section>
+            <h3>SubChainChangeMove</h3>
+        </section>
+        <section>
+            <h3>SubChainSwapMove</h3>
+        </section>
+        <section>
+            <h3>Custom moves</h3>
+            <!-- TODO -->
+        </section>
+
+        <section>
+            <h3>Incremental score calculation</h3>
+            <!-- TODO -->
+        </section>
+        <section>
+            <img src="ScoreCalculation/incrementalScoreCalculationNQueens04_0.png" class="fullImage">
+            <img src="ScoreCalculation/incrementalScoreCalculationNQueens04_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculationNQueens04_2.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_0.png" class="fullImage">
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_5.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_6.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculationEmployeeRostering_7.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="ScoreCalculation/incrementalScoreCalculatorSequenceDiagram_0.png" class="fullImage">
+            <img src="ScoreCalculation/incrementalScoreCalculatorSequenceDiagram_1.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculatorSequenceDiagram_2.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculatorSequenceDiagram_3.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculatorSequenceDiagram_4.png" class="fullImage fragment">
+            <img src="ScoreCalculation/incrementalScoreCalculatorSequenceDiagram_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>EnvironmentMode</h3>
+            <p>Are there bugs in my code?</p>
+            <ul>
+                <li>Non-reproducible</li>
+                <li>Reproducible (default)</li>
+                <li>Fast assert</li>
+                <li>Full assert</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Machine Reassignment</h3>
+            <!-- TODO -->
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/machineReassignmentClassDiagram.png" class="fullImage">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalancingFairnessCHOnly.png" class="fullImage">
+        </section>
+        <section>
+            <img src="extra/Presentation/cloudBalancingFairnessCHAndLS.png" class="fullImage">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/cloudOptimizationIsLikeTetris_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/cloudOptimizationIsLikeTetris_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/cloudOptimizationIsLikeTetris_2.png" class="fullImage fragment">
+        </section>
+    </section>
+
+    <section id="trainingSession5">
+        <section>
+            <h3>Agenda: Training session 5</h3>
+            <ul>
+                <li>Chained variables</li>
+                <li>TSP, VRP</li>
+                <li>Nearby selection</li>
+                <li>Shadow variables</li>
+                <li>Project Job Scheduling</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Chained variables</h3>
+        </section>
+        <section>
+            <img src="PlannerConfiguration/chainPrinciples_0.png" class="fullImage">
+            <img src="PlannerConfiguration/chainPrinciples_1.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/chainPrinciples_2.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/chainPrinciples_3.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/chainPrinciples_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="PlannerConfiguration/chainCorrection_0.png" class="fullImage">
+            <img src="PlannerConfiguration/chainCorrection_1.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/chainCorrection_2.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>TSP</h3>
+            <!-- TODO -->
+        </section>
+
+        <section>
+            <h3>Nearby Selection</h3>
+            <p>Scaling out with TSP and VRP</p>
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionMotivation_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionMotivation_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionMotivation_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionMotivation_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionRandomDistribution_0.png" class="fullImage">
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionRandomDistribution_1.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionRandomDistribution_2.png" class="fullImage fragment">
+            <img src="MoveAndNeighborhoodSelection/nearbySelectionRandomDistribution_3.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Shadow variables</h3>
+        </section>
+        <section>
+            <img src="PlannerConfiguration/bidirectionalVariable_0.png" class="fullImage">
+            <img src="PlannerConfiguration/bidirectionalVariable_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="PlannerConfiguration/planningVariableListener_0.png" class="fullImage">
+            <img src="PlannerConfiguration/planningVariableListener_1.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/planningVariableListener_2.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/planningVariableListener_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="PlannerConfiguration/shadowVariableOrder_0.png" class="fullImage">
+            <img src="PlannerConfiguration/shadowVariableOrder_1.png" class="fullImage fragment">
+            <img src="PlannerConfiguration/shadowVariableOrder_2.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>VRP</h3>
+            <!-- TODO -->
+        </section>
+        <section>
+            <h3>OpenStreetMap and Google Maps</h3>
+            <!-- TODO -->
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/vehicleRoutingDistanceType_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/vehicleRoutingDistanceType_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/vehicleRoutingDistanceType_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/vehicleRoutingDistanceType_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/integrationWithRealMaps_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/integrationWithRealMaps_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/integrationWithRealMaps_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/integrationWithRealMaps_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/vehicleRoutingLeafletAndGoogleMaps.png" class="fullImage">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/vehicleRoutingGoogleMapsDirections.png" class="fullImage">
+        </section>
+
+        <section>
+            <h3>Project Job Scheduling</h3>
+            <!-- TODO -->
+        </section>
+
+        <section>
+            <section>
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_0.png" class="fullImage">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_1.png" class="fullImage fragment">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_2.png" class="fullImage fragment">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_3.png" class="fullImage fragment">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_4.png" class="fullImage fragment">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_5.png" class="fullImage fragment">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_6.png" class="fullImage fragment">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_7.png" class="fullImage fragment">
+                <img src="UseCasesAndExamples/travelingTournamentUseCase_8.png" class="fullImage fragment">
+            </section>
+        </section>
+    </section>
+
+    <section id="planningAgility">
+        <section>
+            <h3>Planning agility</h3>
+        </section>
+
+        <section>
+            <h3 style="font-style: italic">
+                "Plans are of little importance,<br/>
+                but planning is essential."
+            </h3>
+            <div style="margin-top: 80px;">
+                <p>
+                    Winston Churchill<br/>
+                    (Prime Minister UK 1940-1945)<br/>
+                </p>
+            </div>
+        </section>
+        <section>
+            <h3 style="font-style: italic">
+                "Everybody has a plan<br/>
+                until they get punched<br/>
+                in the mouth…"
+            </h3>
+            <div style="margin-top: 80px;">
+                <p>
+                    Mike Tyson<br/>
+                    (Boxer, heavyweight champion 1987-1990)<br/>
+                </p>
+            </div>
+        </section>
+        <section>
+            <h3>
+                What kind of planning disruptions?
+            </h3>
+            <ul>
+                <li>Local disruption
+                    <ul>
+                        <li>Impact limited to one department/region</li>
+                    </ul>
+                </li>
+                <li>Global disruption
+                    <ul>
+                        <li>Impact across the board</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Local disruption</h3>
+            <figure>
+                <img src="extra/Presentation/agilePlanningSickNote.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>Global disruptions</h3>
+            <ul>
+                <li>2001 - September 11 attacks
+                    <ul>
+                        <li>Air-traffic shut-down in North America for 2 days</li>
+                    </ul>
+                </li>
+                <li class="fragment">2010 - Eyjafjallajökull volcano eruption
+                    <ul>
+                        <li>Air-traffic shut-down in Europe for 8 days</li>
+                    </ul>
+                </li>
+                <li class="fragment">2020 - COVID-19
+                    <ul>
+                        <li>Flight cancellations</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Planning agility paradox</h3>
+            <p style="margin-top: 80px;">
+                "We can <i>not</i> automate planning<br/>
+                because the plans will change."
+            </p>
+            <div class="fragment">
+                <p>⇒</p>
+                <p>
+                    "We <i>need</i> to automate (re)planning<br/>
+                    because the plans will change."
+                </p>
+            </div>
+            <div class="fragment" style="margin-top: 80px;">
+                <p>But how?</p>
+            </div>
+        </section>
+        <section>
+            <h2>
+                1) What is your<br/> publication deadline?
+            </h2>
+        </section>
+        <section>
+            <h3>Publication</h3>
+            <ul>
+                <li>Tell employees when/how/where to work</li>
+                <li>Publication deadline
+                    <ul>
+                        <li>Technician routing: 1 hour before departure</li>
+                        <li>School timetabling: before end of vacation</li>
+                        <li>Guards: 4 weeks before shift</li>
+                        <li>Nurses: 6 weeks before shift</li>
+                        <li>Facility location: 6 months before opening</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/multiStagePlanning_0.png" class="fullImage">
+            <img src="RepeatedPlanning/multiStagePlanning_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/multiStagePlanning_2.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Multi-stage planning</h3>
+            <ul>
+                <li>Strategic: expand the maternity ward?</li>
+                <li>Tactical: hire a respiratory specialist?</li>
+                <li>Operational: assign a Monday shift to Ann?</li>
+            </ul>
+            <p>Each planning stage feeds into the next.</p>
+            <div class="fragment" style="margin-top: 80px;">
+                <p>Especially for trains, airplanes, etc</p>
+                <ul>
+                    <li>Strategic: add a stop in Philadelphia?</li>
+                    <li>Tactical: depart at 7 AM?</li>
+                    <li>Operational: Which locomotive and wagons?</li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/multiStagePlanning_2.png" class="fullImage">
+            <img src="RepeatedPlanning/multiStagePlanning_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Conway's law</h3>
+            <p style="font-style: italic">
+                "Any organization that designs a (software) system<br/>
+                will produce a design whose structure<br/>
+                is a copy of the organization's communication structure."
+            </p>
+            <div class="fragment">
+                <p>⇒</p>
+                <p>
+                    Planning problems solved by different groups<br/>
+                    should use different Solver instances<br/>
+                    (during the first year in production).
+                </p>
+            </div>
+        </section>
+        <section>
+            <h3>In practice</h3>
+            <pre xml:space="preserve"><code class="java">@Path("/trainWagon")
+public class TrainWagonDeciderResource {
+
+  @Inject
+  SolverManager&lt;TrainWagonSolution, ...&gt; wagonSolverManager;
+
+  ... wagonSolverManager.solve(...)
+}
+@Path("/trainPlatform")
+public class TrainPlatformDeciderResource {
+
+  @Inject
+  SolverManager&lt;TrainCrewSolution, ...&gt; platformSolverManager;
+
+  // Uses TrainWagonSolution's output as problem facts:
+  // Length of train impacts eligble platforms
+  ... platformSolverManager.solve(...)
+}</code></pre>
+        </section>
+        <section>
+            <h2>
+                2) Do you assign to time?
+            </h2>
+        </section>
+        <section>
+            <h3>No, domain lacks time data</h3>
+            <figure>
+                <img src="QuickStart/cloudOptimizationValueProposition_0.png"/>
+            </figure>
+        </section>
+        <section>
+            <p>No <code>java.time</code> import</p>
+            <figure>
+                <img src="QuickStart/cloudBalanceClassDiagram_2.png"/>
+            </figure>
+        </section>
+        <section>
+            <h3>Yes, Domain has time<br/> but planning does not assign time</h3>
+            <pre xml:space="preserve"><code class="java">import java.time.LocalDate;
+
+@PlanningEntity
+public class Patient {
+
+  private String name;
+  private LocalDate arrivalDate;
+  private LocalDate departureDate;
+  ...
+  @PlanningVariable(...)
+  private Bed bed;
+  ...
+}</code></pre>
+            <p>Hospital bed planning does not change<br/> a patient's arrival or departure date.</p>
+        </section>
+        <section>
+            <h3>By the way...</h3>
+            <p>Don't use <code>java.util.Date</code> for time manipulation.<br/>
+                It's like asking your bartender how to treat cancer.</p>
+            <p class="fragment" style="margin-top: 80px;">
+                Don't use <code>java.util.Calender</code> either,<br/>
+                It's like asking your dog how to treat cancer.
+            </p>
+            <p class="fragment" style="margin-top: 80px;">Use <code>java.time.LocalDate</code>
+                or <code>java.time.LocalDateTime</code> instead!</p>
+        </section>
+        <section>
+            <h3>Yes, Domain has time<br/> and planning assigns to time</h3>
+            <p>Pick a good domain model.</p>
+        </section>
+        <section>
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_0.png" class="fullImage">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Planning assigns to time</h3>
+            <pre xml:space="preserve"><code class="java">@PlanningEntity
+public class Lesson {
+
+  private String subject;
+  ...
+  @PlanningVariable(...)
+  private Timeslot timeslot;
+  ...
+}
+
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+
+public class Timeslot {
+
+  private DayOfWeek dayOfWeek;
+  private LocalTime startTime;
+  private LocalTime endTime;
+  ...
+}</code></pre>
+        </section>
+        <section>
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_1.png" class="fullImage">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_2.png" class="fullImage fragment">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="DesignPatterns/assigningTimeToPlanningEntities2_0.png" class="fullImage">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities2_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/assigningTimeToPlanningEntities2_2.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h2>
+                3) Do you replan<br/>
+                every week, day or hour?
+            </h2>
+            <h3>Continuous planning</h3>
+        </section>
+        <section>
+            <h3>What is continuous planning?</h3>
+            <figure>
+                <img src="UseCasesAndExamples/employeeRosteringValueProposition_0.png"/>
+            </figure>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_0.png" class="fullImage">
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Don't change history</h3>
+            <pre xml:space="preserve"><code class="java">@Entity
+public class Shift {
+
+  private LocalDateTime start;
+  private LocalDateTime end;
+
+  @PlanningPin
+  private boolean history;
+  ...
+  @PlanningVariable(...)
+  private Employee employee;
+  ...
+}</code></pre>
+        </section>
+        <section>
+            <h3>Don't change published shifts?</h3>
+            <pre xml:space="preserve"><code class="java">@PlanningEntity
+public class Shift {
+
+  private LocalDateTime start;
+  private LocalDateTime end;
+
+  @PlanningPin
+  // every historic shift is published
+  private boolean published;
+  ...
+  @PlanningVariable(...)
+  private Employee employee;
+  ...
+}</code></pre>
+            <p>Maybe</p>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_0.png" class="fullImage">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>How to paint yourself in a corner</h3>
+            <p>Assign all respiratory specialists<br/>
+                to the <i>last</i> shift of your planning window<br/>
+                (even in other wards as normal nurses).</p>
+            <div class="fragment">
+                <p>⇒</p>
+                <p>
+                    draft length &gt;= 2 * publish length
+                </p>
+            </div>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_3.png" class="fullImage">
+        </section>
+        <section>
+            <h3>Continuous planning</h3>
+            <ul>
+                <li>Publish notice ranges from long to short
+                    <ul>
+                        <li>Weeks: employee shift rostering, pharmacy on duty scheduling, ...</li>
+                        <li>Seconds: runway scheduling, gate scheduling, platform scheduling, ...</li>
+                    </ul>
+                </li>
+                <li class="fragment"><b>Domain must contain dates or timestamps data</b>
+                    <ul>
+                        <li>So domain probably has <code>import java.time</code></li>
+                        <li>Regardless if planning assigns to time or not.</li>
+                    </ul>
+                </li>
+                <li class="fragment"><b>Planning windows must overlap</b>
+                    <ul>
+                        <li class="fragment">⇒ School timetabling is not continuous planning</li>
+                    </ul></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>
+                4) Will published plan change?
+            </h2>
+            <h3>Non-disruptive Replanning</h3>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/multiStagePlanning_2.png" class="fullImage">
+            <img src="RepeatedPlanning/multiStagePlanning_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/conferenceSchedulingProblem_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/conferenceSchedulingProblem_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingProblem_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingProblem_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="UseCasesAndExamples/conferenceSchedulingMilestonesTimeline_0.png" class="fullImage">
+            <img src="UseCasesAndExamples/conferenceSchedulingMilestonesTimeline_1.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingMilestonesTimeline_2.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingMilestonesTimeline_3.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingMilestonesTimeline_4.png" class="fullImage fragment">
+            <img src="UseCasesAndExamples/conferenceSchedulingMilestonesTimeline_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Implementation</h3>
+            <pre xml:space="preserve"><code class="java">@PlanningEntity
+public class Talk {
+
+    private Timeslot publishedTimeslot;
+    ...
+
+    @PlanningVariable(...)
+    private Timeslot timeslot;
+
+}</code></pre>
+            <pre xml:space="preserve"><code class="java">  Constraint publishedTimeslot(ConstraintFactory f) {
+    return f.from(Talk.class)
+        .filter(talk -> talk.getPublishedTimeslot() != null
+            && talk.getTimeslot()
+                != talk.getPublishedTimeslot())
+        .penalize(PUBLISHED_TIMESLOT,
+          HardMediumSoft.ONE_MEDIUM);
+  }</code></pre>
+        </section>
+        <section>
+            <h3>Non-disruptive Replanning</h3>
+            <ul>
+                <li>Medium penalty: disrupt only to become feasible
+                    <ul>
+                        <li>Timeslot in conference scheduling</li>
+                    </ul>
+                </li>
+                <li>Soft penalty: disrupt if gain is higher than a threshold
+                    <ul>
+                        <li>Room in conference scheduling</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_0.png" class="fullImage">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_3.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_4.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_5.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h2>
+                5) Does your problem<br/>
+                change every few (milli)seconds?
+            </h2>
+            <h3>Real-time planning</h3>
+        </section>
+
+        <section>
+            <h3>Real-time planning</h3>
+            <p>DEMO</p>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_0.png" class="fullImage">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_3.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_4.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Real-time planning</h3>
+            <ul>
+                <li><code>solver.addProblemFactChange(...)</code></li>
+                <li>Daemon mode
+                    <ul>
+                        <li>Don't waste CPU time at night and during breaks</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <img src="DesignPatterns/realTimePlanningCloudArchitecture_0.png" class="fullImage">
+            <img src="DesignPatterns/realTimePlanningCloudArchitecture_1.png" class="fullImage fragment">
+            <img src="DesignPatterns/realTimePlanningCloudArchitecture_2.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h2>
+                7) Do you have<br/>
+                a resource shortage?
+            </h2>
+            <h3>Overconstrained planning</h3>
+        </section>
+
+        <section>
+            <img src="RepeatedPlanning/overconstrainedPlanning_0.png" class="fullImage">
+            <img src="RepeatedPlanning/overconstrainedPlanning_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_3.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_4.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/overconstrainedPlanning_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Overconstrained planning</h3>
+            <ul>
+                <li>Nullable
+                    <ul>
+                        <li><code>@PlanningVariable(nullable = true)</code></li>
+                        <li>medium constraint penalizes unassigned entities</li>
+                    </ul>
+                </li>
+                <li>Virtual resources
+                    <ul>
+                        <li>Add virtual resources to the input problem
+                            <pre xml:space="preserve"><code class="java">class Employee {
+  boolean virtual;
+}</code></pre>
+                        </li>
+                        <li>Soft constraint penalizes cost of virtual resources</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>
+                8) Do you fear<br/>
+                a worst case scenario?
+            </h2>
+            <h3></h3>
+        </section>
+
+        <section>
+            <img src="RepeatedPlanning/continuousPlanningPatientAdmissionSchedule_0.png" class="fullImage">
+            <img src="RepeatedPlanning/continuousPlanningPatientAdmissionSchedule_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Backup planning</h3>
+            <ul>
+                <li>Don't make your plan a house of cards</li>
+                <li>Add constraints to penalize such plans</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Summary</h2>
+        </section>
+        <section>
+            <h3>Know your toolbox</h3>
+            <figure>
+                <img src="PlannerIntroduction/optaPlannerLogo.png" alt="OptaPlanner"/>
+            </figure>
+            <ul>
+                <li>Multi-stage planning</li>
+                <li>Continuous planning</li>
+                <li>Non-disruptive replanning</li>
+                <li>Real-time planning</li>
+                <li>Overconstrained planning</li>
+                <li>Backup planning</li>
+            </ul>
+            <p class="fragment">Combine them as needed.</p>
+        </section>
+    </section>
+    <section id="trainingSession6">
+        <section>
+            <h3>Agenda: Training session 6</h3>
+            <ul>
+                <li>Repeated planning</li>
+                <li>Integration</li>
+                <li>Clustering</li>
+                <li>Multitenancy</li>
+                <li>Competition</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Repeated planning</h3>
+            <ul>
+                <li>Backup planning</li>
+                <li>Continuous planning</li>
+                <li>Real-time planning</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Backup planning</h2>
+            <p>Not really repeated planning, but score calculation</p>
+            <ul>
+                <li>Reserve assignments</li>
+                <li>Balancing remaining space</li>
+                <li>Train/flight layovers</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Continuous planning</h2>
+            <p>Plan until the end of time?</p>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_0.png" class="fullImage">
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPlanningEmployeeRostering_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_0.png" class="fullImage">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_3.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_4.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/continuousPublishingWithRotation_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <img src="RepeatedPlanning/continuousPlanningPatientAdmissionSchedule_0.png" class="fullImage">
+            <img src="RepeatedPlanning/continuousPlanningPatientAdmissionSchedule_1.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Continuous planning demo</h3>
+            <figure>
+                <img src="PlannerIntroduction/plannerExamplesAppScreenshot.png"/>
+                <p>Nurse rostering demo</p>
+            </figure>
+        </section>
+        <section>
+            <h2>Immovable entities</h2>
+            <ul>
+                <li>Move <code>Filter</code> that is always applied</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Non-disruptive repeated planning</h2>
+            <p>AKA semi-movable entities</p>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_0.png" class="fullImage">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_3.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_4.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/nonDisruptiveReplanning_5.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h2>Real-time planning</h2>
+            <p>When you need an answer in milliseconds</p>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_0.png" class="fullImage">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_3.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_4.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningVehicleRouting_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>ProblemFactChange</h3>
+            <ul>
+                <li>Callback that is executed on the solver thread</li>
+            </ul>
+        </section>
+        <section>
+            <img src="RepeatedPlanning/realTimePlanningConcurrencySequenceDiagram_0.png" class="fullImage">
+            <img src="RepeatedPlanning/realTimePlanningConcurrencySequenceDiagram_1.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningConcurrencySequenceDiagram_2.png" class="fullImage fragment">
+            <img src="RepeatedPlanning/realTimePlanningConcurrencySequenceDiagram_3.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Lab: real-time planning</h3>
+            <ul>
+                <li>Delete a warehouse</li>
+                <li>How long to become initialized and feasible again?</li>
+                <li>Optional: click to add a store</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Daemon mode</h3>
+            <ul>
+                <li>Start with an empty problem</li>
+                <li>All problem facts come in through a ProblemFactChange</li>
+                <li>Configure no termination</li>
+                <li><code>solve()</code> does not return ...</li>
+                <li>... until <code>terminateEarly()</code> is called</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Integration</h3>
+        </section>
+        <section>
+            <img src="Integration/integrationOverview_0.png" class="fullImage">
+            <img src="Integration/integrationOverview_1.png" class="fullImage fragment">
+            <img src="Integration/integrationOverview_2.png" class="fullImage fragment">
+            <img src="Integration/integrationOverview_3.png" class="fullImage fragment">
+            <img src="Integration/integrationOverview_4.png" class="fullImage fragment">
+            <img src="Integration/integrationOverview_5.png" class="fullImage fragment">
+            <img src="Integration/integrationOverview_6.png" class="fullImage fragment">
+            <img src="Integration/integrationOverview_7.png" class="fullImage fragment">
+            <img src="Integration/integrationOverview_8.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Reference architecture</h3>
+            <ul>
+                <li>OptaWeb examples</li>
+                <li>OptaConf</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Camel OptaPlanner</h3>
+            <ul>
+                <li><a href="http://camel.apache.org/optaplanner.html">http://camel.apache.org/optaplanner.html</a></li>
+                <li>Unit tested</li>
+                <li>Works on Karaf too</li>
+            </ul>
+        </section>
+        <section>
+            <h3>JBoss modules</h3>
+            <ul>
+                <li>Do It Yourself (see docs)</li>
+            </ul>
+        </section>
+        <section>
+            <h3>OSGi</h3>
+            <ul>
+                <li>Engine jars support it</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Android</h3>
+            <ul>
+                <li>Works (use documented workaround)</li>
+                <li>Demo</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Humans planners and politics</h3>
+            <p>The easiest ways to fail (or win) a project...</p>
+        </section>
+        <section>
+            <h3>Who will win a quiz?</h3>
+            <ul>
+                <li>Very smart, experienced quizmaster without internet access</li>
+                <li>Smart teenager with internet access</li>
+            </ul>
+            <p>OptaPlanner enhances the human planner</p>
+        </section>
+        <section>
+            <h3>Business is king</h3>
+            <ul>
+                <li>The human planner defines the score function</li>
+                <li>The human planner is your best friend! You need him/her.</li>
+                <li>The human planner validates the score function</li>
+                <li>business will change ⇒ the score function will change too</li>
+                <li>The human planner redefines the score function in the future.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Who's in control?</h3>
+        </section>
+        <section>
+            <img src="Integration/keepTheUserInControl_0.png" class="fullImage">
+            <img src="Integration/keepTheUserInControl_1.png" class="fullImage fragment">
+            <img src="Integration/keepTheUserInControl_2.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>The user is in control</h3>
+            <figure>
+                <img src="PlannerIntroduction/plannerExamplesAppScreenshot.png"/>
+                <p>Course scheduling demo</p>
+            </figure>
+        </section>
+        <section>
+            <h3>Who's in control?</h3>
+            <ul>
+                <li>The human planner outranks OptaPlanner</li>
+                <li>Use immovable entities again</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Multiple threads</h3>
+        </section>
+        <section>
+            <img src="OptimizationAlgorithms/multiThreadingStrategies_0.png" class="fullImage">
+            <img src="OptimizationAlgorithms/multiThreadingStrategies_1.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/multiThreadingStrategies_2.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/multiThreadingStrategies_3.png" class="fullImage fragment">
+            <img src="OptimizationAlgorithms/multiThreadingStrategies_4.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Multithreaded solving</h3>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  &lt;moveThreadCount&gt;4&lt;/moveThreadCount&gt;
+   ...
+&lt;/solver&gt;</code></pre>
+            <p>Also supported: AUTO, NONE</p>
+        </section>
+        <section>
+            <h3>Clusters</h3>
+        </section>
+        <!-- TODO -->
+        <section>
+            <h3>Partitioning</h3>
+        </section>
+        <section>
+            <img src="PartitionedSearch/mapReduceIsTerribleForTsp_0.png" class="fullImage">
+            <img src="PartitionedSearch/mapReduceIsTerribleForTsp_1.png" class="fullImage fragment">
+            <img src="PartitionedSearch/mapReduceIsTerribleForTsp_2.png" class="fullImage fragment">
+            <img src="PartitionedSearch/mapReduceIsTerribleForTsp_3.png" class="fullImage fragment">
+            <img src="PartitionedSearch/mapReduceIsTerribleForTsp_4.png" class="fullImage fragment">
+            <img src="PartitionedSearch/mapReduceIsTerribleForTsp_5.png" class="fullImage fragment">
+        </section>
+        <section>
+            <h3>Partitioning</h3>
+            <ul>
+                <li>Sign of weakness</li>
+                <li>Might be the only solution</li>
+            </ul>
+        </section>
+        <section>
+            <img src="PartitionedSearch/partitionedSearchThreading_0.png" class="fullImage">
+            <img src="PartitionedSearch/partitionedSearchThreading_1.png" class="fullImage fragment">
+            <img src="PartitionedSearch/partitionedSearchThreading_2.png" class="fullImage fragment">
+            <img src="PartitionedSearch/partitionedSearchThreading_3.png" class="fullImage fragment">
+            <img src="PartitionedSearch/partitionedSearchThreading_4.png" class="fullImage fragment">
+            <img src="PartitionedSearch/partitionedSearchThreading_5.png" class="fullImage fragment">
+            <img src="PartitionedSearch/partitionedSearchThreading_6.png" class="fullImage fragment">
+            <img src="PartitionedSearch/partitionedSearchThreading_7.png" class="fullImage fragment">
+            <img src="PartitionedSearch/partitionedSearchThreading_8.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Multitenancy</h3>
+        </section>
+        <!-- TODO -->
+        <section>
+            <img src="Integration/sizingHardware_0.png" class="fullImage">
+            <img src="Integration/sizingHardware_1.png" class="fullImage fragment">
+            <img src="Integration/sizingHardware_2.png" class="fullImage fragment">
+        </section>
+
+        <section>
+            <h3>Competition</h3>
+            <p>See OptaPlanner HUB</p>
+        </section>
+        <section>
+            <h3>Competing solvers</h3>
+            <ul>
+                <li>In-house solvers</li>
+                <li>IBM CPLEX</li>
+                <li>Gurobi</li>
+                <li>LocalSolver</li>
+                <li>Quintiq</li>
+                <li>AIMMS</li>
+                <li>Choco (open source)</li>
+                <li>OscaR (open source)</li>
+                <li>JSprit (open source)</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Not your father's constraint solver</h3>
+            <br/>
+            <p>CPLEX</p>
+        <pre xml:space="preserve"><code class="java">IloNumVar[] expense = cplex.numVarArray(2, lb, ub);
+cplex.addLe(cplex.sum(
+        cplex.prod(1.06, expense[0]), // Euro
+        cplex.prod(1.24, expense[1])), // British Pound
+        50.0);</code></pre>
+            <br/>
+            <p>OptaPlanner</p>
+        <pre xml:space="preserve"><code class="drl">rule "50 Dollar limit"
+  when
+    Expense(1.06 * euroCost + 1.24 * britishPoundCost > 50 )
+  then
+    scoreHolder.addHardConstraintMatch(kcontext, -1);
+end</code></pre>
+        </section>
+        <!-- TODO -->
+    </section>
+
+
+    <section id="trainingSession7">
+        <section>
+            <h3>Agenda: Training session 7</h3>
+            <ul>
+                <li>Full exercise</li>
+                <li>Debugging</li>
+                <li>Support FAQ</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Debugging</h3>
+            <!-- TODO -->
+        </section>
+
+        <section>
+            <h3>Support FAQ</h3>
+            <!-- TODO -->
+        </section>
+    </section>
+
+
+    <section id="trainingSession8">
+        <section>
+            <h3>Agenda: Training session 8</h3>
+            <ul>
+                <li>KieContainer and kjars</li>
+                <li>Optaplanner Workbench</li>
+                <li>OptaPlanner Execution Server</li>
+            </ul>
+        </section>
+        <section>
+            <h3>KieContainer and kjars</h3>
+        </section>
+        <section>
+            <h3>KieContainer support: classpath container</h3>
+            <pre xml:space="preserve"><code class="java">SolverFactory&lt;CloudSolution&gt; solverFactory
+        = SolverFactory.createFromKieContainerXmlResource(
+                "opta/optacloud/cloudSolverConfig.solver.xml");
+
+// For every dataset
+Solver&lt;CloudSolution&gt; solver = solverFactory.buildSolver();
+CloudBalance problem = ... // Load problem
+CloudSolution solution = solver.solve(problem);</code></pre>
+            <p class="fragment"><code>optacloud-1.0.0.jar</code> is in the classpath</p>
+        </section>
+        <section>
+            <h3>KieContainer support: from Maven repo</h3>
+            <pre xml:space="preserve"><code class="java">KieServices kieServices = KieServices.Factory.get();
+SolverFactory&lt;Object&gt; solverFactory
+        = SolverFactory.createFromKieContainerXmlResource(
+                kieServices.newReleaseId("opta", "optacloud", "1.0.0"),
+                "opta/optacloud/cloudSolverConfig.solver.xml");
+
+// For every dataset
+Solver&lt;Object&gt; solver = solverFactory.buildSolver();
+CloudBalance problem = ... // Load problem
+Object solution = solver.solve(problem);</code></pre>
+            <p class="fragment">
+                <code>optacloud-1.0.0.jar</code> is not in the classpath<br/>
+                Downloaded from a Maven repository
+            </p>
+        </section>
+        <section>
+            <h3>Kmodule support</h3>
+            <p>kmodule.xml</p>
+            <pre xml:space="preserve"><code class="xml">&lt;kmodule xmlns="https://www.drools.org/xsd/kmodule"&gt;
+  &lt;kbase packages="opta.optacloud"&gt;
+    &lt;ksession name="cloudKsession"/&gt;
+  &lt;/kbase&gt;
+&lt;/kmodule&gt;</code></pre>
+            <p>cloudSolverConfig.solver.xml</p>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  &lt;scanAnnotatedClasses/&gt;
+
+  &lt;scoreDirectorFactory&gt;
+    &lt;ksessionName&gt;cloudKsession&lt;/ksessionName&gt;
+  &lt;/scoreDirectorFactory&gt;
+&lt;/solver></code></pre>
+        </section>
+        <section>
+            <h3>Kmodule support (defaulted)</h3>
+            <p>kmodule.xml</p>
+            <pre xml:space="preserve"><code class="xml">&lt;kmodule xmlns="https://www.drools.org/xsd/kmodule"/&gt;</code></pre>
+            <p>cloudSolverConfig.solver.xml</p>
+            <pre xml:space="preserve"><code class="xml">&lt;solver&gt;
+  &lt;scanAnnotatedClasses/&gt;
+&lt;/solver></code></pre>
+        </section>
+    </section>
+
+    <section>
+        <h3>Summary</h3>
+        <ul>
+            <li>OptaPlanner solves planning and scheduling problems</li>
+            <li>Adding constraints: easy and scalable</li>
+            <li>Switching/combining optimization algorithms: easy</li>
+        </ul>
+    </section>
+    <section>
+        <h3>Q &amp; A</h3>
+        <table class="links">
+            <tr>
+                <th>Homepage</th>
+                <td><a href="https://www.optaplanner.org">www.optaplanner.org</a></td>
+            </tr>
+            <tr>
+                <th>Slides</th>
+                <td><a href="https://www.optaplanner.org/learn/slides.html">www.optaplanner.org/learn/slides.html</a></td>
+            </tr>
+            <tr>
+                <th>User guide</th>
+                <td><a href="https://www.optaplanner.org/learn/documentation.html">www.optaplanner.org/learn/documentation.html</a></td>
+            </tr>
+            <tr>
+                <th>Feedback</th>
+                <td><img src="extra/Presentation/twitterLogo64x64.png"/><a href="https://twitter.com/GeoffreyDeSmet">@GeoffreyDeSmet</a></td>
+            </tr>
+        </table>
+    </section>
+
+</div></div>
+
+    <script src="website/reveal/js/reveal.js"></script>
+
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var slides = document.querySelector('.reveal .slides');
+            var excludeFromPrintPdfSlide = slides.querySelector('section.excludeFromPrintPdf');
+            slides.removeChild(excludeFromPrintPdfSlide);
+        }
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: false,
+            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            transition: Reveal.getQueryHash().transition || 'linear', // page/linear/fade/none
+
+            margin: 0.05,
+            minScale: 0.2,
+            maxScale: 100.0
+        });
+    </script>
+    <script src="website/highlight/highlight.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.LANGUAGES.drl=function(a){return{k:"rule when then end",c:[a.CLCM,a.CBLCLM,a.ASM,a.QSM]}}(hljs);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+= Brand, logo and trademark
+:jbake-type: normalBase
+:jbake-description: Download the OptaPlanner logo. Read our brand and trademark guidelines.
+:showtitle:
+
+== Brand name
+
+Refer to this project as *OptaPlanner* (case-sensitive, no spaces).
+Do not use Opta Planner, OptoPlanner, OptiPlanner, OctoPlanner or other confusing variations.
+
+== Logo
+
+Download the OptaPlanner logo and icon in `PNG` and `SVG` format from
+https://github.com/kiegroup/optaplanner/tree/main/optaplanner-docs/src/modules/ROOT/images/shared[this GitHub directory].
+
+== Logo and trademark usage guidelines
+
+OptaPlanner is a trademark. https://www.jboss.org/trademarks.html[Abide by the OptaPlanner trademark guidelines.]
+
+*We encourage you to use the OptaPlanner logo, the OptaPlanner trademark and other OptaPlanner materials
+(including docs, quickstarts and slides) to promote OptaPlanner, with a hyperlink to `www.optaplanner.org`.*

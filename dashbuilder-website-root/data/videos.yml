@@ -1,0 +1,345 @@
+# To add a video in the GitHub user interface, click on the Edit button at the top right which will submit a pull request.
+#
+# Available properties per video:
+#  youtubeId: The id part of the YouTube URL
+#  title: Title of the video
+#  author: (optional) Existing userId from users.yml
+#  date: Must be in format "yyyy-mm-dd".
+#  tags: Avoid inventing new tags. Existing tags include:
+#    Use cases: "conference scheduling", "employee rostering", "maintenance scheduling", "school timetabling",
+#               "task assignment", "vehicle routing", "call-center scheduling"
+#    Compatibility: "android", "kotlin", "quarkus", "scala", "spring"
+#
+# Order videos by date descending
+
+- youtubeId: bIvt9z-zVHo
+  title: "OptaPlanner - A fast, easy-to-use, open source AI constraint solver for software developers"
+  date: 2022-01-31
+
+- youtubeId: 784Au4PjTzg
+  title: "Order picking planning with OptaPlanner"
+  author: dupliaka
+  date: 2021-12-31
+  tags:
+    - order picking
+
+- youtubeId: HVDPxebpSvg
+  title: "AI lesson scheduling on Quarkus with OptaPlanner"
+  author: ge0ffrey
+  date: 2021-11-18
+  tags:
+    - quarkus
+    - school timetabling
+
+- youtubeId: dqTrjkVxoPI
+  title: "Maintenance scheduling"
+  author: ge0ffrey
+  date: 2021-11-12
+  tags:
+    - maintenance scheduling
+
+- youtubeId: -RSZbMT_alo
+  title: "Optimized order picking in warehouses and supermarkets"
+  author: wmedvede
+  date: 2021-10-26
+
+- youtubeId: -7ips_GMFmo
+  title: "A modern OO/FP constraint solver"
+  author: ge0ffrey
+  date: 2021-09-14
+
+- youtubeId: hXPzelZHjYk
+  title: "Business processes task optimization in Kogito"
+  author: wmedvede
+  date: 2021-09-07
+  tags:
+    - task assignment
+
+- youtubeId: HO7l3rWb_uo
+  title: "School timetable optimization"
+  author: ge0ffrey
+  date: 2021-09-06
+  tags:
+    - school timetabling
+
+- youtubeId: NPTzXIyQdqU
+  title: "Schedule incoming calls real-time"
+  author: rsynek
+  date: 2021-08-23
+  tags:
+    - call-center scheduling
+
+- youtubeId: blK7gxqu2B0
+  title: "Unit testing constraints"
+  author: triceo
+  date: 2021-03-09
+  tags:
+    - testing
+
+- youtubeId: gIaHtATz6n8
+  title: "Maintenance scheduling"
+  author: jucui
+  date: 2021-02-24
+  tags:
+    - maintenance scheduling
+
+- youtubeId: LTkoaBk-P6U
+  title: "Vaccination appointment scheduling"
+  author: ge0ffrey
+  date: 2021-02-03
+
+- youtubeId: ENKHGBMDaCM
+  title: "Shadow variables"
+  # Authors also included Karina Varela and Alex Porcelli
+  author: ge0ffrey
+  date: 2021-01-19
+
+- youtubeId: 0uAoWU8m0pE
+  title: "Domain modeling and design patterns"
+  # Authors also included Karina Varela and Alex Porcelli
+  author: ge0ffrey
+  date: 2020-11-17
+  tags:
+    - constraint
+
+- youtubeId: Oq6kAuO_S5g
+  title: "Quarkus insights: AI constraint solving"
+  # Authors also included Max Andersen and Emmanuel Bernard
+  author: ge0ffrey
+  date: 2020-10-20
+  tags:
+    - quarkus
+
+- youtubeId: n6fl60gR8Gc
+  title: "AI in kotlin"
+  author: ge0ffrey
+  date: 2020-09-23
+  tags:
+    - kotlin
+
+- youtubeId: Ew6pq9nJKog
+  title: "Planning agility: continuous planning, real-time planning and more"
+  author: ge0ffrey
+  date: 2020-09-03
+  tags:
+    - insight
+
+- youtubeId: E35pYMKaukw
+  title: "Quarkus and OptaPlanner: create a school timetable application"
+  author: rsynek
+  date: 2020-09-03
+
+- youtubeId: waU8zZtx--g
+  title: "Business use cases and the impact of OptaPlanner"
+  author: satishkale
+  date: 2020-09-03
+  tags:
+    - vehicle routing
+
+- youtubeId: XCyIdmUDMtI
+  title: "Constraint Streams 101: The future of score constraints in OptaPlanner"
+  author: triceo
+  date: 2020-09-02
+  tags:
+    - constraint
+
+- youtubeId: NHU-UZM6fKI
+  title: "Business Optimizer: I bet you I'm better than a human"
+  author: jgoldsmith613
+  date: 2020-09-02
+
+- youtubeId: 07E_v-mZ2As
+  title: "Tasks Optimization: understand the chained models"
+  author: dmarrazzo
+  date: 2020-09-02
+  tags:
+    - task assignment
+
+- youtubeId: 4H3U6xyCgMI
+  title: "TrustyAI and Explanation by example with OptaPlanner"
+  author: danielezonca
+  date: 2020-09-01
+
+- youtubeId: MZgWrKwfVx0
+  title: "Visualizing indictments: Explaining the solution to the user and identifying deficient resources"
+  author: Christopher-Chianelli
+  date: 2020-09-01
+
+- youtubeId: sIZpmQTq1lo
+  title: "Vehicle routing with OptaPlanner"
+  author: yurloc
+  date: 2020-09-01
+  tags:
+    - vehicle routing
+
+- youtubeId: x4PkS962eFs
+  title: "Kickstarting your OptaPlanner project: patterns and common practices"
+  author: DuncanDoyle
+  date: 2020-09-01
+
+- youtubeId: ZBzzdQJDapU
+  title: "Assigning jBPM human tasks with OptaPlanner"
+  author: wmedvede
+  date: 2020-07-03
+  tags:
+    - task assignment
+
+- youtubeId: JqtF2PLYTvI
+  title: "AI on Quarkus"
+  author: ge0ffrey
+  date: 2020-05-28
+  # No tags because it is too similar to video AqTuRiWGLZQ
+
+- youtubeId: moiSzzy5ba0
+  title: "AI on Spring"
+  author: ge0ffrey
+  date: 2020-05-15
+  tags:
+    - spring
+    - school timetabling
+
+- youtubeId: rEeAML74oWo
+  title: "OptaWeb Vehicle Routing run script"
+  author: yurloc
+  date: 2020-05-19
+  tags:
+    - vehicle routing
+
+- youtubeId: kmvLxaAhC9Y
+  title: "AI vs COVID-19: How Java helps nurses and doctors in this fight"
+  author: ge0ffrey
+  date: 2020-05-08
+  tags:
+    - employee rostering
+
+- youtubeId: AqTuRiWGLZQ
+  title: "Artificial Intelligence on Quarkus: I love it when an OptaPlan comes together"
+  author: ge0ffrey
+  date: 2020-04-09
+  tags:
+    - quarkus
+    - school timetabling
+
+- youtubeId: 7IuOA9n6kh0
+  author: ge0ffrey
+  title: "Artificial Intelligence in Java: how to write a Quarkus app with OptaPlanner from scratch"
+  date: 2020-04-02
+  tags:
+    - quarkus
+    - school timetabling
+
+- youtubeId: U2N02ReT9CI
+  author: DuncanDoyle
+  title: "OptaPlanner Spring Boot Starter"
+  date: 2020-03-31
+  tags:
+    - spring
+
+- youtubeId: Y4wyPU_B2gU
+  author: ge0ffrey
+  title: "Routing 2 mechanics with OptaPlanner for Red Hat Summit 2019 keynote"
+  date: 2019-05-13
+  tags:
+    - maintenance scheduling
+
+- youtubeId: ylPEIf7Mc2M
+  author: yurloc
+  title: "OptaWeb Vehicle Routing before Red Hat Summit 2019"
+  date: 2019-05-07
+  tags:
+    - vehicle routing
+
+- youtubeId: ykF8DjxhQJI
+  author: ge0ffrey
+  title: "Conference Scheduling Devoxx and Voxxed with OptaPlanner"
+  date: 2019-02-28
+  tags:
+    - conference scheduling
+
+- youtubeId: 3CvadujUN1k
+  author: ge0ffrey
+  title: "OptaWeb Employee Rostering with OptaPlanner"
+  date: 2018-11-29
+  tags:
+    - employee rostering
+
+- youtubeId: eG_ky8jIRBk
+  author: yurloc
+  title: "OptaWeb VRP - Belgium"
+  date: 2018-11-21
+  tags:
+    - vehicle routing
+
+- youtubeId: GnnMHkY6vKk
+  author: ge0ffrey
+  title: "The battle of 2 automated conference talk scheduling algorithms for Devoxx"
+  date: 2018-11-15
+  tags:
+    - conference scheduling
+
+- youtubeId: R0JizNdxEjU
+  author: ge0ffrey
+  title: "Conference talk scheduling with OptaPlanner"
+  date: 2018-02-02
+  tags:
+    - conference scheduling
+
+- youtubeId: ksXjQ851RAU
+  title: "Task assigning for skills, affinity and priority with OptaPlanner"
+  author: ge0ffrey
+  date: 2016-04-28
+  tags:
+    - task assignment
+
+- youtubeId: f4jIWbQpjdE
+  title: "Solve optimization and scheduling problems with business resource planning"
+  date: 2015-04-02
+
+- youtubeId: u_bl6E7aiNY
+  author: ge0ffrey
+  title: "Exam timetabling with OptaPlanner"
+  date: 2014-05-17
+  tags:
+    - school timetabling
+
+- youtubeId: xhCtuM-Hiic
+  author: ge0ffrey
+  title: "Cloud optimization with OptaPlanner"
+  date: 2013-11-08
+  tags:
+    - cloud optimization
+
+- youtubeId: 4meWIhPRVn8
+  author: ge0ffrey
+  title: "Course Scheduling with OptaPlanner"
+  date: 2013-10-09
+  tags:
+    - school timetabling
+
+- youtubeId: _2zweB9JD7c
+  author: ge0ffrey
+  title: "Project Job Scheduling in OptaPlanner"
+  date: 2013-09-30
+  tags:
+    - project job scheduling
+
+- youtubeId: BxO3UFmtAPg
+  author: ge0ffrey
+  title: "Vehicle Routing with Time Windows in OptaPlanner"
+  date: 2013-09-23
+  tags:
+    - vehicle routing
+
+- youtubeId: 4hp_Qg1hFgE
+  author: ge0ffrey
+  title: "Vehicle routing demo to show score flexibility in OptaPlanner"
+  date: 2012-12-13
+  tags:
+    - vehicle routing
+
+- youtubeId: 7nPagqJK3bs
+  author: ge0ffrey
+  title: "Continuous Planning for Nurse Rostering with OptaPlanner"
+  date: 2012-08-17
+  tags:
+    - employee rostering

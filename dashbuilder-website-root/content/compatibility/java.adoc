@@ -1,0 +1,20 @@
+= Artificial Intelligence planning optimization in Java
+:jbake-type: compatibilityBase
+:jbake-description: Use OptaPlanner (open source, Java) for Artificial Intelligence planning optimization on Java.
+:jbake-priority: 1.0
+:jbake-related_tag: java
+:showtitle:
+
+OptaPlanner itself is written in 100% pure Java.
+
+* OptaPlanner 8.x runs on Java 11 and higher (including Java 17).
+** For Java 8, use OptaPlanner 7.x instead.
+* To compile natively with GraalVM, use the link:quarkus.html[Quarkus] extension.
+* OptaPlanner has dedicated extensions for:
+** link:quarkus.html[Quarkus]
+** link:springBoot.html[Spring Boot]
+* OptaPlanner is available in *Maven Central*.
+Import the BOM (`org.optaplanner:optaplanner-bom`) in:
+** Maven
+** Gradle
+
