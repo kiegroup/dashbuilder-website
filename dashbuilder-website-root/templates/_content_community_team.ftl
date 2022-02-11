@@ -14,20 +14,13 @@
         with the appropriate changes.
     </p>
     <h2>Research &amp; Development</h2>
-    <@listUserBadges userIds=["ge0ffrey", "triceo", "rsynek", "yurloc", "Christopher-Chianelli", "wmedvede"]/>
+    <@listUserBadges userIds=["jesuino"]/>
     <h2>Quality Assurance</h2>
-    <@listUserBadges userIds=["dupliaka"]/>
     <h2>Marketing and Product Management</h2>
-    <@listUserBadges userIds=["PhilSimpson35", "kmacedovarela", "LightGuard", "ibek"]/>
     <h2>Documentation</h2>
-    <@listUserBadges userIds=["emmurphy1"]/>
     <h2>Build, continuous integration and releases</h2>
-    <@listUserBadges userIds=["mbiarnes", "mareknovotny", "emingora", "tradisso"]/>
     <h2>Community contributors</h2>
-    <@listUserBadges userIds=["DuncanDoyle", "jucui", "michaltomco", "MusaTalluzi", "gsheldon", "mcimbora", "oskopek", "snurkabill", "elsam", "fhornain", "rbourner", "tdavid", "bibryam", "mdanter", "blackjack92", "mrietveld", "psiroky", "FredPraca", "taiuti"]/>
     <h2>Umbrella KIE R&amp;D team (Drools, Kogito, &hellip;)</h2>
-    <@listUserBadges userIds=["mariofusco", "etirelli", "mdproctor"]/>
-    <p>&hellip; and the rest of the KIE team.</p>
 </@parent.layout>
 </#macro>
 

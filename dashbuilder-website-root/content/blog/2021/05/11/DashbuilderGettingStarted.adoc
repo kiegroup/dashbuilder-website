@@ -1,0 +1,8 @@
+= Getting Started with Dashbuilder
+jesuino
+2021-05-11
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, gettingstarted, guide
+
+Dashbuilder getting started guide was originally published on the https://blog.kie.org/2021/05/dashbuilder-getting-started-guide.html(KIE Blog)

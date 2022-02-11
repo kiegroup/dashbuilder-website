@@ -1,0 +1,10 @@
+= DASHBUILDER: AN APACHE LICENSED BUSINESS REPORTING AND MONITORING TOOL
+jesuino
+2022-02-11
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, datasets
+
+Check this Dashbuilder Introduction by my colleague *Eder Ignatowicz* on KIE Blog:
+
+https://blog.kie.org/2021/04/dashbuilder-an-apache-licensed-business-reporting-and-monitoring-tool.html[DASHBUILDER: AN APACHE LICENSED BUSINESS REPORTING AND MONITORING TOOL]

@@ -1,0 +1,10 @@
+= Customize Dashboards with External Components
+jesuino
+2022-02-10
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, components, visualization
+
+Dashbuilder has a set of built-in components to display data. These components are called **displayers** and by default it uses C3 Chart library to display data as Bar Chart, Line Chart and other common visualization components. 
+
+If you are looking another library to render data you can use make use of External Components. To learn more check the article https://blog.kie.org/2020/09/developing-custom-components-for-dashbuilder.html[Custom Components for Dashbuilder] and its https://blog.kie.org/2021/02/dashbuilder-external-components-javascript-api-2.html[Javascript API].

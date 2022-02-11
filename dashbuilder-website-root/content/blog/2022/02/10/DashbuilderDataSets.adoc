@@ -1,0 +1,18 @@
+= Dashbuilder Data Sets providers
+jesuino
+2022-02-11
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, datasets
+
+Dashbuilder data comes from datasets. A dataset provider is responsible to go to a source of data, get the data and transform the format supported by Dashbuilder. The supported providers are:
+
+* https://blog.kie.org/2021/05/add-prometheus-datasets-for-authoring-dashboards.html[Prometheus]: Generate a data set based on a Prometheus query
+* https://blog.kie.org/2021/05/kafka-monitoring-dashboards-from-business-central.html[Kafka]: Generate a data set from Kafka metrics.
+* https://blog.kie.org/2021/05/add-csv-datasets-for-authoring-dashboards.html[CSV]: Use to generate a data set from a remote or local CSV file
+* https://blog.kie.org/2021/07/add-sql-datasource-for-authoring-dashboards.html[SQL]: Use to generate a data set from an ANSI-SQL compliant database
+* https://blog.kie.org/2021/08/add-data-from-kie-execution-server-for-authoring-dashboards.html[Execution Server]: Use to generate a data set using the custom query feature of an Execution Server
+* https://blog.kie.org/2022/02/json-datasets-in-dashbuilder.html[External]: Generate a data set from JSON files or services
+* Bean: Use to generate a data set from a Java class
+
+With Dashbuilder client mode only External datasets are supported! To bring more flexibility to external data sets soon Dashbuilder will support transform expression, making it possible to consume almost any valid JSON format.

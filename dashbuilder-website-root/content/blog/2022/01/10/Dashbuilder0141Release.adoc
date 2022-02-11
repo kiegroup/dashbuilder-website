@@ -1,0 +1,8 @@
+= Announcing Dashbuilder 0.14.1
+jesuino
+2022-01-10
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, release, announcement
+
+Dashbuilder 0.14.1 was originally announced on the https://blog.kie.org/2022/01/announcing-dashbuilder-0-14-1.html(KIE Blog)

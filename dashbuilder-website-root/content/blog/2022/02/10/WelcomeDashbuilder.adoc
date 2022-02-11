@@ -1,0 +1,9 @@
+= Welcome Dashbuilder!
+jesuino
+2022-02-10
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, announcement
+
+Dashbuilder is back with modern tools and a cloud native service to run dashboards! Enjoy the new website.
+

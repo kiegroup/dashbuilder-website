@@ -3,7 +3,7 @@
 :jbake-description: OptaPlanner is a fast, open source alternative to Google OR-Tools for mathematical optimization.
 :jbake-priority: 1.0
 :jbake-related_tag: or-tools
-:jbake-featured_youtube_id: -7ips_GMFmo
+:jbake-featured_youtube_id: YM4OjSMqBP4
 
 [.lead]
 Google OR-Tools and OptaPlanner are open source mathematical optimization solvers.

@@ -1,0 +1,12 @@
+= How to create Dashboards with Dashbuilder
+jesuino
+2022-02-10
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, announcement
+
+With Dashbuilder you can create dashboards in 3 different ways:
+
+* *Dashbuilder Authoring*: There's a tool to visually author dashboards (drag and drop) which is part of Dashbuilder Authoring;
+* *Java*: A Java DSL API allow users to create dashboards using Java and export it to ZIP that can run on Dashbuilder Runtime. See https://blog.kie.org/2021/04/building-dashboards-using-plain-java.html[Building Dashboards Using Plain Java] for more information.
+* *YML*: A new https://jesuino.github.io/dashbuilder-client/[experimental tool] allow users to create dashboards with YML and then run on Dashbuilder.

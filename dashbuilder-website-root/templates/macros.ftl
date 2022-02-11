@@ -98,7 +98,7 @@
         <div class="card-header">Latest blog posts</div>
         <div class="card-body">
             <ul class="list-unstyled">
-                <#list published_posts[0..6] as blog>
+                <#list published_posts[0..4] as blog>
                     <li class="mb-2">
                         <div class="title">
                             <a href="${content.rootpath}${blog.uri}">${blog.title}</a>
@@ -120,7 +120,7 @@
         <div class="card-header">Latest videos</div>
         <div class="card-body">
             <ul class="list-unstyled">
-                <#list videos[0..6] as video>
+                <#list videos[0..4] as video>
                     <li class="mb-2">
                         <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#videoModal" data-youtube-id="${video.youtubeId}" data-video-title="${video.title}">
                             <span><i class="fas fa-play-circle"></i></span>
@@ -132,9 +132,6 @@
                         </#if>
                     </li>
                 </#list>
-                <div class="small float-end">
-                    <a href="https://www.youtube.com/channel/UCcpkOKpujFlM67D2h0RdaeQ">Video archive</a>
-                </div>
             </ul>
         </div>
     </div>
