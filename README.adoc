@@ -1,30 +1,27 @@
-= OptaPlanner
+= Dashbuilder
 
-https://www.optaplanner.org/[www.optaplanner.org]
+https://www.dashbuilder.org/[www.dashbuilder.org]
 
 == Build the entire website
 
 To build the entire website with JBake and Antora (before and after your changes), run:
 
 ----
-$ git clone git@github.com:kiegroup/optaplanner-website.git
-$ cd optaplanner-website/
+$ git clone git@github.com:kiegroup/dashbuilder-website.git
+$ cd dashbuilder-website/
 $ mvn clean install
-$ firefox optaplanner-website-assembly/target/website-complete/index.html
+$ firefox dashbuilder-website-assembly/target/website-complete/index.html
 ----
 
 This can take a minute.
-To speed that up, only build the `optaplanner-website-root` directory.
+To speed that up, only build the `dashbuilder-website-root` directory.
 
 == Edit the website
 
 Try making some changes in any of the key files:
 
-* *Use case landing pages*: `optaplanner-website-root/content/learn/useCases/` (AsciiDoc)
-* *Compatibility landing pages*: `optaplanner-website-root/content/compatibility/` (AsciiDoc)
-* *Front page*: `optaplanner-website-root/templates/index.ftl` (FreeMarker)
-* *Blog articles*: `optaplanner-website-root/content/blog/` (AsciiDoc)
-* *Users list*: `optaplanner-website-root/data/users.yml` (YAML)
-* *Videos list*: `optaplanner-website-root/data/videos.yml` (YAML)
-* *Events list*: `optaplanner-website-root/data/events.yml` (YAML)
-* *Base layout*: `optaplanner-website-root/templates/base.ftl` (FreeMarker)
+* *Front page*: `dashbuilder-website-root/templates/index.ftl` (FreeMarker)
+* *Blog articles*: `dashbuilder-website-root/content/blog/` (AsciiDoc)
+* *Users list*: `dashbuilder-website-root/data/users.yml` (YAML)
+* *Videos list*: `dashbuilder-website-root/data/videos.yml` (YAML)
+* *Base layout*: `dashbuilder-website-root/templates/base.ftl` (FreeMarker)
