@@ -1,8 +1,0 @@
-= Use cases
-:jbake-type: normalBase
-:jbake-description: A list of use cases for constraints solvers like OptaPlanner
-:jbake-priority: 0.2
-:showtitle:
-
-== Value proposals
-TBD

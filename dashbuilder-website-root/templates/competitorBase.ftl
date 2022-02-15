@@ -19,8 +19,6 @@
                 <@macros.tryItButton/>
                 <@macros.getStartedButton/>
                 <@macros.latestReleases/>
-                <@macros.servicesOffer/>
-                <@macros.latestEvents/>
                 <@macros.latestBlogPosts/>
                 <@macros.latestVideos/>
             </div>

@@ -103,13 +103,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <@macros.latestEvents/>
-            </div>
-            <div class="col-md-4">
                 <@macros.latestReleases/>
-            </div>
-            <div class="col-md-4">
-                <@macros.servicesOffer/>
             </div>
         </div>
     </@parent.layout>
