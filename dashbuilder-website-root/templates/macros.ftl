@@ -1,5 +1,4 @@
 <#assign pom = data.get('pom.yml')>
-<#assign events = data.get('events.yml').data>
 <#assign videos = data.get('videos.yml').data>
 <#assign users = data.get('users.yml').data>
 
