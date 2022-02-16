@@ -54,7 +54,7 @@
 
     <div class="body-without-header-footer">
         <div class="forkMeOnGithub">
-            <a href="https://github.com/kiegroup/optaplanner">
+            <a href="https://github.com/kiegroup/kie-tools">
                 <img alt="Fork me on GitHub" src="${content.rootpath}headerFooter/forkMeOnGithub.png">
             </a>
         </div>

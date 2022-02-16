@@ -29,7 +29,6 @@
                 </div>
             </div>
             <@macros.latestReleases/>
-            <@macros.latestEvents/>
             <@macros.latestBlogPosts/>
             <@macros.latestVideos/>
         </div>

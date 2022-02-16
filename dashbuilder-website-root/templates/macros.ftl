@@ -33,66 +33,6 @@
     </div>
 </#macro>
 
-<#macro servicesOffer>
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">Paid support and consulting</div>
-        <div class="card-body">
-            <p>
-                <b>Want to talk to the experts?</b>
-                Red Hat offers certified binaries with enterprise consulting.
-                Contact <a class="servicesMailAddress">optaplanner-info</a> for more information.
-            </p>
-        </div>
-    </div>
-</#macro>
-
-<#macro latestEvents>
-    <div class="card mb-4">
-        <div class="card-header">Upcoming events</div>
-        <div class="card-body">
-            <ul class="list-unstyled">
-                <#list events?reverse as event>
-                    <#if .now?date <= event.date?date>
-                        <li class="mb-2">
-                            <div class="title">
-                                <#if event.eventUrl??>
-                                    <a href="${event.eventUrl}">${event.eventOrganization}</a>
-                                <#else>
-                                    ${event.eventOrganization}
-                                </#if>
-                            </div>
-                            <span>
-                                ${event.location} - ${event.date?string("EEE d MMMM yyyy")}
-                                <#if event.talks??>
-                                    <ul class="list-unstyled">
-                                        <#list event.talks as talk>
-                                            <li class="ms-4">
-                                                <#if talk.url??>
-                                                    <a href="${talk.url}">${talk.title}</a>
-                                                <#else>
-                                                    ${talk.title}
-                                                </#if>
-                                                <#if talk.presenters??>
-                                                    <span class="small">by ${talk.presenters}</span>
-                                                </#if>
-                                            </li>
-                                        </#list>
-                                    </ul>
-                                </#if>
-                            </span>
-                        </li>
-                    </#if>
-                </#list>
-                <div class="small float-end">
-                    <a href="https://github.com/kiegroup/optaplanner-website/blob/main/optaplanner-website-root/data/events.yml">Add event</a>
-                    /
-                    <a href="${content.rootpath}community/eventsArchive.html">Archive</a>
-                </div>
-            </ul>
-        </div>
-    </div>
-</#macro>
-
 <#macro latestBlogPosts>
     <div class="card mb-4">
         <div class="card-header">Latest blog posts</div>
