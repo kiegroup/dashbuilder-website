@@ -35,9 +35,7 @@
                             <div class="ulist">
                                 <ul>
                                     <li>
-                                        <p><a href="releaseNotes/releaseNotes${pom.latestFinal.releaseNotesVersion}.html">Release notes ${pom.latestFinal.releaseNotesVersion}</a> -
-                                            <a href="upgradeRecipe/upgradeRecipe${pom.latestFinal.releaseNotesVersion}.html">Upgrade recipe to ${pom.latestFinal.releaseNotesVersion}</a></p>
-                                    </li>
+                                        <p><a href="releaseNotes/releaseNotes${pom.latestFinal.releaseNotesVersion}.html">Release notes ${pom.latestFinal.releaseNotesVersion}</a>                                     </li>
                                     <li>
                                         <p>License: <a href="../code/license.html">Apache License 2.0</a> - Date: ${pom.latestFinal.releaseDate?string("EEE d MMMM yyyy")}</p>
                                     </li>
@@ -155,9 +153,7 @@
                                 <div class="ulist">
                                     <ul>
                                         <li>
-                                            <p><a href="releaseNotes/releaseNotes${pom.latest.releaseNotesVersion}.html">Release notes ${pom.latest.releaseNotesVersion}</a> -
-                                                <a href="upgradeRecipe/upgradeRecipe${pom.latest.releaseNotesVersion}.html">Upgrade recipe to ${pom.latest.releaseNotesVersion}</a></p>
-                                        </li>
+                                            <p><a href="releaseNotes/releaseNotes${pom.latest.releaseNotesVersion}.html">Release notes ${pom.latest.releaseNotesVersion}</a>                                         </li>
                                         <li>
                                             <p>License: <a href="../code/license.html">Apache License 2.0</a> - Date: ${pom.latest.releaseDate?string("EEE d MMMM yyyy")}</p>
                                         </li>

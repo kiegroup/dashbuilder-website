@@ -29,7 +29,6 @@
                     <li><a class="link-light" href="${content.rootpath}code/sourceCode.html">Build from source</a></li>
                     <li><a class="link-light" href="${config.issueTracker}">Issue tracker</a></li>
                     <li><a class="link-light" href="${content.rootpath}download/releaseNotes/">Release notes</a></li>
-                    <li><a class="link-light" href="${content.rootpath}download/upgradeRecipe/">Upgrade recipes</a></li>
                     <li><a class="link-light" href="${content.rootpath}community/branding.html">Logo and branding</a></li>
                 </ul>
             </div>
