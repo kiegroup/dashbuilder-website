@@ -1,7 +1,7 @@
 latestFinal:
-  version: 8.16.1.Final
-  distributionZip: https://download.jboss.org/optaplanner/release/8.16.1.Final/optaplanner-distribution-8.16.1.Final.zip
-  releaseDate: 2022-02-04
+  version: 0.16.0
+  distributionZip: https://github.com/kiegroup/kie-tools/releases/download/0.16.0/dashbuilder_dist_0.16.0.zip
+  releaseDate: 2022-01-26
   releaseNotesVersion: 8
 
   optawebEmployeeRosteringDistributionZip: https://download.jboss.org/optaplanner/release/8.16.1.Final/optaweb-employee-rostering-distribution-8.16.1.Final.zip

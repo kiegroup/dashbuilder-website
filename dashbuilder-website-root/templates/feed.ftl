@@ -6,7 +6,7 @@
     <link href="${config.canonicalBaseUrl}/blog/news.atom" rel="self" type="application/atom+xml" />
     <link href="${config.canonicalBaseUrl}/" rel="alternate" type="text/html" />
     <icon>${config.canonicalBaseUrl}/favicon.ico</icon>
-    <logo>${config.canonicalBaseUrl}/headerFooter/optaPlannerLogo200px.png</logo>
+    <logo>${config.canonicalBaseUrl}/headerFooter/dashbuilderLogo200px.png</logo>
     <#list published_posts as post>
         <entry>
             <id>${config.canonicalBaseUrl}/${post.uri}</id>

@@ -194,11 +194,11 @@
     </#if>
 </#macro>
 
-<#macro tryItButton>
+<#macro downloadButton>
     <div class="card bg-light mb-4">
         <div class="text-center mt-2"><a class="btn btn-lg btn-success versionedButton" href="${pom.latestFinal.distributionZip}"><img alt="Download" src="${content.rootpath}download/download.png">
             <div>
-                <span>Try OptaPlanner</span><br/>
+                <span>Try Dashbuilder</span><br/>
                 <span class="small">Download ${pom.latestFinal.version}</span>
             </div>
         </a></div>
@@ -206,8 +206,10 @@
             <ol class="mb-1">
                 <li>Download and unzip.</li>
                 <li>
-                    Run <code>runQuickstarts.sh</code> (Linux/macOS)<br/>
-                    or <code>runQuickstarts.bat</code> (Windows).
+                    Run <code>java -jar dashbuilder-authoring-bootable.jar</code>
+                </li>
+                <li>
+                    Create dashboards in <em>http://localhost:8080</em> <br/>
                 </li>
             </ol>
             <div class="text-center small">
@@ -216,17 +218,31 @@
         </div>
     </div>
 </#macro>
+
+<#macro tryItButton>
+    <div class="card bg-light mb-4">
+        <div class="text-center mt-2" data-bs-toggle="modal" data-bs-target="#samplesModal"><a class="btn btn-lg btn-success versionedButton" style="margin-top: 5px">
+            <div>
+                <span>Try Samples</span><br/>
+            </div>
+        </a></div>
+        <div class="card-body">
+            <p>No download is required, try some of the samples in the <a href="${config.onlineEditorURL}">Dashbuilder Online Editor</a></p>           
+        </div>
+    </div>
+</#macro>
+
+
 <#macro getStartedButton>
     <div class="card bg-light mb-4">
-        <div class="text-center mt-2"><a class="btn btn-lg btn-primary versionedButton" href="${config.canonicalBaseUrl}/docs/optaplanner/latest/quickstart/quickstart.html"><img alt="Documentation" src="${content.rootpath}learn/documentation.png">
+        <div class="text-center mt-2"><a class="btn btn-lg btn-primary versionedButton" style="margin-top: 5px" href="${config.canonicalBaseUrl}/docs/optaplanner/latest/quickstart/quickstart.html">
             <div>
-                <span>Get started</span><br/>
-                <span class="small">User guide ${pom.latestFinal.version}</span>
+                <span>Documentation</span><br/>
             </div>
         </a></div>
         <div class="card-body">
             <div class="text-center">
-                <a href="https://github.com/kiegroup/optaplanner-quickstarts"><i class="fab fa-github me-1 text-black"></i>Clone the Quickstarts code.</a>
+                <p>Check the documentation and the getting started guide to learn more about Dashbuilder.</p>
             </div>
         </div>
     </div>

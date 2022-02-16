@@ -1,0 +1,16 @@
+- title: Serverless Workflow Real Time Dashboard
+  description: Serverless basic dashboard from Kogito Serverless Workflow metrics. Modify the URL to point to your own Prometheus with serverless metrics
+  image: SWF_DASHBOARD.png
+  url: https://raw.githubusercontent.com/jesuino/dashbuilder-dashboards/main/sw-monitoring/dashboard.yml
+- title: Time Series with Zoom
+  description: A very simple time series chart with enabled zoom.
+  image: TIMESERIES_ZOOM.png
+  url: https://gist.githubusercontent.com/jesuino/0f86daeeb4855965bd88f74912b0374f/raw/d282a5415b8834dd8981603120690889a29742b8/timeseries.yml
+- title: Temperature Change
+  description: Temperature change chart consuming data from a public JSON service (may take a while to load)
+  image: TEMPERATURE_CHANGE.png
+  url: https://gist.githubusercontent.com/jesuino/2f9ed1a12c9756b5f3488bdbd2bbe76b/raw/c04b99d6404867fc7b9123d48dbc1ac07fbc5bd3/temperature%2520change%2520dashboard.yml
+- title: Nobel Laureates
+  description: Map sample using open API with Nobel laureates
+  image: MAP_NOBEL.png
+  url: https://gist.githubusercontent.com/jesuino/7be0712b926383326540a78bb08608c8/raw/dfbf4490fc785461f5e9341a4d2e06b4798dd3b2/NobelLaureates.yml

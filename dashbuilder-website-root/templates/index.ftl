@@ -5,14 +5,15 @@
 
 <#macro layout>
     <@parent.layout
-            title="The fast, Open Source and easy-to-use solver"
-            description="Solve any constraint optimization problem easily, including the Vehicle Routing Problem, Employee Rostering, Maintenance Scheduling and many others."
+            title="Dashboards and data storytelling tool"
+            description="Build data visualization from different sources of data using custom visualization widgets using YML, Java or a drag-and-drop tool with Dashbuilder"
             uri=""
             googleWebmasterToolsVerification=true>
+
         <div class="row">
             <div class="col-md-7">
-                <h1>Solve planning and scheduling problems with OptaPlanner</h1>
-                <p class="lead">A fast, easy-to-use, open source AI constraint solver for software developers</p>
+                <h1>Easy dashboards and data storytelling with Dashbuilder</h1>
+                <p class="lead">A fast, easy-to-use, cloud-native and open source data visualization tool for software developers</p>
                 <div class="d-flex justify-content-center" style="width: auto;">
                     <@macros.videoCard youtubeId="YM4OjSMqBP4" long=false/>
                 </div>
@@ -23,76 +24,87 @@
             </div>
         </div>
 
-        <div class="mb-5">
-            <h2 class="mb-2">What can OptaPlanner do?</h2>
-            <p>OptaPlanner optimizes plans and schedules with <i>hard constraints</i> and <i>soft constraints</i>.<br/>
-                It <b>reduces costs</b> substantially, improves <b>service quality</b>, fulfills <b>employee wishes</b>
-                and <b>lowers carbon emissions</b>.</p>
-            <@macros.useCaseCards/>
-        </div>
-
-        <#-- TODO OptaPlanner is easy-to-use, fast and versatile. -->
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <h2>Modern mathematical optimization</h2>
-                <p>OptaPlanner is <strong>a lightweight, embeddable planning engine</strong>.
-                    It enables everyday programmers to solve optimization problems efficiently.
-                    Constraints apply on plain domain objects and can call existing code.
-                    It is Object Oriented Programming (OOP) and Functional Programming (FP) friendly.
-                    There’s no need to input constraints as mathematical equations.</p>
-                <span>OptaPlanner supports</span>
-                <ul>
-                    <li><b>Continuous planning</b> to weekly publish the schedule, 3 weeks before execution</li>
-                    <li><b>Non-disruptive replanning</b> for changes to an already published schedule</li>
-                    <li><b>Real-time planning</b> to react on real-time disruptions in the plan within milliseconds</li>
-                    <li><b>Overconstrained planning</b> when there are too few resources to cover all the work</li>
-                    <li><b>Pinning</b> so the user is still in control over the schedule</li>
-                </ul>
-                <p>Under the hood, OptaPlanner combines sophisticated Artificial Intelligence optimization algorithms
-                    (such as Tabu Search, Simulated Annealing, Late Acceptance and other metaheuristics)
-                    with very efficient score calculation and other state-of-the-art constraint solving techniques
-                    for NP-complete or NP-hard problems.</p>
-            </div>
-            <div class="col-md-6">
-                <h2>Compatibility</h2>
-                <span>OptaPlanner works directly from:</span>
-                <ul>
-                    <li><a href="${content.rootpath}compatibility/java.html">Java<i class="fab fa-java ms-1"></i></a></li>
-                    <li><a href="${content.rootpath}compatibility/kotlin.html">Kotlin</a></li>
-                    <li><a href="${content.rootpath}compatibility/scala.html">Scala</a></li>
-                    <li><a href="${content.rootpath}compatibility/python.html">Python<i class="fab fa-python ms-1"></i> (experimental)</a></li>
-                </ul>
-                <span>OptaPlanner integrates seamlessly with:</span>
-                <ul>
-                    <li><a href="${content.rootpath}compatibility/quarkus.html">Quarkus</a></li>
-                    <li><a href="${content.rootpath}compatibility/springBoot.html">Spring Boot</a></li>
-                </ul>
-                <span>OptaPlanner runs on:</span>
-                <ul>
-                    <li><a href="${content.rootpath}compatibility/kubernetes-openshift.html">Kubernetes and OpenShift</a></li>
-                    <li>All major clouds</li>
-                </ul>
-                <p>OptaPlanner is <a href="${content.rootpath}code/license.html">open source software</a>,
-                    released under <a href="${content.rootpath}code/license.html">the Apache License</a>.</p>
-            </div>
-        </div>
-
-        <div class="mb-4">
-            <h2>Code example</h2>
+        <div class="row">
             <div class="row">
-                <div class="paragraph">
-                    <p>To optimize a problem from Java™ code, add the <code>optaplanner-core</code> jar and call <code>Solver.solve()</code>:</p>
-                </div>
-                <div class="listingblock">
-                    <div class="content">
-                        <pre class="highlight"><code class="language-java" data-lang="java">SolverFactory&lt;MyRoster&gt; factory = SolverFactory.create(...);&#x000A;&#x000A;// My domain specific class as input&#x000A;MyRoster problem = ...;&#x000A;&#x000A;Solver&lt;MyRoster&gt; solver = factory.buildSolver();&#x000A;// My domain specific class as output&#x000A;MyRoster solution = solver.solve(problem);&#x000A;&#x000A;for (MyShift shift : solution.getShifts()) {&#x000A;    // Each shift is now assigned to an employee&#x000A;    assertNotNull(shift.getEmployee());&#x000A;}</code></pre>
+                <div class="mb-2 mt-4">
+                    <h3>Flexibility to work</h3>
+                    <p>Consume data from different sources, export your work to edit later or run in a runtime environment</p>
+                </div>    
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-table cardTitleIcon"></i>Data Sets</h5>
+                                <p class="card-text">Consume data from different sources, including SQL databases, JSON webservice or create your own provider using Java.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-exchange-alt cardTitleIcon"></i>Import and Export</h5>
+                                <p class="card-text">The work can be exported to ZIP files and be imported in other installations or moved to production.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-recycle cardTitleIcon"></i>Reusable Dashboards</h5>
+                                <p class="card-text">Reuse dashboards changing configuration for the target environment</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="paragraph">
-                    <p><a href="https://github.com/kiegroup/optaplanner-quickstarts/tree/stable/hello-world#readme"><i class="fab fa-github me-1 text-black"></i>Try the hello world application.</a></p>
+            </div>      
+
+            <div class="row">
+                <div class="mb-2 mt-4">
+                    <h3>Create dashboards your way</h3>
+                    <p>Dashbuilder supports dashboards created from YML, Java or a drag and drop tool.</p>
+                </div>        
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="${content.rootpath}website/DB_YML.png"  height="200px" alt="YML Editor">
+                        <div class="card-body">
+                            <h5 class="card-title">YML</h5>
+                            <p class="card-text">Author dashboards in a browser editor using YML language. Export a client-only application to use anywhere or keep it stored in the cloud.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-link">Try it!</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="${content.rootpath}website/DB_JAVA_DSL.png" height="200px"  alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Java</h5>
+                            <p class="card-text">Java developers can create dashboards and exports to a ZIP file that runs on Dashbuilder Runtime.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-link">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="${content.rootpath}website/LAYOUT_EDITOR.png" height="200px" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Layout Editor</h5>
+                            <p class="card-text">Create dashboards using a visual drag and drop editor. Export the dashboard and run on Dashbuilder Runtime.</p>                        
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-link">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>         
         </div>
+        
+
+        <br />
+
         <div class="row">
             <div class="col-md-6">
                 <@macros.latestBlogPosts/>
@@ -100,11 +112,6 @@
             <div class="col-md-6">
                 <@macros.latestVideos/>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <@macros.latestReleases/>
-            </div>
-        </div>
+        </div>        
     </@parent.layout>
 </#macro>

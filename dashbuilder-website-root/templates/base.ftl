@@ -1,5 +1,7 @@
 <#macro layout title="" description="" uri="" googleWebmasterToolsVerification=false>
 <#assign _title = content.title!title/>
+<#assign samples = data.get('samples.yml').data>
+
 <#-- Description is mandatory because it is very important for SEO. -->
 <#assign _description = content.description!
     ((content.type == "post")?then(content.body?replace("<[\\w/][^>]*>", "", "r")?replace("\\s+", " ", "r")?truncate(200, "...")?trim,
@@ -33,11 +35,11 @@
     <meta content="${_title}" property="og:title">
     <meta content="${_description}" property="og:description">
     <meta content="${config.canonicalBaseUrl}/${_uri}" property="og:url">
-    <meta content="OptaPlanner" property="og:site_name">
+    <meta content="Dashbuilder" property="og:site_name">
     <meta content="${(content.type == "post")?then("article", "website")}" property="og:type">
     <meta content="${config.canonicalBaseUrl + "/" + ((content.social_media_share_image??)?then(_uri?replace("/[^/]*$", "/", "r") + content.social_media_share_image, "headerFooter/optaPlannerIcon.png"))}" property="og:image">
     <meta content="summary" name="twitter:card">
-    <meta content="@OptaPlanner" name="twitter:site">
+    <meta content="@Dashbuilder" name="twitter:site">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -45,7 +47,7 @@
           integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/styles/default.min.css"
           integrity="sha256-CGf39SzxAmEe09Ojoh16/2xTRNleX9wBZcEXVnNqwSM=" crossorigin="anonymous">
-    <link rel="stylesheet" href="${content.rootpath}website/optaplannerWebsite.css">
+    <link rel="stylesheet" href="${content.rootpath}website/dashbuilderWebsite.css">
     <link href="${content.rootpath}favicon.ico" rel="shortcut icon">
 </head>
 
@@ -78,6 +80,36 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="samplesModal" tabindex="-1" aria-labelledby="samplesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Samples</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <#list samples as sample>
+                           <div class="col">
+                                <div class="card h-100" >
+                                    <img class="card-img-top" src="${content.rootpath}samples/${sample.image}"  alt="${sample.title}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${sample.title}</h5>
+                                        <p class="card-text">${sample.description}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="${config.onlineEditorURL}?import=${sample.url}" target="_blank" class="card-link">Try it!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </#list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"
             integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -90,7 +122,7 @@
             integrity="sha256-1XSLaVD2dn/eCICDUx1DYprsC4UAEa4weDLYY/458wU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.2.0/build/languages/gradle.min.js"
             integrity="sha256-B5HtfGpeJKLSEsoqtAdi6sSJ05K49CTGHZbrBiJ9CwE=" crossorigin="anonymous"></script>
-    <script src="${content.rootpath}website/optaplannerWebsite.js"></script>
+    <script src="${content.rootpath}website/dashbuilderWebsite.js"></script>
     <script>
         // Ruby syntax highlighting works pretty well for DRL source code.
         hljs.registerAliases(["drl"], { languageName: "ruby"});
