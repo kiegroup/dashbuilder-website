@@ -335,16 +335,3 @@
 </div>
 </#macro>
 
-<#macro flags>
-    <div class="float-end px-2">
-        <a href="${content.rootpath}index.html"><img src="${content.rootpath}website/flags/us.png"><img src="${content.rootpath}website/flags/gb.png"></a>
-        -
-        <a href="${content.rootpath}localized/fr/index.html"><img src="${content.rootpath}website/flags/fr.png"></a>
-        -
-        <a href="${content.rootpath}localized/de/index.html"><img src="${content.rootpath}website/flags/de.png"></a>
-        -
-        <a href="${content.rootpath}localized/zh/index.html"><img src="${content.rootpath}website/flags/cn.png"></a>
-        -
-        <a href="${content.rootpath}localized/ja/index.html"><img src="${content.rootpath}website/flags/jp.png"></a>
-    </div>
-</#macro>
