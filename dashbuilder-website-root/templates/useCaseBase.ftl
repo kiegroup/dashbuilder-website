@@ -25,7 +25,6 @@
             <div class="col-md-3">
                 <@macros.tryItButton/>
                 <@macros.getStartedButton/>
-                <@macros.latestReleases/>
                 <@macros.latestBlogPosts/>
                 <@macros.latestVideos/>
             </div>

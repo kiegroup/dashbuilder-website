@@ -3,36 +3,6 @@
 <#assign videos = data.get('videos.yml').data>
 <#assign users = data.get('users.yml').data>
 
-<#macro latestReleases>
-    <div class="card mb-4">
-        <div class="card-header">Latest release</div>
-        <div class="card-body">
-            <ul class="list-unstyled">
-                <li class="mb-2">
-                    <div class="title">
-                        <a href="${content.rootpath}download/releaseNotes/releaseNotes${pom.latestFinal.releaseNotesVersion}.html">
-                            ${pom.latestFinal.version} released
-                        </a>
-                    </div>
-                    <div class="small">
-                        ${pom.latestFinal.releaseDate?string("EEE d MMMM yyyy")}
-                    </div>
-                </li>
-                <#if pom.latest.version != pom.latestFinal.version>
-                    <div class="title">
-                        <a href="${content.rootpath}download/releaseNotes/releaseNotes${pom.latest.releaseNotesVersion}.html">
-                            ${pom.latest.version} released
-                        </a>
-                    </div>
-                    <div class="small">
-                        ${pom.latest.releaseDate?string("EEE d MMMM yyyy")}
-                    </div>
-                </#if>
-            </ul>
-        </div>
-    </div>
-</#macro>
-
 <#macro latestBlogPosts>
     <div class="card mb-4">
         <div class="card-header">Latest blog posts</div>

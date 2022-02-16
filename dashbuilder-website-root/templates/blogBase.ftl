@@ -28,7 +28,6 @@
                     <a href="${content.rootpath}blog/index.html">Blog archive</a>
                 </div>
             </div>
-            <@macros.latestReleases/>
             <@macros.latestBlogPosts/>
             <@macros.latestVideos/>
         </div>

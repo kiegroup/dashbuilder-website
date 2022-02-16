@@ -10,7 +10,6 @@
             <#nested>
         </div>
         <div class="col-md-3">
-            <@macros.latestReleases/>
             <@macros.latestBlogPosts/>
             <@macros.latestVideos/>
         </div>
