@@ -24,7 +24,7 @@
     (including the URL which led you here) so we can fix it.
 </p>
 <p>
-    <a href="${config.canonicalBaseUrl}">Return www.optaplanner.org.</a>
+    <a href="${config.canonicalBaseUrl}">Return www.dashbuilder.org.</a>
 </p>
 <script type="text/javascript">
   if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
