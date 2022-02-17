@@ -6,7 +6,7 @@
                     All dependencies of this project are available under the
                     <a class="link-light" href="${content.rootpath}code/license.html">Apache Software License 2.0</a>
                     or a compatible license.
-                    Dashbuilder is <a class="link-light" href="${content.rootpath}community/branding.html">trademarked</a>.
+                    Dashbuilder is trademarked.
                 </p>
                 <p class="small">
                     This <a class="link-light" href="${content.rootpath}website/websiteInfo.html">website</a>

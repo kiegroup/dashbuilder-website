@@ -14,15 +14,10 @@
 
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>OptaPlanner - 404 Page not found</title>
+    <title>Dashbuilder - 404 Page not found</title>
 </head>
 <body>
 <h1>The requested page does not exist</h1>
-<p>
-    If this is an issue in www.optaplanner.org,
-    <a href="${config.canonicalBaseUrl}/community/getHelp.html">please let us know</a>
-    (including the URL which led you here) so we can fix it.
-</p>
 <p>
     <a href="${config.canonicalBaseUrl}">Return www.dashbuilder.org.</a>
 </p>

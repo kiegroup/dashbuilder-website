@@ -1,6 +1,6 @@
 = Slides
 :jbake-type: normalBase
-:jbake-description: Watch or print our OptaPlanner slide deck. Reuse slides or images in your own presentation.
+:jbake-description: Watch or print our Dashbuuilder slide deck. Reuse slides or images in your own presentation.
 :jbake-priority: 0.4
 :showtitle:
 

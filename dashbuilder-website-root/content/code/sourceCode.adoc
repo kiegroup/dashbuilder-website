@@ -1,101 +1,20 @@
 = Source code
 :jbake-type: normalBase
-:jbake-description: Build OptaPlanner or the website (optaplanner.org) from source.
+:jbake-description: Build Dashbuilder or the website (dashbuilder.org) from source.
 :jbake-priority: 0.8
 :linkattrs:
 :showtitle:
 
 == GitHub repositories
 
-link:../community/team.html[The OptaPlanner team] takes care of these repositories:
+Dashbuilder source code can be found on the https://github.com/kiegroup/kie-tools[KIE Tools github] repository. Under **packages** find **dashbuilder** source. It is a Java project with a maven based build.
 
-=== optaplanner (engine)
+Besides the main engine we also have repos for https://github.com/jesuino/dashbuilder-components[External Components] and https://github.com/jesuino/dashbuilder-dashboards[Reusable Dashboards].
 
-_The source code of the OptaPlanner engine, examples and documentation._ +
-https://github.com/kiegroup/optaplanner
+== Contribution
 
-To build from source:
+We are acceptting contributions! Send pull requests and our team will review it from github. You can either contribute to the core project or with sample dashboards and external components.
 
-. Get the source code locally with https://git-scm.com/[Git]:
-+
-----
- $ git clone https://github.com/kiegroup/optaplanner.git
- ...
-----
+== Issues tracker
 
-. Build it with https://maven.apache.org/[Maven]:
-+
-----
- $ cd optaplanner
- $ mvn clean install -DskipTests
- ...
-----
-+
-The first time, Maven might take a lot of time, because it needs to download jars.
-
-. Run the examples:
-+
-----
- $ cd optaplanner-examples
- $ mvn exec:java
- ...
-----
-
-. Edit the sources in your favorite IDE (such as https://www.jetbrains.com/idea/[IntelliJ IDEA], https://www.eclipse.org/[Eclipse] or https://code.visualstudio.com/[VSCode]).
-
-. Optional: Write some documentation in https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[AsciiDoc].
-
-=== optaplanner-quickstarts
-
-_The source code for each Quick Start._ +
-https://github.com/kiegroup/optaplanner-quickstarts
-
-=== optaweb-employee-rostering
-
-_The source code for the employee rostering web application reference architecture._ +
-https://github.com/kiegroup/optaweb-employee-rostering
-
-=== optaweb-vehicle-routing
-
-_The source code for the vehicle routing web application reference architecture._ +
-https://github.com/kiegroup/optaweb-vehicle-routing
-
-=== optaplanner-website (www.optaplanner.org)
-
-_The source code for this website and the presentation slides._ +
-https://github.com/kiegroup/optaplanner-website
-
-To build from source:
-
-. Get the source code locally with https://git-scm.com/[Git]:
-+
-----
- $ git clone https://github.com/kiegroup/optaplanner-website.git
- ...
-----
-
-. Build it with https://maven.apache.org/[Maven] (which uses https://jbake.org/[JBake] underneath)
-+
-----
- $ cd optaplanner-website
- $ mvn clean generate-resources
- ...
-----
-
-. Show it in a browser:
-+
-----
- $ firefox target/website/index.html
- ...
-----
-
-. Edit the https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[AsciiDoc] sources.
-
-== Contribute
-
-Want to help improve our project? *GitHub Pull Requests are welcome!* +
-If you don't know where to start, take a look at
-https://issues.redhat.com/issues/?filter=12327406[the list of starter issues for new contributors].
-
-If you've found a bug and just want to report it, please open a ticket in https://issues.redhat.com/projects/PLANNER[our issue tracker]
-with a reproducer.
+Dashbuilder issues are on the JIRA for the https://issues.redhat.com/projects/KOGITO/issues[KIE Tools project]
