@@ -16,4 +16,4 @@
 .DS_Store
 
 # Jenkinsfile for publishing the website
-!.ci
+!/dashbuilder-website-assembly/target/website-complete
