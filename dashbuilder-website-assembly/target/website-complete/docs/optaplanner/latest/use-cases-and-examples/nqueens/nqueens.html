@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>N queens :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/nqueens/nqueens.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="stylesheet" href="../../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../../_/../../">
+          <img src="../../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="nqueens.html">N queens</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/use-cases-and-examples/nqueens/nqueens.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">N queens</h1>
+<div class="sect1">
+<h2 id="nQueensProblemDescription"><a class="anchor" href="#nQueensProblemDescription"></a>Problem description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Place <em>n</em> queens on a <em>n</em> sized chessboard so that no two queens can attack each other.
+The most common <em>n</em> queens puzzle is the eight queens puzzle, with <em>n = 8</em>:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../_images/use-cases-and-examples/nqueens/nQueensScreenshot.png" alt="nQueensScreenshot">
+</div>
+</div>
+<div class="paragraph">
+<p>Constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use a chessboard of <em>n</em> columns and <em>n</em> rows.</p>
+</li>
+<li>
+<p>Place <em>n</em> queens on the chessboard.</p>
+</li>
+<li>
+<p>No two queens can attack each other. A queen can attack any other queen on the same horizontal, vertical or diagonal line.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This documentation heavily uses the four queens puzzle as the primary example.</p>
+</div>
+<div class="paragraph">
+<p>A proposed solution could be:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../_images/use-cases-and-examples/nqueens/partiallySolvedNQueens04Explained.png" alt="partiallySolvedNQueens04Explained">
+</div>
+<div class="title">Figure 1. A Wrong Solution for the Four Queens Puzzle</div>
+</div>
+<div class="paragraph">
+<p>The above solution is wrong because queens <code>A1</code> and <code>B0</code> can attack each other (so can queens <code>B0</code> and <code>D0</code>). Removing queen <code>B0</code> would respect the "no two queens can attack each other" constraint, but would break the "place <em>n</em> queens" constraint.</p>
+</div>
+<div class="paragraph">
+<p>Below is a correct solution:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../_images/use-cases-and-examples/nqueens/solvedNQueens04.png" alt="solvedNQueens04">
+</div>
+<div class="title">Figure 2. A Correct Solution for the Four Queens Puzzle</div>
+</div>
+<div class="paragraph">
+<p>All the constraints have been met, so the solution is correct.</p>
+</div>
+<div class="paragraph">
+<p>Note that most <em>n</em> queens puzzles have multiple correct solutions.
+We will focus on finding a single correct solution for a given <em>n</em>, not on finding the number of possible correct solutions for a given <em>n</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nQueensProblemSize"><a class="anchor" href="#nQueensProblemSize"></a>Problem size</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>4queens   has   4 queens with a search space of    256.
+8queens   has   8 queens with a search space of   10^7.
+16queens  has  16 queens with a search space of  10^19.
+32queens  has  32 queens with a search space of  10^48.
+64queens  has  64 queens with a search space of 10^115.
+256queens has 256 queens with a search space of 10^616.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The implementation of the <em>n</em> queens example has not been optimized because it functions as a beginner example. Nevertheless, it can easily handle 64 queens.
+With a few changes it has been shown to easily handle 5000 queens and more.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nQueensDomainModel"><a class="anchor" href="#nQueensDomainModel"></a>Domain model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This example uses the domain model to solve the four queens problem.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Creating a Domain Model</strong>
+A good domain model will make it easier to understand and solve your planning problem.</p>
+<div class="paragraph">
+<p>This is the domain model for the <em>n</em> queens example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class Column {
+
+    private int index;
+
+    // ... getters and setters
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class Row {
+
+    private int index;
+
+    // ... getters and setters
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class Queen {
+
+    private Column column;
+    private Row row;
+
+    public int getAscendingDiagonalIndex() {...}
+    public int getDescendingDiagonalIndex() {...}
+
+    // ... getters and setters
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Calculating the Search Space.</strong></p>
+<div class="paragraph">
+<p>A <code>Queen</code> instance has a <code>Column</code> (for example: 0 is column A, 1 is column B, &#8230;&#8203;) and a <code>Row</code> (its row, for example: 0 is row 0, 1 is row 1, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>The ascending diagonal line and the descending diagonal line can be calculated based on the column and the row.</p>
+</div>
+<div class="paragraph">
+<p>The column and row indexes start from the upper left corner of the chessboard.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class NQueens {
+
+    private int n;
+    private List&lt;Column&gt; columnList;
+    private List&lt;Row&gt; rowList;
+
+    private List&lt;Queen&gt; queenList;
+
+    private SimpleScore score;
+
+    // ... getters and setters
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Finding the Solution</strong></p>
+<div class="paragraph">
+<p>A single <code>NQueens</code> instance contains a list of all <code>Queen</code> instances.
+It is the solution implementation which is supplied to, solved by, and retrieved from the <code>Solver</code>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Notice that in the four queens example, NQueens&#8217;s <code>getN()</code> method will always return four.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. A Solution for Four Queens Shown in the Domain Model</caption>
+<colgroup>
+<col style="width: 54.5454%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.091%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">A solution</th>
+<th class="tableblock halign-left valign-top">Queen</th>
+<th class="tableblock halign-left valign-top">columnIndex</th>
+<th class="tableblock halign-left valign-top">rowIndex</th>
+<th class="tableblock halign-left valign-top">ascendingDiagonalIndex (columnIndex + rowIndex)</th>
+<th class="tableblock halign-left valign-top">descendingDiagonalIndex (columnIndex - rowIndex)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="4"><div class="content"><div class="imageblock text-center">
+<div class="content">
+<img src="../../_images/use-cases-and-examples/nqueens/partiallySolvedNQueens04Explained.png" alt="partiallySolvedNQueens04Explained">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1 (**)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>B0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>0 (*)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1 (**)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>C2</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>D0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>0 (*)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>When two queens share the same column, row or diagonal line, such as (*) and (**), they can attack each other.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../../_/js/site.js"></script>
+<script src="../../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../../_/js/vendor/search.js" id="search-script" data-base-path="../../../.." data-page-path="/optaplanner/latest/use-cases-and-examples/nqueens/nqueens.html"></script>
+<script async src="../../../../_/../search-index.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

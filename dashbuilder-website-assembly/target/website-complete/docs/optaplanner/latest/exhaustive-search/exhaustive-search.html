@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Exhaustive search :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/exhaustive-search/exhaustive-search.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="exhaustive-search.html">Exhaustive search</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/exhaustive-search/exhaustive-search.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Exhaustive search</h1>
+<div class="sect1">
+<h2 id="exhaustiveSearchOverview"><a class="anchor" href="#exhaustiveSearchOverview"></a>1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Exhaustive Search will always find the global optimum and recognize it too.
+That being said, it doesn&#8217;t scale (not even beyond toy data sets) and is therefore mostly useless.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bruteForce"><a class="anchor" href="#bruteForce"></a>2. Brute force</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="bruteForceAlgorithm"><a class="anchor" href="#bruteForceAlgorithm"></a>2.1. Algorithm description</h3>
+<div class="paragraph">
+<p>The Brute Force algorithm creates and evaluates every possible solution.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/exhaustive-search/bruteForceNQueens04.png" alt="bruteForceNQueens04">
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that it creates a search tree that explodes exponentially as the problem size increases, so it hits a scalability wall.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Brute Force is mostly unusable for a real-world problem due to time limitations</strong>,
+as shown in <a href="#scalabilityOfExhaustiveSearch">scalability of Exhaustive  Search</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bruteForceConfiguration"><a class="anchor" href="#bruteForceConfiguration"></a>2.2. Configuration</h3>
+<div class="paragraph">
+<p>Simplest configuration of Brute Force:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRUTE_FORCE&lt;/exhaustiveSearchType&gt;
+  &lt;/exhaustiveSearch&gt;
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="branchAndBound"><a class="anchor" href="#branchAndBound"></a>3. Branch and bound</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="branchAndBoundAlgorithm"><a class="anchor" href="#branchAndBoundAlgorithm"></a>3.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Branch And Bound also explores nodes in an exponential search tree, but it investigates more promising nodes first and prunes away worthless nodes.</p>
+</div>
+<div class="paragraph">
+<p>For each node, Branch And Bound calculates the optimistic bound: the best possible score to which that node can lead to.
+If the optimistic bound of a node is lower or equal to the global pessimistic bound, then it prunes away that node (including the entire branch of all its subnodes).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Academic papers use the term lower bound instead of optimistic bound (and the term upper bound instead of pessimistic bound), because they minimize the score.</p>
+</div>
+<div class="paragraph">
+<p>OptaPlanner maximizes the score (because it supports combining negative and positive constraints). Therefore, for clarity, it uses different terms, as it would be confusing to use the term lower bound for a bound which is always higher.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example: at index 14, it sets the global pessimistic bound to <code>-2</code>.
+Because all solutions reachable from the node visited at index 11 will have a score lower or equal to <code>-2</code> (the node&#8217;s optimistic bound), they can be pruned away.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/exhaustive-search/depthFirstBranchAndBoundNQueens04.png" alt="depthFirstBranchAndBoundNQueens04">
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that Branch And Bound (much like <a href="#bruteForce">Brute Force</a>) creates a search tree that explodes exponentially as the problem size increases.
+So it hits the same scalability wall, only a little bit later.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Branch And Bound is mostly unusable for a real-world problem due to time limitations</strong>,
+as shown in <a href="#scalabilityOfExhaustiveSearch">scalability of Exhaustive Search</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="branchAndBoundConfiguration"><a class="anchor" href="#branchAndBoundConfiguration"></a>3.2. Configuration</h3>
+<div class="paragraph">
+<p>Simplest configuration of Branch And Bound:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRANCH_AND_BOUND&lt;/exhaustiveSearchType&gt;
+  &lt;/exhaustiveSearch&gt;
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For the pruning to work with the default <code>ScoreBounder</code>, the <a href="../score-calculation/score-calculation.html#initializingScoreTrend" class="page">InitializingScoreTrend</a> should be set.
+Especially an <a href="../score-calculation/score-calculation.html#initializingScoreTrend" class="page">InitializingScoreTrend</a> of <code>ONLY_DOWN</code> (or at least has <code>ONLY_DOWN</code> in the leading score levels) prunes a lot.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRANCH_AND_BOUND&lt;/exhaustiveSearchType&gt;
+    &lt;nodeExplorationType&gt;DEPTH_FIRST&lt;/nodeExplorationType&gt;
+    &lt;entitySorterManner&gt;DECREASING_DIFFICULTY_IF_AVAILABLE&lt;/entitySorterManner&gt;
+    &lt;valueSorterManner&gt;INCREASING_STRENGTH_IF_AVAILABLE&lt;/valueSorterManner&gt;
+  &lt;/exhaustiveSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>nodeExplorationType</code> options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DEPTH_FIRST</code> (default): Explore deeper nodes first (and then a better score and then a better optimistic bound). Deeper nodes (especially leaf nodes) often improve the pessimistic bound. A better pessimistic bound allows pruning more nodes to reduce the search space.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRANCH_AND_BOUND&lt;/exhaustiveSearchType&gt;
+    &lt;nodeExplorationType&gt;DEPTH_FIRST&lt;/nodeExplorationType&gt;
+  &lt;/exhaustiveSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>BREADTH_FIRST</code> (not recommended): Explore nodes layer by layer (and then a better score and then a better optimistic bound). Scales terribly in memory (and usually in performance too).</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRANCH_AND_BOUND&lt;/exhaustiveSearchType&gt;
+    &lt;nodeExplorationType&gt;BREADTH_FIRST&lt;/nodeExplorationType&gt;
+  &lt;/exhaustiveSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>SCORE_FIRST</code>: Explore nodes with a better score first (and then a better optimistic bound and then deeper nodes first). Might scale as terribly as <code>BREADTH_FIRST</code> in some cases.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRANCH_AND_BOUND&lt;/exhaustiveSearchType&gt;
+    &lt;nodeExplorationType&gt;SCORE_FIRST&lt;/nodeExplorationType&gt;
+  &lt;/exhaustiveSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>OPTIMISTIC_BOUND_FIRST</code>: Explore nodes with a better optimistic bound first (and then a better score and then deeper nodes first). Might scale as terribly as <code>BREADTH_FIRST</code> in some cases.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;exhaustiveSearch&gt;
+    &lt;exhaustiveSearchType&gt;BRANCH_AND_BOUND&lt;/exhaustiveSearchType&gt;
+    &lt;nodeExplorationType&gt;OPTIMISTIC_BOUND_FIRST&lt;/nodeExplorationType&gt;
+  &lt;/exhaustiveSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>entitySorterManner</code> options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DECREASING_DIFFICULTY</code>: Initialize the more difficult planning entities first. This usually increases pruning (and therefore improves scalability).
+Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty comparison</a>.</p>
+</li>
+<li>
+<p><code>DECREASING_DIFFICULTY_IF_AVAILABLE</code> (default): If the model supports <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty comparison</a>, behave like <code>DECREASING_DIFFICULTY</code>, else like <code>NONE</code>.</p>
+</li>
+<li>
+<p><code>NONE</code>: Initialize the planning entities in original order.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>valueSorterManner</code> options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INCREASING_STRENGTH</code>: Evaluate the planning values in increasing strength. Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</li>
+<li>
+<p><code>INCREASING_STRENGTH_IF_AVAILABLE</code> (default): If the model supports <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>, behave like <code>INCREASING_STRENGTH</code>, else like <code>NONE</code>.</p>
+</li>
+<li>
+<p><code>DECREASING_STRENGTH</code>: Evaluate the planning values in decreasing strength. Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</li>
+<li>
+<p><code>DECREASING_STRENGTH_IF_AVAILABLE</code>: If the model supports <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>, behave like <code>DECREASING_STRENGTH</code>, else like <code>NONE</code>.</p>
+</li>
+<li>
+<p><code>NONE</code>: Try the planning values in original order.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scalabilityOfExhaustiveSearch"><a class="anchor" href="#scalabilityOfExhaustiveSearch"></a>4. Scalability of exhaustive search</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Exhaustive Search variants suffer from two big scalability issues:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>They scale terribly memory wise.</p>
+</li>
+<li>
+<p>They scale horribly performance wise.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As shown in these time spent graphs from the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a>, Brute Force and Branch And Bound both hit a performance scalability wall.
+For example, on N queens it hits wall at a few dozen queens:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/exhaustive-search/exhaustiveSearchScalabilityNQueens.png" alt="exhaustiveSearchScalabilityNQueens">
+</div>
+</div>
+<div class="paragraph">
+<p>In most use cases, such as Cloud Balancing, the wall appears out of thin air:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/exhaustive-search/exhaustiveSearchScalabilityCloudBalance.png" alt="exhaustiveSearchScalabilityCloudBalance">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Exhaustive Search hits this wall on small datasets already, so in production these optimizations algorithms are mostly useless.</strong> Use Construction Heuristics with Local Search instead: those can handle thousands of queens/computers easily.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Throwing hardware at these scalability issues has no noticeable impact.
+Newer and more hardware are just a drop in the ocean.
+Moore&#8217;s law cannot win against the onslaught of a few more planning entities in the dataset.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/exhaustive-search/exhaustive-search.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

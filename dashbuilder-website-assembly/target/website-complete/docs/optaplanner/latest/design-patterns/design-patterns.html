@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Design patterns :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/design-patterns/design-patterns.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="design-patterns.html">Design patterns</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/design-patterns/design-patterns.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Design patterns</h1>
+<div class="sect1">
+<h2 id="designPatternsIntroduction"><a class="anchor" href="#designPatternsIntroduction"></a>1. Design patterns introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OptaPlanner design patterns are generic reusable solutions to common challenges in the model or architecture of projects that perform constraint solving. The design patterns in this section list and solve common design challenges.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="domainModelingGuide"><a class="anchor" href="#domainModelingGuide"></a>2. Domain Modeling Guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Follow the guidelines listed in this section to create a well thought-out model that can contribute significantly to the success of your planning.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Draw a class diagram of your domain model.</strong></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Make sure there are no duplications in your data model and that relationships between objects are clearly defined.</p>
+</li>
+<li>
+<p>Create sample instances for each class. For example, in the employee rostering <code>Employee</code> class, create <code>Ann</code>, <code>Bert</code>, and <code>Carl</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Determine which relationships (or fields) change during planning and color them orange.</strong> One side of these relationships will become a planning variable later on. For example, in employee rostering, the <code>Shift</code> to <code>Employee</code> relationship changes during planning, so it is orange. However, other relationships, such as from <code>Employee</code> to <code>Skill</code>, are immutable during planning
+because Optaplanner cannot assign an extra skill to an employee.</p>
+</li>
+<li>
+<p><strong>If there are multiple relationships (or fields), check for <a href="../shadow-variable/shadow-variable.html#shadowVariable" class="page">shadow variables</a></strong>.
+A shadow variable changes during planning, but its value can be calculated based on one or more genuine planning variables, without dispute. Color shadow relationships (or fields) purple.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Only one side of a bi-directional relationship can be a genuine planning variable. The other side will become an <a href="../shadow-variable/shadow-variable.html#bidirectionalVariable" class="page">inverse relation shadow variable</a> later on. Keep bi-directional relationships orange.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>Check for <a href="../planner-configuration/planner-configuration.html#chainedPlanningVariable" class="page">chained planning variables</a></strong>.
+In a chained variable design, the focus is on deciding the order of a set of planning entity instances instead of assigning them to a date and time. However,  a shadow variable can assign the date and time.
+A typical use case is <a href="../use-cases-and-examples/vehicle-routing/vehicle-routing.html#vehicleRouting" class="page">vehicle routing</a>.</p>
+</li>
+<li>
+<p><strong>If there is an orange many-to-many relationship, replace it
+with a one-to-many and a many-to-one relationship to a new intermediate class.</strong></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Optaplanner does not currently support a <code>@PlanningVariable</code> annotation on a collection.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, in the Employee Rostering starter application the <code>ShiftAssignment</code> class is the many-to-many relationship between <code>Shift</code> and <code>Employee</code>.
+<code>Shift</code> contains every shift time that needs to be filled with an employee.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/employeeShiftRosteringModelingGuideA.png" alt="employeeShiftRosteringModelingGuideA">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Annotate a many-to-one relationship with a <code>@PlanningEntity</code> annotation.</strong> Usually the <em>many</em> side of the relationship is the planning entity class that contains the planning variable. If the relationship is bi-directional, both sides are a planning entity class but usually the <em>many</em> side has the planning variable and the <em>one</em> side has the shadow variable. For example, in employee rostering, the <code>ShiftAssignment</code> class has an <code>@PlanningEntity</code> annotation.</p>
+</li>
+<li>
+<p><strong>Make sure that the planning entity class has at least one problem property</strong>. A planning entity class cannot consist of only planning variables or an ID and only planning variables.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Remove any surplus <code>@PlanningVariable</code> annotations so that they become  problem properties. Doing this significantly decreases <a href="../optimization-algorithms/optimization-algorithms.html#searchSpaceSize" class="page">the search space size</a> and significantly increases solving efficiency. For example, in employee rostering, the <code>ShiftAssignment</code> class should not annotate both the <code>Shift</code> and <code>Employee</code> relationship with <code>@PlanningVariable</code>.</p>
+</li>
+<li>
+<p>Make sure that when all planning variables have a value of <code>null</code>, the planning entity instance is describable to the business people. Planning variables have a value of <code>null</code> when the planning solution is uninitialized.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A surrogate ID does not suffice as the required minimum of one problem property.</p>
+</li>
+<li>
+<p>There is no need to add a hard constraint to assure that two planning entities are different. They are already different due to their problem properties.</p>
+</li>
+<li>
+<p>In some cases, multiple planning entity instances have the same set of problem properties. In such cases, it can be useful to create an extra problem property to distinguish them. For example, in employee rostering, the <code>ShiftAssignment</code> class has the problem property <code>Shift</code> as well as the problem property <code>indexInShift</code> which is an <code>int</code> class.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Choose the model in which the number of planning entities is fixed during planning</strong>. For example, in the employee rostering, it is impossible to know in advance how many shifts each employee will have before Optaplanner solves the model and the results can differ for each solution found.
+On the other hand, the number of employees per shift is known in advance,
+so it is better to make the <code>Shift</code> relationship a problem property
+and the <code>Employee</code> relationship a planning variable as shown in the following examples.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/employeeShiftRosteringModelingGuideB.png" alt="employeeShiftRosteringModelingGuideB">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the following diagram, each row is a different example and shows the relationship in that example&#8217;s data model. For the <strong>N Queens</strong> example, the Queen entity has a Row planning variable, which stores objects of type <code>row</code>. Many Queens may point to one Row.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/entityVariableAndValueExamples.png" alt="entityVariableAndValueExamples">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Vehicle routing is different because it uses a <a href="../planner-configuration/planner-configuration.html#chainedPlanningVariable" class="page">chained planning variable</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="assigningTimeToPlanningEntities"><a class="anchor" href="#assigningTimeToPlanningEntities"></a>3. Assigning time to planning entities</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dealing with time and dates in planning problems may be problematic because it is dependent on the needs of your use case.</p>
+</div>
+<div class="paragraph">
+<p>There are several representations of timestamps, dates, durations and periods in Java.
+Choose the right representation type for your use case:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>java.util.Date</code> (deprecated): a slow, error-prone way to represent timestamps. Do not use.</p>
+</li>
+<li>
+<p><code>java.time.LocalDateTime</code>, <code>LocalDate</code>, <code>DayOfWeek</code>, <code>Duration</code>, <code>Period</code>, &#8230;&#8203;: an accurate way to represent and calculate with timestamps, dates, &#8230;&#8203;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Supports timezones and DST (Daylight Saving Time).</p>
+</li>
+<li>
+<p>Requires Java 8 or higher.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>int</code> or <code>long</code>: Caches a timestamp as a simplified number of coarse-grained time units (such as minutes) from the start of the global planning time window or the epoch.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example: a <code>LocalDateTime</code> of <code>1-JAN 08:00:00</code> becomes an <code>int</code> of <code>400</code> minutes. Similarly <code>1-JAN 09:00:00</code> becomes <code>460</code> minutes.</p>
+</li>
+<li>
+<p>It often represents an extra field in a class, alongside the <code>LocalDateTime</code> field from which it was calculated. The <code>LocalDateTime</code> is used for user visualization, but the <code>int</code> is used in the score constraints.</p>
+</li>
+<li>
+<p>It is faster in calculations, which is especially useful in the TimeGrain pattern.</p>
+</li>
+<li>
+<p>Do not use if timezones or DST affect the score constraints.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are also several designs for assigning a planning entity to a starting time (or date):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the starting time is fixed beforehand, it is not a planning variable (in that solver).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example, in the <a href="../use-cases-and-examples/bed-allocation/bed-allocation.html#bedAllocation" class="page">hospital bed planning</a> example,
+the arrival day of each patient is fixed beforehand.</p>
+</li>
+<li>
+<p>This is common in <a href="../repeated-planning/repeated-planning.html#multiStagePlanning" class="page">multi stage planning</a>,
+when the starting time has been decided already in an earlier planning stage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the starting time is not fixed, it is a planning variable (genuine or shadow).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If all planning entities have the same duration,
+use the <a href="#timeslotPattern">Timeslot pattern</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example in course scheduling, all lectures take one hour. Therefore, each timeslot is one hour.</p>
+</li>
+<li>
+<p>Even if the planning entities have different durations, but the same duration per type, it&#8217;s often appropriate.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example in conference scheduling, breakout talks take one hour and lab talks take 2 hours.
+But there&#8217;s an enumeration of the timeslots and each timeslot only accepts one talk type.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the duration differs and time is rounded to a specific time granularity (for example 5 minutes)
+use the <a href="#timeGrainPattern">TimeGrain pattern</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example in meeting scheduling, all meetings start at 15 minute intervals. All meetings take 15, 30, 45, 60, 90 or 120 minutes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the duration differs and one task starts immediately after the previous task (assigned to the same executor) finishes,
+use the <a href="#chainedThroughTimePattern">Chained Through Time pattern</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example in time windowed vehicle routing, each vehicle departs immediately to the next customer when the delivery for the previous customer finishes.</p>
+</li>
+<li>
+<p>Even if the next task does not always start immediately, but the gap is deterministic, it applies.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example in vehicle routing, each driver departs immediately to the next customer,
+unless it&#8217;s the first departure after noon, in which case there&#8217;s first a 1 hour lunch.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If the employees need to decide the order of theirs tasks per day, week or SCRUM sprint themselves,
+use the <a href="#timeBucketPattern">Time Bucket pattern</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For example in elevator maintenance scheduling, a mechanic gets up to 40 hours worth of tasks per week,
+but there&#8217;s no point in ordering them within 1 week because there&#8217;s likely to be disruption from entrapments or other elevator outages.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Choose the right pattern depending on the use case:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/assigningTimeToPlanningEntities.png" alt="assigningTimeToPlanningEntities">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/assigningTimeToPlanningEntities2.png" alt="assigningTimeToPlanningEntities2">
+</div>
+</div>
+<div class="sect2">
+<h3 id="timeslotPattern"><a class="anchor" href="#timeslotPattern"></a>3.1. Timeslot pattern:  assign to a fixed-length timeslot</h3>
+<div class="paragraph">
+<p>If all planning entities have <strong>the same duration</strong> (or can be inflated to the same duration), the Timeslot pattern is useful.
+The planning entities are assigned to a timeslot rather than time.
+For example in <a href="../use-cases-and-examples/course-timetabling/course-timetabling.html#curriculumCourse" class="page">course timetabling</a>, all lectures take one hour.</p>
+</div>
+<div class="paragraph">
+<p>The timeslots can start at any time.
+For example, the timeslots start at 8:00, 9:00, 10:15 (after a 15-minute break), 11:15, &#8230;&#8203; They can even overlap, but that is unusual.</p>
+</div>
+<div class="paragraph">
+<p>It is also usable if all planning entities can be inflated to the same duration.
+For example in <a href="../use-cases-and-examples/exam-timetabling/exam-timetabling.html#examination" class="page">exam timetabling</a>, some exams take 90 minutes and others 120 minutes, but all timeslots are 120 minutes.
+When an exam of 90 minutes is assigned to a timeslot, for the remaining 30 minutes, its seats are occupied too and cannot be used by another exam.</p>
+</div>
+<div class="paragraph">
+<p>Usually there is a second planning variable, for example the room.
+In course timetabling, two lectures are in conflict if they share the same room at the same timeslot.
+However, in exam timetabling, that is allowed, if there is enough seating capacity in the room (although mixed exam durations in the same room do inflict a soft score penalty).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="timeGrainPattern"><a class="anchor" href="#timeGrainPattern"></a>3.2. TimeGrain pattern: assign to a starting TimeGrain</h3>
+<div class="paragraph">
+<p>Assigning humans to start a meeting at four seconds after 9 o&#8217;clock is pointless because most human activities have a time granularity of five minutes or 15 minutes.
+Therefore it is not necessary to allow a planning entity to be assigned subsecond, second or even one minute accuracy.
+The five minute or 15 minutes accuracy suffices.
+The TimeGrain pattern models such <strong>time accuracy</strong> by partitioning time as time grains.
+For example in <a href="../use-cases-and-examples/meeting-scheduling/meeting-scheduling.html#meetingScheduling" class="page">meeting scheduling</a>, all meetings start/end in hour, half hour, or 15-minute intervals before or after each hour, therefore the optimal settings for time grains is 15 minutes.</p>
+</div>
+<div class="paragraph">
+<p>Each planning entity is assigned to a start time grain.
+The end time grain is calculated by adding the duration in grains to the starting time grain.
+Overlap of two entities is determined by comparing their start and end time grains.</p>
+</div>
+<div class="paragraph">
+<p>This pattern also works well with a coarser time granularity (such as days, half days, hours, &#8230;&#8203;).
+With a finer time granularity (such as seconds, milliseconds, &#8230;&#8203;) and a long time window, the value range (and therefore <a href="../optimization-algorithms/optimization-algorithms.html#searchSpaceSize" class="page">the search space</a>) can become too high, which reduces efficiency and scalability.
+However, such a solution is not impossible, as shown in <a href="../use-cases-and-examples/cheap-time/cheap-time.html#cheapTimeScheduling" class="page">cheap time scheduling</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="chainedThroughTimePattern"><a class="anchor" href="#chainedThroughTimePattern"></a>3.3. Chained through time pattern: assign in a chain that determines starting time</h3>
+<div class="paragraph">
+<p>If a person or a machine continuously works on <strong>one task at a time in sequence</strong>,
+which means starting a task when the previous is finished (or with a deterministic delay), the Chained Through Time pattern is useful.
+For example, in the vehicle routing with time windows example, a vehicle drives from customer to customer (thus it handles one customer at a time).</p>
+</div>
+<div class="paragraph">
+<p>In this pattern, the planning entities are <a href="../planner-configuration/planner-configuration.html#chainedPlanningVariable" class="page">chained</a>.
+The anchor determines the starting time of its first planning entity.
+The second entity&#8217;s starting time is calculated based on the starting time and duration of the first entity.
+For example, in task assignment, Beth (the anchor) starts working at 8:00, thus her first task starts at 8:00.
+It lasts 52 minutes, therefore her second task starts at 8:52.
+The starting time of an entity is usually <a href="../shadow-variable/shadow-variable.html#shadowVariable" class="page">a shadow variable</a>.</p>
+</div>
+<div class="paragraph">
+<p>An anchor has only one chain.
+Although it is possible to split up the anchor into two separate anchors, for example split up Beth into Beth&#8217;s left hand and Beth&#8217;s right hand (because she can do two tasks at the same time), this model makes pooling resources difficult.
+Consequently, using this model in the exam scheduling example to allow two or more exams to use the same room at the same time is problematic.</p>
+</div>
+<div class="paragraph">
+<p>Between planning entities, there are three ways to create gaps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No gaps: This is common when the anchor is a machine. For example, a build server always starts the next job when the previous finishes, without a break.</p>
+</li>
+<li>
+<p>Only deterministic gaps: This is common for humans. For example, any task that crosses the 10:00 barrier gets an extra 15 minutes duration so the human can take a break.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A deterministic gap can be subjected to complex business logic. For example in vehicle routing, a cross-continent truck driver needs to rest 15 minutes after two hours of driving (which may also occur during loading or unloading time at a customer location) and also needs to rest 10 hours after 14 hours of work.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Planning variable gaps: This is uncommon, because that extra planning variable reduces efficiency and scalability,
+(besides impacting the <a href="../optimization-algorithms/optimization-algorithms.html#searchSpaceSize" class="page">search space</a> too).</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="chainedThroughTimeAutomaticCollapse"><a class="anchor" href="#chainedThroughTimeAutomaticCollapse"></a>3.3.1. Chained through time: automatic collapse</h4>
+<div class="paragraph">
+<p>In some use case there is an overhead time for certain tasks,
+which can be shared by multiple tasks, of those are consecutively scheduled.
+Basically, the solver receives a <em>discount</em> if it combines those tasks.</p>
+</div>
+<div class="paragraph">
+<p>For example when delivering pizza to two different customers,
+a food delivery service combines both deliveries into a single trip,
+if those two customers ordered from the same restaurant around the same time and live in the same part of the city.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/chainedThroughTimeAutomaticCollapse.png" alt="chainedThroughTimeAutomaticCollapse">
+</div>
+</div>
+<div class="paragraph">
+<p>Implement the automatic collapse in the <a href="../shadow-variable/shadow-variable.html#customVariableListener" class="page">custom variable listener</a>
+that calculates the start and end times of each task.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="chainedThroughTimeAutomaticDelayUntilLast"><a class="anchor" href="#chainedThroughTimeAutomaticDelayUntilLast"></a>3.3.2. Chained through time: automatic delay until last</h4>
+<div class="paragraph">
+<p>Some tasks require more than one person to execute.
+In such cases, both employees need to be there at the same time,
+before the work can start.</p>
+</div>
+<div class="paragraph">
+<p>For example when assembling furniture, assembling a bed is a two-person job.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/chainedThroughTimeAutomaticDelayUntilLast.png" alt="chainedThroughTimeAutomaticDelayUntilLast">
+</div>
+</div>
+<div class="paragraph">
+<p>Implement the automatic delay in the <a href="../shadow-variable/shadow-variable.html#customVariableListener" class="page">custom variable listener</a>
+that calculates the arrival, start and end times of each task.
+<strong>Separate the arrival time from the start time.</strong>
+Additionally, add loop detection to avoid an infinite loop:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/chainedThroughTimeAutomaticDelayUntilLastLoop.png" alt="chainedThroughTimeAutomaticDelayUntilLastLoop">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="timeBucketPattern"><a class="anchor" href="#timeBucketPattern"></a>3.4. Time bucket pattern: assign to a capacitated bucket per time period</h3>
+<div class="paragraph">
+<p>In this pattern, the time of each employee is divided into <em>buckets</em>.
+For example 1 bucket per week.
+Each bucket has a capacity, depending on the FTE (Full Time Equivalent), holidays and the approved vacation of the employee.
+For example, a bucket usually has 40 hours for a full time employee and 20 hours for a half time employee
+but only 8 hours on a specific week if the employee takes vacation the rest of that week.</p>
+</div>
+<div class="paragraph">
+<p>Each task is assigned to a bucket, which determines the employee and the coarse-grained time period for working on it.
+<em>The tasks within one bucket are not ordered</em>: it&#8217;s up to the employee to decide the order.
+This gives the employee more autonomy, but makes it harder to do certain optimization,
+such as minimize travel time between task locations.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cloudArchitecturePatterns"><a class="anchor" href="#cloudArchitecturePatterns"></a>4. Cloud architecture patterns</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two common usage patterns of OptaPlanner in the cloud:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Batch planning</strong>:
+Typically runs at night for hours to solve each tenant&#8217;s dataset
+and deliver each schedule for the upcoming day(s) or week(s).
+Only the final best solution is sent back to the client.
+This is a good fit for a serverless cloud architecture.</p>
+</li>
+<li>
+<p><strong>Real-time planning</strong>:
+Typically runs during the day,
+to handle unexpected problem changes as they occur in real-time
+and sends best solutions as they are discovered to the client.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/serverlessCloudArchitecture.png" alt="serverlessCloudArchitecture">
+</div>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/design-patterns/realTimePlanningCloudArchitecture.png" alt="realTimePlanningCloudArchitecture">
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/design-patterns/design-patterns.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

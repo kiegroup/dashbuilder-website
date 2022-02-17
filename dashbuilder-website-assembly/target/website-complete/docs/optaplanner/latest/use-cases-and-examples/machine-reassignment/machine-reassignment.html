@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Machine reassignment (Google ROADEF 2012) :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/machine-reassignment/machine-reassignment.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="stylesheet" href="../../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../../_/../../">
+          <img src="../../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="machine-reassignment.html">Machine reassignment (Google ROADEF 2012)</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/use-cases-and-examples/machine-reassignment/machine-reassignment.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Machine reassignment (Google ROADEF 2012)</h1>
+<div class="sect1">
+<h2 id="machineReassignmentProblemDescription"><a class="anchor" href="#machineReassignmentProblemDescription"></a>Problem description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Assign each process to a machine.
+All processes already have an original (unoptimized) assignment.
+Each process requires an amount of each resource (such as CPU, RAM, &#8230;&#8203;). This is a more complex version of the Cloud Balancing example.</p>
+</div>
+<div class="paragraph">
+<p>Hard constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Maximum capacity: The maximum capacity for each resource for each machine must not be exceeded.</p>
+</li>
+<li>
+<p>Conflict: Processes of the same service must run on distinct machines.</p>
+</li>
+<li>
+<p>Spread: Processes of the same service must be spread out across locations.</p>
+</li>
+<li>
+<p>Dependency: The processes of a service depending on another service must run in the neighborhood of a process of the other service.</p>
+</li>
+<li>
+<p>Transient usage: Some resources are transient and count towards the maximum capacity of both the original machine as the newly assigned machine.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Soft constraints:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Load: The safety capacity for each resource for each machine should not be exceeded.</p>
+</li>
+<li>
+<p>Balance: Leave room for future assignments by balancing the available resources on each machine.</p>
+</li>
+<li>
+<p>Process move cost: A process has a move cost.</p>
+</li>
+<li>
+<p>Service move cost: A service has a move cost.</p>
+</li>
+<li>
+<p>Machine move cost: Moving a process from machine A to machine B has another A-B specific move cost.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The problem is defined by <a href="http://challenge.roadef.org/2012/en/">the Google ROADEF/EURO Challenge 2012</a>.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../_images/use-cases-and-examples/machine-reassignment/cloudOptimizationIsLikeTetris.png" alt="cloudOptimizationIsLikeTetris">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="machineReassignmentValueProposition"><a class="anchor" href="#machineReassignmentValueProposition"></a>Value proposition</h2>
+<div class="sectionbody">
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../_images/use-cases-and-examples/cloud-balancing/cloudOptimizationValueProposition.png" alt="cloudOptimizationValueProposition">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="machineReassignmentProblemSize"><a class="anchor" href="#machineReassignmentProblemSize"></a>Problem size</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>model_a1_1 has  2 resources,  1 neighborhoods,   4 locations,    4 machines,    79 services,   100 processes and 1 balancePenalties with a search space of     10^60.
+model_a1_2 has  4 resources,  2 neighborhoods,   4 locations,  100 machines,   980 services,  1000 processes and 0 balancePenalties with a search space of   10^2000.
+model_a1_3 has  3 resources,  5 neighborhoods,  25 locations,  100 machines,   216 services,  1000 processes and 0 balancePenalties with a search space of   10^2000.
+model_a1_4 has  3 resources, 50 neighborhoods,  50 locations,   50 machines,   142 services,  1000 processes and 1 balancePenalties with a search space of   10^1698.
+model_a1_5 has  4 resources,  2 neighborhoods,   4 locations,   12 machines,   981 services,  1000 processes and 1 balancePenalties with a search space of   10^1079.
+model_a2_1 has  3 resources,  1 neighborhoods,   1 locations,  100 machines,  1000 services,  1000 processes and 0 balancePenalties with a search space of   10^2000.
+model_a2_2 has 12 resources,  5 neighborhoods,  25 locations,  100 machines,   170 services,  1000 processes and 0 balancePenalties with a search space of   10^2000.
+model_a2_3 has 12 resources,  5 neighborhoods,  25 locations,  100 machines,   129 services,  1000 processes and 0 balancePenalties with a search space of   10^2000.
+model_a2_4 has 12 resources,  5 neighborhoods,  25 locations,   50 machines,   180 services,  1000 processes and 1 balancePenalties with a search space of   10^1698.
+model_a2_5 has 12 resources,  5 neighborhoods,  25 locations,   50 machines,   153 services,  1000 processes and 0 balancePenalties with a search space of   10^1698.
+model_b_1  has 12 resources,  5 neighborhoods,  10 locations,  100 machines,  2512 services,  5000 processes and 0 balancePenalties with a search space of  10^10000.
+model_b_2  has 12 resources,  5 neighborhoods,  10 locations,  100 machines,  2462 services,  5000 processes and 1 balancePenalties with a search space of  10^10000.
+model_b_3  has  6 resources,  5 neighborhoods,  10 locations,  100 machines, 15025 services, 20000 processes and 0 balancePenalties with a search space of  10^40000.
+model_b_4  has  6 resources,  5 neighborhoods,  50 locations,  500 machines,  1732 services, 20000 processes and 1 balancePenalties with a search space of  10^53979.
+model_b_5  has  6 resources,  5 neighborhoods,  10 locations,  100 machines, 35082 services, 40000 processes and 0 balancePenalties with a search space of  10^80000.
+model_b_6  has  6 resources,  5 neighborhoods,  50 locations,  200 machines, 14680 services, 40000 processes and 1 balancePenalties with a search space of  10^92041.
+model_b_7  has  6 resources,  5 neighborhoods,  50 locations, 4000 machines, 15050 services, 40000 processes and 1 balancePenalties with a search space of 10^144082.
+model_b_8  has  3 resources,  5 neighborhoods,  10 locations,  100 machines, 45030 services, 50000 processes and 0 balancePenalties with a search space of 10^100000.
+model_b_9  has  3 resources,  5 neighborhoods, 100 locations, 1000 machines,  4609 services, 50000 processes and 1 balancePenalties with a search space of 10^150000.
+model_b_10 has  3 resources,  5 neighborhoods, 100 locations, 5000 machines,  4896 services, 50000 processes and 1 balancePenalties with a search space of 10^184948.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="machineReassignmentDomainModel"><a class="anchor" href="#machineReassignmentDomainModel"></a>Domain model</h2>
+<div class="sectionbody">
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../_images/use-cases-and-examples/machine-reassignment/machineReassignmentClassDiagram.png" alt="machineReassignmentClassDiagram">
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../../_/js/site.js"></script>
+<script src="../../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../../_/js/vendor/search.js" id="search-script" data-base-path="../../../.." data-page-path="/optaplanner/latest/use-cases-and-examples/machine-reassignment/machine-reassignment.html"></script>
+<script async src="../../../../_/../search-index.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

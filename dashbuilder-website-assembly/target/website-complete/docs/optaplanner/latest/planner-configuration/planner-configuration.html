@@ -1,0 +1,2947 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>OptaPlanner configuration :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/planner-configuration/planner-configuration.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="planner-configuration.html">OptaPlanner configuration</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/planner-configuration/planner-configuration.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">OptaPlanner configuration</h1>
+<div class="sect1">
+<h2 id="plannerConfigurationOverview"><a class="anchor" href="#plannerConfigurationOverview"></a>1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Solving a planning problem with OptaPlanner consists of the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Model your planning problem</strong> as a class annotated with the <code>@PlanningSolution</code> annotation, for example the <code>NQueens</code> class.</p>
+</li>
+<li>
+<p><strong>Configure a <code></strong>Solver<strong></code></strong>, for example a First Fit and Tabu Search solver for any <code>NQueens</code> instance.</p>
+</li>
+<li>
+<p><strong>Load a problem data set</strong> from your data layer, for example a Four Queens instance. That is the planning problem.</p>
+</li>
+<li>
+<p><strong>Solve it</strong> with <code>Solver.solve(problem)</code> which returns the best solution found.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/planner-configuration/inputOutputOverview.png" alt="inputOutputOverview">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solverConfiguration"><a class="anchor" href="#solverConfiguration"></a>2. Solver configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="solverConfigurationByXML"><a class="anchor" href="#solverConfigurationByXML"></a>2.1. Solver configuration by XML</h3>
+<div class="paragraph">
+<p>Build a <code>Solver</code> instance with the <code>SolverFactory</code>.
+Configure the <code>SolverFactory</code> with a solver configuration XML file, provided as a classpath resource (as defined by <code>ClassLoader.getResource()</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">       SolverFactory&lt;NQueens&gt; solverFactory = SolverFactory.createFromXmlResource(
+               "org/optaplanner/examples/nqueens/solver/nqueensSolverConfig.xml");
+       Solver&lt;NQueens&gt; solver = solverFactory.buildSolver();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In a typical project (following the Maven directory structure),
+that solverConfig XML file would be located at <code>$PROJECT_DIR/src/main/resources/org/optaplanner/examples/nqueens/solver/nqueensSolverConfig.xml</code>.
+Alternatively, a <code>SolverFactory</code> can be created from a <code>File</code> with <code>SolverFactory.createFromXmlFile()</code>.
+However, for portability reasons, a classpath resource is recommended.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>On some environments (<a href="../integration/integration.html#integrationWithOSGi" class="page">OSGi</a>, <a href="../integration/integration.html#integrationWithJBossModules" class="page">JBoss modules</a>, &#8230;&#8203;), classpath resources (the solver config, domain classes, etc.) in your jars might not be available to the default <code>ClassLoader</code> of the <code>optaplanner-core</code> jar.
+In those cases, provide the <code>ClassLoader</code> of your classes as a parameter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">       SolverFactory&lt;NQueens&gt; solverFactory = SolverFactory.createFromXmlResource(
+               ".../nqueensSolverConfig.xml", getClass().getClassLoader());</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Both a <code>Solver</code> and a <code>SolverFactory</code> have a generic type called <code>Solution_</code>, which is the class representing a <a href="#planningProblemAndPlanningSolution">planning problem and solution</a>.</p>
+</div>
+<div class="paragraph">
+<p>A solver configuration XML file looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;!-- Define the model --&gt;
+  &lt;solutionClass&gt;org.optaplanner.examples.nqueens.domain.NQueens&lt;/solutionClass&gt;
+  &lt;entityClass&gt;org.optaplanner.examples.nqueens.domain.Queen&lt;/entityClass&gt;
+
+  &lt;!-- Define the score function --&gt;
+  &lt;scoreDirectorFactory&gt;
+    &lt;constraintProviderClass&gt;org.optaplanner.examples.nqueens.score.NQueensConstraintProvider&lt;/constraintProviderClass&gt;
+  &lt;/scoreDirectorFactory&gt;
+
+  &lt;!-- Configure the optimization algorithms (optional) --&gt;
+  &lt;termination&gt;
+    ...
+  &lt;/termination&gt;
+  &lt;constructionHeuristic&gt;
+    ...
+  &lt;/constructionHeuristic&gt;
+  &lt;localSearch&gt;
+    ...
+  &lt;/localSearch&gt;
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice the three parts in it:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Define the model.</p>
+</li>
+<li>
+<p>Define the score function.</p>
+</li>
+<li>
+<p>Optionally configure the optimization algorithm(s).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These various parts of a configuration are explained further in this manual.</p>
+</div>
+<div class="paragraph">
+<p><strong>OptaPlanner makes it relatively easy to switch optimization algorithm(s) just by changing the configuration.</strong> There is even a <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> which allows you to play out different configurations against each other and report the most appropriate configuration for your use case.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solverConfigurationByJavaAPI"><a class="anchor" href="#solverConfigurationByJavaAPI"></a>2.2. Solver configuration by Java API</h3>
+<div class="paragraph">
+<p>A solver configuration can also be configured with the <code>SolverConfig</code> API.
+This is especially useful to change some values dynamically at runtime.
+For example, to change the running time based on system property, before building the <code>Solver</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">        SolverConfig solverConfig = SolverConfig.createFromXmlResource(
+                "org/optaplanner/examples/nqueens/solver/nqueensSolverConfig.xml");
+        solverConfig.withTerminationConfig(new TerminationConfig()
+                        .withMinutesSpentLimit(userInput));
+
+        SolverFactory&lt;NQueens&gt; solverFactory = SolverFactory.create(solverConfig);
+        Solver&lt;NQueens&gt; solver = solverFactory.buildSolver();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every element in the solver configuration XML is available as a <code>*Config</code> class
+or a property on a <code>*Config</code> class in the package namespace <code>org.optaplanner.core.config</code>.
+These <code>*Config</code> classes are the Java representation of the XML format.
+They build the runtime components (of the package namespace <code>org.optaplanner.core.impl</code>)
+and assemble them into an efficient <code>Solver</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To configure a <code>SolverFactory</code> dynamically for each user request,
+build a template <code>SolverConfig</code> during initialization
+and copy it with the copy constructor for each user request:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private SolverConfig template;
+
+    public void init() {
+        template = SolverConfig.createFromXmlResource(
+                "org/optaplanner/examples/nqueens/solver/nqueensSolverConfig.xml");
+        template.setTerminationConfig(new TerminationConfig());
+    }
+
+    // Called concurrently from different threads
+    public void userRequest(..., long userInput) {
+        SolverConfig solverConfig = new SolverConfig(template); // Copy it
+        solverConfig.getTerminationConfig().setMinutesSpentLimit(userInput);
+        SolverFactory&lt;NQueens&gt; solverFactory = SolverFactory.create(solverConfig);
+        Solver&lt;NQueens&gt; solver = solverFactory.buildSolver();
+        ...
+    }</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="annotationAlternatives"><a class="anchor" href="#annotationAlternatives"></a>2.3. Annotation alternatives</h3>
+<div class="paragraph">
+<p>OptaPlanner needs to be told which classes in your domain model are planning entities, which properties are planning variables, etc.
+There are several ways to deliver this information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add class annotations and JavaBean property annotations on the domain model (recommended).
+The property annotations must be on the getter method, not on the setter method.
+Such a getter does not need to be public.</p>
+</li>
+<li>
+<p>Add class annotations and field annotations on the domain model.
+Such a field does not need to be public.</p>
+</li>
+<li>
+<p>No annotations: externalize the domain configuration in an XML file.
+This is <a href="https://issues.redhat.com/browse/PLANNER-151">not yet supported</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This manual focuses on the first manner, but every feature supports all three manners, even if it&#8217;s not explicitly mentioned.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="domainAccess"><a class="anchor" href="#domainAccess"></a>2.4. Domain access</h3>
+<div class="paragraph">
+<p>OptaPlanner by default accesses your domain using reflection, which
+will always work, but is slow compared to direct access. Alternatively, you can configure OptaPlanner to access your domain
+using Gizmo, which will generate bytecode that directly access the
+fields/methods of your domain without reflection. However, it comes with some restrictions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The planning annotations can only be on public fields and
+public getters.</p>
+</li>
+<li>
+<p>io.quarkus.gizmo:gizmo must be on the classpath.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These restrictions do not apply when using OptaPlanner with Quarkus,
+where Gizmo is the default domain access type.</p>
+</div>
+<div class="paragraph">
+<p>To use Gizmo outside of Quarkus, set the <code>domainAccessType</code> in the
+Solver Configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;solver&gt;
+    &lt;domainAccessType&gt;GIZMO&lt;/domainAccessType&gt;
+  &lt;/solver&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="customPropertiesConfiguration"><a class="anchor" href="#customPropertiesConfiguration"></a>2.5. Custom properties configuration</h3>
+<div class="paragraph">
+<p>Solver configuration elements, that instantiate classes and explicitly mention it, support custom properties.
+Custom properties are useful to tweak dynamic values through the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a>.
+For example, presume your <code>EasyScoreCalculator</code> has heavy calculations (which are cached)
+and you want to increase the cache size in one benchmark:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;scoreDirectorFactory&gt;
+    &lt;easyScoreCalculatorClass&gt;...MyEasyScoreCalculator&lt;/easyScoreCalculatorClass&gt;
+    &lt;easyScoreCalculatorCustomProperties&gt;
+      &lt;property name="myCacheSize" value="1000"/&gt;&lt;!-- Override value --&gt;
+    &lt;/easyScoreCalculatorCustomProperties&gt;
+  &lt;/scoreDirectorFactory&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add a public setter for each custom property, which is called when a <code>Solver</code> is built.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class MyEasyScoreCalculator extends EasyScoreCalculator&lt;MySolution, SimpleScore&gt; {
+
+        private int myCacheSize = 500; // Default value
+
+        @SuppressWarnings("unused")
+        public void setMyCacheSize(int myCacheSize) {
+            this.myCacheSize = myCacheSize;
+        }
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Most value types are supported (including <code>boolean</code>, <code>int</code>, <code>double</code>, <code>BigDecimal</code>, <code>String</code> and enums).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="modelAPlanningProblem"><a class="anchor" href="#modelAPlanningProblem"></a>3. Model a planning problem</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="isThisClassAProblemFactOrPlanningEntity"><a class="anchor" href="#isThisClassAProblemFactOrPlanningEntity"></a>3.1. Is this class a problem fact or planning entity?</h3>
+<div class="paragraph">
+<p>Look at a dataset of your planning problem.
+You will recognize domain classes in there, each of which can be categorized as one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An unrelated class: not used by any of the score constraints.
+From a planning standpoint, this data is obsolete.</p>
+</li>
+<li>
+<p>A <strong>problem fact</strong> class: used by the score constraints, but does NOT change during planning (as long as the problem stays the same).
+For example: <code>Bed</code>, <code>Room</code>, <code>Shift</code>, <code>Employee</code>, <code>Topic</code>, <code>Period</code>, &#8230;&#8203; All the properties of a problem fact class are problem properties.</p>
+</li>
+<li>
+<p>A <strong>planning entity</strong> class: used by the score constraints and changes during planning.
+For example: <code>BedDesignation</code>, <code>ShiftAssignment</code>, <code>Exam</code>, &#8230;&#8203; The properties that change during planning are planning variables.
+The other properties are problem properties.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ask yourself: <em>What class changes during planning?</em> <em>Which class has variables that I want the <code></em>Solver<em></code> to change for me?</em> That class is a planning entity.
+Most use cases have only one planning entity class.
+Most use cases also have only one planning variable per planning entity class.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In <a href="../repeated-planning/repeated-planning.html#realTimePlanning" class="page">real-time planning</a>, even though the problem itself changes, problem facts do not really change during planning, instead they change between planning (because the Solver temporarily stops to apply the problem fact changes).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To create a good domain model, read the <a href="../design-patterns/design-patterns.html#domainModelingGuide" class="page">domain modeling guide</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>In OptaPlanner, all problem facts and planning entities are plain old JavaBeans (POJOs).</strong> Load them from a database, an XML file, a data repository, a REST service, a noSQL cloud, &#8230;&#8203; (see <a href="../integration/integration.html#integration" class="page">integration</a>): it doesn&#8217;t matter.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="problemFact"><a class="anchor" href="#problemFact"></a>3.2. Problem fact</h3>
+<div class="paragraph">
+<p>A problem fact is any JavaBean (POJO) with getters that does not change during planning.
+For example in n queens, the columns and rows are problem facts:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class Column {
+
+    private int index;
+
+    // ... getters
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class Row {
+
+    private int index;
+
+    // ... getters
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A problem fact can reference other problem facts of course:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class Course {
+
+    private String code;
+
+    private Teacher teacher; // Other problem fact
+    private int lectureSize;
+    private int minWorkingDaySize;
+
+    private List&lt;Curriculum&gt; curriculumList; // Other problem facts
+    private int studentSize;
+
+    // ... getters
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A problem fact class does <em>not</em> require any OptaPlanner specific code.
+For example, you can reuse your domain classes, which might have JPA annotations.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Generally, better designed domain classes lead to simpler and more efficient score constraints.
+Therefore, when dealing with a messy (denormalized) legacy system, it can sometimes be worthwhile to convert the messy domain model into a OptaPlanner specific model first.
+For example: if your domain model has two <code>Teacher</code> instances for the same teacher that teaches at two different departments, it is harder to write a correct score constraint that constrains a teacher&#8217;s spare time on the original model than on an adjusted model.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can sometimes also introduce <a href="#cachedProblemFact"><em>a cached problem fact</em></a> to enrich the domain model for planning only.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="planningEntity"><a class="anchor" href="#planningEntity"></a>3.3. Planning entity</h3>
+<div class="sect3">
+<h4 id="planningEntityAnnotation"><a class="anchor" href="#planningEntityAnnotation"></a>3.3.1. Planning entity annotation</h4>
+<div class="paragraph">
+<p>A planning entity is a JavaBean (POJO) that changes during solving, for example a <code>Queen</code> that changes to another row.
+A planning problem has multiple planning entities, for example for a single n queens problem, each <code>Queen</code> is a planning entity.
+But there is usually only one planning entity class, for example the <code>Queen</code> class.</p>
+</div>
+<div class="paragraph">
+<p>A planning entity class needs to be annotated with the <code>@PlanningEntity</code> annotation.</p>
+</div>
+<div class="paragraph">
+<p>Each planning entity class has one or more <em>planning variables</em> (which can be <a href="#planningVariable">genuine</a> or <a href="../shadow-variable/shadow-variable.html#shadowVariable" class="page">shadows</a>).
+It should also have one or more <em>defining</em> properties.
+For example in n queens, a <code>Queen</code> is defined by its <code>Column</code> and has a planning variable <code>Row</code>.
+This means that a Queen&#8217;s column never changes during solving, while its row does change.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningEntity
+public class Queen {
+
+    private Column column;
+
+    // Planning variables: changes during planning, between score calculations.
+    private Row row;
+
+    // ... getters and setters
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A planning entity class can have multiple planning variables.
+For example, a <code>Lecture</code> is defined by its <code>Course</code> and its index in that course (because one course has multiple lectures).
+Each <code>Lecture</code> needs to be scheduled into a <code>Period</code> and a <code>Room</code> so it has two planning variables (period and room).
+For example: the course Mathematics has eight lectures per week, of which the first lecture is Monday morning at 08:00 in room 212.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningEntity
+public class Lecture {
+
+    private Course course;
+    private int lectureIndexInCourse;
+
+    // Planning variables: changes during planning, between score calculations.
+    private Period period;
+    private Room room;
+
+    // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The solver configuration needs to declare each planning entity class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;entityClass&gt;org.optaplanner.examples.nqueens.domain.Queen&lt;/entityClass&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some uses cases have multiple planning entity classes.
+For example: route freight and trains into railway network arcs, where each freight can use multiple trains over its journey and each train can carry multiple freights per arc.
+Having multiple planning entity classes directly raises the implementation complexity of your use case.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><em>Do not create unnecessary planning entity classes.</em> This leads to difficult <code>Move</code> implementations and slower score calculation.</p>
+</div>
+<div class="paragraph">
+<p>For example, do not create a planning entity class to hold the total free time of a teacher, which needs to be kept up to date as the <code>Lecture</code> planning entities change.
+Instead, calculate the free time in the score constraints (or as a <a href="../shadow-variable/shadow-variable.html#shadowVariable" class="page">shadow variable</a>) and put the result per teacher into a logically inserted score object.</p>
+</div>
+<div class="paragraph">
+<p>If historic data needs to be considered too, then create problem fact to hold the total of the historic assignments up to, but <em>not including</em>, the planning window (so that it does not change when a planning entity changes) and let the score constraints take it into account.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Planning entity <code>hashCode()</code> implementations must remain constant. Therefore entity <code>hashCode()</code> must not depend on any planning variables. Pay special attention when using data structures with auto-generated <code>hashCode()</code> as entities, such as Java records or Kotlin data classes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="planningEntityDifficulty"><a class="anchor" href="#planningEntityDifficulty"></a>3.3.2. Planning entity difficulty</h4>
+<div class="paragraph">
+<p>Some optimization algorithms work more efficiently if they have an estimation of which planning entities are more difficult to plan.
+For example: in bin packing bigger items are harder to fit, in course scheduling lectures with more students are more difficult to schedule, and in n queens the middle queens are more difficult to fit on the board.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Do not try to use planning entity difficulty to implement a business
+          constraint.</strong> It will not affect the score function: if we have infinite solving time, the returned solution will be the same.</p>
+</div>
+<div class="paragraph">
+<p>To attain a schedule in which certain entities are scheduled earlier in the schedule, <a href="../score-calculation/score-calculation.html#formalizeTheBusinessConstraints" class="page">add a score constraint</a> to change the score function so it prefers such solutions.
+Only consider adding planning entity difficulty too if it can make the solver more efficient.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To allow the heuristics to take advantage of that domain specific information, set a <code>difficultyComparatorClass</code> to the <code>@PlanningEntity</code> annotation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningEntity(difficultyComparatorClass = CloudProcessDifficultyComparator.class)
+public class CloudProcess {
+    // ...
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class CloudProcessDifficultyComparator implements Comparator&lt;CloudProcess&gt; {
+
+    public int compare(CloudProcess a, CloudProcess b) {
+        return new CompareToBuilder()
+                .append(a.getRequiredMultiplicand(), b.getRequiredMultiplicand())
+                .append(a.getId(), b.getId())
+                .toComparison();
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can also set a <code>difficultyWeightFactoryClass</code> to the <code>@PlanningEntity</code> annotation,
+so that you have access to the rest of the problem facts from the solution too:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningEntity(difficultyWeightFactoryClass = QueenDifficultyWeightFactory.class)
+public class Queen {
+    // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#sortedSelection" class="page">sorted selection</a> for more information.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Difficulty should be implemented ascending: easy entities are lower, difficult entities are higher.
+For example, in bin packing: small item &lt; medium item &lt; big item.</p>
+</div>
+<div class="paragraph">
+<p>Although most algorithms start with the more difficult entities first, they just reverse the ordering.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><em>None of the current planning variable states should be used to compare planning entity difficulty.</em> During Construction Heuristics, those variables are likely to be <code>null</code> anyway.
+For example, a <code>Queen</code>'s <code>row</code> variable should not be used.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="planningVariable"><a class="anchor" href="#planningVariable"></a>3.4. Planning variable (genuine)</h3>
+<div class="sect3">
+<h4 id="planningVariableAnnotation"><a class="anchor" href="#planningVariableAnnotation"></a>3.4.1. Planning variable annotation</h4>
+<div class="paragraph">
+<p>A planning variable is a JavaBean property (so a getter and setter) on a planning entity.
+It points to a planning value, which changes during planning.
+For example, a <code>Queen</code>'s <code>row</code> property is a genuine planning variable.
+Note that even though a <code>Queen</code>'s <code>row</code> property changes to another <code>Row</code> during planning, no <code>Row</code> instance itself is changed.
+Normally planning variables are genuine, but advanced cases can also have <a href="../shadow-variable/shadow-variable.html#shadowVariable" class="page">shadows</a>.</p>
+</div>
+<div class="paragraph">
+<p>A genuine planning variable getter needs to be annotated with the <code>@PlanningVariable</code> annotation, which needs a non-empty <code>valueRangeProviderRefs</code> property.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningEntity
+public class Queen {
+    ...
+
+    private Row row;
+
+    @PlanningVariable(valueRangeProviderRefs = {"rowRange"})
+    public Row getRow() {
+        return row;
+    }
+
+    public void setRow(Row row) {
+        this.row = row;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>valueRangeProviderRefs</code> property defines what are the possible planning values for this planning variable.
+It references one or more <code>@ValueRangeProvider</code> <code>id</code>'s.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A @PlanningVariable annotation needs to be on a member in a class with a @PlanningEntity annotation.
+It is ignored on parent classes or subclasses without that annotation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="#annotationAlternatives">Annotating the field</a> instead of the property works too:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningEntity
+public class Queen {
+    ...
+
+    @PlanningVariable(valueRangeProviderRefs = {"rowRange"})
+    private Row row;
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="nullablePlanningVariable"><a class="anchor" href="#nullablePlanningVariable"></a>3.4.2. Nullable planning variable</h4>
+<div class="paragraph">
+<p>By default, an initialized planning variable cannot be <code>null</code>, so an initialized solution will never use <code>null</code> for any of its planning variables.
+In an over-constrained use case, this can be counterproductive.
+For example: in task assignment with too many tasks for the workforce, we would rather leave low priority tasks unassigned instead of assigning them to an overloaded worker.</p>
+</div>
+<div class="paragraph">
+<p>To allow an initialized planning variable to be <code>null</code>, set <code>nullable</code> to <code>true</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @PlanningVariable(..., nullable = true)
+    public Worker getWorker() {
+        return worker;
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Constraint Streams filter out planning entities with a <code>null</code> planning variable by default.
+Use <a href="../constraint-streams/constraint-streams.html#constraintStreamsForEach" class="page">forEachIncludingNullVars()</a> to avoid such unwanted behaviour.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>OptaPlanner will automatically add the value <code>null</code> to the value range.
+There is no need to add <code>null</code> in a collection provided by a <code>ValueRangeProvider</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using a nullable planning variable implies that your score calculation is responsible for punishing (or even rewarding) variables with a <code>null</code> value.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Currently <a href="#chainedPlanningVariable">chained</a> planning variables are not compatible with <code>nullable</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="../repeated-planning/repeated-planning.html#repeatedPlanning" class="page">Repeated planning</a> (especially <a href="../repeated-planning/repeated-planning.html#realTimePlanning" class="page">real-time planning</a>) does not mix well with a nullable planning variable.
+Every time the Solver starts or a problem fact change is made, the <a href="../construction-heuristics/construction-heuristics.html#constructionHeuristics" class="page">Construction Heuristics</a>
+will try to initialize all the <code>null</code> variables again, which can be a huge waste of time.
+One way to deal with this is to filter the entity selector of the placer in the construction heuristic.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;constructionHeuristic&gt;
+    &lt;queuedEntityPlacer&gt;
+      &lt;entitySelector id="entitySelector1"&gt;
+        &lt;filterClass&gt;...&lt;/filterClass&gt;
+      &lt;/entitySelector&gt;
+    &lt;/queuedEntityPlacer&gt;
+    ...
+    &lt;changeMoveSelector&gt;
+      &lt;entitySelector mimicSelectorRef="entitySelector1" /&gt;
+    &lt;/changeMoveSelector&gt;
+    ...
+  &lt;/constructionHeuristic&gt;
+ ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="whenIsAPlanningVariableInitialized"><a class="anchor" href="#whenIsAPlanningVariableInitialized"></a>3.4.3. When is a planning variable considered initialized?</h4>
+<div class="paragraph">
+<p>A planning variable is considered initialized if its value is not <code>null</code> or if the variable is <code>nullable</code>.
+So a nullable variable is always considered initialized.</p>
+</div>
+<div class="paragraph">
+<p>A planning entity is initialized if all of its planning variables are initialized.</p>
+</div>
+<div class="paragraph">
+<p>A solution is initialized if all of its planning entities are initialized.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="planningValueAndPlanningValueRange"><a class="anchor" href="#planningValueAndPlanningValueRange"></a>3.5. Planning value and planning value range</h3>
+<div class="sect3">
+<h4 id="planningValue"><a class="anchor" href="#planningValue"></a>3.5.1. Planning value</h4>
+<div class="paragraph">
+<p>A planning value is a possible value for a genuine planning variable.
+Usually, a planning value is a problem fact, but it can also be any object, for example a <code>double</code>.
+It can even be another planning entity or even an interface implemented by both a planning entity and a problem fact.</p>
+</div>
+<div class="paragraph">
+<p>A planning value range is the set of possible planning values for a planning variable.
+This set can be a countable (for example row <code>1</code>, <code>2</code>, <code>3</code> or <code>4</code>) or uncountable (for example any <code>double</code> between <code>0.0</code> and <code>1.0</code>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="planningValueRangeProvider"><a class="anchor" href="#planningValueRangeProvider"></a>3.5.2. Planning value range provider</h4>
+<div class="sect4">
+<h5 id="planningValueRangeProviderOverview"><a class="anchor" href="#planningValueRangeProviderOverview"></a>Overview</h5>
+<div class="paragraph">
+<p>The value range of a planning variable is defined with the <code>@ValueRangeProvider</code> annotation.
+A <code>@ValueRangeProvider</code> annotation always has a property <code>id</code>, which is referenced by the <code>@PlanningVariable</code>'s property <code>valueRangeProviderRefs</code>.</p>
+</div>
+<div class="paragraph">
+<p>This annotation can be located on two types of methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>On the Solution: All planning entities share the same value range.</p>
+</li>
+<li>
+<p>On the planning entity: The value range differs per planning entity. This is less common.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A @ValueRangeProvider annotation needs to be on a member in a class with a @PlanningSolution or a @PlanningEntity annotation.
+It is ignored on parent classes or subclasses without those annotations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The return type of that method can be three types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Collection</code>: The value range is defined by a <code>Collection</code> (usually a <code>List</code>) of its possible values.</p>
+</li>
+<li>
+<p>Array: The value range is defined by an array of its possible values.</p>
+</li>
+<li>
+<p><code>ValueRange</code>: The value range is defined by its bounds. This is less common.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="valueRangeProviderOnSolution"><a class="anchor" href="#valueRangeProviderOnSolution"></a><code>ValueRangeProvider</code> on the solution</h5>
+<div class="paragraph">
+<p>All instances of the same planning entity class share the same set of possible planning values for that planning variable.
+This is the most common way to configure a value range.</p>
+</div>
+<div class="paragraph">
+<p>The <code>@PlanningSolution</code> implementation has method that returns a <code>Collection</code> (or a <code>ValueRange</code>).
+Any value from that <code>Collection</code> is a possible planning value for this planning variable.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @PlanningVariable(valueRangeProviderRefs = {"rowRange"})
+    public Row getRow() {
+        return row;
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution
+public class NQueens {
+    ...
+
+    @ValueRangeProvider(id = "rowRange")
+    public List&lt;Row&gt; getRowList() {
+        return rowList;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>That <code>Collection</code> (or <code>ValueRange</code>) must not contain the value <code>null</code>, not even for a <a href="#nullablePlanningVariable">nullable planning variable</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="#annotationAlternatives">Annotating the field</a> instead of the property works too:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution
+public class NQueens {
+    ...
+
+    @ValueRangeProvider(id = "rowRange")
+    private List&lt;Row&gt; rowList;
+
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="valueRangeProviderOnPlanningEntity"><a class="anchor" href="#valueRangeProviderOnPlanningEntity"></a><code>ValueRangeProvider</code> on the Planning Entity</h5>
+<div class="paragraph">
+<p>Each planning entity has its own value range (a set of possible planning values) for the planning variable.
+For example, if a teacher can <strong>never</strong> teach in a room that does not belong to his department, lectures of that teacher can limit their room value range to the rooms of his department.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @PlanningVariable(valueRangeProviderRefs = {"departmentRoomRange"})
+    public Room getRoom() {
+        return room;
+    }
+
+    @ValueRangeProvider(id = "departmentRoomRange")
+    public List&lt;Room&gt; getPossibleRoomList() {
+        return getCourse().getTeacher().getDepartment().getRoomList();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Never use this to enforce a soft constraint (or even a hard constraint when the problem might not have a feasible solution). For example: <em>Unless there is no other way</em>, a teacher cannot teach in a room that does not belong to his department.
+In this case, the teacher should <em>not</em> be limited in his room value range (because sometimes there is no other way).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>By limiting the value range specifically of one planning entity, you are effectively creating a <em>built-in hard constraint</em>.
+This can have the benefit of severely lowering the number of possible solutions; however, it can also take away the freedom of the optimization algorithms to temporarily break that constraint in order to escape from a local optimum.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A planning entity should <em>not</em> use other planning entities to determine its value range.
+That would only try to make the planning entity solve the planning problem itself and interfere with the optimization algorithms.</p>
+</div>
+<div class="paragraph">
+<p>Every entity has its own <code>List</code> instance, unless multiple entities have the same value range.
+For example, if teacher A and B belong to the same department, they use the same <code>List&lt;Room&gt;</code> instance.
+Furthermore, each <code>List</code> contains a subset of the same set of planning value instances.
+For example, if department A and B can both use room X, then their <code>List&lt;Room&gt;</code> instances contain the same <code>Room</code> instance.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <code>ValueRangeProvider</code> on the planning entity consumes more memory than <code>ValueRangeProvider</code> on the Solution and disables certain automatic performance optimizations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <code>ValueRangeProvider</code> on the planning entity is not currently compatible with a <a href="#chainedPlanningVariable">chained</a> variable.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="valueRangeFactory"><a class="anchor" href="#valueRangeFactory"></a><code>ValueRangeFactory</code></h5>
+<div class="paragraph">
+<p>Instead of a <code>Collection</code>, you can also return a <code>ValueRange</code> or <code>CountableValueRange</code>, built by the <code>ValueRangeFactory</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @ValueRangeProvider(id = "delayRange")
+    public CountableValueRange&lt;Integer&gt; getDelayRange() {
+        return ValueRangeFactory.createIntValueRange(0, 5000);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>ValueRange</code> uses far less memory, because it only holds the bounds.
+In the example above, a <code>Collection</code> would need to hold all <code>5000</code> ints, instead of just the two bounds.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, an <code>incrementUnit</code> can be specified, for example if you have to buy stocks in units of 200 pieces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @ValueRangeProvider(id = "stockAmountRange")
+    public CountableValueRange&lt;Integer&gt; getStockAmountRange() {
+         // Range: 0, 200, 400, 600, ..., 9999600, 9999800, 10000000
+        return ValueRangeFactory.createIntValueRange(0, 10000000, 200);
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Return <code>CountableValueRange</code> instead of <code>ValueRange</code> whenever possible (so OptaPlanner knows that it&#8217;s countable).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>ValueRangeFactory</code> has creation methods for several value class types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>boolean</code>: A boolean range.</p>
+</li>
+<li>
+<p><code>int</code>: A 32bit integer range.</p>
+</li>
+<li>
+<p><code>long</code>: A 64bit integer range.</p>
+</li>
+<li>
+<p><code>double</code>: A 64bit floating point range which only supports random selection (because it does not implement <code>CountableValueRange</code>).</p>
+</li>
+<li>
+<p><code>BigInteger</code>: An arbitrary-precision integer range.</p>
+</li>
+<li>
+<p><code>BigDecimal</code>: A decimal point range. By default, the increment unit is the lowest non-zero value in the scale of the bounds.</p>
+</li>
+<li>
+<p><code>Temporal</code> (such as <code>LocalDate</code>, <code>LocalDateTime</code>, &#8230;&#8203;): A time range.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="combineValueRangeProviders"><a class="anchor" href="#combineValueRangeProviders"></a>Combine <code>ValueRangeProviders</code></h5>
+<div class="paragraph">
+<p>Value range providers can be combined, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @PlanningVariable(valueRangeProviderRefs = {"companyCarRange", "personalCarRange"})
+    public Car getCar() {
+        return car;
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @ValueRangeProvider(id = "companyCarRange")
+    public List&lt;CompanyCar&gt; getCompanyCarList() {
+        return companyCarList;
+    }
+
+    @ValueRangeProvider(id = "personalCarRange")
+    public List&lt;PersonalCar&gt; getPersonalCarList() {
+        return personalCarList;
+    }</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="planningValueStrength"><a class="anchor" href="#planningValueStrength"></a>3.5.3. Planning value strength</h4>
+<div class="paragraph">
+<p>Some optimization algorithms work a bit more efficiently if they have an estimation of which planning values are stronger, which means they are more likely to satisfy a planning entity.
+For example: in bin packing bigger containers are more likely to fit an item and in course scheduling bigger rooms are less likely to break the student capacity constraint.
+Usually, the efficiency gain of planning value strength is far less than that of <a href="#planningEntityDifficulty">planning entity difficulty</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Do not try to use planning value strength to implement a business
+          constraint.</strong> It will not affect the score function: if we have infinite solving time, the returned solution will be the same.</p>
+</div>
+<div class="paragraph">
+<p>To affect the score function, <a href="../score-calculation/score-calculation.html#formalizeTheBusinessConstraints" class="page">add a score constraint</a>.
+Only consider adding planning value strength too if it can make the solver more efficient.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To allow the heuristics to take advantage of that domain specific information, set a <code>strengthComparatorClass</code> to the <code>@PlanningVariable</code> annotation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @PlanningVariable(..., strengthComparatorClass = CloudComputerStrengthComparator.class)
+    public CloudComputer getComputer() {
+        return computer;
+    }</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class CloudComputerStrengthComparator implements Comparator&lt;CloudComputer&gt; {
+
+    public int compare(CloudComputer a, CloudComputer b) {
+        return new CompareToBuilder()
+                .append(a.getMultiplicand(), b.getMultiplicand())
+                .append(b.getCost(), a.getCost()) // Descending (but this is debatable)
+                .append(a.getId(), b.getId())
+                .toComparison();
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you have multiple planning value classes in the <em>same</em> value range, the <code>strengthComparatorClass</code> needs to implement a <code>Comparator</code> of a common superclass (for example <code>Comparator&lt;Object&gt;</code>) and be able to handle comparing instances of those different classes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can also set a <code>strengthWeightFactoryClass</code> to the <code>@PlanningVariable</code> annotation, so you have access to the rest of the problem facts from the solution too:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @PlanningVariable(..., strengthWeightFactoryClass = RowStrengthWeightFactory.class)
+    public Row getRow() {
+        return row;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#sortedSelection" class="page">sorted selection</a> for more information.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Strength should be implemented ascending: weaker values are lower, stronger values are higher.
+For example in bin packing: small container &lt; medium container &lt; big container.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><em>None of the current planning variable state in any of the planning entities should be used to compare planning values.</em> During construction heuristics, those variables are likely to be <code>null</code>.
+For example, none of the <code>row</code> variables of any <code>Queen</code> may be used to determine the strength of a <code>Row</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="chainedPlanningVariable"><a class="anchor" href="#chainedPlanningVariable"></a>3.5.4. Chained planning variable (TSP, VRP, &#8230;&#8203;)</h4>
+<div class="paragraph">
+<p>Some use cases, such as TSP and Vehicle Routing, require <em>chaining</em>.
+This means the planning entities point to each other and form a chain.
+By modeling the problem as a set of chains (instead of a set of trees/loops), the search space is heavily reduced.</p>
+</div>
+<div class="paragraph">
+<p>A planning variable that is chained either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Directly points to a problem fact (or planning entity), which is called an <em>anchor</em>.</p>
+</li>
+<li>
+<p>Points to another planning entity with the same planning variable, which recursively points to an anchor.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here are some examples of valid and invalid chains:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/planner-configuration/chainPrinciples.png" alt="chainPrinciples">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Every initialized planning entity is part of an open-ended chain that begins from an anchor.</strong> A valid model means that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A chain is never a loop. The tail is always open.</p>
+</li>
+<li>
+<p>Every chain always has exactly one anchor. The anchor is never an instance of the planning entity class that contains the chained planning variable.</p>
+</li>
+<li>
+<p>A chain is never a tree, it is always a line. Every anchor or planning entity has at most one trailing planning entity.</p>
+</li>
+<li>
+<p>Every initialized planning entity is part of a chain.</p>
+</li>
+<li>
+<p>An anchor with no planning entities pointing to it, is also considered a chain.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A planning problem instance given to the <code>Solver</code> must be valid.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If your constraints dictate a closed chain, model it as an open-ended chain (which is easier to persist in a database) and implement a score constraint for the last entity back to the anchor.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The optimization algorithms and built-in <code>Move</code>s do chain correction to guarantee that the model stays valid:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/planner-configuration/chainCorrection.png" alt="chainCorrection">
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A custom <code>Move</code> implementation must leave the model in a valid state.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, in TSP the anchor is a <code>Domicile</code> (in vehicle routing it is <code>Vehicle</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class Domicile ... implements Standstill {
+    ...
+
+    public City getCity() {...}
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The anchor (which is a problem fact) and the planning entity implement a common interface, for example TSP&#8217;s <code>Standstill</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public interface Standstill {
+
+    City getCity();
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That interface is the return type of the planning variable.
+Furthermore, the planning variable is chained.
+For example TSP&#8217;s <code>Visit</code> (in vehicle routing it is <code>Customer</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningEntity
+public class Visit ... implements Standstill {
+    ...
+
+    public City getCity() {...}
+
+    @PlanningVariable(graphType = PlanningVariableGraphType.CHAINED,
+        valueRangeProviderRefs = {"domicileRange", "visitRange"})
+    public Standstill getPreviousStandstill() {
+        return previousStandstill;
+    }
+
+    public void setPreviousStandstill(Standstill previousStandstill) {
+        this.previousStandstill = previousStandstill;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how two value range providers are usually combined:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The value range provider that holds the anchors, for example <code>domicileList</code>.</p>
+</li>
+<li>
+<p>The value range provider that holds the initialized planning entities, for example <code>visitList</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="planningProblemAndPlanningSolution"><a class="anchor" href="#planningProblemAndPlanningSolution"></a>3.6. Planning problem and planning solution</h3>
+<div class="sect3">
+<h4 id="planningProblemInstance"><a class="anchor" href="#planningProblemInstance"></a>3.6.1. Planning problem instance</h4>
+<div class="paragraph">
+<p>A dataset for a planning problem needs to be wrapped in a class for the <code>Solver</code> to solve.
+That solution class represents both the planning problem and (if solved) a solution.
+It is annotated with a <code>@PlanningSolution</code> annotation.
+For example in n queens, the solution class is the <code>NQueens</code> class, which contains a <code>Column</code> list, a <code>Row</code> list, and a <code>Queen</code> list.</p>
+</div>
+<div class="paragraph">
+<p>A planning problem is actually an unsolved planning solution or - stated differently - an uninitialized solution.
+For example in n queens, that <code>NQueens</code> class has the <code>@PlanningSolution</code> annotation, yet every <code>Queen</code> in an unsolved <code>NQueens</code> class is not yet assigned to a <code>Row</code> (their <code>row</code> property is <code>null</code>). That&#8217;s not a feasible solution.
+It&#8217;s not even a possible solution.
+It&#8217;s an uninitialized solution.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="solutionClass"><a class="anchor" href="#solutionClass"></a>3.6.2. Solution class</h4>
+<div class="paragraph">
+<p>A solution class holds all problem facts, planning entities and a score.
+It is annotated with a <code>@PlanningSolution</code> annotation.
+For example, an <code>NQueens</code> instance holds a list of all columns, all rows and all <code>Queen</code> instances:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution
+public class NQueens {
+
+    // Problem facts
+    private int n;
+    private List&lt;Column&gt; columnList;
+    private List&lt;Row&gt; rowList;
+
+    // Planning entities
+    private List&lt;Queen&gt; queenList;
+
+    private SimpleScore score;
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The solver configuration needs to declare the planning solution class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;solutionClass&gt;org.optaplanner.examples.nqueens.domain.NQueens&lt;/solutionClass&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="planningEntitiesOfASolution"><a class="anchor" href="#planningEntitiesOfASolution"></a>3.6.3. Planning entities of a solution (<code>@PlanningEntityCollectionProperty</code>)</h4>
+<div class="paragraph">
+<p>OptaPlanner needs to extract the entity instances from the solution instance.
+It gets those collection(s) by calling every getter (or field) that is annotated with <code>@PlanningEntityCollectionProperty</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution
+public class NQueens {
+    ...
+
+    private List&lt;Queen&gt; queenList;
+
+    @PlanningEntityCollectionProperty
+    public List&lt;Queen&gt; getQueenList() {
+        return queenList;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There can be multiple <code>@PlanningEntityCollectionProperty</code> annotated members.
+Those can even return a <code>Collection</code> with the same entity class type.
+Instead of <code>Collection</code>, it can also return an array.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <code>@PlanningEntityCollectionProperty</code> annotation needs to be on a member in a class with a <code>@PlanningSolution</code> annotation.
+It is ignored on parent classes or subclasses without that annotation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In rare cases, a planning entity might be a singleton: use <code>@PlanningEntityProperty</code> on its getter (or field) instead.</p>
+</div>
+<div class="paragraph">
+<p>Both annotations can also be <a href="#autoDiscoverSolutionProperties">auto discovered</a> if enabled.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="scoreOfASolution"><a class="anchor" href="#scoreOfASolution"></a>3.6.4. <code>Score</code> of asSolution (<code>@PlanningScore</code>)</h4>
+<div class="paragraph">
+<p>A <code>@PlanningSolution</code> class requires a score property (or field), which is annotated with a <code>@PlanningScore</code> annotation.
+The score property is <code>null</code> if the score hasn&#8217;t been calculated yet.
+The <code>score</code> property is typed to the specific <code>Score</code> implementation of your use case.
+For example, <code>NQueens</code> uses a <a href="../score-calculation/score-calculation.html#simpleScore" class="page">SimpleScore</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution
+public class NQueens {
+    ...
+
+    private SimpleScore score;
+
+    @PlanningScore
+    public SimpleScore getScore() {
+        return score;
+    }
+    public void setScore(SimpleScore score) {
+        this.score = score;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Most use cases use a <a href="../score-calculation/score-calculation.html#hardSoftScore" class="page">HardSoftScore</a> instead:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution
+public class CloudBalance {
+    ...
+
+    private HardSoftScore score;
+
+    @PlanningScore
+    public HardSoftScore getScore() {
+        return score;
+    }
+
+    public void setScore(HardSoftScore score) {
+        this.score = score;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some use cases use <a href="../score-calculation/score-calculation.html#scoreType" class="page">other score types</a>.</p>
+</div>
+<div class="paragraph">
+<p>This annotation can also be <a href="#autoDiscoverSolutionProperties">auto discovered</a> if enabled.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="problemFacts"><a class="anchor" href="#problemFacts"></a>3.6.5. Problem facts of a solution (<code>@ProblemFactCollectionProperty</code>)</h4>
+<div class="paragraph">
+<p>For <a href="../constraint-streams/constraint-streams.html#constraintStreams" class="page">Constraint Streams</a> and <a href="../drools-score-calculation/drools-score-calculation.html#droolsScoreCalculation" class="page">Drools score calculation</a>,
+OptaPlanner needs to extract the problem fact instances from the solution instance.
+It gets those collection(s) by calling every method (or field) that is annotated with <code>@ProblemFactCollectionProperty</code>.
+All objects returned by those methods are available to use by Constraint Streams or Drools rules.
+For example in <code>NQueens</code> all <code>Column</code> and <code>Row</code> instances are problem facts.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution
+public class NQueens {
+    ...
+
+    private List&lt;Column&gt; columnList;
+    private List&lt;Row&gt; rowList;
+
+    @ProblemFactCollectionProperty
+    public List&lt;Column&gt; getColumnList() {
+        return columnList;
+    }
+
+    @ProblemFactCollectionProperty
+    public List&lt;Row&gt; getRowList() {
+        return rowList;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All planning entities are automatically inserted into the working memory.
+Do not add an annotation on their properties.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The problem facts methods are not called often: at most only once per solver phase per solver thread.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There can be multiple <code>@ProblemFactCollectionProperty</code> annotated members.
+Those can even return a <code>Collection</code> with the same class type, but they shouldn&#8217;t return the same instance twice.
+Instead of <code>Collection</code>, it can also return an array.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A @ProblemFactCollectionProperty annotation needs to be on a member in a class with a @PlanningSolution annotation.
+It is ignored on parent classes or subclasses without that annotation.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In rare cases, a problem fact might be a singleton: use <code>@ProblemFactProperty</code> on its method (or field) instead.</p>
+</div>
+<div class="paragraph">
+<p>Both annotations can also be <a href="#autoDiscoverSolutionProperties">auto discovered</a> if enabled.</p>
+</div>
+<div class="sect4">
+<h5 id="cachedProblemFact"><a class="anchor" href="#cachedProblemFact"></a>Cached problem fact</h5>
+<div class="paragraph">
+<p>A cached problem fact is a problem fact that does not exist in the real domain model, but is calculated before the <code>Solver</code> really starts solving.
+The problem facts methods have the opportunity to enrich the domain model with such cached problem facts, which can lead to simpler and faster score constraints.</p>
+</div>
+<div class="paragraph">
+<p>For example in examination, a cached problem fact <code>TopicConflict</code> is created for every two <code>Topic</code>s which share at least one <code>Student</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @ProblemFactCollectionProperty
+    private List&lt;TopicConflict&gt; calculateTopicConflictList() {
+        List&lt;TopicConflict&gt; topicConflictList = new ArrayList&lt;TopicConflict&gt;();
+        for (Topic leftTopic : topicList) {
+            for (Topic rightTopic : topicList) {
+                if (leftTopic.getId() &lt; rightTopic.getId()) {
+                    int studentSize = 0;
+                    for (Student student : leftTopic.getStudentList()) {
+                        if (rightTopic.getStudentList().contains(student)) {
+                            studentSize++;
+                        }
+                    }
+                    if (studentSize &gt; 0) {
+                        topicConflictList.add(new TopicConflict(leftTopic, rightTopic, studentSize));
+                    }
+                }
+            }
+        }
+        return topicConflictList;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where a score constraint needs to check that no two exams with a topic that shares a student are scheduled close together (depending on the constraint: at the same time, in a row, or in the same day), the <code>TopicConflict</code> instance can be used as a problem fact, rather than having to combine every two <code>Student</code> instances.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="autoDiscoverSolutionProperties"><a class="anchor" href="#autoDiscoverSolutionProperties"></a>3.6.6. Auto discover solution properties</h4>
+<div class="paragraph">
+<p>Instead of configuring each property (or field) annotation explicitly,
+some can also be deduced automatically by OptaPlanner.
+For example, on the cloud balancing example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution(autoDiscoverMemberType = AutoDiscoverMemberType.FIELD)
+public class CloudBalance {
+
+    // Auto discovered as @ProblemFactCollectionProperty
+    @ValueRangeProvider(id = "computerRange") // Not (yet) auto discovered
+    private List&lt;CloudComputer&gt; computerList;
+
+    // Auto discovered as @PlanningEntityCollectionProperty
+    private List&lt;CloudProcess&gt; processList;
+
+    // Auto discovered as @PlanningScore
+    private HardSoftScore score;
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>AutoDiscoverMemberType</code> can be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NONE</code>: No auto discovery.</p>
+</li>
+<li>
+<p><code>FIELD</code>: Auto discover all fields on the <code>@PlanningSolution</code> class</p>
+</li>
+<li>
+<p><code>GETTER</code>: Auto discover all getters on the <code>@PlanningSolution</code> class</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The automatic annotation is based on the field type (or getter return type):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>@ProblemFactProperty</code>: when it isn&#8217;t a <code>Collection</code>, an array, a <code>@PlanningEntity</code> class or a <code>Score</code></p>
+</li>
+<li>
+<p><code>@ProblemFactCollectionProperty</code>: when it&#8217;s a <code>Collection</code> (or array) of a type that isn&#8217;t a <code>@PlanningEntity</code> class</p>
+</li>
+<li>
+<p><code>@PlanningEntityProperty</code>: when it is a configured <code>@PlanningEntity</code> class or subclass</p>
+</li>
+<li>
+<p><code>@PlanningEntityCollectionProperty</code>: when it&#8217;s a <code>Collection</code> (or array) of a type that is a configured <code>@PlanningEntity</code> class or subclass</p>
+</li>
+<li>
+<p><code>@PlanningScore</code>: when it is a <code>Score</code> or subclass</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These automatic annotations can still be overwritten per field (or getter).
+Specifically, a <a href="../score-calculation/score-calculation.html#bendableScore" class="page">BendableScore</a> always needs to override
+with an explicit <code>@PlanningScore</code> annotation to define the number of hard and soft levels.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloningASolution"><a class="anchor" href="#cloningASolution"></a>3.6.7. Cloning a solution</h4>
+<div class="paragraph">
+<p>Most (if not all) optimization algorithms clone the solution each time they encounter a new best solution (so they can recall it later) or to work with multiple solutions in parallel.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There are many ways to clone, such as a shallow clone, deep clone, &#8230;&#8203; This context focuses on <em>a planning clone</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A planning clone of a solution must fulfill these requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The clone must represent the same planning problem. Usually it reuses the same instances of the problem facts and problem fact collections as the original.</p>
+</li>
+<li>
+<p>The clone must use different, cloned instances of the entities and entity collections.
+Changes to an original solution entity&#8217;s variables must not affect its clone.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/planner-configuration/solutionCloning.png" alt="solutionCloning">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Implementing a planning clone method is hard, therefore you do not need to implement it.</strong></p>
+</div>
+<div class="sect4">
+<h5 id="fieldAccessingSolutionCloner"><a class="anchor" href="#fieldAccessingSolutionCloner"></a><code>FieldAccessingSolutionCloner</code></h5>
+<div class="paragraph">
+<p>This <code>SolutionCloner</code> is used by default.
+It works well for most use cases.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When the <code>FieldAccessingSolutionCloner</code> clones one of your collections or maps,
+it may not recognize the implementation and replace it with <code>ArrayList</code>, <code>LinkedHashSet</code>, <code>TreeSet</code>, <code>LinkedHashMap</code>
+or <code>TreeMap</code> (whichever is more applicable) .
+It recognizes most of the common JDK collection and map implementations.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>FieldAccessingSolutionCloner</code> does not clone problem facts by default.
+If any of your problem facts needs to be deep cloned for a planning clone,
+for example if the problem fact references a planning entity or the planning solution,
+mark its class with a <code>@DeepPlanningClone</code> annotation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@DeepPlanningClone
+public class SeatDesignationDependency {
+    private SeatDesignation leftSeatDesignation; // planning entity
+    private SeatDesignation rightSeatDesignation; // planning entity
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the example above, because <code>SeatDesignationDependency</code> references the planning entity <code>SeatDesignation</code>
+(which is deep planning cloned automatically), it should also be deep planning cloned.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, the <code>@DeepPlanningClone</code> annotation also works on a getter method or a field to planning clone it.
+If that property is a <code>Collection</code> or a <code>Map</code>, it will shallow clone it and deep planning clone
+any element thereof that is an instance of a class that has a <code>@DeepPlanningClone</code> annotation.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="customCloning"><a class="anchor" href="#customCloning"></a>Custom cloning with a <code>SolutionCloner</code></h5>
+<div class="paragraph">
+<p>To use a custom cloner, configure it on the planning solution:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@PlanningSolution(solutionCloner = NQueensSolutionCloner.class)
+public class NQueens {
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, a <code>NQueens</code> planning clone only deep clones all <code>Queen</code> instances.
+So when the original solution changes (later on during planning) and one or more <code>Queen</code> instances change,
+the planning clone isn&#8217;t affected.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class NQueensSolutionCloner implements SolutionCloner&lt;NQueens&gt; {
+
+    @Override
+    public NQueens cloneSolution(CloneLedger ledger, NQueens original) {
+        NQueens clone = new NQueens();
+        ledger.registerClone(original, clone);
+        clone.setId(original.getId());
+        clone.setN(original.getN());
+        clone.setColumnList(original.getColumnList());
+        clone.setRowList(original.getRowList());
+        List&lt;Queen&gt; queenList = original.getQueenList();
+        List&lt;Queen&gt; clonedQueenList = new ArrayList&lt;Queen&gt;(queenList.size());
+        for (Queen originalQueen : queenList) {
+            Queen cloneQueen = new Queen();
+            ledger.registerClone(originalQueen, cloneQueen);
+            cloneQueen.setId(originalQueen.getId());
+            cloneQueen.setColumn(originalQueen.getColumn());
+            cloneQueen.setRow(originalQueen.getRow());
+            clonedQueenList.add(cloneQueen);
+        }
+        clone.setQueenList(clonedQueenList);
+        clone.setScore(original.getScore());
+        return clone;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>The <code>cloneSolution()</code> method should only deep clone the planning entities.</em>
+Notice that the problem facts, such as <code>Column</code> and <code>Row</code> are normally <em>not</em> cloned: even their <code>List</code> instances are <em>not</em> cloned.
+If the problem facts were cloned too, then you would have to make sure that the new planning entity clones also refer to the new problem facts clones used by the cloned solution.
+For example, if you were to clone all <code>Row</code> instances, then each <code>Queen</code> clone and the <code>NQueens</code> clone itself should refer to those new <code>Row</code> clones.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cloning an entity with a <a href="#chainedPlanningVariable">chained</a> variable is devious: a variable of an entity A might point to another entity B.
+If A is cloned, then its variable must point to the clone of B, not the original B.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="createAnUninitializedSolution"><a class="anchor" href="#createAnUninitializedSolution"></a>3.6.8. Create an uninitialized solution</h4>
+<div class="paragraph">
+<p>Create a <code>@PlanningSolution</code> instance to represent your planning problem&#8217;s dataset, so it can be set on the <code>Solver</code> as the planning problem to solve.
+For example in n queens, an <code>NQueens</code> instance is created with the required <code>Column</code> and <code>Row</code> instances and every <code>Queen</code> set to a different <code>column</code> and every <code>row</code> set to <code>null</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private NQueens createNQueens(int n) {
+        NQueens nQueens = new NQueens();
+        nQueens.setId(0L);
+        nQueens.setN(n);
+        nQueens.setColumnList(createColumnList(nQueens));
+        nQueens.setRowList(createRowList(nQueens));
+        nQueens.setQueenList(createQueenList(nQueens));
+        return nQueens;
+    }
+
+    private List&lt;Queen&gt; createQueenList(NQueens nQueens) {
+        int n = nQueens.getN();
+        List&lt;Queen&gt; queenList = new ArrayList&lt;Queen&gt;(n);
+        long id = 0L;
+        for (Column column : nQueens.getColumnList()) {
+            Queen queen = new Queen();
+            queen.setId(id);
+            id++;
+            queen.setColumn(column);
+            // Notice that we leave the PlanningVariable properties on null
+            queenList.add(queen);
+        }
+        return queenList;
+    }</code></pre>
+</div>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="../_images/planner-configuration/uninitializedNQueens04.png" alt="uninitializedNQueens04">
+</div>
+<div class="title">Figure 1. Uninitialized Solution for the Four Queens Puzzle</div>
+</div>
+<div class="paragraph">
+<p>Usually, most of this data comes from your data layer, and your solution implementation just aggregates that data and creates the uninitialized planning entity instances to plan:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">        private void createLectureList(CourseSchedule schedule) {
+            List&lt;Course&gt; courseList = schedule.getCourseList();
+            List&lt;Lecture&gt; lectureList = new ArrayList&lt;Lecture&gt;(courseList.size());
+            long id = 0L;
+            for (Course course : courseList) {
+                for (int i = 0; i &lt; course.getLectureSize(); i++) {
+                    Lecture lecture = new Lecture();
+                    lecture.setId(id);
+                    id++;
+                    lecture.setCourse(course);
+                    lecture.setLectureIndexInCourse(i);
+                    // Notice that we leave the PlanningVariable properties (period and room) on null
+                    lectureList.add(lecture);
+                }
+            }
+            schedule.setLectureList(lectureList);
+        }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="useTheSolver"><a class="anchor" href="#useTheSolver"></a>4. Use the <code>Solver</code></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="theSolverInterface"><a class="anchor" href="#theSolverInterface"></a>4.1. The <code>Solver</code> interface</h3>
+<div class="paragraph">
+<p>A <code>Solver</code> solves your planning problem.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public interface Solver&lt;Solution_&gt; {
+
+    Solution_ solve(Solution_ problem);
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>Solver</code> can only solve one planning problem instance at a time.
+It is built with a <code>SolverFactory</code>, there is no need to implement it yourself.</p>
+</div>
+<div class="paragraph">
+<p>A <code>Solver</code> should only be accessed from a single thread, except for the methods that are specifically documented in javadoc as being thread-safe.
+The <code>solve()</code> method hogs the current thread.
+This can cause HTTP timeouts for REST services and it requires extra code to solve multiple datasets in parallel.
+To avoid such issues, use a <a href="#solverManager"><code>SolverManager</code></a> instead.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solvingAProblem"><a class="anchor" href="#solvingAProblem"></a>4.2. Solving a problem</h3>
+<div class="paragraph">
+<p>Solving a problem is quite easy once you have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>Solver</code> built from a solver configuration</p>
+</li>
+<li>
+<p>A <code>@PlanningSolution</code> that represents the planning problem instance</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Just provide the planning problem as argument to the <code>solve()</code> method and it will return the best solution found:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    NQueens problem = ...;
+    NQueens bestSolution = solver.solve(problem);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example in n queens, the <code>solve()</code> method will return an <code>NQueens</code> instance with every <code>Queen</code> assigned to a <code>Row</code>.</p>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="../_images/planner-configuration/solvedNQueens04.png" alt="solvedNQueens04">
+</div>
+<div class="title">Figure 2. Best Solution for the Four Queens Puzzle in 8ms (Also an Optimal Solution)</div>
+</div>
+<div class="paragraph">
+<p>The <code>solve(Solution)</code> method can take a long time (depending on the problem size and the solver configuration). The <code>Solver</code> intelligently wades through <a href="../optimization-algorithms/optimization-algorithms.html#searchSpaceSize" class="page">the search space</a> of possible solutions and remembers the best solution it encounters during solving.
+Depending on a number of factors (including problem size, how much time the <code>Solver</code> has, the solver configuration, &#8230;&#8203;), <a href="../optimization-algorithms/optimization-algorithms.html#doesPlannerFindTheOptimalSolution" class="page">that best solution might or might not be an optimal solution</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The solution instance given to the method <code>solve(solution)</code> is changed by the <code>Solver</code>,
+but do not mistake it for the best solution.</p>
+</div>
+<div class="paragraph">
+<p>The solution instance returned by the methods <code>solve(solution)</code> or <code>getBestSolution()</code> is most likely <a href="#cloningASolution">a planning clone</a> of the instance given to the method <code>solve(solution)</code>, which implies it is a different instance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The solution instance given to the <code>solve(Solution)</code> method does not need to be uninitialized.
+It can be partially or fully initialized, which is often the case in <a href="../repeated-planning/repeated-planning.html#repeatedPlanning" class="page">repeated planning</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="environmentMode"><a class="anchor" href="#environmentMode"></a>4.3. Environment mode: are there bugs in my code?</h3>
+<div class="paragraph">
+<p>The environment mode allows you to detect common bugs in your implementation.
+It does not affect the <a href="#logging">logging level</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can set the environment mode in the solver configuration XML file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;environmentMode&gt;FAST_ASSERT&lt;/environmentMode&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A solver has a single <code>Random</code> instance.
+Some solver configurations use the <code>Random</code> instance a lot more than others.
+For example, Simulated Annealing depends highly on random numbers, while Tabu Search only depends on it to deal with score ties.
+The environment mode influences the seed of that <code>Random</code> instance.</p>
+</div>
+<div class="paragraph">
+<p>These are the environment modes:</p>
+</div>
+<div class="sect3">
+<h4 id="environmentModeFullAssert"><a class="anchor" href="#environmentModeFullAssert"></a>4.3.1. <code>FULL_ASSERT</code></h4>
+<div class="paragraph">
+<p>The FULL_ASSERT mode turns on all assertions (such as assert that the incremental score calculation is uncorrupted for each move) to fail-fast on a bug in a Move implementation, a constraint, the engine itself, &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>This mode is reproducible (see the reproducible mode). It is also intrusive because it calls the method <code>calculateScore()</code> more frequently than a non-assert mode.</p>
+</div>
+<div class="paragraph">
+<p>The FULL_ASSERT mode is horribly slow (because it does not rely on incremental score calculation).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="environmentModeNonIntrusiveFullAssert"><a class="anchor" href="#environmentModeNonIntrusiveFullAssert"></a>4.3.2. <code>NON_INTRUSIVE_FULL_ASSERT</code></h4>
+<div class="paragraph">
+<p>The NON_INTRUSIVE_FULL_ASSERT turns on several assertions to fail-fast on a bug in a Move implementation, a constraint, the engine itself, &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>This mode is reproducible (see the reproducible mode). It is non-intrusive because it does not call the method <code>calculateScore()</code> more frequently than a non assert mode.</p>
+</div>
+<div class="paragraph">
+<p>The NON_INTRUSIVE_FULL_ASSERT mode is horribly slow (because it does not rely on incremental score calculation).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="environmentModeFastAssert"><a class="anchor" href="#environmentModeFastAssert"></a>4.3.3. <code>FAST_ASSERT</code></h4>
+<div class="paragraph">
+<p>The FAST_ASSERT mode turns on most assertions (such as assert that an undoMove&#8217;s score is the same as before the Move) to fail-fast on a bug in a Move implementation, a constraint, the engine itself, &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>This mode is reproducible (see the reproducible mode). It is also intrusive because it calls the method <code>calculateScore()</code> more frequently than a non assert mode.</p>
+</div>
+<div class="paragraph">
+<p>The FAST_ASSERT mode is slow.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to write a test case that does a short run of your planning problem with the FAST_ASSERT mode on.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="environmentModeReproducible"><a class="anchor" href="#environmentModeReproducible"></a>4.3.4. <code>REPRODUCIBLE</code> (default)</h4>
+<div class="paragraph">
+<p>The reproducible mode is the default mode because it is recommended during development.
+In this mode, two runs in the same OptaPlanner version will execute the same code in the same order. <strong>Those two
+        runs will have the same result at every step</strong>, except if the note below applies.
+This enables you to reproduce bugs consistently.
+It also allows you to benchmark certain refactorings (such as a score constraint performance optimization) fairly across runs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Despite the reproducible mode, your application might still not be fully reproducible because of:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use of <code>HashSet</code> (or another <code>Collection</code> which has an inconsistent order between JVM runs) for collections of planning entities or planning values (but not normal problem facts), especially in the solution implementation. Replace it with <code>LinkedHashSet</code>.</p>
+</li>
+<li>
+<p>Combining a time gradient dependent algorithms (most notably Simulated Annealing) together with time spent termination. A sufficiently large difference in allocated CPU time will influence the time gradient values. Replace Simulated Annealing with Late Acceptance. Or instead, replace time spent termination with step count termination.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The reproducible mode can be slightly slower than the non-reproducible mode.
+If your production environment can benefit from reproducibility, use this mode in production.</p>
+</div>
+<div class="paragraph">
+<p>In practice, this mode uses the default, fixed <a href="#randomNumberGenerator">random seed</a> if no seed is specified, and it also disables certain concurrency optimizations (such as work stealing).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="environmentModeProduction"><a class="anchor" href="#environmentModeProduction"></a>4.3.5. <code>NON_REPRODUCIBLE</code></h4>
+<div class="paragraph">
+<p>The non-reproducible mode can be slightly faster than the reproducible mode.
+Avoid using it during development as it makes debugging and bug fixing painful.
+If your production environment doesn&#8217;t care about reproducibility, use this mode in production.</p>
+</div>
+<div class="paragraph">
+<p>In practice, this mode uses no fixed <a href="#randomNumberGenerator">random seed</a> if no seed is specified.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="anchor" href="#logging"></a>4.4. Logging level: what is the <code>Solver</code> doing?</h3>
+<div class="paragraph">
+<p>The best way to illuminate the black box that is a <code>Solver</code>, is to play with the logging level:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>error</strong>: Log errors, except those that are thrown to the calling code as a <code>RuntimeException</code>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>If an error happens, OptaPlanner normally fails fast</strong>: it throws a subclass of <code>RuntimeException</code> with a detailed message to the calling code.
+It does not log it as an error itself to avoid duplicate log messages.
+Except if the calling code explicitly catches and eats that <code>RuntimeException</code>, a <code>Thread</code>'s default <code>ExceptionHandler</code> will log it as an error anyway.
+Meanwhile, the code is disrupted from doing further harm or obfuscating the error.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>warn</strong>: Log suspicious circumstances.</p>
+</li>
+<li>
+<p><strong>info</strong>: Log every phase and the solver itself. See <a href="../optimization-algorithms/optimization-algorithms.html#scopeOverview" class="page">scope overview</a>.</p>
+</li>
+<li>
+<p><strong>debug</strong>: Log every step of every phase. See <a href="../optimization-algorithms/optimization-algorithms.html#scopeOverview" class="page">scope overview</a>.</p>
+</li>
+<li>
+<p><strong>trace</strong>: Log every move of every step of every phase. See <a href="../optimization-algorithms/optimization-algorithms.html#scopeOverview" class="page">scope overview</a>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Turning on <code>trace</code> logging, will slow down performance considerably: it is often four times slower.
+However, it is invaluable during development to discover a bottleneck.</p>
+</div>
+<div class="paragraph">
+<p>Even <code>debug</code> logging can slow down performance considerably for fast stepping algorithms (such as Late Acceptance and Simulated Annealing),
+but not for slow stepping algorithms (such as Tabu Search).</p>
+</div>
+<div class="paragraph">
+<p>Both cause congestion in <a href="../optimization-algorithms/optimization-algorithms.html#multithreadedSolving" class="page">multithreaded solving</a> with most appenders, see below.</p>
+</div>
+<div class="paragraph">
+<p>In Eclipse, <code>debug</code> logging to the console tends to cause congestion with a score calculation speeds above 10 000 per second.
+Nor IntelliJ, nor the Maven command line suffer from this problem.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, set it to <code>debug</code> logging, to see when the phases end and how fast steps are taken:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>INFO  Solving started: time spent (3), best score (-4init/0), random (JDK with seed 0).
+DEBUG     CH step (0), time spent (5), score (-3init/0), selected move count (1), picked move (Queen-2 {null -&gt; Row-0}).
+DEBUG     CH step (1), time spent (7), score (-2init/0), selected move count (3), picked move (Queen-1 {null -&gt; Row-2}).
+DEBUG     CH step (2), time spent (10), score (-1init/0), selected move count (4), picked move (Queen-3 {null -&gt; Row-3}).
+DEBUG     CH step (3), time spent (12), score (-1), selected move count (4), picked move (Queen-0 {null -&gt; Row-1}).
+INFO  Construction Heuristic phase (0) ended: time spent (12), best score (-1), score calculation speed (9000/sec), step total (4).
+DEBUG     LS step (0), time spent (19), score (-1),     best score (-1), accepted/selected move count (12/12), picked move (Queen-1 {Row-2 -&gt; Row-3}).
+DEBUG     LS step (1), time spent (24), score (0), new best score (0), accepted/selected move count (9/12), picked move (Queen-3 {Row-3 -&gt; Row-2}).
+INFO  Local Search phase (1) ended: time spent (24), best score (0), score calculation speed (4000/sec), step total (2).
+INFO  Solving ended: time spent (24), best score (0), score calculation speed (7000/sec), phase total (2), environment mode (REPRODUCIBLE).</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All time spent values are in milliseconds.</p>
+</div>
+<div class="paragraph">
+<p>Everything is logged to <a href="http://www.slf4j.org/">SLF4J</a>, which is a simple logging facade
+which delegates every log message to Logback, Apache Commons Logging, Log4j or java.util.logging.
+Add a dependency to the logging adaptor for your logging framework of choice.</p>
+</div>
+<div class="paragraph">
+<p>If you are not using any logging framework yet, use Logback by adding this Maven dependency (there is no need to add an extra bridge dependency):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;
+      &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;
+      &lt;version&gt;1.x&lt;/version&gt;
+    &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Configure the logging level on the <code>org.optaplanner</code> package in your <code>logback.xml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;configuration&gt;
+
+  &lt;logger name="org.optaplanner" level="debug"/&gt;
+
+  ...
+
+&lt;/configuration&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If it isn&#8217;t picked up, temporarily add the system property <code>-Dlogback.debug=true</code> to figure out why.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When running multiple solvers or one <a href="../optimization-algorithms/optimization-algorithms.html#multithreadedSolving" class="page">multithreaded solver</a>,
+most appenders (including the console) cause congestion with <code>debug</code> and <code>trace</code> logging.
+Switch to an async appender to avoid this problem or turn off <code>debug</code> logging.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If instead, you are still using Log4j 1.x (and you do not want to switch to its faster successor, Logback), add the bridge dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+      &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+      &lt;version&gt;1.x&lt;/version&gt;
+    &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And configure the logging level on the package <code>org.optaplanner</code> in your <code>log4j.xml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"&gt;
+
+  &lt;category name="org.optaplanner"&gt;
+    &lt;priority value="debug" /&gt;
+  &lt;/category&gt;
+
+  ...
+
+&lt;/log4j:configuration&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In a multitenant application, multiple <code>Solver</code> instances might be running at the same time.
+To separate their logging into distinct files, surround the <code>solve()</code> call with an <a href="http://logback.qos.ch/manual/mdc.html">MDC</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">        MDC.put("tenant.name",tenantName);
+        MySolution bestSolution = solver.solve(problem);
+        MDC.remove("tenant.name");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then configure your logger to use different files for each <code>${tenant.name}</code>.
+For example in Logback, use a <code>SiftingAppender</code> in <code>logback.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;appender name="fileAppender" class="ch.qos.logback.classic.sift.SiftingAppender"&gt;
+    &lt;discriminator&gt;
+      &lt;key&gt;tenant.name&lt;/key&gt;
+      &lt;defaultValue&gt;unknown&lt;/defaultValue&gt;
+    &lt;/discriminator&gt;
+    &lt;sift&gt;
+      &lt;appender name="fileAppender.${tenant.name}" class="...FileAppender"&gt;
+        &lt;file&gt;local/log/optaplanner-${tenant.name}.log&lt;/file&gt;
+        ...
+      &lt;/appender&gt;
+    &lt;/sift&gt;
+  &lt;/appender&gt;</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="monitoring"><a class="anchor" href="#monitoring"></a>4.5. Monitoring the solver</h3>
+<div class="paragraph">
+<p>OptaPlanner exposes metrics through <a href="https://micrometer.io/">Micrometer</a> which you can use to monitor the solver. OptaPlanner automatically connects to configured registries when it is used in Quarkus or Spring Boot. If you use OptaPlanner with plain Java, you must add the metrics registry to the global registry.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You have a plain Java OptaPlanner project.</p>
+</li>
+<li>
+<p>You have configured a Mircometer registry. For information about configuring Micrometer registries, see the <a href="https://micrometer.io">Micrometer</a> web site.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Add configuration information for the Mircometer registry for your desired monitoring system to the global registry.</p>
+</li>
+<li>
+<p>Add the following line below the configuration information, where <code>&lt;REGISTRY&gt;</code> is the name of the registry that you configured:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Metrics.addRegistry(&lt;REGISTRY&gt;);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following example shows how to add the Prometheus registry:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">PrometheusMeterRegistry prometheusRegistry = new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
+
+try {
+    HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+    server.createContext("/prometheus", httpExchange -&gt; {
+        String response = prometheusRegistry.scrape(); (1)
+        httpExchange.sendResponseHeaders(200, response.getBytes().length);
+        try (OutputStream os = httpExchange.getResponseBody()) {
+            os.write(response.getBytes());
+        }
+    });
+
+    new Thread(server::start).start();
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+
+Metrics.addRegistry(prometheusRegistry);</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open your monitoring system to view the metrics for your OptaPlanner project. The following metrics are exposed:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The names and format of the metrics vary depending on the registry.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>optaplanner.solver.errors.total</code>: the total number of errors that occurred while solving since the start
+of the measuring.</p>
+</li>
+<li>
+<p><code>optaplanner.solver.solve.duration.active-count</code>: the number of solvers currently solving.</p>
+</li>
+<li>
+<p><code>optaplanner.solver.solve.duration.seconds-max</code>: run time of the
+longest-running currently active solver.</p>
+</li>
+<li>
+<p><code>optaplanner.solver.solve.duration.seconds-duration-sum</code>: the sum of each active solver&#8217;s solve duration. For example, if there are two active solvers, one running for three minutes and the other for one minute, the total solve time is four minutes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_additional_metrics"><a class="anchor" href="#_additional_metrics"></a>4.5.1. Additional Metrics</h4>
+<div class="paragraph">
+<p>For more detailed monitoring, OptaPlanner can be configured to monitor additional metrics at a performance cost.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;monitoring&gt;
+    &lt;metric&gt;BEST_SCORE&lt;/metric&gt;
+    &lt;metric&gt;SCORE_CALCULATION_COUNT&lt;/metric&gt;
+    ...
+  &lt;/monitoring&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following metrics are available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SOLVE_DURATION</code> (default, Micrometer meter id: "optaplanner.solver.solve.duration"): Measure the duration of solving for the longest active solver, the number of active solvers and the cumulative duration of all active solvers.</p>
+</li>
+<li>
+<p><code>ERROR_COUNT</code> (default, Micrometer meter id: "optaplanner.solver.errors"): Measures the number of errors that occur while solving.</p>
+</li>
+<li>
+<p><code>SCORE_CALCULATION_COUNT</code> (default, Micrometer meter id: "optaplanner.solver.score.calculation.count"): Measures the number of score calculations OptaPlanner performed.</p>
+</li>
+<li>
+<p><code>BEST_SCORE</code> (Micrometer meter id: "optaplanner.solver.best.score.*"): Measures the score of the best solution OptaPlanner found so far. There are separate meters for each level of the score. For instance, for a <code>HardSoftScore</code>, there are <code>optaplanner.solver.best.score.hard.score</code> and <code>optaplanner.solver.best.score.soft.score</code> meters.</p>
+</li>
+<li>
+<p><code>STEP_SCORE</code> (Micrometer meter id: "optaplanner.solver.step.score.*"): Measures the score of each step OptaPlanner takes. There are separate meters for each level of the score. For instance, for a <code>HardSoftScore</code>, there are <code>optaplanner.solver.step.score.hard.score</code> and <code>optaplanner.solver.step.score.soft.score</code> meters.</p>
+</li>
+<li>
+<p><code>BEST_SOLUTION_MUTATION</code> (Micrometer meter id: "optaplanner.solver.best.solution.mutation"): Measures the number of changed planning variables between consecutive best solutions.</p>
+</li>
+<li>
+<p><code>MOVE_COUNT_PER_STEP</code> (Micrometer meter id: "optaplanner.solver.step.move.count"): Measures the number of moves evaluated in a step.</p>
+</li>
+<li>
+<p><code>MEMORY_USE</code> (Micrometer meter id: "jvm.memory.used"): Measures the amount of memory used across the JVM. This does not measure the amount of memory used by a solver; two solvers on the same JVM will report the same value for this metric.</p>
+</li>
+<li>
+<p><code>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</code> (Micrometer meter id: "optaplanner.solver.constraint.match.best.score.*"): Measures the score impact of each constraint on the best solution OptaPlanner found so far. There are separate meters for each level of the score, with tags for each constraint. For instance, for a <code>HardSoftScore</code> for a constraint "Minimize Cost" in package "com.example", there are <code>optaplanner.solver.constraint.match.best.score.hard.score</code> and <code>optaplanner.solver.constraint.match.best.score.soft.score</code> meters with tags "constraint.package=com.example" and "constraint.name=Minimize Cost".</p>
+</li>
+<li>
+<p><code>CONSTRAINT_MATCH_TOTAL_STEP_SCORE</code> (Micrometer meter id: "optaplanner.solver.constraint.match.step.score.*"): Measures the score impact of each constraint on the current step. There are separate meters for each level of the score, with tags for each constraint. For instance, for a <code>HardSoftScore</code> for a constraint "Minimize Cost" in package "com.example", there are <code>optaplanner.solver.constraint.match.step.score.hard.score</code> and <code>optaplanner.solver.constraint.match.step.score.soft.score</code> meters with tags "constraint.package=com.example" and "constraint.name=Minimize Cost".</p>
+</li>
+<li>
+<p><code>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</code> (Micrometer meter id: "optaplanner.solver.move.type.best.score.diff.*"): Measures how much a particular move type improves the best solution. There are separate meters for each level of the score, with a tag for the move type. For instance, for a <code>HardSoftScore</code> and a <code>ChangeMove</code> for the computer of a process, there are <code>optaplanner.solver.move.type.best.score.diff.hard.score</code> and <code>optaplanner.solver.move.type.best.score.diff.soft.score</code> meters with the tag <code>move.type=ChangeMove(Process.computer)</code>.</p>
+</li>
+<li>
+<p><code>PICKED_MOVE_TYPE_STEP_SCORE_DIFF</code> (Micrometer meter id: "optaplanner.solver.move.type.step.score.diff.*"): Measures how much a particular move type improves the best solution. There are separate meters for each level of the score, with a tag for the move type. For instance, for a <code>HardSoftScore</code> and a <code>ChangeMove</code> for the computer of a process, there are <code>optaplanner.solver.move.type.step.score.diff.hard.score</code> and <code>optaplanner.solver.move.type.step.score.diff.soft.score</code> meters with the tag <code>move.type=ChangeMove(Process.computer)</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="randomNumberGenerator"><a class="anchor" href="#randomNumberGenerator"></a>4.6. Random number generator</h3>
+<div class="paragraph">
+<p>Many heuristics and metaheuristics depend on a pseudorandom number generator for move selection, to resolve score ties, probability based move acceptance, &#8230;&#8203; During solving, the same <code>Random</code> instance is reused to improve reproducibility, performance and uniform distribution of random values.</p>
+</div>
+<div class="paragraph">
+<p>To change the random seed of that <code>Random</code> instance, specify a <code>randomSeed</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;randomSeed&gt;0&lt;/randomSeed&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To change the pseudorandom number generator implementation, specify a <code>randomType</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;randomType&gt;MERSENNE_TWISTER&lt;/randomType&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following types are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>JDK</code> (default): Standard implementation (<code>java.util.Random</code>).</p>
+</li>
+<li>
+<p><code>MERSENNE_TWISTER</code>: Implementation by <a href="http://commons.apache.org/proper/commons-math/userguide/random.html">Commons Math</a>.</p>
+</li>
+<li>
+<p><code>WELL512A</code>, <code>WELL1024A</code>, <code>WELL19937A</code>, <code>WELL19937C</code>, <code>WELL44497A</code> and <code>WELL44497B</code>: Implementation by <a href="http://commons.apache.org/proper/commons-math/userguide/random.html">Commons Math</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For most use cases, the randomType has no significant impact on the average quality of the best solution on multiple datasets.
+If you want to confirm this on your use case, use the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">benchmarker</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solverManager"><a class="anchor" href="#solverManager"></a>5. SolverManager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>SolverManager</code> is a facade for one or more <code>Solver</code> instances
+to simplify solving planning problems in REST and other enterprise services.
+Unlike the <code>Solver.solve(&#8230;&#8203;)</code> method:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>SolverManager.solve(&#8230;&#8203;)</code> returns immediately</strong>: it schedules a problem for asynchronous solving without blocking the calling thread.
+This avoids timeout issues of HTTP and other technologies.</p>
+</li>
+<li>
+<p><strong><code>SolverManager.solve(&#8230;&#8203;)</code> solves multiple planning problems</strong> of the same domain, in parallel.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Internally a <code>SolverManager</code> manages a thread pool of solver threads, which call <code>Solver.solve(&#8230;&#8203;)</code>,
+and a thread pool of consumer threads, which handle best solution changed events.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="../integration/integration.html#integrationWithQuarkus" class="page">Quarkus</a> and <a href="../integration/integration.html#integrationWithSpringBoot" class="page">Spring Boot</a>,
+the <code>SolverManager</code> instance is automatically injected in your code.
+Otherwise, build a <code>SolverManager</code> instance with the <code>create(&#8230;&#8203;)</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">SolverConfig solverConfig = SolverConfig.createFromXmlResource(".../cloudBalancingSolverConfig.xml");
+SolverManager&lt;CloudBalance, UUID&gt; solverManager = SolverManager.create(solverConfig, new SolverManagerConfig());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each problem submitted to the <code>SolverManager.solve(&#8230;&#8203;)</code> methods needs a unique problem ID.
+Later calls to <code>getSolverStatus(problemId)</code> or <code>terminateEarly(problemId)</code> use that problem ID
+to distinguish between the planning problems.
+The problem ID must be an immutable class, such as <code>Long</code>, <code>String</code> or <code>java.util.UUID</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SolverManagerConfig</code> class has a <code>parallelSolverCount</code> property,
+that controls how many solvers are run in parallel.
+For example, if set to <code>4</code>, submitting five problems
+has four problems solving immediately, and the fifth one starts when another one ends.
+If those problems solve for 5 minutes each, the fifth problem takes 10 minutes to finish.
+By default, <code>parallelSolverCount</code> is set to <code>AUTO</code>, which resolves to half the CPU cores,
+regardless of the <a href="../optimization-algorithms/optimization-algorithms.html#multithreadedSolving" class="page"><code>moveThreadCount</code></a> of the solvers.</p>
+</div>
+<div class="paragraph">
+<p>To retrieve the best solution, after solving terminates normally, use <code>SolverJob.getFinalBestSolution()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">CloudBalance problem1 = ...;
+UUID problemId = UUID.randomUUID();
+// Returns immediately
+SolverJob&lt;CloudBalance, UUID&gt; solverJob = solverManager.solve(problemId, problem1);
+...
+CloudBalance solution1;
+try {
+    // Returns only after solving terminates
+    solution1 = solverJob.getFinalBestSolution();
+} catch (InterruptedException | ExecutionException e) {
+    throw ...;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, there are better approaches, both for solving batch problems before an end-user needs the solution
+as well as for live solving while an end-user is actively waiting for the solution, as explained below.</p>
+</div>
+<div class="paragraph">
+<p>The current <code>SolverManager</code> implementation runs on a single computer node,
+but future work aims to distribute solver loads across a cloud.</p>
+</div>
+<div class="sect2">
+<h3 id="solverManagerSolveBatch"><a class="anchor" href="#solverManagerSolveBatch"></a>5.1. Solve batch problems</h3>
+<div class="paragraph">
+<p>At night, batch solving is a great approach to deliver solid plans by breakfast, because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There are typically few or no problem changes in the middle of the night.
+Some organizations even enforce a deadline, for example, <em>submit all day off requests before midnight</em>.</p>
+</li>
+<li>
+<p>The solvers can run for much longer, often hours, because nobody&#8217;s waiting for it and CPU resources are often cheaper.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To solve a multiple datasets in parallel (limited by <code>parallelSolverCount</code>),
+call <code>solve(&#8230;&#8203;)</code> for each dataset:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class TimeTableService {
+
+    private SolverManager&lt;TimeTable, Long&gt; solverManager;
+
+    // Returns immediately, call it for every dataset
+    public void solveBatch(Long timeTableId) {
+        solverManager.solve(timeTableId,
+                // Called once, when solving starts
+                this::findById,
+                // Called once, when solving ends
+                this::save);
+    }
+
+    public TimeTable findById(Long timeTableId) {...}
+
+    public void save(TimeTable timeTable) {...}
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A solid plan delivered by breakfast is great,
+even if you need to react on problem changes during the day.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solverManagerSolveAndListen"><a class="anchor" href="#solverManagerSolveAndListen"></a>5.2. Solve and listen to show progress to the end-user</h3>
+<div class="paragraph">
+<p>When a solver is running while an end-user is waiting for that solution,
+the user might need to wait for several minutes or hours before receiving a result.
+To assure the user that everything is going well,
+show progress by displaying the best solution and best score attained so far.</p>
+</div>
+<div class="paragraph">
+<p>To handle intermediate best solutions, use <code>solveAndListen(&#8230;&#8203;)</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class TimeTableService {
+
+    private SolverManager&lt;TimeTable, Long&gt; solverManager;
+
+    // Returns immediately
+    public void solveLive(Long timeTableId) {
+        solverManager.solveAndListen(timeTableId,
+                // Called once, when solving starts
+                this::findById,
+                // Called multiple times, for every best solution change
+                this::save);
+    }
+
+    public TimeTable findById(Long timeTableId) {...}
+
+    public void save(TimeTable timeTable) {...}
+
+    public void stopSolving(Long timeTableId) {
+        solverManager.terminateEarly(timeTableId);
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This implementation is using the database to communicate with the UI, which polls the database.
+More advanced implementations push the best solutions directly to the UI or a messaging queue.</p>
+</div>
+<div class="paragraph">
+<p>If the user is satisfied with the intermediate best solution
+and does not want to wait any longer for a better one, call <code>SolverManager.terminateEarly(problemId)</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/planner-configuration/planner-configuration.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

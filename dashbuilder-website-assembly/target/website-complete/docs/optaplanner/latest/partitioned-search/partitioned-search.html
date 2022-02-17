@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Partitioned search :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/partitioned-search/partitioned-search.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="partitioned-search.html">Partitioned search</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/partitioned-search/partitioned-search.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Partitioned search</h1>
+<div class="sect1">
+<h2 id="partitionedSearchAlgorithm"><a class="anchor" href="#partitionedSearchAlgorithm"></a>1. Algorithm description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is often more efficient to partition large data sets (usually above 5000 planning entities)
+into smaller pieces and solve them separately.
+Partition Search is <a href="../optimization-algorithms/optimization-algorithms.html#multithreadedSolving" class="page">multithreaded</a>, so it provides a performance boost on multi-core machines
+due to higher CPU utilization.
+Additionally, even when only using one CPU, it finds an initial solution faster,
+because the search space sum of a partitioned Construction Heuristic is far less than its non-partitioned variant.</p>
+</div>
+<div class="paragraph">
+<p>However, <strong>partitioning does lead to suboptimal results</strong>, even if the pieces are solved optimally, as shown below:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/partitioned-search/mapReduceIsTerribleForTsp.png" alt="mapReduceIsTerribleForTsp">
+</div>
+</div>
+<div class="paragraph">
+<p>It effectively trades a short term gain in solution quality for long term loss.
+One way to compensate for this loss,
+is to run a non-partitioned Local Search after the Partitioned Search phase.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Not all use cases can be partitioned.
+Partitioning only works for use cases where the planning entities and value ranges can be split into n partitions,
+without any of the constraints crossing boundaries between partitions.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="partitionedSearchConfiguration"><a class="anchor" href="#partitionedSearchConfiguration"></a>2. Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Simplest configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;partitionedSearch&gt;
+    &lt;solutionPartitionerClass&gt;org.optaplanner.examples.cloudbalancing.optional.partitioner.CloudBalancePartitioner&lt;/solutionPartitionerClass&gt;
+  &lt;/partitionedSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also <a href="../optimization-algorithms/optimization-algorithms.html#planningId" class="page">add a @PlanningId annotations</a> on every planning entity class and planning value class.
+There are several ways to <a href="#partitioningASolution">partition a solution</a>.</p>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;partitionedSearch&gt;
+    ...
+    &lt;solutionPartitionerClass&gt;org.optaplanner.examples.cloudbalancing.optional.partitioner.CloudBalancePartitioner&lt;/solutionPartitionerClass&gt;
+    &lt;runnablePartThreadLimit&gt;4&lt;/runnablePartThreadLimit&gt;
+
+    &lt;constructionHeuristic&gt;...&lt;/constructionHeuristic&gt;
+    &lt;localSearch&gt;...&lt;/localSearch&gt;
+  &lt;/partitionedSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>runnablePartThreadLimit</code> allows limiting CPU usage to avoid hanging your machine, see below.</p>
+</div>
+<div class="paragraph">
+<p>To run in an environment that doesn&#8217;t like arbitrary thread creation,
+plug in a <a href="../optimization-algorithms/optimization-algorithms.html#customThreadFactory" class="page">custom thread factory</a>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <a href="../planner-configuration/planner-configuration.html#logging" class="page">logging level</a> of <code>debug</code> or <code>trace</code> causes congestion in multithreaded Partitioned Search
+and slows down the <a href="../score-calculation/score-calculation.html#scoreCalculationSpeed" class="page">score calculation speed</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Just like a <code>&lt;solver&gt;</code> element, the <code>&lt;partitionedSearch&gt;</code> element can contain one or more <a href="../optimization-algorithms/optimization-algorithms.html#solverPhase" class="page">phases</a>.
+Each of those phases will be run on each partition.</p>
+</div>
+<div class="paragraph">
+<p>A common configuration is to first run a Partitioned Search phase
+(which includes a Construction Heuristic and a Local Search)
+followed by a non-partitioned Local Search phase:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;partitionedSearch&gt;
+    &lt;solutionPartitionerClass&gt;...CloudBalancePartitioner&lt;/solutionPartitionerClass&gt;
+
+    &lt;constructionHeuristic/&gt;
+    &lt;localSearch&gt;
+      &lt;termination&gt;
+        &lt;secondsSpentLimit&gt;60&lt;/secondsSpentLimit&gt;
+      &lt;/termination&gt;
+    &lt;/localSearch&gt;
+  &lt;/partitionedSearch&gt;
+  &lt;localSearch/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="partitioningASolution"><a class="anchor" href="#partitioningASolution"></a>3. Partitioning a solution</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="customSolutionPartitioner"><a class="anchor" href="#customSolutionPartitioner"></a>3.1. Custom <code>SolutionPartitioner</code></h3>
+<div class="paragraph">
+<p>To use a custom <code>SolutionPartitioner</code>, configure one on the Partitioned Search phase:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;partitionedSearch&gt;
+    &lt;solutionPartitionerClass&gt;org.optaplanner.examples.cloudbalancing.optional.partitioner.CloudBalancePartitioner&lt;/solutionPartitionerClass&gt;
+  &lt;/partitionedSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Implement the <code>SolutionPartitioner</code> interface:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public interface SolutionPartitioner&lt;Solution_&gt; {
+
+    List&lt;Solution_&gt; splitWorkingSolution(ScoreDirector&lt;Solution_&gt; scoreDirector, Integer runnablePartThreadLimit);
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>size()</code> of the returned <code>List</code> is the <code>partCount</code> (the number of partitions).
+This can be decided dynamically, for example, based on the size of the non-partitioned solution.
+The <code>partCount</code> is unrelated to the <code>runnablePartThreadLimit</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class CloudBalancePartitioner implements SolutionPartitioner&lt;CloudBalance&gt; {
+
+    private int partCount = 4;
+    private int minimumProcessListSize = 75;
+
+    @Override
+    public List&lt;CloudBalance&gt; splitWorkingSolution(ScoreDirector&lt;CloudBalance&gt; scoreDirector, Integer runnablePartThreadLimit) {
+        CloudBalance originalSolution = scoreDirector.getWorkingSolution();
+        List&lt;CloudComputer&gt; originalComputerList = originalSolution.getComputerList();
+        List&lt;CloudProcess&gt; originalProcessList = originalSolution.getProcessList();
+        int partCount = this.partCount;
+        if (originalProcessList.size() / partCount &lt; minimumProcessListSize) {
+            partCount = originalProcessList.size() / minimumProcessListSize;
+        }
+        List&lt;CloudBalance&gt; partList = new ArrayList&lt;&gt;(partCount);
+        for (int i = 0; i &lt; partCount; i++) {
+            CloudBalance partSolution = new CloudBalance(originalSolution.getId(),
+                    new ArrayList&lt;&gt;(originalComputerList.size() / partCount + 1),
+                    new ArrayList&lt;&gt;(originalProcessList.size() / partCount + 1));
+            partList.add(partSolution);
+        }
+
+        int partIndex = 0;
+        Map&lt;Long, Pair&lt;Integer, CloudComputer&gt;&gt; idToPartIndexAndComputerMap = new HashMap&lt;&gt;(originalComputerList.size());
+        for (CloudComputer originalComputer : originalComputerList) {
+            CloudBalance part = partList.get(partIndex);
+            CloudComputer computer = new CloudComputer(
+                    originalComputer.getId(),
+                    originalComputer.getCpuPower(), originalComputer.getMemory(),
+                    originalComputer.getNetworkBandwidth(), originalComputer.getCost());
+            part.getComputerList().add(computer);
+            idToPartIndexAndComputerMap.put(computer.getId(), Pair.of(partIndex, computer));
+            partIndex = (partIndex + 1) % partList.size();
+        }
+
+        partIndex = 0;
+        for (CloudProcess originalProcess : originalProcessList) {
+            CloudBalance part = partList.get(partIndex);
+            CloudProcess process = new CloudProcess(
+                    originalProcess.getId(),
+                    originalProcess.getRequiredCpuPower(), originalProcess.getRequiredMemory(),
+                    originalProcess.getRequiredNetworkBandwidth());
+            part.getProcessList().add(process);
+            if (originalProcess.getComputer() != null) {
+                Pair&lt;Integer, CloudComputer&gt; partIndexAndComputer = idToPartIndexAndComputerMap.get(
+                        originalProcess.getComputer().getId());
+                if (partIndexAndComputer == null) {
+                    throw new IllegalStateException("The initialized process (" + originalProcess
+                            + ") has a computer (" + originalProcess.getComputer()
+                            + ") which doesn't exist in the originalSolution (" + originalSolution + ").");
+                }
+                if (partIndex != partIndexAndComputer.getLeft().intValue()) {
+                    throw new IllegalStateException("The initialized process (" + originalProcess
+                            + ") with partIndex (" + partIndex
+                            + ") has a computer (" + originalProcess.getComputer()
+                            + ") which belongs to another partIndex (" + partIndexAndComputer.getLeft() + ").");
+                }
+                process.setComputer(partIndexAndComputer.getRight());
+            }
+            partIndex = (partIndex + 1) % partList.size();
+        }
+        return partList;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To configure values of a <code>SolutionPartitioner</code> dynamically in the solver configuration
+(so the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> can tweak those parameters),
+add the <code>solutionPartitionerCustomProperties</code> element and use <a href="../planner-configuration/planner-configuration.html#customPropertiesConfiguration" class="page">custom properties</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;partitionedSearch&gt;
+    &lt;solutionPartitionerClass&gt;...CloudBalancePartitioner&lt;/solutionPartitionerClass&gt;
+    &lt;solutionPartitionerCustomProperties&gt;
+      &lt;property name="myPartCount" value="8"/&gt;
+      &lt;property name="myMinimumProcessListSize" value="100"/&gt;
+    &lt;/solutionPartitionerCustomProperties&gt;
+  &lt;/partitionedSearch&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="runnablePartThreadLimit"><a class="anchor" href="#runnablePartThreadLimit"></a>4. Runnable part thread limit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When running a multithreaded solver, such as Partitioned Search, CPU power can quickly become a scarce resource,
+which can cause other processes or threads to hang or freeze.
+However, OptaPlanner has a system to prevent CPU starving of
+other processes (such as an SSH connection in production or your IDE in development)
+or other threads (such as the servlet threads that handle REST requests).</p>
+</div>
+<div class="paragraph">
+<p>As explained in <a href="../integration/integration.html#sizingHardwareAndSoftware" class="page">sizing hardware and software</a>,
+each solver (including each child solver) does no IO during <code>solve()</code> and therefore saturates one CPU core completely.
+In Partitioned Search, every partition always has its own thread, called a part thread.
+It is impossible for two partitions to share a thread,
+because of <a href="../optimization-algorithms/optimization-algorithms.html#asynchronousTermination" class="page">asynchronous termination</a>: the second thread would never run.
+Every part thread will try to consume one CPU core entirely, so if there are more partitions than CPU cores,
+this will probably hang the system.
+<code>Thread.setPriority()</code> is often too weak to solve this hogging problem, so another approach is used.</p>
+</div>
+<div class="paragraph">
+<p>The <code>runnablePartThreadLimit</code> parameter specifies how many part threads are runnable at the same time.
+The other part threads will temporarily block and therefore will not consume any CPU power.
+<strong>This parameter basically specifies how many CPU cores are donated to OptaPlanner.</strong>
+All part threads share the CPU cores in a round-robin manner
+to consume (more or less) the same number of CPU cycles:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/partitioned-search/partitionedSearchThreading.png" alt="partitionedSearchThreading">
+</div>
+</div>
+<div class="paragraph">
+<p>The following <code>runnablePartThreadLimit</code> options are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UNLIMITED</code>: Allow OptaPlanner to occupy all CPU cores, do not avoid hogging.
+Useful if a no hogging CPU policy is configured on the OS level.</p>
+</li>
+<li>
+<p><code>AUTO</code> (default): Let OptaPlanner decide how many CPU cores to occupy. This formula is based on experience.
+It does not hog all CPU cores on a multi-core machine.</p>
+</li>
+<li>
+<p>Static number: The number of CPU cores to consume. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;runnablePartThreadLimit&gt;2&lt;/runnablePartThreadLimit&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the <code>runnablePartThreadLimit</code> is equal to or higher than the number of available processors,
+the host is likely to hang or freeze,
+unless there is an OS specific policy in place to avoid OptaPlanner from hogging all the CPU processors.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/partitioned-search/partitioned-search.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

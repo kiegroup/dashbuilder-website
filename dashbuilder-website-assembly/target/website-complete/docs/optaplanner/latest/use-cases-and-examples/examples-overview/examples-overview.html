@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Examples overview :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/examples-overview/examples-overview.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="stylesheet" href="../../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../../_/../../">
+          <img src="../../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="examples-overview.html">Examples overview</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/use-cases-and-examples/examples-overview/examples-overview.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Examples overview</h1>
+<div class="paragraph">
+<p>OptaPlanner has several examples.
+In this manual we explain mainly using the <em>n</em> queens example and cloud balancing example.
+So it is advisable to read at least those sections.</p>
+</div>
+<div class="paragraph">
+<p>Some of the examples solve problems that are presented in academic contests.
+The <code>Contest</code> column in the following table lists the contests.
+It also identifies an example as being either <em>realistic</em> or <em>unrealistic</em> for the purpose of a contest.
+A <em>realistic contest</em> is <em>an official, independent contest</em>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>that clearly defines a real-world use case.</p>
+</li>
+<li>
+<p>with real-world constraints.</p>
+</li>
+<li>
+<p>with multiple, real-world datasets.</p>
+</li>
+<li>
+<p>that expects reproducible results within a specific time limit on specific hardware.</p>
+</li>
+<li>
+<p>that has had serious participation from the academic and/or enterprise Operations Research community.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Realistic contests provide an objective comparison of OptaPlanner with competitive software and academic research.</p>
+</div>
+<div class="paragraph">
+<p>The source code of all these examples is available in the distribution zip under <em class="path">examples/sources</em>
+and also in git under <em class="path">optaplanner/optaplanner-examples</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Examples overview</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Example</th>
+<th class="tableblock halign-left valign-top">Domain</th>
+<th class="tableblock halign-left valign-top">Size</th>
+<th class="tableblock halign-left valign-top">Contest</th>
+<th class="tableblock halign-left valign-top">Special features used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../nqueens/nqueens.html#nQueens" class="page">N queens</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>256</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>256</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^616</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Pointless (<a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle#Explicit_solutions">cheatable</a>)</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>None</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../cloud-balancing/cloud-balancing.html#cloudBalancing" class="page">Cloud balancing</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>2400</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>800</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^6967</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#realTimePlanning" class="page">Real-time planning</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../travelling-salesman/travelling-salesman.html#tsp" class="page">Traveling salesman</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 chained variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>980</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>980</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^2504</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Unrealistic</p>
+</li>
+<li>
+<p><a href="http://www.math.uwaterloo.ca/tsp/">TSP web</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#realTimePlanning" class="page">Real-time planning</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../tennis-scheduling/tennis-scheduling.html#tennis" class="page">Tennis club scheduling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>72</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>7</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^60</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../score-calculation/score-calculation.html#fairnessScoreConstraints" class="page">Fairness score constraints</a></p>
+</li>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#pinnedPlanningEntities" class="page">Pinned entities</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../meeting-scheduling/meeting-scheduling.html#meetingScheduling" class="page">Meeting scheduling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2 variables</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>10</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>320</code> and &#8656; <code>5</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^320</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../design-patterns/design-patterns.html#timeGrainPattern" class="page">TimeGrain pattern</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../course-timetabling/course-timetabling.html#curriculumCourse" class="page">Course timetabling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2 variables</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>434</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>25</code> and &#8656; <code>20</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^1171</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Realistic</p>
+</li>
+<li>
+<p><a href="http://www.cs.qub.ac.uk/itc2007/curriculmcourse/course_curriculm_index.htm">ITC 2007 track 3</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#pinnedPlanningEntities" class="page">Pinned entities</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../machine-reassignment/machine-reassignment.html#machineReassignment" class="page">Machine reassignment</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>50000</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>5000</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^184948</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Nearly realistic</p>
+</li>
+<li>
+<p><a href="http://challenge.roadef.org/2012/en/">ROADEF 2012</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#realTimePlanning" class="page">Real-time planning</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../vehicle-routing/vehicle-routing.html#vehicleRouting" class="page">Vehicle routing</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 chained variable</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1 shadow entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 automatic shadow variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>2740</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>2795</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^8380</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Unrealistic</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/">VRP web</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../shadow-variable/shadow-variable.html#shadowVariable" class="page">Shadow variable</a></p>
+</li>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#realTimePlanning" class="page">Real-time planning</a></p>
+</li>
+<li>
+<p><a href="../../move-and-neighborhood-selection/move-and-neighborhood-selection.html#nearbySelection" class="page">Nearby selection</a></p>
+</li>
+<li>
+<p>Real road distances</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../vehicle-routing/vehicle-routing.html#vehicleRouting" class="page">Vehicle routing</a> with time windows</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>All of Vehicle routing</p>
+</li>
+<li>
+<p>1 shadow variable</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>2740</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>2795</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^8380</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Unrealistic</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/">VRP web</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>All of Vehicle routing</p>
+</li>
+<li>
+<p>Custom <a href="../../shadow-variable/shadow-variable.html#customVariableListener" class="page">VariableListener</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../project-job-scheduling/project-job-scheduling.html#projectJobScheduling" class="page">Project job scheduling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2 variables</p>
+</li>
+<li>
+<p>1 shadow variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>640</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>?</code> and &#8656; <code>?</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>?</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Nearly realistic</p>
+</li>
+<li>
+<p><a href="http://gent.cs.kuleuven.be/mista2013challenge/">MISTA 2013</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../score-calculation/score-calculation.html#bendableScore" class="page">Bendable score</a></p>
+</li>
+<li>
+<p>Custom <a href="../../shadow-variable/shadow-variable.html#customVariableListener" class="page">VariableListener</a></p>
+</li>
+<li>
+<p><a href="../../planner-configuration/planner-configuration.html#valueRangeFactory" class="page">ValueRangeFactory</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../bed-allocation/bed-allocation.html#bedAllocation" class="page">Hospital bed planning</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 nullable variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>2750</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>471</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^6851</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Unrealistic</p>
+</li>
+<li>
+<p><a href="https://people.cs.kuleuven.be/~wim.vancroonenburg/pas/">Kaho PAS</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#overconstrainedPlanning" class="page">Overconstrained planning</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../task-assigning/task-assigning.html#taskAssigning" class="page">Task assigning</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 chained variable</p>
+</li>
+<li>
+<p>1 shadow variable</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1 shadow entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 automatic shadow variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>500</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>520</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^1168</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../score-calculation/score-calculation.html#bendableScore" class="page">Bendable score</a></p>
+</li>
+<li>
+<p><a href="../../design-patterns/design-patterns.html#chainedThroughTimePattern" class="page">Chained through time pattern</a></p>
+</li>
+<li>
+<p>Custom <a href="../../shadow-variable/shadow-variable.html#customVariableListener" class="page">VariableListener</a></p>
+</li>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#continuousPlanning" class="page">Continuous planning</a></p>
+</li>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#realTimePlanning" class="page">Real-time planning</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../exam-timetabling/exam-timetabling.html#examination" class="page">Exam timetabling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>2 entity classes (same hierarchy)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2 variables</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>1096</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>80</code> and &#8656; <code>49</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^3374</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Realistic</p>
+</li>
+<li>
+<p><a href="http://www.cs.qub.ac.uk/itc2007/examtrack/exam_track_index.htm">ITC 2007 track 1</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Custom <a href="../../shadow-variable/shadow-variable.html#customVariableListener" class="page">VariableListener</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../nurse-rostering/nurse-rostering.html#nurseRostering" class="page">Nurse rostering</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>752</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>50</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^1277</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Realistic</p>
+</li>
+<li>
+<p><a href="https://www.kuleuven-kulak.be/~u0041139/nrpcompetition/nrpcompetition_description.pdf">INRC 2010</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#continuousPlanning" class="page">Continuous planning</a></p>
+</li>
+<li>
+<p><a href="../../repeated-planning/repeated-planning.html#realTimePlanning" class="page">Real-time planning</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../travelling-tournament/travelling-tournament.html#travelingTournament" class="page">Traveling tournament</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>1560</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>78</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^2301</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Unrealistic</p>
+</li>
+<li>
+<p><a href="http://mat.tepper.cmu.edu/TOURN/">TTP</a></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Custom <a href="../../move-and-neighborhood-selection/move-and-neighborhood-selection.html#moveListFactory" class="page">MoveListFactory</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../cheap-time/cheap-time.html#cheapTimeScheduling" class="page">Cheap time scheduling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2 variables</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>500</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>100</code> and &#8656; <code>288</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^20078</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Nearly realistic</p>
+</li>
+<li>
+<p>ICON challenge 2014</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../planner-configuration/planner-configuration.html#annotationAlternatives" class="page">Field annotations</a></p>
+</li>
+<li>
+<p><a href="../../planner-configuration/planner-configuration.html#valueRangeFactory" class="page">ValueRangeFactory</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../investment/investment.html#investment" class="page">Investment</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+</li>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>11</code></p>
+</li>
+<li>
+<p>Value = <code>1000</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^4</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><a href="../../planner-configuration/planner-configuration.html#valueRangeFactory" class="page">ValueRangeFactory</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../conference-scheduling/conference-scheduling.html#conferenceScheduling" class="page">Conference scheduling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2 variables</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>216</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>18</code> and &#8656; <code>20</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^552</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../rock-tour/rock-tour.html#rockTour" class="page">Rock tour</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 chained variable</p>
+</li>
+<li>
+<p>4 shadow variables</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1 shadow entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 automatic shadow variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>47</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>48</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^59</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../flight-crew-scheduling/flight-crew-scheduling.html#flightCrewScheduling" class="page">Flight crew scheduling</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>1 entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1 shadow entity class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 automatic shadow variable</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656; <code>4375</code></p>
+</li>
+<li>
+<p>Value &#8656; <code>750</code></p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^12578</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../coach-shuttle-gathering/coach-shuttle-gathering.html#coachShuttleGathering" class="page">Coach shuttle gathering</a></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>2 entity class (BusStop, Shuttle)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1 variable each (previousBusOrStop for BusStop, destination for Shuttle)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1 shadow entity class (Coach)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2 automatic shadow variable (next bus stop and
+passenger quantity total) (also on Shuttle)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Entity &#8656;  <code>6</code> shuttles and
+<code>12</code> bus stops</p>
+</li>
+<li>
+<p>Value &#8656; <code>3</code> coaches, <code>6</code> shuttles and <code>12</code> bus stops</p>
+</li>
+<li>
+<p>Search space &#8656; <code>10^23</code></p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>No</p>
+</li>
+<li>
+<p>Defined by us</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Custom <a href="../../shadow-variable/shadow-variable.html#customVariableListener" class="page">VariableListener</a></p>
+</li>
+<li>
+<p><a href="../../shadow-variable/shadow-variable.html#shadowVariable" class="page">Shadow variable</a></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../../_/js/site.js"></script>
+<script src="../../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../../_/js/vendor/search.js" id="search-script" data-base-path="../../../.." data-page-path="/optaplanner/latest/use-cases-and-examples/examples-overview/examples-overview.html"></script>
+<script async src="../../../../_/../search-index.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

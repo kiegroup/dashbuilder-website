@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Constraint streams score calculation :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/constraint-streams/constraint-streams.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="constraint-streams.html">Constraint streams score calculation</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/constraint-streams/constraint-streams.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Constraint streams score calculation</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Constraint streams are a Functional Programming form of incremental score calculation in plain Java that is easy to
+read, write and debug.
+The API should feel familiar if you&#8217;re familiar with Java Streams or SQL.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For the ConstraintStreams API, <a href="../score-calculation/score-calculation.html#explainingTheScore" class="page">Constraint justifications</a> may not function properly yet.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="constraintStreamsIntroduction"><a class="anchor" href="#constraintStreamsIntroduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using Java&#8217;s Streams API, we could implement an <a href="../score-calculation/score-calculation.html#easyJavaScoreCalculation" class="page">easy score calculator</a>
+that uses a functional approach:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private int doNotAssignAnn() {
+        int softScore = 0;
+        schedule.getShiftList().stream()
+                .filter(Shift::isEmployeeAnn)
+                .forEach(shift -&gt; {
+                    softScore -= 1;
+                });
+        return softScore;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, that scales poorly because it doesn&#8217;t do an <a href="../score-calculation/score-calculation.html#incrementalScoreCalculation" class="page">incremental calculation</a>:
+When the planning variable of a single <code>Shift</code> changes, to recalculate the score,
+the normal Streams API has to execute the entire stream from scratch.
+The ConstraintStreams API enables you to write similar code in pure Java, while reaping the performance benefits of
+incremental score calculation.
+This is an example of the same code, using the Constraint Streams API:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint doNotAssignAnn(ConstraintFactory factory) {
+        return factory.forEach(Shift.class)
+                .filter(Shift::isEmployeeAnn)
+                .penalize("Don't assign Ann", HardSoftScore.ONE_SOFT);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This constraint stream iterates over all instances of class <code>Shift</code> in the <a href="../planner-configuration/planner-configuration.html#problemFacts" class="page">problem facts</a> and
+<a href="../planner-configuration/planner-configuration.html#planningEntity" class="page">planning entities</a> in the <a href="#planningProblemAndPlanningSolution">planning problem</a>.
+It finds every <code>Shift</code> which is assigned to employee <code>Ann</code> and for every such instance (also called a match), it adds a
+soft penalty of <code>1</code> to the overall <a href="../score-calculation/score-calculation.html#calculateTheScore" class="page">score</a>.
+The following figure illustrates this process on a problem with 4 different shifts:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/constraint-streams/constraintStreamIntroduction.png" alt="constraintStreamIntroduction">
+</div>
+</div>
+<div class="paragraph">
+<p>If any of the instances change during solving, the constraint stream automatically detects the change
+and only recalculates the minimum necessary portion of the problem that is affected by the change.
+The following figure illustrates this <a href="../score-calculation/score-calculation.html#incrementalScoreCalculation" class="page">incremental score calculation</a>:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/constraint-streams/constraintStreamIncrementalCalculation.png" alt="constraintStreamIncrementalCalculation">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="constraintStreamsConfiguration"><a class="anchor" href="#constraintStreamsConfiguration"></a>2. Creating a constraint stream</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use the ConstraintStreams API in your project, first write a pure Java <code>ConstraintProvider</code> implementation similar
+to the following example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    public class MyConstraintProvider implements ConstraintProvider {
+
+        @Override
+        public Constraint[] defineConstraints(ConstraintFactory factory) {
+            return new Constraint[] {
+                    penalizeEveryShift(factory)
+            };
+        }
+
+        private Constraint penalizeEveryShift(ConstraintFactory factory) {
+            return factory.forEach(Shift.class)
+                .penalize("Penalize a shift", HardSoftScore.ONE_SOFT);
+        }
+
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This example contains one constraint, <code>penalizeEveryShift(&#8230;&#8203;)</code>.
+However, you can include as many as you require.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Add the following code to your solver configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">    &lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+      &lt;scoreDirectorFactory&gt;
+        &lt;constraintProviderClass&gt;org.acme.schooltimetabling.solver.TimeTableConstraintProvider&lt;/constraintProviderClass&gt;
+      &lt;/scoreDirectorFactory&gt;
+      ...
+    &lt;/solver&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="constraintStreamsCardinality"><a class="anchor" href="#constraintStreamsCardinality"></a>3. Constraint stream cardinality</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Constraint stream cardinality is a measure of how many objects a single constraint match consists of.
+The simplest constraint stream has a cardinality of 1, meaning each constraint match only consists of 1 object.
+Therefore, it is called a <code>UniConstraintStream</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint doNotAssignAnn(ConstraintFactory factory) {
+        return factory.forEach(Shift.class) // Returns UniStream&lt;Shift&gt;.
+                ...
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some constraint stream <a href="#constraintStreamsBuildingBlocks">building blocks</a> can increase stream cardinality, such as
+<a href="#constraintStreamsJoin">join</a> or <a href="#constraintStreamsGroupingAndCollectors">groupBy</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint doNotAssignAnn(ConstraintFactory factory) {
+        return factory.forEach(Shift.class) // Returns Uni&lt;Shift&gt;.
+                .join(Employee.class)       // Returns Bi&lt;Shift, Employee&gt;.
+                .join(DayOff.class)         // Returns Tri&lt;Shift, Employee, DayOff&gt;.
+                .join(Country.class)        // Returns Quad&lt;Shift, Employee, DayOff, Country&gt;.
+                ...
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The latter can also decrease stream cardinality:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint doNotAssignAnn(ConstraintFactory factory) {
+        return factory.forEach(Shift.class)             // Returns UniStream&lt;Shift&gt;.
+                .join(Employee.class)                   // Returns BiStream&lt;Shift, Employee&gt;.
+                .groupBy((shift, employee) -&gt; employee) // Returns UniStream&lt;Employee&gt;.
+                ...
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following constraint stream cardinalities are currently supported:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cardinality</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defining interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uni</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UniConstraintStream&lt;A&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>BiConstraintStream&lt;A, B&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TriConstraintStream&lt;A, B, C&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>QuadConstraintStream&lt;A, B, C, D&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="constraintStreamsHigherCardinalities"><a class="anchor" href="#constraintStreamsHigherCardinalities"></a>3.1. Achieving higher cardinalities</h3>
+<div class="paragraph">
+<p>OptaPlanner currently does not support constraint stream cardinalities higher than 4.
+However, with <a href="#constraintStreamsMappingTuples">tuple mapping</a> effectively infinite cardinality is possible:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint pentaStreamExample(ConstraintFactory factory) {
+        return factory.forEach(Shift.class) // UniConstraintStream&lt;Shift&gt;
+                .join(Shift.class)          // BiConstraintStream&lt;Shift, Shift&gt;
+                .join(Shift.class)          // TriConstraintStream&lt;Shift, Shift, Shift&gt;
+                .join(Shift.class)          // QuadConstraintStream&lt;Shift, Shift, Shift, Shift&gt;
+                .map(Tuple::of)             // UniConstraintStream&lt;Tuple&lt;Shift, Shift, Shift, Shift&gt;&gt;
+                .join(Shift.class)          // BiConstraintStream&lt;Tuple&lt;Shift, Shift, Shift, Shift&gt;, Shift&gt;
+                ...                         // This BiConstraintStream carries 5 Shift elements.
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>OptaPlanner does not provide any <code>Tuple</code> implementations out of the box.
+It&#8217;s recommended to use one of the myriad freely available 3rd party implementations.
+Should a custom implementation be necessary, see <a href="#constraintStreamsDesigningMappingFunction">guidelines for mapping functions</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="constraintStreamsBuildingBlocks"><a class="anchor" href="#constraintStreamsBuildingBlocks"></a>4. Building blocks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Constraint streams are chains of different operations, called building blocks.
+Each constraint stream starts with a <code>forEach(&#8230;&#8203;)</code> building block and is terminated by either a penalty or a reward.
+The following example shows the simplest possible constraint stream:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint penalizeInitializedShifts(ConstraintFactory factory) {
+        return factory.forEach(Shift.class)
+                .penalize("Initialized shift", HardSoftScore.ONE_SOFT);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This constraint stream penalizes each known and initialized instance of <code>Shift</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsForEach"><a class="anchor" href="#constraintStreamsForEach"></a>4.1. ForEach</h3>
+<div class="paragraph">
+<p>The <code>.forEach(T)</code> building block selects every <code>T</code> instance that
+is in a <a href="../planner-configuration/planner-configuration.html#problemFacts" class="page">problem fact collection</a>
+or a <a href="../planner-configuration/planner-configuration.html#planningEntitiesOfASolution" class="page">planning entity collection</a>
+and has no <code>null</code> genuine planning variables.</p>
+</div>
+<div class="paragraph">
+<p>To include instances with a <code>null</code> genuine planning variable,
+replace the <code>forEach()</code> building block by <code>forEachIncludingNullVars()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint penalizeAllShifts(ConstraintFactory factory) {
+        return factory.forEachIncludingNullVars(Shift.class)
+                .penalize("A shift", HardSoftScore.ONE_SOFT);
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>forEach()</code> building block has a legacy counterpart, <code>from()</code>.
+This alternative approach included instances based on the initialization status of their genuine planning variables.
+As an unwanted consequence,
+<code>from()</code> behaves unexpectedly for <a href="../planner-configuration/planner-configuration.html#nullablePlanningVariable" class="page">nullable variables</a>.
+These are considered initialized even when <code>null</code>,
+and therefore this legacy method could still return entities with <code>null</code> variables.
+<code>from()</code>, <code>fromUnfiltered()</code> and <code>fromUniquePair()</code> are now deprecated and will be removed in a future major version of OptaPlanner.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsPenaltiesRewards"><a class="anchor" href="#constraintStreamsPenaltiesRewards"></a>4.2. Penalties and rewards</h3>
+<div class="paragraph">
+<p>The purpose of constraint streams is to build up a <a href="../score-calculation/score-calculation.html#whatIsAScore" class="page">score</a> for a <a href="#planningProblemAndPlanningSolution">solution</a>.
+To do this, every constraint stream must be terminated by a call to either a <code>penalize()</code> or a <code>reward()</code>
+building block.
+The <code>penalize()</code> building block makes the score worse and the <code>reward()</code> building block improves the score.
+Penalties and rewards have several components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Constraint package is the Java package that contains the constraint.
+The default value is the package that contains the <code>ConstraintProvider</code> implementation or the value from
+<a href="../score-calculation/score-calculation.html#constraintConfiguration" class="page">constraint configuration</a>, if implemented.</p>
+</li>
+<li>
+<p>Constraint name is the human readable descriptive name for the constraint, which
+(together with the constraint package) must be unique within the entire <code>ConstraintProvider</code> implementation.</p>
+</li>
+<li>
+<p>Constraint weight is a constant score value indicating how much every breach of the constraint affects the score.
+Valid examples include <code>SimpleScore.ONE</code>, <code>HardSoftScore.ONE_HARD</code> and <code>HardMediumSoftScore.of(1, 2, 3)</code>.</p>
+</li>
+<li>
+<p>Constraint match weigher is an optional function indicating how many times the constraint weight should be applied in
+the score.
+The penalty or reward score impact is the constraint weight multiplied by the match weight.
+The default value is <code>1</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The ConstraintStreams API supports many different types of penalties.
+Browse the API in your IDE for the full list of method overloads.
+Here are some examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple penalty (<code>penalize("Constraint name", SimpleScore.ONE)</code>) makes the score worse by <code>1</code> per every match in the
+constraint stream.
+The score type must be the same type as used on the <code>@PlanningScore</code> annotated member on the planning solution.</p>
+</li>
+<li>
+<p>Dynamic penalty (<code>penalize("Constraint name", SimpleScore.ONE, Shift::getHours)</code>) makes the score worse by the number
+of hours in every matching <code>Shift</code> in the constraint stream.
+This is an example of using a constraint match weigher.</p>
+</li>
+<li>
+<p>Configurable penalty (<code>penalizeConfigurable("Constraint name")</code>) makes the score worse using constraint weights
+defined in <a href="../score-calculation/score-calculation.html#constraintConfiguration" class="page">constraint configuration</a>.</p>
+</li>
+<li>
+<p>Configurable dynamic penalty(<code>penalizeConfigurable("Constraint name", Shift::getHours)</code>) makes the score worse using
+constraint weights defined in <a href="../score-calculation/score-calculation.html#constraintConfiguration" class="page">constraint configuration</a>, multiplied by the number of hours in
+every matching <code>Shift</code> in the constraint stream.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By replacing the keyword <code>penalize</code> by <code>reward</code> in the name of these building blocks, you get operations that
+affect score in the opposite direction.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsFilter"><a class="anchor" href="#constraintStreamsFilter"></a>4.3. Filtering</h3>
+<div class="paragraph">
+<p>Filtering enables you to reduce the number of constraint matches in your stream.
+It first enumerates all constraint matches and then applies a predicate to filter some matches out.
+The predicate is a function that only returns <code>true</code> if the match is to continue in the stream.
+The following constraint stream removes all of Beth&#8217;s shifts from all <code>Shift</code> matches:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint penalizeAnnShifts(ConstraintFactory factory) {
+        return factory.forEach(Shift.class)
+                .filter(shift -&gt; shift.getEmployeeName().equals("Ann"))
+                .penalize("Ann's shift", SimpleScore.ONE);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following example retrieves a list of shifts where an employee has asked for a day off from a bi-constraint match
+of <code>Shift</code> and <code>DayOff</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint penalizeShiftsOnOffDays(ConstraintFactory factory) {
+        return factory.forEach(Shift.class)
+                .join(DayOff.class)
+                .filter((shift, dayOff) -&gt; shift.date == dayOff.date &amp;&amp; shift.employee == dayOff.employee)
+                .penalize("Shift on an off-day", SimpleScore.ONE);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following figure illustrates both these examples:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/constraint-streams/constraintStreamFilter.png" alt="constraintStreamFilter">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For performance reasons, using the <a href="#constraintStreamsJoin">join</a> building block with the appropriate <code>Joiner</code> is
+preferrable when possible.
+Using a <code>Joiner</code> creates only the constraint matches that are necessary, while filtered join creates all possible
+constraint matches and only then filters some of them out.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following functions are required for filtering constraint streams of different cardinality:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cardinality</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filtering Predicate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.Predicate&lt;A&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.util.function.BiPredicate&lt;A, B&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.optaplanner.core.api.function.TriPredicate&lt;A, B, C&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.optaplanner.core.api.function.QuadPredicate&lt;A, B, C, D&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsJoin"><a class="anchor" href="#constraintStreamsJoin"></a>4.4. Joining</h3>
+<div class="paragraph">
+<p>Joining is a way to increase <a href="#constraintStreamsCardinality">stream cardinality</a> and it is similar to the inner join
+operation in SQL. As the following figure illustrates,
+a <code>join()</code> creates a cartesian product of the streams being joined:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/constraint-streams/constraintStreamJoinWithoutJoiners.png" alt="constraintStreamJoinWithoutJoiners">
+</div>
+</div>
+<div class="paragraph">
+<p>Doing this is inefficient if the resulting stream contains a lot of constraint matches
+that need to be filtered out immediately.</p>
+</div>
+<div class="paragraph">
+<p>Instead, use a <code>Joiner</code> condition to restrict the joined matches only to those that are interesting:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/constraint-streams/constraintStreamJoinWithJoiners.png" alt="constraintStreamJoinWithJoiners">
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    import static org.optaplanner.core.api.score.stream.Joiners.*;
+
+    ...
+
+    private Constraint shiftOnDayOff(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(Shift.class)
+                .join(DayOff.class,
+                    equal(Shift::getDate, DayOff::getDate),
+                    equal(Shift::getEmployee, DayOff::getEmployee))
+                .penalize("Shift on an off-day",
+                        HardSoftScore.ONE_HARD);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Through the <code>Joiners</code> class, the following <code>Joiner</code> conditions are supported to join two streams,
+pairing a match from each side:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>equal()</code>: the paired matches have a property that are <code>equals()</code>. This relies on <code>hashCode()</code>.</p>
+</li>
+<li>
+<p><code>greaterThan()</code>, <code>greaterThanOrEqual()</code>, <code>lessThan()</code> and <code>lessThanOrEqual()</code>:
+the paired matches have a <code>Comparable</code> property following the prescribed ordering.</p>
+</li>
+<li>
+<p><code>overlapping()</code>: the paired matches have two properties (a <em>start</em> and an <em>end</em> property) of the same <code>Comparable</code> type
+that both represent an interval which overlap.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All <code>Joiners</code> methods have an overloaded method to use the same property of the same class on both stream sides.
+For example, calling <code>equal(Shift::getEmployee)</code> is the same as calling <code>equal(Shift::getEmployee, Shift::getEmployee)</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the other stream might match multiple times, but it must only impact the score once (for each element of the original
+stream), use <a href="#constraintStreamsConditionalPropagation">ifExists</a> instead.
+It does not create cartesian products and therefore generally performs better.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsGroupingAndCollectors"><a class="anchor" href="#constraintStreamsGroupingAndCollectors"></a>4.5. Grouping and collectors</h3>
+<div class="paragraph">
+<p>Grouping collects items in a stream according to user-provider criteria (also called "group key"), similar to what a
+<code>GROUP BY</code> SQL clause does. Additionally, some grouping operations also accept one or more <code>Collector</code> instances, which
+provide various aggregation functions. The following figure illustrates a simple <code>groupBy()</code> operation:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/constraint-streams/constraintStreamGroupBy.png" alt="constraintStreamGroupBy">
+</div>
+</div>
+<div class="paragraph">
+<p>For example, the following code snippet first groups all processes by the computer they run on, sums up all the power
+required by the processes on that computer using the <code>ConstraintCollectors.sum(&#8230;&#8203;)</code> collector, and finally penalizes
+every computer whose processes consume more power than is available.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    import static org.optaplanner.core.api.score.stream.ConstraintCollectors.*;
+
+    ...
+
+    private Constraint requiredCpuPowerTotal(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class)
+                .groupBy(CloudProcess::getComputer, sum(CloudProcess::getRequiredCpuPower))
+                .filter((computer, requiredCpuPower) -&gt; requiredCpuPower &gt; computer.getCpuPower())
+                .penalize("requiredCpuPowerTotal",
+                        HardSoftScore.ONE_HARD,
+                        (computer, requiredCpuPower) -&gt; requiredCpuPower - computer.getCpuPower());
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Information might be lost during grouping.
+In the previous example, <code>filter()</code> and all subsequent operations no longer have direct access to the original
+<code>CloudProcess</code> instance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There are several collectors available out of the box. You can also provide your own collectors by implementing the
+<code>org.optaplanner.core.api.score.stream.uni.UniConstraintCollector</code> interface, or its <code>Bi&#8230;&#8203;</code>, <code>Tri&#8230;&#8203;</code> and <code>Quad&#8230;&#8203;</code> counterparts.</p>
+</div>
+<div class="sect3">
+<h4 id="collectorsOutOfTheBox"><a class="anchor" href="#collectorsOutOfTheBox"></a>4.5.1. Out-of-the-box collectors</h4>
+<div class="paragraph">
+<p>The following collectors are provided out of the box:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#collectorsCount"><code>count()</code></a></p>
+</li>
+<li>
+<p><a href="#collectorsCountDistinct"><code>countDistinct()</code></a></p>
+</li>
+<li>
+<p><a href="#collectorsSum"><code>sum()</code></a></p>
+</li>
+<li>
+<p><a href="#collectorsAverage"><code>average()</code></a></p>
+</li>
+<li>
+<p><a href="#collectorsMinMax"><code>min()</code> and <code>max()</code></a></p>
+</li>
+<li>
+<p><a href="#collectorsCollection"><code>toList()</code>, <code>toSet()</code> and <code>toMap()</code></a></p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="collectorsCount"><a class="anchor" href="#collectorsCount"></a><code>count()</code> collector</h5>
+<div class="paragraph">
+<p>The <code>ConstraintCollectors.count(&#8230;&#8203;)</code> counts all elements per group. For example, the following use of the collector
+gives a number of items for two separate groups - one where the talks have unavailable speakers, and one where they
+don&#8217;t.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint speakerAvailability(ConstraintFactory factory) {
+        return factory.forEach(Talk.class)
+                .groupBy(Talk::hasAnyUnavailableSpeaker, count())
+                .penalize("speakerAvailability",
+                        HardSoftScore.ONE_HARD,
+                        (hasUnavailableSpeaker, count) -&gt; ...);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The count is collected in an <code>int</code>. Variants of this collector:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>countLong()</code> collects a <code>long</code> value instead of an <code>int</code> value.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To count a bi, tri or quad stream, use <code>countBi()</code>, <code>countTri()</code> or <code>countQuad()</code> respectively,
+because - unlike the other built-in collectors - they aren&#8217;t overloaded methods due to Java&#8217;s generics erasure.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="collectorsCountDistinct"><a class="anchor" href="#collectorsCountDistinct"></a><code>countDistinct()</code> collector</h5>
+<div class="paragraph">
+<p>The <code>ConstraintCollectors.countDistinct(&#8230;&#8203;)</code> counts any element per group once, regardless of how many times it
+occurs. For example, the following use of the collector gives a number of talks in each unique room.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint roomCount(ConstraintFactory factory) {
+        return factory.forEach(Talk.class)
+                .groupBy(Talk::getRoom, countDistinct())
+                .penalize("roomCount",
+                        HardSoftScore.ONE_SOFT,
+                        (room, count) -&gt; ...);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The distinct count is collected in an <code>int</code>. Variants of this collector:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>countDistinctLong()</code> collects a <code>long</code> value instead of an <code>int</code> value.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="collectorsSum"><a class="anchor" href="#collectorsSum"></a><code>sum()</code> collector</h5>
+<div class="paragraph">
+<p>To sum the values of a particular property of all elements per group, use the <code>ConstraintCollectors.sum(&#8230;&#8203;)</code>
+collector. The following code snippet first groups all processes by the computer they run on and sums up all the power
+required by the processes on that computer using the <code>ConstraintCollectors.sum(&#8230;&#8203;)</code> collector.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint requiredCpuPowerTotal(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class)
+                .groupBy(CloudProcess::getComputer, sum(CloudProcess::getRequiredCpuPower))
+                .penalize("requiredCpuPowerTotal",
+                        HardSoftScore.ONE_SOFT,
+                        (computer, requiredCpuPower) -&gt; requiredCpuPower);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sum is collected in an <code>int</code>. Variants of this collector:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sumLong()</code> collects a <code>long</code> value instead of an <code>int</code> value.</p>
+</li>
+<li>
+<p><code>sumBigDecimal()</code> collects a <code>java.math.BigDecimal</code> value instead of an <code>int</code> value.</p>
+</li>
+<li>
+<p><code>sumBigInteger()</code> collects a <code>java.math.BigInteger</code> value instead of an <code>int</code> value.</p>
+</li>
+<li>
+<p><code>sumDuration()</code> collects a <code>java.time.Duration</code> value instead of an <code>int</code> value.</p>
+</li>
+<li>
+<p><code>sumPeriod()</code> collects a <code>java.time.Period</code> value instead of an <code>int</code> value.</p>
+</li>
+<li>
+<p>a generic <code>sum()</code> variant for summing up custom types</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="collectorsAverage"><a class="anchor" href="#collectorsAverage"></a><code>average()</code> collector</h5>
+<div class="paragraph">
+<p>To calculate the average of a particular property of all elements per group, use the <code>ConstraintCollectors.average(&#8230;&#8203;)</code>
+collector.
+The following code snippet first groups all processes by the computer they run on and averages all the power
+required by the processes on that computer using the <code>ConstraintCollectors.average(&#8230;&#8203;)</code> collector.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint requiredCpuPowerTotal(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class)
+                .groupBy(CloudProcess::getComputer, average(CloudProcess::getRequiredCpuPower))
+                .penalize("averageCpuPower",
+                        HardSoftScore.ONE_SOFT,
+                        (computer, averageCpuPower) -&gt; averageCpuPower);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The average is collected as a <code>double</code>, and the average of no elements is <code>null</code>.
+Variants of this collector:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>averageLong()</code> collects a <code>long</code> value instead of an <code>int</code> value.</p>
+</li>
+<li>
+<p><code>averageBigDecimal()</code> collects a <code>java.math.BigDecimal</code> value instead of an <code>int</code> value, resulting in a <code>BigDecimal</code> average.</p>
+</li>
+<li>
+<p><code>averageBigInteger()</code> collects a <code>java.math.BigInteger</code> value instead of an <code>int</code> value, resulting in a <code>BigDecimal</code> average.</p>
+</li>
+<li>
+<p><code>averageDuration()</code> collects a <code>java.time.Duration</code> value instead of an <code>int</code> value, resulting in a <code>Duration</code> average.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="collectorsMinMax"><a class="anchor" href="#collectorsMinMax"></a><code>min()</code> and <code>max()</code> collectors</h5>
+<div class="paragraph">
+<p>To extract the minimum or maximum per group, use the <code>ConstraintCollectors.min(&#8230;&#8203;)</code> and
+<code>ConstraintCollectors.max(&#8230;&#8203;)</code> collectors respectively.</p>
+</div>
+<div class="paragraph">
+<p>These collectors operate on values of properties which are <code>Comparable</code> (such as <code>Integer</code>, <code>String</code> or <code>Duration</code>),
+although there are also variants of these collectors which allow you to provide your own <code>Comparator</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following example finds a computer which runs the most power-demanding process:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint computerWithBiggestProcess(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class)
+                .groupBy(CloudProcess::getComputer, max(CloudProcess::getRequiredCpuPower))
+                .penalize("computerWithBiggestProcess",
+                        HardSoftScore.ONE_HARD,
+                        (computer, biggestProcess) -&gt; ...);
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>Comparator</code> and <code>Comparable</code> implementations used with <code>min(&#8230;&#8203;)</code> and <code>max(&#8230;&#8203;)</code> constraint collectors are expected to
+be consistent with <code>equals(&#8230;&#8203;)</code>.
+See <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html">Javadoc for <code>Comparable</code></a> to learn more.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="collectorsCollection"><a class="anchor" href="#collectorsCollection"></a><code>toList()</code>, <code>toSet()</code> and <code>toMap()</code> collectors</h5>
+<div class="paragraph">
+<p>To extract all elements per group into a collection, use the <code>ConstraintCollectors.toList(&#8230;&#8203;)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following example retrieves all processes running on a computer in a <code>List</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint computerWithBiggestProcess(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class)
+                .groupBy(CloudProcess::getComputer, toList())
+                .penalize("computerAndItsProcesses",
+                        HardSoftScore.ONE_HARD,
+                        (computer, processList) -&gt; ...);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Variants of this collector:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>toList()</code> collects a <code>List</code> value.</p>
+</li>
+<li>
+<p><code>toSet()</code> collects a <code>Set</code> value.</p>
+</li>
+<li>
+<p><code>toSortedSet()</code> collects a <code>SortedSet</code> value.</p>
+</li>
+<li>
+<p><code>toMap()</code> collects a <code>Map</code> value.</p>
+</li>
+<li>
+<p><code>toSortedMap()</code> collects a <code>SortedMap</code> value.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The iteration order of elements in the resulting collection is not guaranteed to be stable,
+unless it is a sorted collector such as <code>toSortedSet</code> or <code>toSortedMap</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="collectorsConditional"><a class="anchor" href="#collectorsConditional"></a>4.5.2. Conditional collectors</h4>
+<div class="paragraph">
+<p>The constraint collector framework enables you to create constraint collectors which will only collect in certain circumstances.
+This is achieved using the <code>ConstraintCollectors.conditionally(&#8230;&#8203;)</code> constraint collector.</p>
+</div>
+<div class="paragraph">
+<p>This collector accepts a predicate, and another collector to which it will delegate if the predicate is true.
+The following example returns a count of long-running processes assigned to a given computer,
+excluding processes which are not long-running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint computerWithLongRunningProcesses(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class)
+                .groupBy(CloudProcess::getComputer, conditionally(
+                        CloudProcess::isLongRunning,
+                        count()
+                ))
+                .penalize("longRunningProcesses",
+                        HardSoftScore.ONE_HARD,
+                        (computer, longRunningProcessCount) -&gt; ...);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is useful in situations where multiple collectors are used and only some of them need to be restricted.
+If all of them needed to be restricted in the same way,
+then applying a <a href="#constraintStreamsFilter"><code>filter()</code></a> before the grouping is preferable.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="collectorsComposition"><a class="anchor" href="#collectorsComposition"></a>4.5.3. Composing collectors</h4>
+<div class="paragraph">
+<p>The constraint collector framework enables you to create complex collectors utilizing simpler ones.
+This is achieved using the <code>ConstraintCollectors.compose(&#8230;&#8203;)</code> constraint collector.</p>
+</div>
+<div class="paragraph">
+<p>This collector accepts 2 to 4 other constraint collectors,
+and a function to merge their results into one.
+The following example builds an <a href="#collectorsAverage"><code>average()</code> constraint collector</a>
+using the <a href="#collectorsCount"><code>count</code> constraint collector</a> and <a href="#collectorsSum"><code>sum()</code> constraint collector</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    public static &lt;A&gt; UniConstraintCollector&lt;A, ?, Double&gt;
+        average(ToIntFunction&lt;A&gt; groupValueMapping) {
+            return compose(count(), sum(groupValueMapping), (count, sum) -&gt; {
+                if (count == 0) {
+                    return null;
+                } else {
+                    return sum / (double) count;
+                }
+            });
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly, the <code>compose()</code> collector enables you to work around the limitation of <a href="#constraintStreamsCardinality">Constraint Stream cardinality</a>
+and use as many as 4 collectors in your <a href="#constraintStreamsGroupingAndCollectors"><code>groupBy()</code> statements</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    UniConstraintCollector&lt;A, ?, Triple&lt;Integer, Integer, Integer&gt;&gt; collector =
+        compose(count(),
+                min(),
+                max(),
+                (count, min, max) -&gt; Triple.of(count, min, max));
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Such a composite collector returns a <code>Triple</code> instance which allows you to access
+each of the sub collectors individually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>OptaPlanner does not provide any <code>Pair</code>, <code>Triple</code> or <code>Quadruple</code> implementation out of the box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsConditionalPropagation"><a class="anchor" href="#constraintStreamsConditionalPropagation"></a>4.6. Conditional propagation</h3>
+<div class="paragraph">
+<p>Conditional propagation enables you to exclude constraint matches from the constraint stream based on the presence or
+absence of some other object.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/constraint-streams/constraintStreamIfExists.png" alt="constraintStreamIfExists">
+</div>
+</div>
+<div class="paragraph">
+<p>The following example penalizes computers which have at least one process running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint runningComputer(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudComputer.class)
+                .ifExists(CloudProcess.class, Joiners.equal(Function.identity(), CloudProcess::getComputer))
+                .penalize("runningComputer",
+                        HardSoftScore.ONE_SOFT,
+                        computer -&gt; ...);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note the use of the <code>ifExists()</code> building block.
+On <code>UniConstraintStream</code>, the <code>ifExistsOther()</code> building block is also available which is useful in situations where the
+<code>forEach()</code> constraint match type is the same as the <code>ifExists()</code> type.</p>
+</div>
+<div class="paragraph">
+<p>Conversely, if the <code>ifNotExists()</code> building block is used (as well as the <code>ifNotExistsOther()</code> building block on
+<code>UniConstraintStream</code>) you can achieve the opposite effect:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint unusedComputer(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudComputer.class)
+                .ifNotExists(CloudProcess.class, Joiners.equal(Function.identity(), CloudProcess::getComputer))
+                .penalize("unusedComputer",
+                        HardSoftScore.ONE_HARD,
+                        computer -&gt; ...);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, only the computers without processes running are penalized.</p>
+</div>
+<div class="paragraph">
+<p>Also note the use of the <code>Joiner</code> class to limit the constraint matches.
+For a description of available joiners, see <a href="#constraintStreamsJoin">joining</a>.
+Conditional propagation operates much like joining, with the exception of not increasing the
+<a href="#constraintStreamsCardinality">stream cardinality</a>.
+Matches from these building blocks are not available further down the stream.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For performance reasons, using conditional propagation with the appropriate <code>Joiner</code> instance is preferable to joining.
+While using <code>join()</code> creates a cartesian product of the facts being joined, with conditional propagation, the resulting
+stream only has at most the original number of constraint matches in it.
+Joining should only be used in cases where the other fact is actually required for another operation further down
+the stream.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsMappingTuples"><a class="anchor" href="#constraintStreamsMappingTuples"></a>4.7. Mapping tuples</h3>
+<div class="paragraph">
+<p>Mapping enables you to transform each tuple in a constraint stream by applying a mapping function to it.
+The result of such mapping is <code>UniConstraintStream</code> of the mapped tuples.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint computerWithBiggestProcess(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class) // UniConstraintStream&lt;CloudProcess&gt;
+                .map(CloudProcess::getComputer)           // UniConstraintStream&lt;CloudComputer&gt;
+                ...
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the example above, the mapping function produces duplicate tuples if two different <code>CloudProcess</code>es share a single <code>CloudComputer</code>.
+That is, such <code>CloudComputer</code> appears in the resulting constraint stream twice.
+See <a href="#constraintStreamsDealingWithDuplicateTuplesUsingDistinct"><code>distinct()</code></a> for how to deal with duplicate tuples.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="constraintStreamsDesigningMappingFunction"><a class="anchor" href="#constraintStreamsDesigningMappingFunction"></a>4.7.1. Designing the mapping function</h4>
+<div class="paragraph">
+<p>When designing the mapping function, follow these guidelines for optimal performance:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Keep the function pure.
+The mapping function should only depend on its input.
+That is, given the same input, it always returns the same output.</p>
+</li>
+<li>
+<p>Keep the function bijective.
+No two input tuples should map to the same output tuple, or to tuples that are equal.
+Not following this recommendation creates a constraint stream with duplicate tuples,
+and may force you to use <a href="#constraintStreamsDealingWithDuplicateTuplesUsingDistinct"><code>distinct()</code></a> later.</p>
+</li>
+<li>
+<p>Use immutable data carriers.
+The tuples returned by the mapping function should be immutable and identified by their contents and nothing else.
+If two tuples carry objects which equal one another,
+those two tuples should likewise equal and preferably be the same instance.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="constraintStreamsDealingWithDuplicateTuplesUsingDistinct"><a class="anchor" href="#constraintStreamsDealingWithDuplicateTuplesUsingDistinct"></a>4.7.2. Dealing with duplicate tuples using <code>distinct()</code></h4>
+<div class="paragraph">
+<p>As a general rule, tuples in constraint streams are distinct.
+That is, no two tuples that equal one another.
+However, certain operations such as <a href="#constraintStreamsMappingTuples">tuple mapping</a> may produce constraint streams
+where that is not true.</p>
+</div>
+<div class="paragraph">
+<p>If a constraint stream produces duplicate tuples, you can use the <code>distinct()</code> building block
+to have the duplicate copies eliminated.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint computerWithBiggestProcess(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(CloudProcess.class) // UniConstraintStream&lt;CloudProcess&gt;
+                .map(CloudProcess::getComputer)           // UniConstraintStream&lt;CloudComputer&gt;
+                .distinct()                               // The same, each CloudComputer just once.
+                ...
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There is a performance cost to <code>distinct()</code>.
+For optimal performance, don&#8217;t use constraint stream operations that produce duplicate tuples, to avoid the need to call <code>distinct()</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsFlattening"><a class="anchor" href="#constraintStreamsFlattening"></a>4.8. Flattening</h3>
+<div class="paragraph">
+<p>Flattening enables you to transform any Java <code>Iterable</code> (such as <code>List</code> or <code>Set</code>)
+into a set of tuples, which are sent downstream.
+(Similar to Java Stream&#8217;s <code>flatMap(&#8230;&#8203;)</code>.)
+This is done by applying a mapping function to the final element in the source tuple.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private Constraint requiredJobRoles(ConstraintFactory constraintFactory) {
+        return constraintFactory.forEach(Person.class)              // UniConstraintStream&lt;Person&gt;
+                .join(Job.class,
+                    equal(Function.identity(), Job::getAssignee))   // BiConstraintStream&lt;Person, Job&gt;
+                .flattenLast(Job::getRequiredRoles)                 // BiConstraintStream&lt;Person, Role&gt;
+                .filter((person, requiredRole) -&gt; ...)
+                ...
+    }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In the example above, the mapping function produces duplicate tuples
+if <code>Job.getRequiredRoles()</code> contains duplicate values.
+Assuming that the function returns <code>[USER, USER, ADMIN]</code>,
+the tuple <code>(SomePerson, USER)</code> is sent downstream twice.
+See <a href="#constraintStreamsDealingWithDuplicateTuplesUsingDistinct"><code>distinct()</code></a> for how to deal with duplicate tuples.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="constraintStreamsTesting"><a class="anchor" href="#constraintStreamsTesting"></a>5. Testing a constraint stream</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Constraint streams include the Constraint Verifier unit testing harness.
+To use it, first add a test scoped dependency to the <code>optaplanner-test</code> JAR.</p>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsTestingIsolatedConstraints"><a class="anchor" href="#constraintStreamsTestingIsolatedConstraints"></a>5.1. Testing constraints in isolation</h3>
+<div class="paragraph">
+<p>Consider the following constraint stream:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    protected Constraint horizontalConflict(ConstraintFactory factory) {
+        return factory
+                .forEachUniquePair(Queen.class, equal(Queen::getRowIndex))
+                .penalize("Horizontal conflict", SimpleScore.ONE);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following example uses the Constraint Verifier API to create a simple unit test for the preceding constraint stream:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private ConstraintVerifier&lt;NQueensConstraintProvider, NQueens&gt; constraintVerifier
+            = ConstraintVerifier.build(new NQueensConstraintProvider(), NQueens.class, Queen.class);
+
+    @Test
+    public void horizontalConflictWithTwoQueens() {
+        Row row1 = new Row(0);
+        Column column1 = new Column(0);
+        Column column2 = new Column(1);
+        Queen queen1 = new Queen(0, row1, column1);
+        Queen queen2 = new Queen(1, row1, column2);
+        constraintVerifier.verifyThat(NQueensConstraintProvider::horizontalConflict)
+                .given(queen1, queen2)
+                .penalizesBy(1);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This test ensures that the horizontal conflict constraint assigns a penalty of <code>1</code> when there are two queens on the same
+row.
+The following line creates a shared <code>ConstraintVerifier</code> instance and initializes the instance with the
+<code>NQueensConstraintProvider</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    private ConstraintVerifier&lt;NQueensConstraintProvider, NQueens&gt; constraintVerifier
+            = ConstraintVerifier.build(new NQueensConstraintProvider(), NQueens.class, Queen.class);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>@Test</code> annotation indicates that the method is a unit test in a testing framework of your choice.
+Constraint Verifier works with many testing frameworks including JUnit and AssertJ.</p>
+</div>
+<div class="paragraph">
+<p>The first part of the test prepares the test data.
+In this case, the test data includes two instances of the <code>Queen</code> planning entity and their dependencies
+(<code>Row</code>, <code>Column</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">        Row row1 = new Row(0);
+        Column column1 = new Column(0);
+        Column column2 = new Column(1);
+        Queen queen1 = new Queen(0, row1, column1);
+        Queen queen2 = new Queen(1, row1, column2);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Further down, the following code tests the constraint:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    constraintVerifier.verifyThat(NQueensConstraintProvider::horizontalConflict)
+            .given(queen1, queen2)
+            .penalizesBy(1);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>verifyThat(&#8230;&#8203;)</code> call is used to specify a method on the <code>NQueensConstraintProvider</code> class which is under test.
+This method must be visible to the test class, which the Java compiler enforces.</p>
+</div>
+<div class="paragraph">
+<p>The <code>given(&#8230;&#8203;)</code> call is used to enumerate all the facts that the constraint stream operates on.
+In this case, the <code>given(&#8230;&#8203;)</code> call takes the <code>queen1</code> and <code>queen2</code> instances previously created.
+Alternatively, you can use a <code>givenSolution(&#8230;&#8203;)</code> method here and provide a planning solution instead.</p>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>penalizesBy(&#8230;&#8203;)</code> call completes the test, making sure that the horizontal conflict constraint, given
+one <code>Queen</code>, results in a penalty of <code>1</code>.
+This number is a product of multiplying the match weight, as defined in the constraint stream, by the number of matches.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can use a <code>rewardsWith(&#8230;&#8203;)</code> call to check for rewards instead of penalties.
+The method to use here depends on whether the constraint stream in question is terminated with a <code>penalize</code> or a
+<code>reward</code> building block.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsTestingAllConstraints"><a class="anchor" href="#constraintStreamsTestingAllConstraints"></a>5.2. Testing all constraints together</h3>
+<div class="paragraph">
+<p>In addition to testing individual constraints, you can test the entire <code>ConstraintProvider</code> instance.
+Consider the following test:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    @Test
+    public void givenFactsMultipleConstraints() {
+        Queen queen1 = new Queen(0, row1, column1);
+        Queen queen2 = new Queen(1, row2, column2);
+        Queen queen3 = new Queen(2, row3, column3);
+        constraintVerifier.verifyThat()
+                .given(queen1, queen2, queen3)
+                .scores(SimpleScore.of(-3));
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are only two notable differences to the previous example.
+First, the <code>verifyThat()</code> call takes no argument here, signifying that the entire <code>ConstraintProvider</code> instance is
+being tested.
+Second, instead of either a <code>penalizesBy()</code> or <code>rewardsWith()</code> call, the <code>scores(&#8230;&#8203;)</code> method is used.
+This runs the <code>ConstraintProvider</code> on the given facts and returns a sum of <code>Score</code>s of all constraint matches resulting
+from the given facts.</p>
+</div>
+<div class="paragraph">
+<p>Using this method, you ensure that the constraint provider does not miss any constraints and that the scoring function
+remains consistent as your code base evolves.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsTestingQuarkus"><a class="anchor" href="#constraintStreamsTestingQuarkus"></a>5.3. Testing in Quarkus</h3>
+<div class="paragraph">
+<p>If you are using the <code>optaplanner-quarkus</code> extension, inject the <code>ConstraintVerifier</code> in your tests:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@QuarkusTest
+public class MyConstraintProviderTest {
+    @Inject
+    ConstraintVerifier&lt;MyConstraintProvider, MyPlanningSolution&gt; constraintProvider;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constraintStreamsTestingSpringBoot"><a class="anchor" href="#constraintStreamsTestingSpringBoot"></a>5.4. Testing in Spring Boot</h3>
+<div class="paragraph">
+<p>If you are using the <code>optaplanner-spring-boot-starter</code> module, autowire the <code>ConstraintVerifier</code> in your tests:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">@SpringBootTest
+public class MyConstraintProviderTest {
+    @Autowired
+    ConstraintVerifier&lt;MyConstraintProvider, MyPlanningSolution&gt; constraintProvider;
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="constraintStreamsImplementations"><a class="anchor" href="#constraintStreamsImplementations"></a>6. Variant implementation types</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Constraint streams come in two flavors:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>CS Drools</strong> (default): a fast, feature-complete implementation that uses Drools underneath.</p>
+</li>
+<li>
+<p><strong>Bavet</strong>: a fast, experimental implementation.
+It lacks features and therefore many of the <a href="../use-cases-and-examples/examples-overview/examples-overview.html#examplesOverview" class="page">examples</a> are not supported.
+To try it out set the <code>constraintStreamImplType</code> to <code>BAVET</code> in your solver config:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">    &lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+      &lt;scoreDirectorFactory&gt;
+        &lt;constraintProviderClass&gt;org.acme.schooltimetabling.solver.TimeTableConstraintProvider&lt;/constraintProviderClass&gt;
+        &lt;!-- BAVET is experimental --&gt;
+        &lt;constraintStreamImplType&gt;BAVET&lt;/constraintStreamImplType&gt;
+      &lt;/scoreDirectorFactory&gt;
+      ...
+    &lt;/solver&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Both of these variants implement the same <code>ConstraintProvider</code> API.
+No Java code changes are necessary to switch between the two.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/constraint-streams/constraint-streams.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>
