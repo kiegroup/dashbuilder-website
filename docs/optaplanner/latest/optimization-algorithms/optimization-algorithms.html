@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Optimization algorithms :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/optimization-algorithms/optimization-algorithms.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="optimization-algorithms.html">Optimization algorithms</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/optimization-algorithms/optimization-algorithms.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Optimization algorithms</h1>
+<div class="sect1">
+<h2 id="searchSpaceSize"><a class="anchor" href="#searchSpaceSize"></a>1. Search space size in the real world</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The number of possible solutions for a planning problem can be mind blowing.
+For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Four queens has <code>256</code> possible solutions (<code>4^4</code>) and two optimal solutions.</p>
+</li>
+<li>
+<p>Five queens has <code>3125</code> possible solutions (<code>5^5</code>) and one optimal solution.</p>
+</li>
+<li>
+<p>Eight queens has <code>16777216</code> possible solutions (<code>8^8</code>) and 92 optimal solutions.</p>
+</li>
+<li>
+<p>64 queens has more than <code>10^115</code> possible solutions (<code>64^64</code>).</p>
+</li>
+<li>
+<p>Most real-life planning problems have an incredible number of possible solutions and only one or a few optimal solutions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For comparison: the minimal number of atoms in the known universe (10^80). As a planning problem gets bigger, the search space tends to blow up really fast.
+Adding only one extra planning entity or planning value can heavily multiply the running time of some algorithms.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/optimization-algorithms/cloudBalanceSearchSpaceSize.png" alt="cloudBalanceSearchSpaceSize">
+</div>
+</div>
+<div class="paragraph">
+<p>Calculating the number of possible solutions depends on the design of the domain model:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/optimization-algorithms/searchSpaceSizeCalculation.png" alt="searchSpaceSizeCalculation">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This search space size calculation includes infeasible solutions (if they can be represented by the model), because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The optimal solution might be infeasible.</p>
+</li>
+<li>
+<p>There are many types of hard constraints that cannot be incorporated in the formula practically. For example, in Cloud Balancing, try incorporating the CPU capacity constraint in the formula.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Even in cases where adding some of the hard constraints in the formula is practical (for example, Course Scheduling), the resulting search space is still huge.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>An algorithm that checks every possible solution (even with pruning, such as in <a href="../exhaustive-search/exhaustive-search.html#branchAndBound" class="page">Branch And Bound</a>) can easily run for billions of years on a single real-life planning problem.
+The aim is to find the best solution in the available timeframe.
+Planning competitions (such as the International Timetabling Competition) show that Local Search variations
+(<a href="../local-search/local-search.html#tabuSearch" class="page">Tabu Search</a>, <a href="../local-search/local-search.html#simulatedAnnealing" class="page">Simulated Annealing</a>, <a href="../local-search/local-search.html#lateAcceptance" class="page">Late Acceptance</a>, &#8230;&#8203;)
+usually perform best for real-world problems given real-world time limitations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="doesPlannerFindTheOptimalSolution"><a class="anchor" href="#doesPlannerFindTheOptimalSolution"></a>2. Does OptaPlanner find the optimal solution?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The business wants the optimal solution, but they also have other requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Scale out: Large production data sets must not crash and have also good results.</p>
+</li>
+<li>
+<p>Optimize the right problem: The constraints must match the actual business needs.</p>
+</li>
+<li>
+<p>Available time: The solution must be found in time, before it becomes useless to execute.</p>
+</li>
+<li>
+<p>Reliability: Every data set must have at least a decent result (better than a human planner).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given these requirements, and despite the promises of some salesmen, it is usually impossible for anyone or anything to find the optimal solution.
+Therefore, OptaPlanner focuses on finding the best solution in available time.
+In <a href="../use-cases-and-examples/examples-overview/examples-overview.html#examplesOverview" class="page">"realistic, independent competitions"</a>, it often comes out as the best <em>reusable</em> software.</p>
+</div>
+<div class="paragraph">
+<p>The nature of NP-complete problems make scaling a prime concern.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The quality of a result from a small data set is no indication of the quality of a result from a large data set.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Scaling issues cannot be mitigated by hardware purchases later on.
+Start testing with a production sized data set as soon as possible.
+Do not assess quality on small data sets (unless production encounters only such data sets). Instead, solve a production sized data set and compare the results of longer executions, different algorithms and - if available - the human planner.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="architectureOverview"><a class="anchor" href="#architectureOverview"></a>3. Architecture overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OptaPlanner is the first framework to combine optimization algorithms (metaheuristics, &#8230;&#8203;)
+with score calculation by a rule engine (such as Drools).
+This combination is very efficient, because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A rule engine, such as Drools, is <strong>great for calculating the score</strong> of a solution of a planning problem.
+It makes it easy and scalable to add additional soft or hard constraints.
+It does <a href="../score-calculation/score-calculation.html#incrementalScoreCalculation" class="page">incremental score calculation (deltas)</a> without any extra code.
+However it tends to be not suitable to actually find new solutions.</p>
+</li>
+<li>
+<p>An optimization algorithm is <strong>great at finding new improving solutions</strong> for a planning problem,
+without necessarily brute-forcing every possibility.
+However, it needs to know the score of a solution and offers no support in calculating that score efficiently.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/optimization-algorithms/architectureOverview.png" alt="architectureOverview">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="optimizationAlgorithmsOverview"><a class="anchor" href="#optimizationAlgorithmsOverview"></a>4. Optimization algorithms overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OptaPlanner supports three <em>families</em> of optimization algorithms: Exhaustive Search, Construction Heuristics and Metaheuristics.
+In practice, Metaheuristics (in combination with Construction Heuristics to initialize) are the recommended choice:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/optimization-algorithms/scalabilityOfOptimizationAlgorithms.png" alt="scalabilityOfOptimizationAlgorithms">
+</div>
+</div>
+<div class="paragraph">
+<p>Each of these algorithm families have multiple optimization algorithms:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Optimization Algorithms Overview</caption>
+<colgroup>
+<col style="width: 29.4117%;">
+<col style="width: 13.7254%;">
+<col style="width: 13.7254%;">
+<col style="width: 13.7254%;">
+<col style="width: 13.7254%;">
+<col style="width: 15.6867%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Algorithm</th>
+<th class="tableblock halign-center valign-top">Scalable?</th>
+<th class="tableblock halign-center valign-top">Optimal?</th>
+<th class="tableblock halign-center valign-top">Easy to use?</th>
+<th class="tableblock halign-center valign-top">Tweakable?</th>
+<th class="tableblock halign-center valign-top">Requires CH?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="6"><p class="tableblock"><strong>Exhaustive Search (ES)</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../exhaustive-search/exhaustive-search.html#bruteForce" class="page">Brute Force</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../exhaustive-search/exhaustive-search.html#branchAndBound" class="page">Branch And Bound</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="6"><p class="tableblock"><strong>Construction heuristics (CH)</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#firstFit" class="page">First Fit</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#firstFitDecreasing" class="page">First Fit Decreasing</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#weakestFit" class="page">Weakest Fit</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#weakestFitDecreasing" class="page">Weakest Fit Decreasing</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#strongestFit" class="page">Strongest Fit</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#strongestFitDecreasing" class="page">Strongest Fit Decreasing</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#cheapestInsertion" class="page">Cheapest Insertion</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../construction-heuristics/construction-heuristics.html#regretInsertion" class="page">Regret Insertion</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">No</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="6"><p class="tableblock"><strong>Metaheuristics (MH)</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Local Search (LS)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../local-search/local-search.html#hillClimbing" class="page">Hill Climbing</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../local-search/local-search.html#tabuSearch" class="page">Tabu Search</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../local-search/local-search.html#simulatedAnnealing" class="page">Simulated Annealing</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../local-search/local-search.html#lateAcceptance" class="page">Late Acceptance</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../local-search/local-search.html#greatDeluge" class="page">Great Deluge</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../local-search/local-search.html#stepCountingHillClimbing" class="page">Step Counting Hill Climbing</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../local-search/local-search.html#variableNeighborhoodDescent" class="page">Variable Neighborhood Descent</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Evolutionary Algorithms (EA)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../evolutionary-algorithms/evolutionary-algorithms.html#evolutionaryStrategies" class="page">Evolutionary Strategies</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../evolutionary-algorithms/evolutionary-algorithms.html#geneticAlgorithms" class="page">Genetic Algorithms</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5/5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yes</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To learn more about metaheuristics, see  <a href="http://www.cs.gmu.edu/~sean/book/metaheuristics/">Essentials of Metaheuristics</a> or <a href="http://www.cleveralgorithms.com/">Clever Algorithms</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="whichOptimizationAlgorithmsShouldIUse"><a class="anchor" href="#whichOptimizationAlgorithmsShouldIUse"></a>5. Which optimization algorithms should I use?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The best optimization algorithms configuration to use depends heavily on your use case.
+However, this basic procedure provides a good starting configuration that will produce better than average results.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start with a quick configuration that involves little or no configuration and optimization code:
+See <a href="../construction-heuristics/construction-heuristics.html#firstFit" class="page">First Fit</a>.</p>
+</li>
+<li>
+<p>Next, implement <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty</a> comparison and turn it into <a href="../construction-heuristics/construction-heuristics.html#firstFitDecreasing" class="page">First Fit Decreasing</a>.</p>
+</li>
+<li>
+<p>Next, add Late Acceptance behind it:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>First Fit Decreasing.</p>
+</li>
+<li>
+<p><a href="../local-search/local-search.html#lateAcceptance" class="page">Late Acceptance</a>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>At this point, the return on invested time lowers and the result is likely to be sufficient.</p>
+</div>
+<div class="paragraph">
+<p>However, this can be improved at a lower return on invested time.
+Use the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> and try a couple of different Tabu Search, Simulated Annealing and Late Acceptance configurations, for example:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First Fit Decreasing: <a href="../local-search/local-search.html#tabuSearch" class="page">Tabu Search</a>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Use the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> to improve the values for the size parameters.</p>
+</div>
+<div class="paragraph">
+<p>Other experiments can also be run. For example, the following multiple algorithms can be combined together:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First Fit Decreasing</p>
+</li>
+<li>
+<p>Late Acceptance (relatively long time)</p>
+</li>
+<li>
+<p>Tabu Search (relatively short time)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="powerTweaking"><a class="anchor" href="#powerTweaking"></a>6. Power tweaking or default parameter values</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many optimization algorithms have parameters that affect results and scalability.
+OptaPlanner applies <em>configuration by exception</em>, so all optimization algorithms have default parameter values.
+This is very similar to the Garbage Collection parameters in a JVM: most users have no need to tweak them, but power users often do.</p>
+</div>
+<div class="paragraph">
+<p>The default parameter values are sufficient for many cases (and especially for prototypes), but if development time allows, it may be beneficial to power tweak them with the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">benchmarker</a> for better results and scalability on a specific use case.
+The documentation for each optimization algorithm also declares the advanced configuration for power tweaking.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The default value of parameters will change between minor versions, to improve them for most users. The advanced configuration can be used to prevent unwanted changes, however, this is not recommended.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="solverPhase"><a class="anchor" href="#solverPhase"></a>7. Solver phase</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>Solver</code> can use multiple optimization algorithms in sequence.
+<strong>Each optimization algorithm is represented by one solver <code>Phase</code>.</strong>
+There is never more than one <code>Phase</code> solving at the same time.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Some <code>Phase</code> implementations can combine techniques from multiple optimization algorithms, but it is still just one <code>Phase</code>.
+For example: a Local Search <code>Phase</code> can do Simulated Annealing with entity Tabu.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is a configuration that runs three phases in sequence:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;constructionHeuristic&gt;
+    ... &lt;!-- First phase: First Fit Decreasing --&gt;
+  &lt;/constructionHeuristic&gt;
+  &lt;localSearch&gt;
+    ... &lt;!-- Second phase: Late Acceptance --&gt;
+  &lt;/localSearch&gt;
+  &lt;localSearch&gt;
+    ... &lt;!-- Third phase: Tabu Search --&gt;
+  &lt;/localSearch&gt;
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The solver phases are run in the order defined by solver configuration.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When the first <code>Phase</code> terminates, the second <code>Phase</code> starts, and so on.</p>
+</li>
+<li>
+<p>When the last <code>Phase</code> terminates, the <code>Solver</code> terminates.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usually, a <code>Solver</code> will first run a construction heuristic and then run one or multiple metaheuristics:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/optimization-algorithms/generalPhaseSequence.png" alt="generalPhaseSequence">
+</div>
+</div>
+<div class="paragraph">
+<p>If no phases are configured, OptaPlanner will default to a Construction Heuristic phase followed by a Local Search phase.</p>
+</div>
+<div class="paragraph">
+<p>Some phases (especially construction heuristics) will terminate automatically.
+Other phases (especially metaheuristics) will only terminate if the <code>Phase</code> is configured to terminate:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;termination&gt;&lt;!-- Solver termination --&gt;
+    &lt;secondsSpentLimit&gt;90&lt;/secondsSpentLimit&gt;
+  &lt;/termination&gt;
+  &lt;localSearch&gt;
+    &lt;termination&gt;&lt;!-- Phase termination --&gt;
+      &lt;secondsSpentLimit&gt;60&lt;/secondsSpentLimit&gt;&lt;!-- Give the next phase a chance to run too, before the Solver terminates --&gt;
+    &lt;/termination&gt;
+    ...
+  &lt;/localSearch&gt;
+  &lt;localSearch&gt;
+    ...
+  &lt;/localSearch&gt;
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <code>Solver</code> terminates (before the last <code>Phase</code> terminates itself),
+the current phase is terminated and all subsequent phases will not run.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scopeOverview"><a class="anchor" href="#scopeOverview"></a>8. Scope overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A solver will iteratively run phases. Each phase will usually iteratively run steps. Each step, in turn, usually iteratively runs moves.
+These form four nested scopes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Solver</p>
+</li>
+<li>
+<p>Phase</p>
+</li>
+<li>
+<p>Step</p>
+</li>
+<li>
+<p>Move</p>
+</li>
+</ol>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/optimization-algorithms/scopeOverview.png" alt="scopeOverview">
+</div>
+</div>
+<div class="paragraph">
+<p>Configure <a href="../planner-configuration/planner-configuration.html#logging" class="page">logging</a> to display the log messages of each scope.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="termination"><a class="anchor" href="#termination"></a>9. Termination</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Not all phases terminate automatically and may take a significant amount of time.
+A <code>Solver</code> can be terminated synchronously by up-front configuration, or asynchronously from another thread.</p>
+</div>
+<div class="paragraph">
+<p>Metaheuristic phases in particular need to be instructed to stop solving.
+This can be because of a number of reasons, for example, if the time is up, or the perfect score has been reached just before its solution is used.
+Finding the optimal solution cannot be relied on (unless you know the optimal score), because a metaheuristic algorithm is generally unaware of the optimal solution.</p>
+</div>
+<div class="paragraph">
+<p>This is not an issue for real-life problems, as finding the optimal solution may take more time than is available.
+Finding the best solution in the available time is the most important outcome.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If no termination is configured (and a metaheuristic algorithm is used), the <code>Solver</code> will run forever, until <a href="#asynchronousTermination">terminateEarly()</a> is called from another thread.
+This is especially common during <a href="../repeated-planning/repeated-planning.html#realTimePlanning" class="page">real-time planning</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For synchronous termination, configure a <code>Termination</code> on a <code>Solver</code> or a <code>Phase</code> when it needs to stop.
+The built-in implementations of these should be sufficient,
+but <a href="../local-search/local-search.html#customTerminationSelectorOrAcceptor" class="page">custom terminations</a> are supported too.
+Every <code>Termination</code> can calculate a <em>time gradient</em> (needed for some optimization algorithms),
+which is a ratio between the time already spent solving and the estimated entire solving time of the <code>Solver</code> or <code>Phase</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="timeMillisSpentTermination"><a class="anchor" href="#timeMillisSpentTermination"></a>9.1. Time spent termination</h3>
+<div class="paragraph">
+<p>Terminates when an amount of time has been used.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;!-- 2 minutes and 30 seconds in ISO 8601 format P[n]Y[n]M[n]DT[n]H[n]M[n]S --&gt;
+    &lt;spentLimit&gt;PT2M30S&lt;/spentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively to a <code>java.util.Duration</code> in ISO 8601 format, you can also use:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Milliseconds</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;millisecondsSpentLimit&gt;500&lt;/millisecondsSpentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Seconds</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;secondsSpentLimit&gt;10&lt;/secondsSpentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Minutes</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;minutesSpentLimit&gt;5&lt;/minutesSpentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Hours</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;hoursSpentLimit&gt;1&lt;/hoursSpentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Days</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;daysSpentLimit&gt;2&lt;/daysSpentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Multiple time types can be used together, for example to configure 150 minutes, either configure it directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;minutesSpentLimit&gt;150&lt;/minutesSpentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or use a combination that sums up to 150 minutes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;hoursSpentLimit&gt;2&lt;/hoursSpentLimit&gt;
+    &lt;minutesSpentLimit&gt;30&lt;/minutesSpentLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This <code>Termination</code> will most likely sacrifice perfect reproducibility (even with <code>environmentMode</code> <code>REPRODUCIBLE</code>)
+because the available CPU time differs frequently between runs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The available CPU time influences the number of steps that can be taken, which might be a few more or less.</p>
+</li>
+<li>
+<p>The <code>Termination</code> might produce slightly different time gradient values,
+which will send time gradient-based algorithms (such as Simulated Annealing) on a radically different path.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unimprovedTimeMillisSpentTermination"><a class="anchor" href="#unimprovedTimeMillisSpentTermination"></a>9.2. Unimproved time spent termination</h3>
+<div class="paragraph">
+<p>Terminates when the best score has not improved in a specified amount of time.
+Each time a new best solution is found, the timer basically resets.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;!-- 2 minutes and 30 seconds in ISO 8601 format P[n]Y[n]M[n]DT[n]H[n]M[n]S --&gt;
+      &lt;unimprovedSpentLimit&gt;PT2M30S&lt;/unimprovedSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively to a <code>java.util.Duration</code> in ISO 8601 format, you can also use:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Milliseconds</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedMillisecondsSpentLimit&gt;500&lt;/unimprovedMillisecondsSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Seconds</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedSecondsSpentLimit&gt;10&lt;/unimprovedSecondsSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Minutes</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedMinutesSpentLimit&gt;5&lt;/unimprovedMinutesSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Hours</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedHoursSpentLimit&gt;1&lt;/unimprovedHoursSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Days</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedDaysSpentLimit&gt;1&lt;/unimprovedDaysSpentLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Just like <a href="#timeMillisSpentTermination">time spent termination</a>, combinations are summed up.</p>
+</div>
+<div class="paragraph">
+<p>It is preffered to configure this termination on a specific <code>Phase</code> (such as <code>&lt;localSearch&gt;</code>) instead of on the <code>Solver</code> itself.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This <code>Termination</code> will most likely sacrifice perfect reproducibility (even with <code>environmentMode</code> <code>REPRODUCIBLE</code>)
+as the available CPU time differs frequently between runs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The available CPU time influences the number of steps that can be taken, which might be a few more or less.</p>
+</li>
+<li>
+<p>The <code>Termination</code> might produce slightly different time gradient values,
+which will send time gradient based algorithms (such as Simulated Annealing) on a radically different path.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Optionally, configure a score difference threshold by which the best score must improve in the specified time.
+For example, if the score doesn&#8217;t improve by at least <code>100</code> soft points every 30 seconds or less, it terminates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedSecondsSpentLimit&gt;30&lt;/unimprovedSecondsSpentLimit&gt;
+      &lt;unimprovedScoreDifferenceThreshold&gt;0hard/100soft&lt;/unimprovedScoreDifferenceThreshold&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the score improves by 1 hard point and drops 900 soft points, it&#8217;s still meets the threshold,
+because <code>1hard/-900soft</code> is larger than the threshold <code>0hard/100soft</code>.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, a threshold of <code>1hard/0soft</code> is not met by any new best solution
+that improves 1 hard point at the expense of 1 or more soft points,
+because <code>1hard/-100soft</code> is smaller than the threshold <code>1hard/0soft</code>.</p>
+</div>
+<div class="paragraph">
+<p>To require a feasibility improvement every 30 seconds while avoiding the pitfall above,
+use a wildcard <code>*</code> for lower score levels that are allowed to deteriorate if a higher score level improves:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedSecondsSpentLimit&gt;30&lt;/unimprovedSecondsSpentLimit&gt;
+      &lt;unimprovedScoreDifferenceThreshold&gt;1hard/*soft&lt;/unimprovedScoreDifferenceThreshold&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This effectively implies a threshold of <code>1hard/-2147483648soft</code>, because it relies on <code>Integer.MIN_VALUE</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bestScoreTermination"><a class="anchor" href="#bestScoreTermination"></a>9.3. <code>BestScoreTermination</code></h3>
+<div class="paragraph">
+<p><code>BestScoreTermination</code> terminates when a certain score has been reached.
+Use this <code>Termination</code> where the perfect score is known, for example for four queens (which uses a <a href="../score-calculation/score-calculation.html#simpleScore" class="page">SimpleScore</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;bestScoreLimit&gt;0&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A planning problem with a <a href="../score-calculation/score-calculation.html#hardSoftScore" class="page">HardSoftScore</a> may look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;bestScoreLimit&gt;0hard/-5000soft&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A planning problem with a <a href="../score-calculation/score-calculation.html#bendableScore" class="page">BendableScore</a> with three hard levels and one soft level may look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;bestScoreLimit&gt;[0/0/0]hard/[-5000]soft&lt;/bestScoreLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this instance, <code>Termination</code> once a feasible solution has been reached is not practical because it requires a <code>bestScoreLimit</code> such as <code>0hard/-2147483648soft</code>. Use the next termination instead.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bestScoreFeasibleTermination"><a class="anchor" href="#bestScoreFeasibleTermination"></a>9.4. <code>BestScoreFeasibleTermination</code></h3>
+<div class="paragraph">
+<p>Terminates as soon as a feasible solution has been discovered.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;bestScoreFeasible&gt;true&lt;/bestScoreFeasible&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>Termination</code> is usually combined with other terminations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stepCountTermination"><a class="anchor" href="#stepCountTermination"></a>9.5. <code>StepCountTermination</code></h3>
+<div class="paragraph">
+<p>Terminates when a number of steps has been reached.
+This is useful for hardware performance independent runs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;stepCountLimit&gt;100&lt;/stepCountLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>Termination</code> can only be used for a <code>Phase</code> (such as <code>&lt;localSearch&gt;</code>), not for the <code>Solver</code> itself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unimprovedStepCountTermination"><a class="anchor" href="#unimprovedStepCountTermination"></a>9.6. <code>UnimprovedStepCountTermination</code></h3>
+<div class="paragraph">
+<p>Terminates when the best score has not improved in a number of steps.
+This is useful for hardware performance independent runs.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;localSearch&gt;
+    &lt;termination&gt;
+      &lt;unimprovedStepCountLimit&gt;100&lt;/unimprovedStepCountLimit&gt;
+    &lt;/termination&gt;
+  &lt;/localSearch&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the score has not improved recently, it is unlikely to improve in a reasonable timeframe.
+It has been observed that once a new best solution is found (even after a long time without improvement on the best solution), the next few steps tend to improve the best solution.</p>
+</div>
+<div class="paragraph">
+<p>This <code>Termination</code> can only be used for a <code>Phase</code> (such as <code>&lt;localSearch&gt;</code>), not for the <code>Solver</code> itself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scoreCalculationCountTermination"><a class="anchor" href="#scoreCalculationCountTermination"></a>9.7. <code>ScoreCalculationCountTermination</code></h3>
+<div class="paragraph">
+<p><code>ScoreCalculationCountTermination</code> terminates when a number of score calculations have been reached.
+This is often the sum of the number of moves and the number of steps.
+This is useful for benchmarking.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;scoreCalculationCountLimit&gt;100000&lt;/scoreCalculationCountLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Switching <a href="../planner-configuration/planner-configuration.html#environmentMode" class="page">EnvironmentMode</a> can heavily impact when this termination ends.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="combiningMultipleTerminations"><a class="anchor" href="#combiningMultipleTerminations"></a>9.8. Combining multiple terminations</h3>
+<div class="paragraph">
+<p>Terminations can be combined, for example: terminate after <code>100</code> steps or if a score of <code>0</code> has been reached:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;terminationCompositionStyle&gt;OR&lt;/terminationCompositionStyle&gt;
+    &lt;bestScoreLimit&gt;0&lt;/bestScoreLimit&gt;
+    &lt;stepCountLimit&gt;100&lt;/stepCountLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively you can use <code>AND</code>, for example: terminate after reaching a feasible score of at least <code>-100</code> and no improvements in <code>5</code> steps:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;termination&gt;
+    &lt;terminationCompositionStyle&gt;AND&lt;/terminationCompositionStyle&gt;
+    &lt;bestScoreLimit&gt;-100&lt;/bestScoreLimit&gt;
+    &lt;unimprovedStepCountLimit&gt;5&lt;/unimprovedStepCountLimit&gt;
+  &lt;/termination&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This example ensures it does not just terminate after finding a feasible solution, but also completes any obvious improvements on that solution before terminating.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="asynchronousTermination"><a class="anchor" href="#asynchronousTermination"></a>9.9. Asynchronous termination from another thread</h3>
+<div class="paragraph">
+<p>Asynchronous termination from another thread occurs when a <code>Solver</code> needs to be terminated early from another thread, for example, due to a user action or a server restart.
+This cannot be configured by a <code>Termination</code> as it is impossible to predict when and if it will occur.
+Therefore the <code>Solver</code> interface has the following thread-safe methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public interface Solver&lt;Solution_&gt; {
+    ...
+
+    boolean terminateEarly();
+    boolean isTerminateEarly();
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When calling the <code>terminateEarly()</code> method from another thread, the <code>Solver</code> will terminate at its earliest convenience and the <code>solve(Solution)</code> method will return (in the original <code>Solver</code> thread).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Interrupting the Solver thread (which is the thread that called <code>Solver.solve(Solution)</code>) has the same effect as calling <code>terminateEarly()</code> except that it leaves that thread in the interrupted state.
+This guarantees a graceful shutdown when an <code>ExecutorService</code> (such as a thread pool) is shutdown because that only interrupts all active threads in the pool.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="SolverEventListener"><a class="anchor" href="#SolverEventListener"></a>10. <code>SolverEventListener</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each time a new best solution is found, a new <code>BestSolutionChangedEvent</code> is fired in the <code>Solver</code> thread.</p>
+</div>
+<div class="paragraph">
+<p>To listen to such events, add a <code>SolverEventListener</code> to the <code>Solver</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public interface Solver&lt;Solution_&gt; {
+    ...
+
+    void addEventListener(SolverEventListener&lt;S&gt; eventListener);
+    void removeEventListener(SolverEventListener&lt;S&gt; eventListener);
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>BestSolutionChangedEvent</code>'s <code>newBestSolution</code> may not be initialized or feasible.
+Use the <code>isFeasible()</code> method on <code>BestSolutionChangedEvent</code>'s new best <code>Score</code> to detect such cases:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">    solver.addEventListener(new SolverEventListener&lt;CloudBalance&gt;() {
+        public void bestSolutionChanged(BestSolutionChangedEvent&lt;CloudBalance&gt; event) {
+            // Ignore infeasible (including uninitialized) solutions
+            if (event.getNewBestSolution().getScore().isFeasible()) {
+                ...
+            }
+        }
+    });</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use <code>Score.isSolutionInitialized()</code> instead of <code>Score.isFeasible()</code> to only ignore uninitialized solutions, but also accept infeasible solutions.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>bestSolutionChanged()</code> method is called in the solver&#8217;s thread, as part of <code>Solver.solve()</code>.
+So it should return quickly to avoid slowing down the solving.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="customSolverPhase"><a class="anchor" href="#customSolverPhase"></a>11. Custom solver phase</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Run a custom optimization algorithm between phases or before the first phase to initialize the solution, or to get a better score quickly.
+You will still want to reuse the score calculation.
+For example, to implement a custom Construction Heuristic without implementing an entire <code>Phase</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Most of the time, a custom solver phase is not worth the development time investment.
+The supported <a href="../construction-heuristics/construction-heuristics.html#constructionHeuristics" class="page">Constructions Heuristics</a> are configurable (use the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> to tweak them),
+<code>Termination</code> aware and support partially initialized solutions too.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>CustomPhaseCommand</code> interface appears as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public interface CustomPhaseCommand&lt;Solution_&gt; {
+    ...
+
+    void changeWorkingSolution(ScoreDirector&lt;Solution_&gt; scoreDirector);
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, implement <code>CustomPhaseCommand</code> and its <code>changeWorkingSolution()</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class ToOriginalMachineSolutionInitializer extends AbstractCustomPhaseCommand&lt;MachineReassignment&gt; {
+
+    public void changeWorkingSolution(ScoreDirector&lt;MachineReassignment&gt; scoreDirector) {
+        MachineReassignment machineReassignment = scoreDirector.getWorkingSolution();
+        for (MrProcessAssignment processAssignment : machineReassignment.getProcessAssignmentList()) {
+            scoreDirector.beforeVariableChanged(processAssignment, "machine");
+            processAssignment.setMachine(processAssignment.getOriginalMachine());
+            scoreDirector.afterVariableChanged(processAssignment, "machine");
+            scoreDirector.triggerVariableListeners();
+        }
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Any change on the planning entities in a <code>CustomPhaseCommand</code> must be notified to the <code>ScoreDirector</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not change any of the problem facts in a <code>CustomPhaseCommand</code>.
+That will corrupt the <code>Solver</code> because any previous score or solution was for a different problem.
+To do that, read about <a href="../repeated-planning/repeated-planning.html#repeatedPlanning" class="page">repeated planning</a> and do it with a <a href="../repeated-planning/repeated-planning.html#problemFactChange" class="page">ProblemFactChange</a> instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Configure the <code>CustomPhaseCommand</code> in the solver configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;customPhase&gt;
+    &lt;customPhaseCommandClass&gt;org.optaplanner.examples.machinereassignment.solver.solution.initializer.ToOriginalMachineSolutionInitializer&lt;/customPhaseCommandClass&gt;
+  &lt;/customPhase&gt;
+  ... &lt;!-- Other phases --&gt;
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Configure multiple <code>customPhaseCommandClass</code> instances to run them in sequence.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the changes of a <code>CustomPhaseCommand</code> do not result in a better score, the best solution will not be changed
+(so effectively nothing will have changed for the next <code>Phase</code> or <code>CustomPhaseCommand</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the <code>Solver</code> or a <code>Phase</code> wants to terminate while a <code>CustomPhaseCommand</code> is still running,
+it waits to terminate until the <code>CustomPhaseCommand</code> is complete.
+This may take a significant amount of time.
+The built-in solver phases do not have this issue.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To configure values of a <code>CustomPhaseCommand</code> dynamically in the solver configuration
+(so the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> can tweak those parameters),
+add the <code>customProperties</code> element and use <a href="../planner-configuration/planner-configuration.html#customPropertiesConfiguration" class="page">custom properties</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;customPhase&gt;
+    &lt;customPhaseCommandClass&gt;...MyCustomPhase&lt;/customPhaseCommandClass&gt;
+    &lt;customProperties&gt;
+      &lt;property name="mySelectionSize" value="5"/&gt;
+    &lt;/customProperties&gt;
+  &lt;/customPhase&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="noChangeSolverPhase"><a class="anchor" href="#noChangeSolverPhase"></a>12. No change solver phase</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In rare cases, it&#8217;s useful not to run any solver phases.
+But by default, configuring no phase will trigger running the default phases.
+To avoid those, configure a <code>NoChangePhase</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  ...
+  &lt;noChangePhase/&gt;
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="multithreadedSolving"><a class="anchor" href="#multithreadedSolving"></a>13. Multithreaded solving</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several ways of doing multithreaded solving:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Multitenancy</strong>: solve different datasets in parallel</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>SolverManager</code> will make it even easier to set this up, in a future version.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Multi bet solving</strong>: solve 1 dataset with multiple, isolated solvers and take the best result.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Not recommended: This is a marginal gain for a high cost of hardware resources.</p>
+</li>
+<li>
+<p>Use the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> during development to determine the most appropriate algorithm, although that&#8217;s only on average.</p>
+</li>
+<li>
+<p>Use multithreaded incremental solving instead.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Partitioned Search</strong>: Split 1 dataset in multiple parts and solve them independently.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Configure a <a href="../partitioned-search/partitioned-search.html#partitionedSearch" class="page">Partitioned Search</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Multithreaded incremental solving</strong>: solve 1 dataset with multiple threads without sacrificing <a href="../score-calculation/score-calculation.html#incrementalScoreCalculation" class="page">incremental score calculation</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Donate a portion of your CPU cores to OptaPlanner to scale up the score calculation speed and get the same results in fraction of the time.</p>
+</li>
+<li>
+<p>Configure <a href="#multithreadedIncrementalSolving">multithreaded incremental solving</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/optimization-algorithms/multiThreadingStrategies.png" alt="multiThreadingStrategies">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A <a href="../planner-configuration/planner-configuration.html#logging" class="page">logging level</a> of <code>debug</code> or <code>trace</code> might cause congestion multithreaded solving
+and slow down the <a href="../score-calculation/score-calculation.html#scoreCalculationSpeed" class="page">score calculation speed</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="planningId"><a class="anchor" href="#planningId"></a>13.1. <code>@PlanningId</code></h3>
+<div class="paragraph">
+<p>For some functionality (such as multithreaded solving and real-time planning),
+OptaPlanner needs to map problem facts and planning entities to an ID.
+OptaPlanner uses that ID to <em>rebase</em> a move from one thread&#8217;s solution state to another&#8217;s.</p>
+</div>
+<div class="paragraph">
+<p>To enable such functionality, specify the <code>@PlanningId</code> annotation on the identification field or getter method,
+for example on the database ID:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class CloudComputer {
+
+    @PlanningId
+    private Long id;
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or alternatively, on another type of ID:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class User {
+
+    @PlanningId
+    private String username;
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>@PlanningId</code> property must be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Unique for that specific class</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It does not need to be unique across different problem fact classes
+(unless in that rare case that those classes are mixed in the same value range or planning entity collection).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>An instance of a type that implements <code>Object.hashCode()</code> and <code>Object.equals()</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It&#8217;s recommended to use the type <code>Integer</code>, <code>int</code>, <code>Long</code>, <code>long</code>, <code>String</code> or <code>UUID</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Never <code>null</code> by the time <code>Solver.solve()</code> is called.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="customThreadFactory"><a class="anchor" href="#customThreadFactory"></a>13.2. Custom thread factory (WildFly, Android, GAE, &#8230;&#8203;)</h3>
+<div class="paragraph">
+<p>The <code>threadFactoryClass</code> allows to plug in a custom <code>ThreadFactory</code> for environments
+where arbitrary thread creation should be avoided,
+such as most application servers (including WildFly), Android, or Google App Engine.</p>
+</div>
+<div class="paragraph">
+<p>Configure the <code>ThreadFactory</code> on the solver to create the <a href="#multithreadedIncrementalSolving">move threads</a>
+and the <a href="../partitioned-search/partitioned-search.html#partitionedSearch" class="page">Partition Search threads</a> with it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;threadFactoryClass&gt;...MyAppServerThreadFactory&lt;/threadFactoryClass&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="multithreadedIncrementalSolving"><a class="anchor" href="#multithreadedIncrementalSolving"></a>13.3. Multithreaded incremental solving</h3>
+<div class="paragraph">
+<p>Enable multithreaded incremental solving by <a href="#planningId">adding a @PlanningId annotation</a>
+on every planning entity class and planning value class.
+Then configure a <code>moveThreadCount</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;moveThreadCount&gt;AUTO&lt;/moveThreadCount&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That one extra line heavily improves the score calculation speed,
+presuming that your machine has enough free CPU cores.</p>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd"&gt;
+  &lt;moveThreadCount&gt;4&lt;/moveThreadCount&gt;
+  &lt;moveThreadBufferSize&gt;10&lt;/moveThreadBufferSize&gt;
+  &lt;threadFactoryClass&gt;...MyAppServerThreadFactory&lt;/threadFactoryClass&gt;
+  ...
+&lt;/solver&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>moveThreadCount</code> of <code>4</code> <a href="../integration/integration.html#sizingHardwareAndSoftware" class="page">saturates almost 5 CPU cores</a>:
+the 4 move threads fill up 4 CPU cores completely
+and the solver thread uses most of another CPU core.</p>
+</div>
+<div class="paragraph">
+<p>The following <code>moveThreadCount</code>s are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NONE</code> (default): Don&#8217;t run any move threads. Use the single threaded code.</p>
+</li>
+<li>
+<p><code>AUTO</code>: Let OptaPlanner decide how many move threads to run in parallel.
+On machines or containers with little or no CPUs, this falls back to the single threaded code.</p>
+</li>
+<li>
+<p>Static number: The number of move threads to run in parallel.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">&lt;moveThreadCount&gt;4&lt;/moveThreadCount&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This can be <code>1</code> to enforce running the multithreaded code with only 1 move thread
+(which is less efficient than <code>NONE</code>).</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is counter-effective to set a <code>moveThreadCount</code>
+that is higher than the number of available CPU cores,
+as that will slow down the score calculation speed.
+One good reason to do it anyway, is to reproduce a bug of a high-end production machine.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Multithreaded solving is <em>still reproducible</em>, as long as the resolved <code>moveThreadCount</code> is stable.
+A run of the same solver configuration on 2 machines with a different number of CPUs,
+is still reproducible, unless the <code>moveThreadCount</code> is set to <code>AUTO</code> or a function of <code>availableProcessorCount</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>moveThreadBufferSize</code> power tweaks the number of moves that are selected but won&#8217;t be foraged.
+Setting it too low reduces performance, but setting it too high too.
+Unless you&#8217;re deeply familiar with the inner workings of multithreaded solving, don&#8217;t configure this parameter.</p>
+</div>
+<div class="paragraph">
+<p>To run in an environment that doesn&#8217;t like arbitrary thread creation,
+use <code>threadFactoryClass</code> to plug in a <a href="#customThreadFactory">custom thread factory</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/optimization-algorithms/optimization-algorithms.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

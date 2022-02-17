@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Drools score calculation :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/drools-score-calculation/drools-score-calculation.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../construction-heuristics/construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="drools-score-calculation.html">Drools score calculation</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/drools-score-calculation/drools-score-calculation.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Drools score calculation</h1>
+<div class="sect1">
+<h2 id="droolsScoreCalculationOverview"><a class="anchor" href="#droolsScoreCalculationOverview"></a>1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Implement your score calculation using the Drools rule engine.
+Every score constraint is written as one or more score rules.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Advantages:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Incremental score calculation for free</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Because most DRL syntax uses forward chaining, it does incremental calculation without any extra code</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Score constraints are isolated as separate rules</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to add or edit existing score rules</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Flexibility to augment your score constraints by</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Defining them in decision tables</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Excel (XLS) spreadsheet</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Performance optimizations in future versions for free</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In every release, the Drools rule engine tends to become faster</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Disadvantages:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>DRL learning curve</p>
+</li>
+<li>
+<p>Usage of DRL</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Polyglot fear can prohibit the use of a new language such as DRL in some organizations</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="droolsScoreRulesConfiguration"><a class="anchor" href="#droolsScoreRulesConfiguration"></a>2. Drools score rules configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several ways to define where your score rules live.</p>
+</div>
+<div class="sect2">
+<h3 id="droolsScoreCalculationScoreDrl"><a class="anchor" href="#droolsScoreCalculationScoreDrl"></a>2.1. A <code>scoreDrl</code> resource on the classpath</h3>
+<div class="paragraph">
+<p>This is the easy way.
+The score rules live in a DRL file which is provided as a classpath resource.
+Just add the score rules DRL file in the solver configuration as a <code>&lt;scoreDrl&gt;</code> element:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDrl&gt;org/optaplanner/examples/nqueens/solver/nQueensConstraints.drl&lt;/scoreDrl&gt;
+  &lt;/scoreDirectorFactory&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In a typical project (following the Maven directory structure), that DRL file would be located at <code>$PROJECT_DIR/src/main/resources/org/optaplanner/examples/nqueens/solver/nQueensConstraints.drl</code> (even for a war project).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>&lt;scoreDrl&gt;</code> element expects a classpath resource, as defined by <code>ClassLoader.getResource(String)</code>, it does not accept a <code>File</code>, nor a URL, nor a webapp resource.
+See below to use a <code>File</code> instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Add multiple <code>&lt;scoreDrl&gt;</code> elements if the score rules are split across multiple DRL files.</p>
+</div>
+<div class="paragraph">
+<p>Optionally, you can also set drools configuration properties:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDrl&gt;org/optaplanner/examples/nqueens/solver/nQueensConstraints.drl&lt;/scoreDrl&gt;
+    &lt;kieBaseConfigurationProperties&gt;
+      &lt;property name="drools.equalityBehavior" value="..." /&gt;
+    &lt;/kieBaseConfigurationProperties&gt;
+  &lt;/scoreDirectorFactory&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To enable property reactive by default, without a <code>@propertyReactive</code> on the domain classes,
+add <code>&lt;drools.propertySpecific&gt;ALWAYS&lt;/drools.propertySpecific&gt;</code> in there.
+Otherwise OptaPlanner automatically changes the Drools default to <code>ALLOWED</code> so property reactive is not active by default.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="droolsScoreCalculationScoreDrlFile"><a class="anchor" href="#droolsScoreCalculationScoreDrlFile"></a>2.2. A <code>scoreDrlFile</code> element</h3>
+<div class="paragraph">
+<p>To use <code>File</code> on the local file system, instead of a classpath resource, add the score rules DRL file in the solver configuration as a <code>&lt;scoreDrlFile&gt;</code> element:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;scoreDirectorFactory&gt;
+    &lt;scoreDrlFile&gt;/home/ge0ffrey/tmp/nQueensConstraints.drl&lt;/scoreDrlFile&gt;
+  &lt;/scoreDirectorFactory&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For portability reasons, a classpath resource is recommended over a File.
+An application build on one computer, but used on another computer, might not find the file on the same location.
+Worse, if they use a different Operating System, it is hard to choose a portable file path.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Add multiple <code>&lt;scoreDrlFile&gt;</code> elements if the score rules are split across multiple DRL files.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementingAScoreRule"><a class="anchor" href="#implementingAScoreRule"></a>3. Implementing a score rule</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here is an example of a score constraint implemented as a score rule in a DRL file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>rule "Horizontal conflict"
+    when
+        Queen($id : id, row != null, $i : rowIndex)
+        Queen(id &gt; $id, rowIndex == $i)
+    then
+        scoreHolder.addConstraintMatch(kcontext, -1);
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This score rule will fire once for every two queens with the same <code>rowIndex</code>.
+The <code>(id &gt; $id)</code> condition is needed to assure that for two queens A and B, it can only fire for (A, B) and not for (B, A), (A, A) or (B, B). Let us take a closer look at this score rule on this solution of four queens:</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/drools-score-calculation/unsolvedNQueens04.png" alt="unsolvedNQueens04">
+</div>
+</div>
+<div class="paragraph">
+<p>In this solution the <code>Horizontal conflict</code> score rule will fire for six queen couples: (A, B), (A, C), (A, D), (B, C), (B, D) and (C, D). Because none of the queens are on the same vertical or diagonal line, this solution will have a score of <code>-6</code>.
+An optimal solution of four queens has a score of <code>0</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Notice that every score rule uses at least one planning entity class
+(directly or indirectly through a logically inserted fact).</p>
+</div>
+<div class="paragraph">
+<p>It is a waste of time to write a score rule that only relates to problem facts,
+as the consequence will never change during planning, no matter what the possible solution.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A <code>ScoreHolder</code> instance is asserted into the <code>KieSession</code> as a global called <code>scoreHolder</code>.
+The score rules need to (directly or indirectly) update that instance to influence the score of a solution state.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>kcontext</code> variable is a magic variable in Drools Expert.
+The <code>scoreHolder</code>'s method uses it to do incremental score calculation correctly and to create a <code>ConstraintMatch</code> instance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="weighingScoreRules"><a class="anchor" href="#weighingScoreRules"></a>4. Weighing score rules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you&#8217;ve configured a <a href="../score-calculation/score-calculation.html#constraintConfiguration" class="page">constraint configuration</a>,
+the score level and score weight of each constraint are beautifully decoupled from the constraint implementation,
+so they can be changed by the business users more easily.</p>
+</div>
+<div class="paragraph">
+<p>In that case, use the <code>reward()</code> and <code>penalize()</code> methods of the <code>ScoreHolder</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>package org.optaplanner.examples.nqueens.solver;
+...
+global SimpleScoreHolder scoreHolder;
+
+rule "Horizontal conflict"
+    when
+        Queen($id : id, row != null, $i : rowIndex)
+        Queen(id &gt; $id, rowIndex == $i)
+    then
+        scoreHolder.penalize(kcontext);
+end
+
+// Vertical conflict is impossible due the model
+
+rule "Ascending diagonal conflict"
+    when
+        Queen($id : id, row != null, $i : ascendingDiagonalIndex)
+        Queen(id &gt; $id, ascendingDiagonalIndex == $i)
+    then
+        scoreHolder.penalize(kcontext);
+end
+
+rule "Descending diagonal conflict"
+    when
+        Queen($id : id, row != null, $i : descendingDiagonalIndex)
+        Queen(id &gt; $id, descendingDiagonalIndex == $i)
+    then
+        scoreHolder.penalize(kcontext);
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>They automatically impact the score for each constraint match
+by the score weight defined in the <a href="../score-calculation/score-calculation.html#constraintConfiguration" class="page">constraint configuration</a>.</p>
+</div>
+<div class="paragraph">
+<p>The drl file must define a <code>package</code> (otherwise Drools defaults to <code>defaultpkg</code>)
+and it must match with the <a href="../score-calculation/score-calculation.html#constraintConfiguration" class="page">constraint configuration</a>'s <code>constraintPackage</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To learn more about the Drools rule language (DRL),
+consult <a href="https://drools.org/learn/documentation.html">the Drools documentation</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The score weight of some constraints depends on the constraint match.
+In these cases, provide a match weight to the <code>reward()</code> or <code>penalize()</code> methods.
+The score impact is the constraint weight multiplied with the match weight.</p>
+</div>
+<div class="paragraph">
+<p>For example in conference scheduling, the impact of a content conflict,
+depends on the number of shared content tags between 2 overlapping talks:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>rule "Content conflict"
+    when
+        $talk1 : Talk(...)
+        $talk2 : Talk(...)
+    then
+        scoreHolder.penalize(kcontext,
+                $talk2.overlappingContentCount($talk1));
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Presume its constraint weight is set to <code>100soft</code>.
+So when 2 overlapping talks share only 1 content tag, the score is impacted by <code>-100soft</code>.
+But when 2 overlapping talks share 3 content tags, the match weight is <code>3</code>, so the score is impacted by <code>-300soft</code>.</p>
+</div>
+<div class="paragraph">
+<p>If there is no <a href="../score-calculation/score-calculation.html#constraintConfiguration" class="page">constraint configuration</a>,
+you&#8217;ll need to hard-code the weight in the constraint implementations:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>global HardSoftScoreHolder scoreHolder;
+
+// RoomCapacity: For each lecture, the number of students that attend the course must be less or equal
+// than the number of seats of all the rooms that host its lectures.
+rule "roomCapacity"
+    when
+        $room : Room($capacity : capacity)
+        $lecture : Lecture(room == $room, studentSize &gt; $capacity, $studentSize : studentSize)
+    then
+        // Each student above the capacity counts as one point of penalty.
+        scoreHolder.addSoftConstraintMatch(kcontext, ($capacity - $studentSize));
+end
+
+// CurriculumCompactness: Lectures belonging to a curriculum should be adjacent
+// to each other (i.e., in consecutive periods).
+// For a given curriculum we account for a violation every time there is one lecture not adjacent
+// to any other lecture within the same day.
+rule "curriculumCompactness"
+    when
+        ...
+    then
+        // Each isolated lecture in a curriculum counts as two points of penalty.
+        scoreHolder.addSoftConstraintMatch(kcontext, -2);
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how <code>addSoftConstraintMatch()</code> specifies that it&#8217;s a soft constraint,
+and needs a negative number to penalize each match. Otherwise it would reward such matches.
+The parameter <code>($capacity - $studentSize)</code> always results in a negative number because <code>studentSize &gt; $capacity</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="testingDroolsConstraints"><a class="anchor" href="#testingDroolsConstraints"></a>5. Testing Drools-based constraints</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Drools-based constraints come with a unit testing harness.
+To use it, first add a test scoped dependency to the <code>optaplanner-test</code> jar to take advantage of the JUnit integration
+and use the <code>ScoreVerifier</code> classes to test score rules in DRL (or a constraint match aware incremental score calculator).
+For example, suppose you want to test these score rules:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code>global HardSoftScoreHolder scoreHolder;
+
+rule "requiredCpuPowerTotal"
+    when
+        ...
+    then
+        scoreHolder.addHardConstraintMatch(...);
+end
+
+...
+
+rule "computerCost"
+    when
+        ...
+    then
+        scoreHolder.addSoftConstraintMatch(...);
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For each score rule, create a separate <code>@Test</code> that only tests the effect of that score rule on the score:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-java hljs" data-lang="java">public class CloudBalancingScoreConstraintTest {
+
+    private HardSoftScoreVerifier&lt;CloudBalance&gt; scoreVerifier = new HardSoftScoreVerifier&lt;&gt;(
+            SolverFactory.createFromXmlResource(
+                    "org/optaplanner/examples/cloudbalancing/solver/cloudBalancingSolverConfig.xml"));
+
+    @Test
+    public void requiredCpuPowerTotal() {
+        CloudComputer c1 = new CloudComputer(1L, 1000, 1, 1, 1);
+        CloudComputer c2 = new CloudComputer(2L, 200, 1, 1, 1);
+        CloudProcess p1 = new CloudProcess(1L, 700, 0, 0);
+        CloudProcess p2 = new CloudProcess(2L, 70, 0, 0);
+        CloudBalance solution = new CloudBalance(0L,
+                Arrays.asList(c1, c2),
+                Arrays.asList(p1, p2));
+        // Uninitialized
+        scoreVerifier.assertHardWeight("requiredCpuPowerTotal", 0, solution);
+        p1.setComputer(c1);
+        p2.setComputer(c1);
+        // Usage 700 + 70 is within capacity 1000 of c1
+        scoreVerifier.assertHardWeight("requiredCpuPowerTotal", 0, solution);
+        p1.setComputer(c2);
+        p2.setComputer(c2);
+        // Usage 700 + 70 is above capacity 200 of c2
+        scoreVerifier.assertHardWeight("requiredCpuPowerTotal", -570, solution);
+    }
+
+    ...
+
+    @Test
+    public void computerCost() {
+        CloudComputer c1 = new CloudComputer(1L, 1, 1, 1, 200);
+        CloudComputer c2 = new CloudComputer(2L, 1, 1, 1, 30);
+        CloudProcess p1 = new CloudProcess(1L, 0, 0, 0);
+        CloudProcess p2 = new CloudProcess(2L, 0, 0, 0);
+        CloudBalance solution = new CloudBalance(0L,
+                Arrays.asList(c1, c2),
+                Arrays.asList(p1, p2));
+        // Uninitialized
+        scoreVerifier.assertSoftWeight("computerCost", 0, solution);
+        p1.setComputer(c1);
+        p2.setComputer(c1);
+        // Pay 200 for c1
+        scoreVerifier.assertSoftWeight("computerCost", -200, solution);
+        p2.setComputer(c2);
+        // Pay 200 + 30 for c1 and c2
+        scoreVerifier.assertSoftWeight("computerCost", -230, solution);
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is a <code>ScoreVerifier</code> implementation for each <code>Score</code> implementation.
+In the <code>assertHardWeight()</code> and <code>assertSoftWeight()</code> methods, the weight of the other score rules is ignored (even those of the same score level).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A ScoreVerifier does not work well to isolate score corruption,
+use <a href="../score-calculation/score-calculation.html#invalidScoreDetection" class="page">an <code>assertionScoreDirectorFactory</code></a> instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/drools-score-calculation/drools-score-calculation.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>

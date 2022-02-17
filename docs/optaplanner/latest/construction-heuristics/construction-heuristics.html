@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Construction heuristics :: Documentation</title>
+    <link rel="canonical" href="https://www.optaplanner.org/docs/optaplanner/latest/construction-heuristics/construction-heuristics.html">
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+<link rel="stylesheet" href="../../../_/css/menu.css"><!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 1/2 -->
+<script id="dpal" src="https://www.redhat.com/dtm.js" type="text/javascript"></script>
+<!-- Google Analytics for kie team: Global site tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39485370-1"></script>
+<script>
+    window.dataLayer=window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments)
+    };
+    gtag('js',new Date());
+    gtag('config','UA-39485370-1')
+</script>
+<script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../../../_/../../">
+          <img src="../../../_/img/optaPlannerLogoDarkBackground200px.png" alt="OptaPlanner logo"/>
+        </a>
+        <a class="navbar-item" href="https://www.optaplanner.org/docs">Documentation</a>
+      </div>
+      <div class="navbar-item hide-for-print">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://docs.optaplanner.org">Archive</a>
+        <div class="navbar-item">
+          <a class="navbar-item small-item" href="https://github.com/kiegroup/kie-tools" title="Follow KIE Tools on GitHub"><div class="github-icon"></div></a>
+          <a class="navbar-item small-item" href="https://mobile.twitter.com/dashbuilder" target="_blank" title="Follow DashBuilder on Twitter"><img alt="T" src="../../../_/img/twitterLogo.png"></a>
+          <a class="navbar-item small-item" href="https://www.youtube.com/channel/UCZvoXHoI4HIbKf9i-JO2jYA" target="_blank" title="DashBuilder YouTube channel"><img alt="YT" src="../../../_/img/youtubeLogo.png" style="height: 16px"></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="optaplanner" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-introduction/planner-introduction.html">OptaPlanner Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Quickstart</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/overview/overview-quickstarts.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/hello-world/hello-world-quickstart.html">Hello world Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/quarkus/quarkus-quickstart.html">Quarkus Java quick start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../quickstart/spring-boot/spring-boot-quickstart.html">Spring Boot Java quick start</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../use-cases-and-examples/use-cases-and-examples.html">Use cases and examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../planner-configuration/planner-configuration.html">OptaPlanner configuration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../score-calculation/score-calculation.html">Score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../constraint-streams/constraint-streams.html">Constraint streams score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../drools-score-calculation/drools-score-calculation.html">Drools score calculation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../shadow-variable/shadow-variable.html">Shadow variable</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../optimization-algorithms/optimization-algorithms.html">Optimization algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html">Move and neighborhood selection</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../exhaustive-search/exhaustive-search.html">Exhaustive search</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="construction-heuristics.html">Construction heuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../local-search/local-search.html">Local search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../evolutionary-algorithms/evolutionary-algorithms.html">Evolutionary algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../hyperheuristics/hyperheuristic.html">Hyperheuristics</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../partitioned-search/partitioned-search.html">Partitioned search</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html">Benchmarking and tweaking</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../repeated-planning/repeated-planning.html">Repeated planning</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../integration/integration.html">Integration</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../design-patterns/design-patterns.html">Design patterns</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../development/development.html">Development</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">OptaPlanner User Guide 8.16.1.Final</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">OptaPlanner User Guide 8.16.1.Final</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../planner-introduction/planner-introduction.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">OptaPlanner User Guide 8.16.1.Final</a></li>
+    <li><a href="construction-heuristics.html">Construction heuristics</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/kiegroup/optaplanner/edit/main/optaplanner-docs/src/modules/ROOT/pages/construction-heuristics/construction-heuristics.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Construction heuristics</h1>
+<div class="sect1">
+<h2 id="constructionHeuristicsOverview"><a class="anchor" href="#constructionHeuristicsOverview"></a>1. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A construction heuristic builds a pretty good initial solution in a finite length of time.
+Its solution isn&#8217;t always feasible, but it finds it fast so metaheuristics can finish the job.</p>
+</div>
+<div class="paragraph">
+<p>Construction heuristics terminate automatically, so there&#8217;s usually no need to configure a <code>Termination</code> on the construction heuristic phase specifically.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="firstFit"><a class="anchor" href="#firstFit"></a>2. First fit</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="firstFitAlgorithm"><a class="anchor" href="#firstFitAlgorithm"></a>2.1. Algorithm description</h3>
+<div class="paragraph">
+<p>The First Fit algorithm cycles through all the planning entities (in default order), initializing one planning entity at a time.
+It assigns the planning entity to the best available planning value, taking the already initialized planning entities into account.
+It terminates when all planning entities have been initialized.
+It never changes a planning entity after it has been assigned.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/construction-heuristics/firstFitNQueens04.png" alt="firstFitNQueens04">
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that it starts with putting <code>Queen</code> A into row 0 (and never moving it later), which makes it impossible to reach the optimal solution.
+Suffixing this construction heuristic with metaheuristics can remedy that.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="firstFitConfiguration"><a class="anchor" href="#firstFitConfiguration"></a>2.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT&lt;/constructionHeuristicType&gt;
+    &lt;...MoveSelector/&gt;
+    &lt;...MoveSelector/&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.
+For a very advanced configuration, see <a href="#allocateEntityFromQueue">Allocate Entity From Queue</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="firstFitDecreasing"><a class="anchor" href="#firstFitDecreasing"></a>3. First fit decreasing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="firstFitDecreasingAlgorithm"><a class="anchor" href="#firstFitDecreasingAlgorithm"></a>3.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Like <a href="#firstFit">First Fit</a>, but assigns the more difficult planning entities first, because they are less likely to fit in the leftovers.
+So it sorts the planning entities on decreasing difficulty.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/construction-heuristics/firstFitDecreasingNQueens04.png" alt="firstFitDecreasingNQueens04">
+</div>
+</div>
+<div class="paragraph">
+<p>Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty comparison</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>One would expect that this algorithm has better results than First Fit.
+That&#8217;s usually the case, but not always.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="firstFitDecreasingConfiguration"><a class="anchor" href="#firstFitDecreasingConfiguration"></a>3.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+    &lt;...MoveSelector/&gt;
+    &lt;...MoveSelector/&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.
+For a very advanced configuration, see <a href="#allocateEntityFromQueue">Allocate Entity From Queue</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="weakestFit"><a class="anchor" href="#weakestFit"></a>4. Weakest fit</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="weakestFitAlgorithm"><a class="anchor" href="#weakestFitAlgorithm"></a>4.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Like First Fit, but uses the weaker planning values first, because the strong planning values are more likely to be able to accommodate later planning entities.
+So it sorts the planning values on increasing strength.</p>
+</div>
+<div class="paragraph">
+<p>Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not presume that this algorithm has better results than First Fit.
+That&#8217;s often not the case.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="weakestFitConfiguration"><a class="anchor" href="#weakestFitConfiguration"></a>4.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;WEAKEST_FIT&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;WEAKEST_FIT&lt;/constructionHeuristicType&gt;
+    &lt;...MoveSelector/&gt;
+    &lt;...MoveSelector/&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.
+For a very advanced configuration, see <a href="#allocateEntityFromQueue">Allocate Entity From Queue</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="weakestFitDecreasing"><a class="anchor" href="#weakestFitDecreasing"></a>5. Weakest fit decreasing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="weakestFitDecreasingAlgorithm"><a class="anchor" href="#weakestFitDecreasingAlgorithm"></a>5.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Combines First Fit Decreasing and Weakest Fit.
+So it sorts the planning entities on decreasing difficulty and the planning values on increasing strength.</p>
+</div>
+<div class="paragraph">
+<p>Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty comparison</a>
+and <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not presume that this algorithm has better results than First Fit Decreasing.
+That&#8217;s often not the case.
+However, it is usually better than Weakest Fit.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="weakestFitDecreasingConfiguration"><a class="anchor" href="#weakestFitDecreasingConfiguration"></a>5.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;WEAKEST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;WEAKEST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+    &lt;...MoveSelector/&gt;
+    &lt;...MoveSelector/&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.
+For a very advanced configuration, see <a href="#allocateEntityFromQueue">Allocate Entity From Queue</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="strongestFit"><a class="anchor" href="#strongestFit"></a>6. Strongest fit</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="strongestFitAlgorithm"><a class="anchor" href="#strongestFitAlgorithm"></a>6.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Like First Fit, but uses the strong planning values first, because the strong planning values are more likely to have a lower soft cost to use.
+So it sorts the planning values on decreasing strength.</p>
+</div>
+<div class="paragraph">
+<p>Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not presume that this algorithm has better results than First Fit or Weakest Fit.
+That&#8217;s often not the case.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strongestFitConfiguration"><a class="anchor" href="#strongestFitConfiguration"></a>6.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;STRONGEST_FIT&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;STRONGEST_FIT&lt;/constructionHeuristicType&gt;
+    &lt;...MoveSelector/&gt;
+    &lt;...MoveSelector/&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.
+For a very advanced configuration, see <a href="#allocateEntityFromQueue">Allocate Entity From Queue</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="strongestFitDecreasing"><a class="anchor" href="#strongestFitDecreasing"></a>7. Strongest fit decreasing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="strongestFitDecreasingAlgorithm"><a class="anchor" href="#strongestFitDecreasingAlgorithm"></a>7.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Combines First Fit Decreasing and Strongest Fit.
+So it sorts the planning entities on decreasing difficulty and the planning values on decreasing strength.</p>
+</div>
+<div class="paragraph">
+<p>Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty comparison</a>
+and <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do not presume that this algorithm has better results than First Fit Decreasing or Weakest Fit Decreasing.
+That&#8217;s often not the case.
+However, it is usually better than Strongest Fit.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="strongestFitDecreasingConfiguration"><a class="anchor" href="#strongestFitDecreasingConfiguration"></a>7.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;STRONGEST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;STRONGEST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+    &lt;...MoveSelector/&gt;
+    &lt;...MoveSelector/&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.
+For a very advanced configuration, see <a href="#allocateEntityFromQueue">Allocate Entity From Queue</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="allocateEntityFromQueue"><a class="anchor" href="#allocateEntityFromQueue"></a>8. Allocate entity from queue</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="allocateEntityFromQueueAlgorithm"><a class="anchor" href="#allocateEntityFromQueueAlgorithm"></a>8.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Allocate Entity From Queue is a versatile, generic form of <a href="#firstFit">First Fit</a>, <a href="#firstFitDecreasing">First Fit Decreasing</a>,
+<a href="#weakestFit">Weakest Fit</a>, <a href="#weakestFitDecreasing">Weakest Fit Decreasing</a>,
+<a href="#strongestFit">Strongest Fit</a> and <a href="#strongestFitDecreasing">Strongest Fit Decreasing</a>.
+It works like this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Put all entities in a queue.</p>
+</li>
+<li>
+<p>Assign the first entity (from that queue) to the best value.</p>
+</li>
+<li>
+<p>Repeat until all entities are assigned.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allocateEntityFromQueueConfiguration"><a class="anchor" href="#allocateEntityFromQueueConfiguration"></a>8.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;ALLOCATE_ENTITY_FROM_QUEUE&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verbose simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;ALLOCATE_ENTITY_FROM_QUEUE&lt;/constructionHeuristicType&gt;
+    &lt;entitySorterManner&gt;DECREASING_DIFFICULTY_IF_AVAILABLE&lt;/entitySorterManner&gt;
+    &lt;valueSorterManner&gt;INCREASING_STRENGTH_IF_AVAILABLE&lt;/valueSorterManner&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>entitySorterManner</code> options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DECREASING_DIFFICULTY</code>: Initialize the more difficult planning entities first.
+This usually increases pruning (and therefore improves scalability).
+Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty comparison</a>.</p>
+</li>
+<li>
+<p><code>DECREASING_DIFFICULTY_IF_AVAILABLE</code> (default): If the model supports <a href="../planner-configuration/planner-configuration.html#planningEntityDifficulty" class="page">planning entity difficulty comparison</a>, behave like <code>DECREASING_DIFFICULTY</code>, else like <code>NONE</code>.</p>
+</li>
+<li>
+<p><code>NONE</code>: Initialize the planning entities in original order.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>valueSorterManner</code> options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INCREASING_STRENGTH</code>: Evaluate the planning values in increasing strength.
+Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</li>
+<li>
+<p><code>INCREASING_STRENGTH_IF_AVAILABLE</code> (default): If the model supports <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>, behave like <code>INCREASING_STRENGTH</code>, else like <code>NONE</code>.</p>
+</li>
+<li>
+<p><code>DECREASING_STRENGTH</code>: Evaluate the planning values in decreasing strength.
+Requires the model to support <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>.</p>
+</li>
+<li>
+<p><code>DECREASING_STRENGTH_IF_AVAILABLE</code>: If the model supports <a href="../planner-configuration/planner-configuration.html#planningValueStrength" class="page">planning value strength comparison</a>, behave like <code>DECREASING_STRENGTH</code>, else like <code>NONE</code>.</p>
+</li>
+<li>
+<p><code>NONE</code>: Try the planning values in original order.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Advanced configuration with <a href="#weakestFitDecreasing">Weakest Fit Decreasing</a> for a single entity class with one variable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;queuedEntityPlacer&gt;
+      &lt;entitySelector id="placerEntitySelector"&gt;
+        &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+        &lt;selectionOrder&gt;SORTED&lt;/selectionOrder&gt;
+        &lt;sorterManner&gt;DECREASING_DIFFICULTY&lt;/sorterManner&gt;
+      &lt;/entitySelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;entitySelector mimicSelectorRef="placerEntitySelector"/&gt;
+        &lt;valueSelector&gt;
+          &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+          &lt;selectionOrder&gt;SORTED&lt;/selectionOrder&gt;
+          &lt;sorterManner&gt;INCREASING_STRENGTH&lt;/sorterManner&gt;
+        &lt;/valueSelector&gt;
+      &lt;/changeMoveSelector&gt;
+    &lt;/queuedEntityPlacer&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Per step, the <code>QueuedEntityPlacer</code> selects one uninitialized entity from the <code>EntitySelector</code>
+and applies the winning <code>Move</code> (out of all the moves for that entity generated by the <code>MoveSelector</code>).
+The <a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#mimicSelection" class="page">mimic selection</a> ensures that the winning <code>Move</code> changes only the selected entity.</p>
+</div>
+<div class="paragraph">
+<p>To customize the entity or value sorting, see <a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#sortedSelection" class="page">sorted selection</a>.
+For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.</p>
+</div>
+<div class="paragraph">
+<p>If there are multiple planning variables, there&#8217;s one <code>ChangeMoveSelector</code> per planning variable,
+which are either in a cartesian product or in sequential steps,
+similar to <a href="#scalingMultiplePlanningVariablesInConstructionHeuristics">the less verbose configuration</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allocateEntityFromQueueMultipleEntityClasses"><a class="anchor" href="#allocateEntityFromQueueMultipleEntityClasses"></a>8.3. Multiple entity classes</h3>
+<div class="paragraph">
+<p>The easiest way to deal with multiple entity classes is to run a separate Construction Heuristic for each entity class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;queuedEntityPlacer&gt;
+      &lt;entitySelector id="placerEntitySelector"&gt;
+        &lt;entityClass&gt;...DogEntity&lt;/entityClass&gt;
+        &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+      &lt;/entitySelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;entitySelector mimicSelectorRef="placerEntitySelector"/&gt;
+      &lt;/changeMoveSelector&gt;
+    &lt;/queuedEntityPlacer&gt;
+    ...
+  &lt;/constructionHeuristic&gt;
+  &lt;constructionHeuristic&gt;
+    &lt;queuedEntityPlacer&gt;
+      &lt;entitySelector id="placerEntitySelector"&gt;
+        &lt;entityClass&gt;...CatEntity&lt;/entityClass&gt;
+        &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+      &lt;/entitySelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;entitySelector mimicSelectorRef="placerEntitySelector"/&gt;
+      &lt;/changeMoveSelector&gt;
+    &lt;/queuedEntityPlacer&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="constructionHeuristicsPickEarlyType"><a class="anchor" href="#constructionHeuristicsPickEarlyType"></a>8.4. Pick early type</h3>
+<div class="paragraph">
+<p>There are several pick early types for Construction Heuristics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NEVER</code>: Evaluate all the selected moves to initialize the variable(s).
+This is the default if the <a href="../score-calculation/score-calculation.html#initializingScoreTrend" class="page">InitializingScoreTrend</a> is not <code>ONLY_DOWN</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    ...
+    &lt;forager&gt;
+      &lt;pickEarlyType&gt;NEVER&lt;/pickEarlyType&gt;
+    &lt;/forager&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>FIRST_NON_DETERIORATING_SCORE</code>: Initialize the variable(s) with the first move that doesn&#8217;t deteriorate the score, ignore the remaining selected moves.
+This is the default if the <a href="../score-calculation/score-calculation.html#initializingScoreTrend" class="page">InitializingScoreTrend</a> is <code>ONLY_DOWN</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    ...
+    &lt;forager&gt;
+      &lt;pickEarlyType&gt;FIRST_NON_DETERIORATING_SCORE&lt;/pickEarlyType&gt;
+    &lt;/forager&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If there are only negative constraints, but the <a href="../score-calculation/score-calculation.html#initializingScoreTrend" class="page">InitializingScoreTrend</a> is strictly not <code>ONLY_DOWN</code>,
+it can sometimes make sense to apply FIRST_NON_DETERIORATING_SCORE.
+Use the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> to decide if the score quality loss is worth the time gain.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><code>FIRST_FEASIBLE_SCORE</code>: Initialize the variable(s) with the first move that has a feasible score.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    ...
+    &lt;forager&gt;
+      &lt;pickEarlyType&gt;FIRST_FEASIBLE_SCORE&lt;/pickEarlyType&gt;
+    &lt;/forager&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <a href="../score-calculation/score-calculation.html#initializingScoreTrend" class="page">InitializingScoreTrend</a> is <code>ONLY_DOWN</code>, use <code>FIRST_FEASIBLE_SCORE_OR_NON_DETERIORATING_HARD</code> instead, because that&#8217;s faster without any disadvantages.</p>
+</div>
+</li>
+<li>
+<p><code>FIRST_FEASIBLE_SCORE_OR_NON_DETERIORATING_HARD</code>: Initialize the variable(s) with the first move that doesn&#8217;t deteriorate the feasibility of the score any further.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    ...
+    &lt;forager&gt;
+      &lt;pickEarlyType&gt;FIRST_FEASIBLE_SCORE_OR_NON_DETERIORATING_HARD&lt;/pickEarlyType&gt;
+    &lt;/forager&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="allocateToValueFromQueue"><a class="anchor" href="#allocateToValueFromQueue"></a>9. Allocate to value from queue</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="allocateToValueFromQueueAlgorithm"><a class="anchor" href="#allocateToValueFromQueueAlgorithm"></a>9.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Allocate To Value From Queue works like this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Put all values in a round-robin queue.</p>
+</li>
+<li>
+<p>Assign the best entity to the first value (from that queue).</p>
+</li>
+<li>
+<p>Repeat until all entities are assigned.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allocateToValueFromQueueConfiguration"><a class="anchor" href="#allocateToValueFromQueueConfiguration"></a>9.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;ALLOCATE_TO_VALUE_FROM_QUEUE&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verbose simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;ALLOCATE_TO_VALUE_FROM_QUEUE&lt;/constructionHeuristicType&gt;
+    &lt;entitySorterManner&gt;DECREASING_DIFFICULTY_IF_AVAILABLE&lt;/entitySorterManner&gt;
+    &lt;valueSorterManner&gt;INCREASING_STRENGTH_IF_AVAILABLE&lt;/valueSorterManner&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration for a single entity class with a single variable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;queuedValuePlacer&gt;
+      &lt;valueSelector id="placerValueSelector"&gt;
+        &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+        &lt;selectionOrder&gt;SORTED&lt;/selectionOrder&gt;
+        &lt;sorterManner&gt;INCREASING_STRENGTH&lt;/sorterManner&gt;
+      &lt;/valueSelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;entitySelector&gt;
+          &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+          &lt;selectionOrder&gt;SORTED&lt;/selectionOrder&gt;
+          &lt;sorterManner&gt;DECREASING_DIFFICULTY&lt;/sorterManner&gt;
+        &lt;/entitySelector&gt;
+        &lt;valueSelector mimicSelectorRef="placerValueSelector"/&gt;
+      &lt;/changeMoveSelector&gt;
+    &lt;/queuedValuePlacer&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cheapestInsertion"><a class="anchor" href="#cheapestInsertion"></a>10. Cheapest insertion</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="cheapestInsertionAlgorithm"><a class="anchor" href="#cheapestInsertionAlgorithm"></a>10.1. Algorithm description</h3>
+<div class="paragraph">
+<p>The Cheapest Insertion algorithm cycles through all the planning values for all the planning entities, initializing one planning entity at a time.
+It assigns a planning entity to the best available planning value (out of all the planning entities and values), taking the already initialized planning entities into account.
+It terminates when all planning entities have been initialized.
+It never changes a planning entity after it has been assigned.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/construction-heuristics/cheapestInsertionNQueens04.png" alt="cheapestInsertionNQueens04">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cheapest Insertion scales considerably worse than First Fit, etc.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cheapestInsertionConfiguration"><a class="anchor" href="#cheapestInsertionConfiguration"></a>10.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;CHEAPEST_INSERTION&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Advanced configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;CHEAPEST_INSERTION&lt;/constructionHeuristicType&gt;
+    &lt;...MoveSelector/&gt;
+    &lt;...MoveSelector/&gt;
+    ...
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.
+For a very advanced configuration, see <a href="#allocateFromPool">Allocate from pool</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="regretInsertion"><a class="anchor" href="#regretInsertion"></a>11. Regret insertion</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="regretInsertionAlgorithm"><a class="anchor" href="#regretInsertionAlgorithm"></a>11.1. Algorithm description</h3>
+<div class="paragraph">
+<p>The Regret Insertion algorithm behaves like the Cheapest Insertion algorithm.
+It also cycles through all the planning values for all the planning entities, initializing one planning entity at a time.
+But instead of picking the entity-value combination with the best score, it picks the entity which has the largest score loss between its best and second best value assignment.
+It then assigns that entity to its best value, to avoid regretting not having done that.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="regretInsertionConfiguration"><a class="anchor" href="#regretInsertionConfiguration"></a>11.2. Configuration</h3>
+<div class="paragraph">
+<p>This algorithm has not been implemented yet.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="allocateFromPool"><a class="anchor" href="#allocateFromPool"></a>12. Allocate from pool</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="allocateFromPoolAlgorithm"><a class="anchor" href="#allocateFromPoolAlgorithm"></a>12.1. Algorithm description</h3>
+<div class="paragraph">
+<p>Allocate From Pool is a versatile, generic form of <a href="#cheapestInsertion">Cheapest Insertion</a> and <a href="#regretInsertion">Regret Insertion</a>.
+It works like this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Put all entity-value combinations in a pool.</p>
+</li>
+<li>
+<p>Assign the best entity to best value.</p>
+</li>
+<li>
+<p>Repeat until all entities are assigned.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allocateFromPoolConfiguration"><a class="anchor" href="#allocateFromPoolConfiguration"></a>12.2. Configuration</h3>
+<div class="paragraph">
+<p>Simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;ALLOCATE_FROM_POOL&lt;/constructionHeuristicType&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verbose simple configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;ALLOCATE_FROM_POOL&lt;/constructionHeuristicType&gt;
+    &lt;entitySorterManner&gt;DECREASING_DIFFICULTY_IF_AVAILABLE&lt;/entitySorterManner&gt;
+    &lt;valueSorterManner&gt;INCREASING_STRENGTH_IF_AVAILABLE&lt;/valueSorterManner&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>entitySorterManner</code> and <code>valueSorterManner</code> options are described in <a href="#allocateEntityFromQueue">Allocate Entity From Queue</a>.</p>
+</div>
+<div class="paragraph">
+<p>Advanced configuration with <a href="#cheapestInsertion">Cheapest Insertion</a> for a single entity class with a single variable:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;pooledEntityPlacer&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;entitySelector id="placerEntitySelector"&gt;
+          &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+          &lt;selectionOrder&gt;SORTED&lt;/selectionOrder&gt;
+          &lt;sorterManner&gt;DECREASING_DIFFICULTY&lt;/sorterManner&gt;
+        &lt;/entitySelector&gt;
+        &lt;valueSelector&gt;
+          &lt;cacheType&gt;PHASE&lt;/cacheType&gt;
+          &lt;selectionOrder&gt;SORTED&lt;/selectionOrder&gt;
+          &lt;sorterManner&gt;INCREASING_STRENGTH&lt;/sorterManner&gt;
+        &lt;/valueSelector&gt;
+      &lt;/changeMoveSelector&gt;
+    &lt;/pooledEntityPlacer&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Per step, the <code>PooledEntityPlacer</code> applies the winning <code>Move</code> (out of all the moves for that entity generated by the <code>MoveSelector</code>).</p>
+</div>
+<div class="paragraph">
+<p>To customize the entity or value sorting, see <a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#sortedSelection" class="page">sorted selection</a>.
+Other <code>Selector</code> customization (such as <a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#filteredSelection" class="page">filtering</a> and <a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#limitedSelection" class="page">limiting</a>) is supported too.</p>
+</div>
+<div class="paragraph">
+<p>For scaling out, see <a href="#scalingConstructionHeuristics">scaling construction heuristics</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scalingConstructionHeuristics"><a class="anchor" href="#scalingConstructionHeuristics"></a>13. Scaling construction heuristics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If the Construction Heuristic takes a long time to solve and create an initial solution,
+there is too little time left for <a href="../local-search/local-search.html#localSearch" class="page">Local Search</a> to reach a near optimal solution.</p>
+</div>
+<div class="paragraph">
+<p>Ideally, a Construction Heuristic should take less than 20 seconds from scratch
+and less than 50 milliseconds in <a href="../repeated-planning/repeated-planning.html#realTimePlanning" class="page">real-time planning</a>,
+so there is plenty of time left for <a href="../local-search/local-search.html#localSearch" class="page">Local Search</a>.
+If the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> proves that this is not the case, there&#8217;s a number of improvements that can be done:</p>
+</div>
+<div class="sect2">
+<h3 id="initializingScoreTrendShortcuts"><a class="anchor" href="#initializingScoreTrendShortcuts"></a>13.1. InitializingScoreTrend shortcuts</h3>
+<div class="paragraph">
+<p>If the <a href="../score-calculation/score-calculation.html#initializingScoreTrend" class="page">InitializingScoreTrend</a> is <code>ONLY_DOWN</code>, a Construction Heuristic algorithm (such as First Fit) is faster:
+for an entity, it picks the first move for which the score does not deteriorate the last step score, ignoring all subsequent moves in that step.</p>
+</div>
+<div class="paragraph">
+<p>It can take that shortcut without reducing solution quality,
+because a down trend guarantees that initializing any additional planning variable can only make the score the same or worse.
+So if a move has the same score as before the planning variable was initialized, then no other move can have a better score.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scalingMultiplePlanningVariablesInConstructionHeuristics"><a class="anchor" href="#scalingMultiplePlanningVariablesInConstructionHeuristics"></a>13.2. Scaling multiple planning variables in construction heuristics</h3>
+<div class="paragraph">
+<p>There are two ways to deal with multiple planning variables,
+depending on how their <code>ChangeMove</code>s are combined:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Cartesian product</strong> (default): All variables of the selected entity are assigned together.
+This usually results in a better solution quality, but it scales poorly because it tries every combination of variables. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+    &lt;cartesianProductMoveSelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;valueSelector variableName="period"/&gt;
+      &lt;/changeMoveSelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;valueSelector variableName="room"/&gt;
+      &lt;/changeMoveSelector&gt;
+    &lt;/cartesianProductMoveSelector&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Sequential</strong>: One variable is assigned at a time.
+Scales better, at the cost of solution quality. The order of the planning variables matters. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+    &lt;changeMoveSelector&gt;
+      &lt;valueSelector variableName="period"/&gt;
+    &lt;/changeMoveSelector&gt;
+    &lt;changeMoveSelector&gt;
+      &lt;valueSelector variableName="room"/&gt;
+    &lt;/changeMoveSelector&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The second way scales better, so it can be worth to switch to it.
+For example, in a course scheduling example with 200 rooms and 40 periods,
+a cartesian product selects 8&#160;000 moves per entity (1 step per entity).
+On the other hand, a sequential approach only selects 240 moves per entity (2 steps per entity),
+ending the Construction Heuristic 3 times faster.
+Especially for three or more planning variables, the scaling difference is huge.
+For example, with three variables of 1&#160;000 values each,
+a cartesian product selects 1&#160;000&#160;000&#160;000 moves per entity (1 step per entity).
+A sequential approach only selects 3&#160;000 moves per entity (3 steps per entity),
+ending the Construction Heuristic 300&#160;000 times faster.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../_images/construction-heuristics/multiVariableConstructionHeuristics.png" alt="multiVariableConstructionHeuristics">
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The order of the variables is important, especially in the sequential technique.
+In the sequential example above, it&#8217;s better to select the <code>period</code> first and the <code>room</code> second (instead of the other way around),
+because there are more hard constraints that do not involve the room, such as <em>no teacher should teach two lectures at the same time</em>.</p>
+</div>
+<div class="paragraph">
+<p>Let the <a href="../benchmarking-and-tweaking/benchmarking-and-tweaking.html#benchmarker" class="page">Benchmarker</a> guide you.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With three or more variables, it&#8217;s possible to combine the cartesian product and sequential techniques:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-xml hljs" data-lang="xml">  &lt;constructionHeuristic&gt;
+    &lt;constructionHeuristicType&gt;FIRST_FIT_DECREASING&lt;/constructionHeuristicType&gt;
+    &lt;cartesianProductMoveSelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;valueSelector variableName="period"/&gt;
+      &lt;/changeMoveSelector&gt;
+      &lt;changeMoveSelector&gt;
+        &lt;valueSelector variableName="room"/&gt;
+      &lt;/changeMoveSelector&gt;
+    &lt;/cartesianProductMoveSelector&gt;
+    &lt;changeMoveSelector&gt;
+      &lt;valueSelector variableName="teacher"/&gt;
+    &lt;/changeMoveSelector&gt;
+  &lt;/constructionHeuristic&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="otherScalingTechniquesInConstructionHeuristics"><a class="anchor" href="#otherScalingTechniquesInConstructionHeuristics"></a>13.3. Other scaling techniques in construction heuristics</h3>
+<div class="paragraph">
+<p><a href="../partitioned-search/partitioned-search.html#partitionedSearch" class="page">Partitioned Search</a> reduces the number of moves per step.
+On top of that, it runs the Construction Heuristic on the partitions in parallel.
+It is supported to only partition the Construction Heuristic phase.</p>
+</div>
+<div class="paragraph">
+<p>Other <code>Selector</code> customizations can also reduce the number of moves generated by step:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#filteredSelection" class="page">Filtered selection</a></p>
+</li>
+<li>
+<p><a href="../move-and-neighborhood-selection/move-and-neighborhood-selection.html#limitedSelection" class="page">Limited selection</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr-2.3.9.min.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/optaplanner/latest/construction-heuristics/construction-heuristics.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+
+<!-- Adobe Analytics for Red Hat - DPAL (DTM Property Auto-Loader) - part 2/2 -->
+<script type="text/javascript">
+    if (("undefined" !== typeof _satellite) && ("function" === typeof _satellite.pageBottom)) {
+        _satellite.pageBottom();
+    }
+</script>  </body>
+</html>
