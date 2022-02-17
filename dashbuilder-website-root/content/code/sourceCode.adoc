@@ -9,7 +9,7 @@
 
 Dashbuilder source code can be found on the https://github.com/kiegroup/kie-tools[KIE Tools github] repository. Under **packages** find **dashbuilder** source. It is a Java project with a maven based build.
 
-Besides the main engine we also have repos for https://github.com/jesuino/dashbuilder-components[External Components] and https://github.com/jesuino/dashbuilder-dashboards[Reusable Dashboards].
+There are also repositories for https://github.com/jesuino/dashbuilder-components[External Components] and https://github.com/jesuino/dashbuilder-dashboards[Reusable Dashboards].
 
 == Contribution
 

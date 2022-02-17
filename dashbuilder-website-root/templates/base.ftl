@@ -93,7 +93,7 @@
                         <#list samples as sample>
                            <div class="col">
                                 <div class="card h-100" >
-                                    <img class="card-img-top" src="${content.rootpath}samples/${sample.image}"  alt="${sample.title}">
+                                    <img class="card-img-top mt-2" src="${content.rootpath}samples/${sample.image}"  alt="${sample.title}">
                                     <div class="card-body">
                                         <h5 class="card-title">${sample.title}</h5>
                                         <p class="card-text">${sample.description}</p>

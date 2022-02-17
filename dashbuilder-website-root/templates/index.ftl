@@ -51,7 +51,7 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-recycle cardTitleIcon"></i>Reusable Dashboards</h5>
-                                <p class="card-text">Reuse dashboards changing configuration for the target environment</p>
+                                <p class="card-text">Reuse dashboards changing configuration for the target environment.</p>
                             </div>
                         </div>
                     </div>
@@ -61,14 +61,14 @@
             <div class="row">
                 <div class="mb-2 mt-4">
                     <h3>Create dashboards your way</h3>
-                    <p>Dashbuilder supports dashboards created from YML, Java or a drag and drop tool.</p>
+                    <p>Dashbuilder supports dashboards created from YML, Java or with a drag and drop tool.</p>
                 </div>        
                 <div class="col-md-4">
                     <div class="card h-100">
                         <img class="card-img-top" src="${content.rootpath}website/DB_YML.png"  height="200px" alt="YML Editor">
                         <div class="card-body">
                             <h5 class="card-title">YML</h5>
-                            <p class="card-text">Author dashboards in a browser editor using YML language. Export a client-only application to use anywhere or keep it stored in the cloud.</p>
+                            <p class="card-text">Author dashboards in a browser client-side editor using YML language. Export a client-only application to use anywhere or keep it stored in the cloud.</p>
                         </div>
                         <div class="card-footer">
                             <a href="${config.onlineEditorURL}" class="card-link">Try it!</a>

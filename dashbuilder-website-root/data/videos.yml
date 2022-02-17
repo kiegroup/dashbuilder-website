@@ -12,30 +12,14 @@
 #
 # Order videos by date descending
 
-- youtubeId: 5PeMJ4OWB90
-  title: "Creating Custom Dashboards in Red Hat Process Automation (RHPAM) 7"
+- youtubeId: pj8or38w2eQ
+  title: "[KieLive#37] How to work with dashboards layouts"
   author: jesuino
-  date: 2018-12-17
+  date: 2021-01-29
   tags:
-    - dashboard
-    - business central
-    - jbpm
-    - kie-server
-
-- youtubeId: 5r6twEgspIM
-  title: "KieLive#8 Authoring Dashboards in Business Central"
-  author: jesuino
-  date: 2020-07-22
-  tags:
-    - dashboard
-    - business central
-    - dataviz
-
-- youtubeId: YM4OjSMqBP4
-  title: "[KIE Drop] Dashbuilder"
-  date: 2021-11-11
-  author: jesuino
-
+    - dashboards
+    - layout
+    - dashbuilder
 - youtubeId: lT1ZpIevUyU
   title: "Queries for Building Kie Server Dashboards in jBPM"
   author: jesuino
@@ -45,12 +29,24 @@
     - business central
     - jbpm
     - kie-server
-
-- youtubeId: pj8or38w2eQ
-  title: "[KieLive#37] How to work with dashboards layouts"
+- youtubeId: YM4OjSMqBP4
+  title: "[KIE Drop] Dashbuilder"
+  date: 2021-11-11
   author: jesuino
-  date: 2021-01-29
+- youtubeId: 5r6twEgspIM
+  title: "KieLive#8 Authoring Dashboards in Business Central"
+  author: jesuino
+  date: 2020-07-22
   tags:
-    - dashboards
-    - layout
-    - dashbuilder
+    - dashboard
+    - business central
+    - dataviz
+- youtubeId: 5PeMJ4OWB90
+  title: "Creating Custom Dashboards in Red Hat Process Automation (RHPAM) 7"
+  author: jesuino
+  date: 2018-12-17
+  tags:
+    - dashboard
+    - business central
+    - jbpm
+    - kie-server

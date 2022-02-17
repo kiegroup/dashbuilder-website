@@ -196,7 +196,7 @@
             </div>
         </a></div>
         <div class="card-body">
-            <p>No download is required, try some of the samples in the <a href="${config.onlineEditorURL}">Dashbuilder Online Editor</a></p>           
+            <p>Try some of the samples in the <a href="${config.onlineEditorURL}">Dashbuilder Online Editor</a></p>           
         </div>
     </div>
 </#macro>
