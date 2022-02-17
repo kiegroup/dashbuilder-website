@@ -167,8 +167,8 @@
     <div class="card bg-light mb-4">
         <div class="text-center mt-2"><a class="btn btn-lg btn-success versionedButton" href="${pom.latestFinal.distributionZip}"><img alt="Download" src="${content.rootpath}download/download.png">
             <div>
-                <span>Try Dashbuilder</span><br/>
-                <span class="small">Download ${pom.latestFinal.version}</span>
+                <span>Download Dashbuilder</span><br/>
+                <span class="small">${pom.latestFinal.version}</span>
             </div>
         </a></div>
         <div class="card-body">
@@ -178,7 +178,7 @@
                     Run <code>java -jar dashbuilder-authoring-bootable.jar</code>
                 </li>
                 <li>
-                    Create dashboards in <em>http://localhost:8080</em> <br/>
+                    Create dashboards at <em>http://localhost:8080</em> <br/>
                 </li>
             </ol>
             <div class="text-center small">

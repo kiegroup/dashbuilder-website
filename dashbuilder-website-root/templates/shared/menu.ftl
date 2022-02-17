@@ -8,7 +8,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="${content.rootpath}download/download.html">Download</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarLearn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Learn
@@ -19,9 +18,9 @@
                         <li><a class="dropdown-item" href="${content.rootpath}learn/slides.html">Slides</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="${content.rootpath}download/download.html">Download</a></li>
                 <li class="nav-item"><a class="nav-link" href="${content.rootpath}blog/">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="${content.rootpath}code/sourceCode.html">Source</a></li>
-                <li class="nav-item"><a class="nav-link" href="${content.rootpath}community/team.html">Team</a></li>
             </ul>
             <ul class="navbar-nav">
                 <li class="p-2"><a aria-label="Star OptaPlanner on GitHub" class="github-button" data-show-count="true" href="https://github.com/kiegroup/kie-tools">Star</a></li>

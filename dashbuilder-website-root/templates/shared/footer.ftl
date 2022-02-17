@@ -2,11 +2,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <p class="small">OptaPlanner is open.
+                <p class="small">Dashbuilder is open.
                     All dependencies of this project are available under the
                     <a class="link-light" href="${content.rootpath}code/license.html">Apache Software License 2.0</a>
                     or a compatible license.
-                    OptaPlanner is <a class="link-light" href="${content.rootpath}community/branding.html">trademarked</a>.
+                    Dashbuilder is <a class="link-light" href="${content.rootpath}community/branding.html">trademarked</a>.
                 </p>
                 <p class="small">
                     This <a class="link-light" href="${content.rootpath}website/websiteInfo.html">website</a>
@@ -17,19 +17,12 @@
                 <h4>Community</h4>
                 <ul class="ps-2 list-unstyled">
                     <li><a class="link-light" href="${content.rootpath}blog/">Blog</a></li>
-                    <li><a class="link-light" href="${content.rootpath}community/getHelp.html">Get Help</a></li>
-                    <li><a class="link-light" href="${content.rootpath}community/team.html">Team</a></li>
-                    <li><a class="link-light" href="${content.rootpath}community/governance.html">Governance</a></li>
-                    <li><a class="link-light" href="${content.rootpath}community/research.html">Academic research</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <h4>Code</h4>
                 <ul class="ps-2 list-unstyled">
                     <li><a class="link-light" href="${content.rootpath}code/sourceCode.html">Build from source</a></li>
-                    <li><a class="link-light" href="${config.issueTracker}">Issue tracker</a></li>
-                    <li><a class="link-light" href="${content.rootpath}download/releaseNotes/">Release notes</a></li>
-                    <li><a class="link-light" href="${content.rootpath}community/branding.html">Logo and branding</a></li>
                 </ul>
             </div>
             <div class="col-md-3">

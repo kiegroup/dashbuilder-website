@@ -71,7 +71,7 @@
                             <p class="card-text">Author dashboards in a browser editor using YML language. Export a client-only application to use anywhere or keep it stored in the cloud.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="card-link">Try it!</a>
+                            <a href="${config.onlineEditorURL}" class="card-link">Try it!</a>
                         </div>
                     </div>
                 </div>
@@ -106,12 +106,15 @@
         <br />
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <@macros.latestBlogPosts/>
             </div>
-            <div class="col-md-6">
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <@macros.latestVideos/>
             </div>
-        </div>        
+        </div>
     </@parent.layout>
 </#macro>
