@@ -78,6 +78,17 @@
     </url>
     <url>
                 
+        <loc>https://www.optaplanner.org/code/sourceCode.html</loc>
+                
+        <lastmod>2022-02-17</lastmod>
+                
+        <priority>0.8</priority>
+                
+        <changefreq>monthly</changefreq>
+            
+    </url>
+    <url>
+                
         <loc>https://www.optaplanner.org/code/license.html</loc>
                 
         <lastmod>2022-02-17</lastmod>
@@ -89,22 +100,11 @@
     </url>
     <url>
                 
-        <loc>https://www.optaplanner.org/learn/slides.html</loc>
+        <loc>https://www.optaplanner.org/website/websiteInfo.html</loc>
                 
         <lastmod>2022-02-17</lastmod>
                 
-        <priority>0.4</priority>
-                
-        <changefreq>monthly</changefreq>
-            
-    </url>
-    <url>
-                
-        <loc>https://www.optaplanner.org/code/sourceCode.html</loc>
-                
-        <lastmod>2022-02-17</lastmod>
-                
-        <priority>0.8</priority>
+        <priority>0.1</priority>
                 
         <changefreq>monthly</changefreq>
             
@@ -122,11 +122,11 @@
     </url>
     <url>
                 
-        <loc>https://www.optaplanner.org/website/websiteInfo.html</loc>
+        <loc>https://www.optaplanner.org/learn/slides.html</loc>
                 
-        <lastmod>2022-02-10</lastmod>
+        <lastmod>2022-02-17</lastmod>
                 
-        <priority>0.1</priority>
+        <priority>0.4</priority>
                 
         <changefreq>monthly</changefreq>
             
@@ -135,7 +135,7 @@
                 
         <loc>https://www.optaplanner.org/blog/index.html</loc>
                 
-        <lastmod>2022-02-10</lastmod>
+        <lastmod>2022-02-17</lastmod>
                 
         <priority>1.0</priority>
                 
@@ -168,343 +168,343 @@
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/benchmarking-and-tweaking/benchmarking-and-tweaking.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/constraint-streams/constraint-streams.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/construction-heuristics/construction-heuristics.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/design-patterns/design-patterns.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/development/development.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/drools-score-calculation/drools-score-calculation.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/evolutionary-algorithms/evolutionary-algorithms.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/exhaustive-search/exhaustive-search.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/hyperheuristics/hyperheuristic.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/integration/config-properties.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/integration/integration.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/local-search/local-search.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/move-and-neighborhood-selection/move-and-neighborhood-selection.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/optimization-algorithms/optimization-algorithms.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/partitioned-search/partitioned-search.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/planner-configuration/planner-configuration.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/planner-introduction/planner-introduction.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/quickstart/hello-world/hello-world-quickstart.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/quickstart/overview/overview-quickstarts.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/quickstart/quarkus/quarkus-quickstart.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/quickstart/school-timetabling/school-timetabling-constraints.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/quickstart/school-timetabling/school-timetabling-model.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/quickstart/school-timetabling/school-timetabling-solution.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/quickstart/spring-boot/spring-boot-quickstart.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/repeated-planning/repeated-planning.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/score-calculation/score-calculation.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/shadow-variable/shadow-variable.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/bed-allocation/bed-allocation.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/cheap-time/cheap-time.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/cloud-balancing/cloud-balancing.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/coach-shuttle-gathering/coach-shuttle-gathering.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/conference-scheduling/conference-scheduling.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/course-timetabling/course-timetabling.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/exam-timetabling/exam-timetabling.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/examples-overview/examples-overview.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/flight-crew-scheduling/flight-crew-scheduling.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/investment/investment.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/machine-reassignment/machine-reassignment.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/meeting-scheduling/meeting-scheduling.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/nqueens/nqueens.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/nurse-rostering/nurse-rostering.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/project-job-scheduling/project-job-scheduling.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/rock-tour/rock-tour.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/task-assigning/task-assigning.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/tennis-scheduling/tennis-scheduling.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/travelling-salesman/travelling-salesman.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/travelling-tournament/travelling-tournament.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/use-cases-and-examples.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
     <url>
         
         <loc>https://www.optaplanner.org/docs/optaplanner/latest/use-cases-and-examples/vehicle-routing/vehicle-routing.html</loc>
         
-        <lastmod>2022-02-17T19:31:34.901Z</lastmod>
+        <lastmod>2022-02-17T20:18:54.324Z</lastmod>
         
     </url>
 </urlset>
