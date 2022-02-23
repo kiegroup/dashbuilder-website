@@ -14,3 +14,7 @@
   description: Map sample using open API with Nobel laureates
   image: MAP_NOBEL.png
   url: https://gist.githubusercontent.com/jesuino/7be0712b926383326540a78bb08608c8/raw/dfbf4490fc785461f5e9341a4d2e06b4798dd3b2/NobelLaureates.yml
+- title: Github Popular Repositories
+  description: Github popular repositories directly from github API
+  image: GITHUB_REPOS.png
+  url: https://gist.githubusercontent.com/jesuino/10559863b683603fa81fcb51c3390869/raw/44c69c31674a1662b403a946bba7a43603b14d53/Github%2520top%2520repos%2520by%2520Star.yml
