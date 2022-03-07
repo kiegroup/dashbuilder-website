@@ -83,7 +83,7 @@
                             <p class="card-text">Java developers can create dashboards and exports to a ZIP file that runs on Dashbuilder Runtime.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="https://blog.kie.org/2021/04/building-dashboards-using-plain-java.html" class="card-link">Learn more</a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <p class="card-text">Create dashboards using a visual drag and drop editor. Export the dashboard and run on Dashbuilder Runtime.</p>                        
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="https://blog.kie.org/2021/05/dashbuilder-getting-started-guide.html" class="card-link">Learn more</a>
                         </div>
                     </div>
                 </div>
