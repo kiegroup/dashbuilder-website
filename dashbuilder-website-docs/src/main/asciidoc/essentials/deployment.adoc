@@ -1,0 +1,25 @@
+[id="chap-dashbuilder-deployment"]
+== Deployment
+ifdef::context[:parent-context: {context}]
+:context: dashbuilder-essentials
+
+[role="_abstract"]
+Deploying dashbuilder content is achieved by using Dashbuilder Runtime. The ZIP files exported from the Authoring tool or from the Java DSL can be used directly with Dashbuilder and with its modes. 
+
+=== Cloud
+Dashbuilder Runtime has been part of Quarkus since version 0.14.1, which makes its starts in no more than a few seconds and it is by default cloud native.  A container image is published with each Kogito Tooling release, making it easy to run Dashbuilder Runtime on Openshift or Kubernetes.
+
+=== Runtime Modes
+It is possible to run Dashbuilder Runtime with a dedicated dashboard or run multiple dashboards in a single installation:
+
+* *Single*: Just start Dashbuilder Runtime with no dashboards and you will be able to upload a single dashboard. Bear in mind that after restart the dashboard is lost;
+* *Static*: Use the system property `dashbuilder.runtime.import` to point to the ZIP file  in your file system. If the dashboard is remote  then you also need to set the system property `dashbuilder.runtime.allowExternal` to true.
+* *Multi*: In this https://blog.kie.org/2020/09/multi-dashboards-support-in-dashbuilder-runtime.html[multi-mode] dashbuilder looks for dashboards in the directory configured with the system property `dashbuilder.import.base.dir` (default is */tmp/dashbuilder/models*). To turn multi mode on, set `dashbuilder.runtime.multi` as true and set `dashbuilder.model.update` as true to have dynamic model updates (new and deleted dashboards are reflected during runtime).
+
+.Dashbuilder Runtime in Multi Mode
+image::essentials/yamlAuthoring.png[Dashbuilder Runtime Multi Mode]
+
+* *Dev*: In development mode dashbuilder hot reloads dashboards based on ZIP changes. Set the property `dashbuilder.dev` to true, start dashbuilder, place ZIPs on the dashboards directory and you should see the page auto refresh with the ZIP changes.
+
+=== Client Bundle
+If you have the dashboards created from YML you can transform it to JSON and load on a client bundle either using Javascript or mocking the backend to return the dashboards. It is in the roadmap a new deployment model for clients.

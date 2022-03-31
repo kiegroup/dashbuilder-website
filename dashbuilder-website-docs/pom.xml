@@ -1,121 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.dashbuilder</groupId>
     <artifactId>dashbuilder-website</artifactId>
     <version>999-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>dashbuilder-website-docs</artifactId>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
-  <name>Dashbuilder documentation website</name>
+  <name>Dashbuilder  Documentation</name>
+  <description>Dashbuilder Documentation</description>
 
   <properties>
-    <antora.playbook>antora-playbook.yml</antora.playbook>
-    <antora.binary>node_modules/.bin/antora</antora.binary>
-    <version.node>v12.20.0</version.node>
-    <version.npm>6.14.4</version.npm>
+    <java.module.name>org.kie.dashbuilder.docs</java.module.name>
   </properties>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>com.github.eirslett</groupId>
-        <artifactId>frontend-maven-plugin</artifactId>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <version>2.2.2</version>
+        <configuration>
+          <resources>
+            <resource>
+              <directory>${project.basedir}/src/main/resources/</directory>
+            </resource>
+          </resources>
+        </configuration>
+
         <executions>
           <execution>
-            <id>install node and npm</id>
-            <goals>
-              <goal>install-node-and-npm</goal>
-            </goals>
-            <phase>initialize</phase>
-            <configuration>
-              <nodeVersion>${version.node}</nodeVersion>
-              <npmVersion>${version.npm}</npmVersion>
-            </configuration>
-          </execution>
-          <execution>
-            <id>npm install antora</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <phase>initialize</phase>
-          </execution>
-          <!-- Remove the exec-maven-plugin and enable this execution when
-                https://github.com/eirslett/frontend-maven-plugin/issues/1005 is resolved.
-          <execution>
-            <id>run antora</id>
-            <goals>
-              <goal>npx</goal>
-            </goals>
+            <id>convert-to-html</id>
             <phase>generate-resources</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
             <configuration>
-              <environmentVariables>
-                <DOCSEARCH_ENABLED>true</DOCSEARCH_ENABLED>
-                <DOCSEARCH_ENGINE>lunr</DOCSEARCH_ENGINE>
-                <DOCSEARCH_INDEX_VERSION>latest</DOCSEARCH_INDEX_VERSION>
-              </environmentVariables>
-              <arguments>antora &#45;&#45;generator antora-site-generator-lunr ${antora.playbook} &#45;&#45;to-dir=target/website/docs</arguments>
+              <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+              <attributes>
+                <imagesdir>./images</imagesdir>
+                <artifact-dir>${project.basedir}/src/main/resources/_artifacts</artifact-dir>
+              </attributes>
             </configuration>
+
           </execution>
-          -->
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>node/node</executable>
-              <environmentVariables>
-                <DOCSEARCH_ENABLED>true</DOCSEARCH_ENABLED>
-                <DOCSEARCH_ENGINE>lunr</DOCSEARCH_ENGINE>
-                <DOCSEARCH_INDEX_VERSION>latest</DOCSEARCH_INDEX_VERSION>
-              </environmentVariables>
-              <arguments>
-                <argument>${antora.binary}</argument>
-                <argument>--generator</argument>
-                <argument>antora-site-generator-lunr</argument>
-                <argument>${antora.playbook}</argument>
-                <argument>--to-dir=target/website/docs</argument>
-              </arguments>
-            </configuration>
-          </execution>
-        </executions>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
       </plugin>
     </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
-
-  <profiles>
-    <profile>
-      <!-- Enables the Antora author mode https://docs.antora.org/antora/2.3/playbook/author-mode/. -->
-      <id>author</id>
-      <properties>
-        <antora.playbook>antora-playbook-author.yml</antora.playbook>
-      </properties>
-    </profile>
-
-    <profile>
-      <id>antora-windows</id>
-      <activation>
-        <os>
-          <family>Windows</family>
-        </os>
-      </activation>
-      <properties>
-        <!-- The wrapper script node_modules/.bin/antora does not resolve the path to this file correctly. -->
-        <antora.binary>node_modules/@antora/cli/bin/antora</antora.binary>
-      </properties>
-    </profile>
-  </profiles>
 </project>

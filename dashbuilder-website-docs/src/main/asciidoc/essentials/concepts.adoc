@@ -1,0 +1,52 @@
+[id="chap-dashbuilder-concepts"]
+== Concepts
+ifdef::context[:parent-context: {context}]
+:context: dashbuilder-essentials
+
+[role="_abstract"]
+In this section we explore the concepts used by Dashbuilder.
+
+=== Pages
+Pages is where the data visualization lives. It follows a grid approach for organizing the visualization which means that it is organized in rows, columns and components; columns can have their own rows and columns. It is also possible to modify the CSS properties of each page part.
+
+=== Navigation
+Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.
+
+=== Datasets
+DataSets are the source of your data. The data can come from different sources, including https://blog.kie.org/2021/05/add-csv-datasets-for-authoring-dashboards.html[CSV], https://blog.kie.org/2021/07/add-sql-datasource-for-authoring-dashboards.html[SQL], https://blog.kie.org/2021/05/add-prometheus-datasets-for-authoring-dashboards.html[Prometheus], https://blog.kie.org/2021/05/kafka-monitoring-dashboards-from-business-central.html[Kafka Metrics] and https://blog.kie.org/2022/02/json-datasets-in-dashbuilder.html[JSON]. For the full client application only JSON is supported, but CSV on client is on the roadmap.
+More than loading from a source of data, dashbuilder datasets can be cached and later be spliced, filtered, ordered and grouped for a specific visualization.
+
+=== Components
+Components are the front ends for static content, data visualization or a navigation component:
+
+* Static components are used for visualization that does not require a dataset. Examples are HTML and forms.
+* Data Visualization components are offered natively by dashbuilder and they can be charts, filters or text that shows some aggregate information from the dataset. 
+** Supported charts are bar, area, line, pie, donut and map. 
+
+.Some of native dashbuilder components
+image::essentials/basicComponents.png[Some of native dashbuilder components]
+
+** Filters can be presented as labels or a drop down selector
+
+.Filter Components
+image::essentials/filterComponents.png[Filter components]
+
+** The metric component uses HTML and JS templates to show a grouped dataset information
+
+.Metric Components
+image::essentials/metricsComponents.png[Metric components]
+
+NOTE: These components offer multiple options, such as auto refresh, title, margin and others.
+
+* Navigation components allow you to embed other pages using different ways: Tabs, carousel, tiles, menu and tree navigation.
+
+.Navigation Components
+image::essentials/navigationComponents.png[Navigation components]
+
+
+=== External Components
+External components are like components, but the code used to build it will run in an isolated container (currently an iframe). It means that with external components it is possible to use any web technology to represent a dataset, users just know how to use the https://blog.kie.org/2021/02/dashbuilder-external-components-javascript-api-2.html[external components Javascript API].
+
+
+.External Components Development
+image::essentials/externalComponentDev.png[External Components development]
