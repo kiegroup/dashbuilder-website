@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Dashbuilder Documentation</title>
+<title>Dashbuilder YML Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -435,469 +435,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Collapsed Table of Content -->
-<link rel="stylesheet" href="website/jstree/style.css" />
-<link rel="stylesheet" href="website/toc.css" />
 </head>
-<body class="book toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Dashbuilder Documentation</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel2">
-<li><a href="#chap-dashbuilder-what-is">1. What is Dashbuilder</a></li>
-<li><a href="#chap-dashbuilder-concepts">2. Concepts</a>
-<ul class="sectlevel3">
-<li><a href="#_pages">2.1. Pages</a></li>
-<li><a href="#_navigation">2.2. Navigation</a></li>
-<li><a href="#_datasets">2.3. Datasets</a></li>
-<li><a href="#_components">2.4. Components</a></li>
-<li><a href="#_external_components">2.5. External Components</a></li>
-</ul>
-</li>
-<li><a href="#chap-dashbuilder-authoring">3. Authoring</a>
-<ul class="sectlevel3">
-<li><a href="#_dashbuilder_authoring">3.1. Dashbuilder Authoring</a></li>
-<li><a href="#_java_api">3.2. Java API</a></li>
-<li><a href="#_yaml_and_json">3.3. YAML and JSON</a></li>
-</ul>
-</li>
-<li><a href="#chap-dashbuilder-deployment">4. Deployment</a>
-<ul class="sectlevel3">
-<li><a href="#_cloud">4.1. Cloud</a></li>
-<li><a href="#_runtime_modes">4.2. Runtime Modes</a></li>
-<li><a href="#_client_bundle">4.3. Client Bundle</a></li>
-</ul>
-</li>
-<li><a href="#chap-dashbuilder-installation">5. Installation</a>
-<ul class="sectlevel3">
-<li><a href="#_on_premise_installation">5.1. On-Premise Installation</a></li>
-<li><a href="#_container_images">5.2. Container Images</a></li>
-<li><a href="#_client_only">5.3. Client only</a></li>
-</ul>
-</li>
-<li><a href="#chap-dashbuilder-yaml-guides">6. Dashbuilder YML Guide</a>
-<ul class="sectlevel3">
-<li><a href="#_pages_2">6.1. Pages</a></li>
-<li><a href="#_datasets_2">6.2. Datasets</a></li>
-<li><a href="#_datasets_lookup">6.3. Datasets lookup</a></li>
-<li><a href="#_displayers">6.4. Displayers</a></li>
-<li><a href="#_using_charts">6.5. Using Charts</a></li>
-<li><a href="#_selectors">6.6. Selectors</a></li>
-<li><a href="#_metrics">6.7. Metrics</a></li>
-<li><a href="#_meter_chart">6.8. Meter Chart</a></li>
-<li><a href="#_map">6.9. Map</a></li>
-<li><a href="#_navigation_2">6.10. Navigation</a></li>
-<li><a href="#_navigation_components">6.11. Navigation Components</a></li>
-<li><a href="#_properties">6.12. Properties</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="chap-dashbuilder-yaml-guides">Dashbuilder YML Guide</h2>
 <div class="sectionbody">
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/logos/dashbuilderLogo.png" alt="dashbuilderLogo">
-</div>
-</div>
-<h1 id="_welcome" class="discrete">Welcome</h1>
-</div>
-</div>
-<div class="sect2">
-<h3 id="chap-dashbuilder-what-is"><a class="anchor" href="#chap-dashbuilder-what-is"></a><a class="link" href="#chap-dashbuilder-what-is">1. What is Dashbuilder</a></h3>
-<div class="paragraph _abstract">
-<p>Dashbuilder is a tool for creating dashboards and data visualizations for developers and non-technical users.  Dashboards can be created using Java, a drag and drop web application or pure YAML and later run on a cloud native web application or in a client bundle.</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./images/essentials/dashbuilderSampleDashboard.png" alt="dashbuilderSampleDashboard">
-</div>
-<div class="title">Figure 1. Sample Dashbuilder Report</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="chap-dashbuilder-concepts"><a class="anchor" href="#chap-dashbuilder-concepts"></a><a class="link" href="#chap-dashbuilder-concepts">2. Concepts</a></h3>
-<div class="paragraph _abstract">
-<p>In this section we explore the concepts used by Dashbuilder.</p>
-</div>
-<div class="sect3">
-<h4 id="_pages"><a class="anchor" href="#_pages"></a><a class="link" href="#_pages">2.1. Pages</a></h4>
-<div class="paragraph">
-<p>Pages is where the data visualization lives. It follows a grid approach for organizing the visualization which means that it is organized in rows, columns and components; columns can have their own rows and columns. It is also possible to modify the CSS properties of each page part.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_navigation"><a class="anchor" href="#_navigation"></a><a class="link" href="#_navigation">2.2. Navigation</a></h4>
-<div class="paragraph">
-<p>Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_datasets"><a class="anchor" href="#_datasets"></a><a class="link" href="#_datasets">2.3. Datasets</a></h4>
-<div class="paragraph">
-<p>DataSets are the source of your data. The data can come from different sources, including <a href="https://blog.kie.org/2021/05/add-csv-datasets-for-authoring-dashboards.html">CSV</a>, <a href="https://blog.kie.org/2021/07/add-sql-datasource-for-authoring-dashboards.html">SQL</a>, <a href="https://blog.kie.org/2021/05/add-prometheus-datasets-for-authoring-dashboards.html">Prometheus</a>, <a href="https://blog.kie.org/2021/05/kafka-monitoring-dashboards-from-business-central.html">Kafka Metrics</a> and <a href="https://blog.kie.org/2022/02/json-datasets-in-dashbuilder.html">JSON</a>. For the full client application only JSON is supported, but CSV on client is on the roadmap.
-More than loading from a source of data, dashbuilder datasets can be cached and later be spliced, filtered, ordered and grouped for a specific visualization.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_components"><a class="anchor" href="#_components"></a><a class="link" href="#_components">2.4. Components</a></h4>
-<div class="paragraph">
-<p>Components are the front ends for static content, data visualization or a navigation component:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Static components are used for visualization that does not require a dataset. Examples are HTML and forms.</p>
-</li>
-<li>
-<p>Data Visualization components are offered natively by dashbuilder and they can be charts, filters or text that shows some aggregate information from the dataset.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Supported charts are bar, area, line, pie, donut and map.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/basicComponents.png" alt="Some of native dashbuilder components">
-</div>
-<div class="title">Figure 2. Some of native dashbuilder components</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Filters can be presented as labels or a drop down selector</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/filterComponents.png" alt="Filter components">
-</div>
-<div class="title">Figure 3. Filter Components</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The metric component uses HTML and JS templates to show a grouped dataset information</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/metricsComponents.png" alt="Metric components">
-</div>
-<div class="title">Figure 4. Metric Components</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-These components offer multiple options, such as auto refresh, title, margin and others.
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Navigation components allow you to embed other pages using different ways: Tabs, carousel, tiles, menu and tree navigation.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/navigationComponents.png" alt="Navigation components">
-</div>
-<div class="title">Figure 5. Navigation Components</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_external_components"><a class="anchor" href="#_external_components"></a><a class="link" href="#_external_components">2.5. External Components</a></h4>
-<div class="paragraph">
-<p>External components are like components, but the code used to build it will run in an isolated container (currently an iframe). It means that with external components it is possible to use any web technology to represent a dataset, users just know how to use the <a href="https://blog.kie.org/2021/02/dashbuilder-external-components-javascript-api-2.html">external components Javascript API</a>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/externalComponentDev.png" alt="External Components development">
-</div>
-<div class="title">Figure 6. External Components Development</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="chap-dashbuilder-authoring"><a class="anchor" href="#chap-dashbuilder-authoring"></a><a class="link" href="#chap-dashbuilder-authoring">3. Authoring</a></h3>
-<div class="paragraph _abstract">
-<p>There are three main ways of creating dashboards and data visualizations with Dashbuilder: <strong>Authoring Tool</strong>, <strong>Java</strong>, and <strong>YAML</strong>.</p>
-</div>
-<div class="sect3">
-<h4 id="_dashbuilder_authoring"><a class="anchor" href="#_dashbuilder_authoring"></a><a class="link" href="#_dashbuilder_authoring">3.1. Dashbuilder Authoring</a></h4>
-<div class="paragraph">
-<p>Dashbuilder Authoring is a web application which allows users to create pages using the layout editor, a drag and drop tool. It is available as a container and the result can be downloaded in ZIP format. It has three screens only: <strong>Pages</strong>, <strong>DataSets</strong> and <strong>Export/Import</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/dashbuilderAuthoring.png" alt="Dashbuilder Authoring">
-</div>
-<div class="title">Figure 7. Dashbuilder Authoring</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_java_api"><a class="anchor" href="#_java_api"></a><a class="link" href="#_java_api">3.2. Java API</a></h4>
-<div class="paragraph">
-<p>There&#8217;s a <a href="https://blog.kie.org/2021/04/building-dashboards-using-plain-java.html">Java API</a> to create and export Dashboards to ZIP format. It exposes the internal API in a DSL-ish API. The greatest advantage of using the Java API is that you can grab data to build static datasets, making high performance data visualizations integrated to Dashbuilder Runtime, which we will talk about later.
-Currently it only exports to ZIP, but it is our roadmap for a new Java DSL that will export YAML dashboards.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>// creates a data set with pure Java code - external sources can be used as well
-var dataSet = newDataSetBuilder().column("Country", ColumnType.LABEL)
-                                    .column("Population", ColumnType.NUMBER)
-                                    .row("China", "1439323776")
-                                    .row("India", "1380004385")
-                                    .row("United States", "331002651")
-                                    .row("Indonesia", "273523615")
-                                    .row("Pakistan", "220892340")
-                                    .row("Brazil", "212559417")
-                                    .row("Nigeria", "206139589")
-                                    .row("Bangladesh", "164689383")
-                                    .row("Russia", "145934462")
-                                    .row("Mexico", "128932753")
-                                    .buildDataSet();
-
-// a bar chart configuration that is used to visualize the data set
-var popBarChart = newBarChartSettings().subType_Column()
-                                        .width(800)
-                                        .height(600)
-                                        .dataset(dataSet)
-                                        .column("Country")
-                                        .column("Population")
-                                        .buildSettings();
-// a page with a HTML header and the displayer that uses the bar chart configuration
-var page = page("Countries Population",
-                row("&lt;h3&gt; Countries Population&lt;/h3&gt;"),
-                row(displayer(popBarChart)));
-
-// finally exports the dashboard to a local ZIP file
-DashboardExporter.get().export(dashboard(asList(page)),
-                                "population.zip",
-                                ExportType.ZIP);</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_yaml_and_json"><a class="anchor" href="#_yaml_and_json"></a><a class="link" href="#_yaml_and_json">3.3. YAML and JSON</a></h4>
-<div class="paragraph">
-<p>The most recent addition to Dashbuilder is the possibility to live load JSON and YAML dashboards. Different from the export ZIP dashboard, this new way of creating dashboards can be used in a client-only Dashbuilder installation accessing JSON datasets. You can try it in an <a href="https://jesuino.github.io/dashbuilder-client/">online editor</a>, which is also used to visualize the dashboards. A new YAML editor based on Monaco is in the roadmap.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/yamlAuthoring.png" alt="Dashbuilder YAML Authoring">
-</div>
-<div class="title">Figure 8. Dashbuilder YAML Editor</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="chap-dashbuilder-deployment"><a class="anchor" href="#chap-dashbuilder-deployment"></a><a class="link" href="#chap-dashbuilder-deployment">4. Deployment</a></h3>
-<div class="paragraph _abstract">
-<p>Deploying dashbuilder content is achieved by using Dashbuilder Runtime. The ZIP files exported from the Authoring tool or from the Java DSL can be used directly with Dashbuilder and with its modes.</p>
-</div>
-<div class="sect3">
-<h4 id="_cloud"><a class="anchor" href="#_cloud"></a><a class="link" href="#_cloud">4.1. Cloud</a></h4>
-<div class="paragraph">
-<p>Dashbuilder Runtime has been part of Quarkus since version 0.14.1, which makes its starts in no more than a few seconds and it is by default cloud native.  A container image is published with each Kogito Tooling release, making it easy to run Dashbuilder Runtime on Openshift or Kubernetes.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_runtime_modes"><a class="anchor" href="#_runtime_modes"></a><a class="link" href="#_runtime_modes">4.2. Runtime Modes</a></h4>
-<div class="paragraph">
-<p>It is possible to run Dashbuilder Runtime with a dedicated dashboard or run multiple dashboards in a single installation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Single</strong>: Just start Dashbuilder Runtime with no dashboards and you will be able to upload a single dashboard. Bear in mind that after restart the dashboard is lost;</p>
-</li>
-<li>
-<p><strong>Static</strong>: Use the system property <code>dashbuilder.runtime.import</code> to point to the ZIP file  in your file system. If the dashboard is remote  then you also need to set the system property <code>dashbuilder.runtime.allowExternal</code> to true.</p>
-</li>
-<li>
-<p><strong>Multi</strong>: In this <a href="https://blog.kie.org/2020/09/multi-dashboards-support-in-dashbuilder-runtime.html">multi-mode</a> dashbuilder looks for dashboards in the directory configured with the system property <code>dashbuilder.import.base.dir</code> (default is <strong>/tmp/dashbuilder/models</strong>). To turn multi mode on, set <code>dashbuilder.runtime.multi</code> as true and set <code>dashbuilder.model.update</code> as true to have dynamic model updates (new and deleted dashboards are reflected during runtime).</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/yamlAuthoring.png" alt="Dashbuilder Runtime Multi Mode">
-</div>
-<div class="title">Figure 9. Dashbuilder Runtime in Multi Mode</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Dev</strong>: In development mode dashbuilder hot reloads dashboards based on ZIP changes. Set the property <code>dashbuilder.dev</code> to true, start dashbuilder, place ZIPs on the dashboards directory and you should see the page auto refresh with the ZIP changes.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_client_bundle"><a class="anchor" href="#_client_bundle"></a><a class="link" href="#_client_bundle">4.3. Client Bundle</a></h4>
-<div class="paragraph">
-<p>If you have the dashboards created from YML you can transform it to JSON and load on a client bundle either using Javascript or mocking the backend to return the dashboards. It is in the roadmap a new deployment model for clients.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="chap-dashbuilder-installation"><a class="anchor" href="#chap-dashbuilder-installation"></a><a class="link" href="#chap-dashbuilder-installation">5. Installation</a></h3>
-<div class="paragraph">
-<p>In this section we cover build and installation of Dashbuilder Authoring and Dashbuilder Runtime.</p>
-</div>
-<div class="sect3">
-<h4 id="_on_premise_installation"><a class="anchor" href="#_on_premise_installation"></a><a class="link" href="#_on_premise_installation">5.1. On-Premise Installation</a></h4>
-<div class="paragraph">
-<p>Dashbuilder is released as part of <a href="https://github.com/kiegroup/kie-tools/releases">KIE Tools</a>. Download the file <code>dashbuilder_dist_{version}.zip</code></p>
-</div>
-<div class="paragraph">
-<p><strong>Requirements:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Java 11+</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Dashbuilder Authoring</strong></p>
-</div>
-<div class="paragraph">
-<p>Dashbuilder Authoring is distributed as a WAR that can run on JBoss EAP or Wildfly or a executable JAR.</p>
-</div>
-<div class="paragraph">
-<p>The JAR is a "bootable server" that can executed using the following command: <code>java -jar dashbuilder-authoring-bootable.jar</code></p>
-</div>
-<div class="paragraph">
-<p>Dashbuilder assets are stored in the directory <code>.dashbuilder</code>. It is possible to change the directory using the system property <code>org.dashbuilder.project.location</code>.</p>
-</div>
-<div class="paragraph">
-<p>Dashbuilder Authoring can also export a ZIP whenever an asset (page, dataset or navigation) is saved. To enable it set the system property <code>dashbuilder.export.location</code> to a valid ZIP location.</p>
-</div>
-<div class="paragraph">
-<p><strong>Dashbuilder Runtime</strong></p>
-</div>
-<div class="paragraph">
-<p>Dashbuilder Runtime is a Quarkus application that can run with the following command:</p>
-</div>
-<div class="paragraph">
-<p><code>java -jar dashbuilder-runtime-app.jar</code></p>
-</div>
-<div class="paragraph">
-<p>To run Dashbuilder Runtime in static mode:</p>
-</div>
-<div class="paragraph">
-<p><code>java -Ddashbuilder.runtime.import=/path/to/dashboard.zip -jar dashbuilder-runtime-app.jar</code></p>
-</div>
-<div class="paragraph">
-<p>Or in multi mode:</p>
-</div>
-<div class="paragraph">
-<p><code>java -Ddashbuilder.runtime.multi=true -jar dashbuilder-runtime-app.jar`</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_container_images"><a class="anchor" href="#_container_images"></a><a class="link" href="#_container_images">5.2. Container Images</a></h4>
-<div class="paragraph">
-<p><strong>Runtime</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>quay.io/kogito_tooling_bot/dashbuilder-runtime</strong></p>
-</div>
-<div class="paragraph">
-<p>You can pass Java properties using the JAVA_OPTS environment variable. For example, to run Dashbuilder Runtime in multi mode use the following command:</p>
-</div>
-<div class="paragraph">
-<p><code>podman run -p 8080:8080 -e “JAVA_OPTS=-Ddashbuilder.runtime.multi=true -Ddashbuilder.runtime.allowUpload=true” -dti quay.io/kogito_tooling_bot/dashbuilder-runtime:latest</code></p>
-</div>
-<div class="paragraph">
-<p><strong>Authoring</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>quay.io/kogito_tooling_bot/dashbuilder-authoring</strong></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Dashbuilder Authoring image uses the WAR bits and uses as base Wildfly 23.0.2 image.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_client_only"><a class="anchor" href="#_client_only"></a><a class="link" href="#_client_only">5.3. Client only</a></h4>
-<div class="paragraph">
-<p>YAML definitions runs on a client side installation. Currently the way to install YAML is using Javascript:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Have a HTML page where dashbuilder client bundle runs on an iframe;</p>
-</li>
-<li>
-<p>Dashbuilder sends a message to the parent frame saying that it is ready to receive content;</p>
-</li>
-<li>
-<p>The parent frame sends a message to dashbuilder with the YML content</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s the sample Javascript:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>// flag to indicate that dashbuilder is ready for content;
-var ready = false;
-window.addEventListener("message", (e) =&gt; {
-  if (e.data === "ready") {
-    ready = true;
-  }
-});
-
-// the send function
-const send = () =&gt; {
-    document.getElementById("dbFrame").contentWindow.postMessage(ymlContent, null);
-};</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Another possible way is to open dashbuilder client bundle and import an YAML file.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="chap-dashbuilder-yaml-guides"><a class="anchor" href="#chap-dashbuilder-yaml-guides"></a><a class="link" href="#chap-dashbuilder-yaml-guides">6. Dashbuilder YML Guide</a></h3>
 <div class="paragraph _abstract">
 <p>This is a guide for creating dashboards and visualizations with YAML. You can run all examples with Dashbuilder YML Online Editor.</p>
 </div>
-<div class="sect3">
-<h4 id="_pages_2"><a class="anchor" href="#_pages_2"></a><a class="link" href="#_pages_2">6.1. Pages</a></h4>
+<div class="sect2">
+<h3 id="_pages">Pages</h3>
 <div class="paragraph">
 <p>A dashbuilder YML file should contain at least one page, hence this is the smallest YML that you can create (it renders a white page):</p>
 </div>
@@ -957,7 +507,7 @@ const send = () =&gt; {
 <div class="content">
 <img src="./images/guides/yaml/pageLayout.png" alt="Page Layout">
 </div>
-<div class="title">Figure 10. Page Layout</div>
+<div class="title">Figure 1. Page Layout</div>
 </div>
 <div class="paragraph">
 <p>The page, rows, columns and components can have properties, including some CSS properties, such as width/height, background color, color and more.</p>
@@ -1028,11 +578,11 @@ const send = () =&gt; {
 <div class="content">
 <img src="./images/guides/yaml/pageComplexLayout.png" alt="Page Complex Layout">
 </div>
-<div class="title">Figure 11. Page Complex Layout</div>
+<div class="title">Figure 2. Page Complex Layout</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_datasets_2"><a class="anchor" href="#_datasets_2"></a><a class="link" href="#_datasets_2">6.2. Datasets</a></h4>
+<div class="sect2">
+<h3 id="_datasets">Datasets</h3>
 <div class="paragraph">
 <p>There&#8217;s a section for datasets where you declare your source of data. Dashbuilder supports multiple datasets types, but in this document we only cover JSON datasets, which does not require a backend.
 JSON datasets can have as a source any JSON array with a reachable URL, so the simplest dataset declaration requires the uuid and the url.</p>
@@ -1125,8 +675,8 @@ pages:
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_datasets_lookup"><a class="anchor" href="#_datasets_lookup"></a><a class="link" href="#_datasets_lookup">6.3. Datasets lookup</a></h4>
+<div class="sect2">
+<h3 id="_datasets_lookup">Datasets lookup</h3>
 <div class="paragraph">
 <p>To display a dataset dashbuilder uses the concept of <code>lookup</code>. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed.
 The lookup is part of a special component called <code>displayer</code>, which is covered later on this guide. For now, consider only the table displayer.
@@ -1159,7 +709,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/basicLookup.png" alt="Basic Lookup">
 </div>
-<div class="title">Figure 12. Basic Lookup</div>
+<div class="title">Figure 3. Basic Lookup</div>
 </div>
 <div class="paragraph">
 <p>With the lookup it is possible to define  the number of rows and the row offset of a dataset:</p>
@@ -1222,7 +772,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/orderLookup.png" alt="Lookup with order">
 </div>
-<div class="title">Figure 13. Dataset Lookup with order</div>
+<div class="title">Figure 4. Dataset Lookup with order</div>
 </div>
 <div class="paragraph">
 <p>A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the function and the args for the filter. The supported functions are (in parenthesis is the number of required parameters):</p>
@@ -1308,7 +858,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/filterLookup.png" alt="Lookup with filter">
 </div>
-<div class="title">Figure 14. Dataset Lookup with filter</div>
+<div class="title">Figure 5. Dataset Lookup with filter</div>
 </div>
 <div class="paragraph">
 <p>Filters can be combined using the AND logical condition, but it is possible to use logical operators AND/OR and NOT to combine filters:</p>
@@ -1351,7 +901,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/combinedFilterLookup.png" alt="Lookup with combined filter">
 </div>
-<div class="title">Figure 15. Dataset Lookup with combined filter</div>
+<div class="title">Figure 6. Dataset Lookup with combined filter</div>
 </div>
 <div class="paragraph">
 <p>Dataset lookups also allow grouping. The group section is where the column group and the group functions are provided. The columnGroup is used to specify the grouping column and the “groupFunctions” is used to specify the group function for each selected column. In the example below the dataset lookup sums the number of products per section:</p>
@@ -1395,7 +945,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/groupLookup.png" alt="Lookup with group">
 </div>
-<div class="title">Figure 16. Dataset Lookup with group</div>
+<div class="title">Figure 7. Dataset Lookup with group</div>
 </div>
 <div class="paragraph">
 <p>The supported group functions are <code>SUM</code>, <code>MAX</code>, <code>MIN</code> and <code>AVERAGE</code> for numbers. For label columns the supported functions are <code>DISTINCT</code> and <code>COUNT</code>.
@@ -1437,8 +987,8 @@ pages:
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_displayers"><a class="anchor" href="#_displayers"></a><a class="link" href="#_displayers">6.4. Displayers</a></h4>
+<div class="sect2">
+<h3 id="_displayers">Displayers</h3>
 <div class="paragraph">
 <p>Displayers are visual components that can show data. Dashbuilder supports by default all the popular charts types, tables, metrics with customized structure and style, data selectors to filter the whole visualization and finally external displayers, which are custom applications used to display data.</p>
 </div>
@@ -1505,7 +1055,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/selfFilteringDisplayer.png" alt="Displayer with self filtering">
 </div>
-<div class="title">Figure 17. Displayer with self filtering</div>
+<div class="title">Figure 8. Displayer with self filtering</div>
 </div>
 <div class="paragraph">
 <p>To filter other components notification must be true and other components receiving the filter should have listening as true. Here&#8217;s a table filtering each other:</p>
@@ -1544,7 +1094,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/filterNotificationDisplayer.png" alt="Displayer with filter notification">
 </div>
-<div class="title">Figure 18. Displayer with filter notification</div>
+<div class="title">Figure 9. Displayer with filter notification</div>
 </div>
 <div class="paragraph">
 <p><strong>Refreshing data</strong></p>
@@ -1578,7 +1128,7 @@ pages:
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
 Bear in mind that smaller refresh intervals in multiple Displayers will impact the visualization performance.
@@ -1626,7 +1176,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/columnsConfigurationDisplayer.png" alt="Displayer with conlumns configuration">
 </div>
-<div class="title">Figure 19. Displayer with columns configurations</div>
+<div class="title">Figure 10. Displayer with columns configurations</div>
 </div>
 <div class="paragraph">
 <p><strong>Table Settings</strong></p>
@@ -1719,11 +1269,11 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/orderingTable.png" alt="Table with order configuration">
 </div>
-<div class="title">Figure 20. Table with order configuration</div>
+<div class="title">Figure 11. Table with order configuration</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_using_charts"><a class="anchor" href="#_using_charts"></a><a class="link" href="#_using_charts">6.5. Using Charts</a></h4>
+<div class="sect2">
+<h3 id="_using_charts">Using Charts</h3>
 <div class="paragraph">
 <p>In dashbuilder the following charts are supported:</p>
 </div>
@@ -1786,7 +1336,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/barChart.png" alt="Bar Chart">
 </div>
-<div class="title">Figure 21. Bar Chart</div>
+<div class="title">Figure 12. Bar Chart</div>
 </div>
 <div class="paragraph">
 <p>Then simply adding the <code>subtype</code> property with value <code>COLUMN_STACKED</code> it renders the following chart:</p>
@@ -1795,7 +1345,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/stackedBarChart.png" alt="Stacked Bar Chart">
 </div>
-<div class="title">Figure 22. Stacked Bar Chart</div>
+<div class="title">Figure 13. Stacked Bar Chart</div>
 </div>
 <div class="paragraph">
 <p>A line chart is simply a matter of changing the type to <code>LINE</code>:</p>
@@ -1957,11 +1507,11 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/chartConfiguration.png" alt="Chart Configuration">
 </div>
-<div class="title">Figure 23. Bar Chart Configuration</div>
+<div class="title">Figure 14. Bar Chart Configuration</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_selectors"><a class="anchor" href="#_selectors"></a><a class="link" href="#_selectors">6.6. Selectors</a></h4>
+<div class="sect2">
+<h3 id="_selectors">Selectors</h3>
 <div class="paragraph">
 <p>Selector is a special displayer type used to filter the visualization. It has 3 subtytpes:</p>
 </div>
@@ -1983,7 +1533,7 @@ The selector object has the property multiple, when true multiple values can be 
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
 Filter must be enabled, otherwise selectors will not work.
@@ -2054,11 +1604,11 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/labelsSelector.png" alt="Labels Selector">
 </div>
-<div class="title">Figure 24. Labels Selector</div>
+<div class="title">Figure 15. Labels Selector</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_metrics"><a class="anchor" href="#_metrics"></a><a class="link" href="#_metrics">6.7. Metrics</a></h4>
+<div class="sect2">
+<h3 id="_metrics">Metrics</h3>
 <div class="paragraph">
 <p>The metric component is a piece of HTML capable of showing a single value. It is possible to customize the HTML, but by default the value is displayed in a card:</p>
 </div>
@@ -2100,7 +1650,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/defaultMetrics.png" alt="Default Metrics">
 </div>
-<div class="title">Figure 25. Default Metrics</div>
+<div class="title">Figure 16. Default Metrics</div>
 </div>
 <div class="paragraph">
 <p>The HTML can be customized using the object <code>html</code> with the field html and <code>javascript</code> for javascript. Inside the HTML the variable <code>${value}</code> contains the value resulted from the dataset lookup and to refer to elements in javascript give the element the id <code>${this}</code> and refer to it in the javascript code. Be responsible for the javascript code used in the YAML!
@@ -2147,14 +1697,14 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/customMetrics.png" alt="Custom Metrics">
 </div>
-<div class="title">Figure 26. Custom Metrics</div>
+<div class="title">Figure 17. Custom Metrics</div>
 </div>
 <div class="paragraph">
 <p>Other variables from the displayer configuration can be used in the code (using <code>${variable name}</code> template): <code>title</code>, <code>width</code>, <code>height</code>, <code>marginTop</code>, <code>marginBottom</code>, <code>marginRight</code>, <code>marginLeft</code> and <code>bgColor</code>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_meter_chart"><a class="anchor" href="#_meter_chart"></a><a class="link" href="#_meter_chart">6.8. Meter Chart</a></h4>
+<div class="sect2">
+<h3 id="_meter_chart">Meter Chart</h3>
 <div class="paragraph">
 <p>A special chart is the meter chart. It compares values and shows the percent of the total. To configure the values boundaries use the property <code>meter</code>, it supports the following attributes:</p>
 </div>
@@ -2226,11 +1776,11 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/meter.png" alt="Meter">
 </div>
-<div class="title">Figure 27. Meter</div>
+<div class="title">Figure 18. Meter</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_map"><a class="anchor" href="#_map"></a><a class="link" href="#_map">6.9. Map</a></h4>
+<div class="sect2">
+<h3 id="_map">Map</h3>
 <div class="paragraph">
 <p>Dashbuilder provides a Map component to show geographic data. It is country based, so to use it one must provide the country identification, which could be the country name, <code>lat, long</code> or the country code, and provide the value for that country.
 It has two types:
@@ -2289,11 +1839,11 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/map.png" alt="Map">
 </div>
-<div class="title">Figure 28. Map</div>
+<div class="title">Figure 19. Map</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_navigation_2"><a class="anchor" href="#_navigation_2"></a><a class="link" href="#_navigation_2">6.10. Navigation</a></h4>
+<div class="sect2">
+<h3 id="_navigation">Navigation</h3>
 <div class="paragraph">
 <p>It is possible to have multiple pages in a single visualization. The pages can be organized in a menu using navigation. When you don&#8217;t declare a navigation then a standard menu navigation is used:</p>
 </div>
@@ -2366,13 +1916,13 @@ navTree:
 <div class="content">
 <img src="./images/guides/yaml/menuNavigation.png" alt="Menu Navigation">
 </div>
-<div class="title">Figure 29. Menu Navigation</div>
+<div class="title">Figure 20. Menu Navigation</div>
 </div>
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
 To show a default page just name it as <code>index</code> and it will be displayed by default, otherwise the default dashbuilder page will be displayed.
@@ -2381,8 +1931,8 @@ To show a default page just name it as <code>index</code> and it will be display
 </table>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_navigation_components"><a class="anchor" href="#_navigation_components"></a><a class="link" href="#_navigation_components">6.11. Navigation Components</a></h4>
+<div class="sect2">
+<h3 id="_navigation_components">Navigation Components</h3>
 <div class="paragraph">
 <p>It is possible to embed pages using navigation groups. To do so dashbuilder provides navigation components.</p>
 </div>
@@ -2455,11 +2005,11 @@ navTree:
 <div class="content">
 <img src="./images/guides/yaml/navigationComponents.png" alt="Navigation Components">
 </div>
-<div class="title">Figure 30. Navigation Components</div>
+<div class="title">Figure 21. Navigation Components</div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_properties"><a class="anchor" href="#_properties"></a><a class="link" href="#_properties">6.12. Properties</a></h4>
+<div class="sect2">
+<h3 id="_properties">Properties</h3>
 <div class="paragraph">
 <p>The goal of properties is to make it easier to reuse YAML definitions and let users only customize certain parts of the document. Properties can be declared with a value and later references using <code>${PROPERTY NAME}</code>.</p>
 </div>
@@ -2467,7 +2017,7 @@ navTree:
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<div class="title">Note</div>
 </td>
 <td class="content">
 Be careful when using <code>${<em><em></em></em>}</code> to avoid conflict with Metric templates.
@@ -2493,15 +2043,11 @@ pages:
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-31 22:29:36 -0300
+Last updated 2022-03-31 23:14:27 -0300
 </div>
 </div>
-<!-- Collapsed Table of Content -->
-<script src="website/jquery/jquery.min.js"></script>
-<script src="website/jstree/jstree.min.js"></script>
-<script src="website/toc.js"></script>
-
 </body>
 </html>
