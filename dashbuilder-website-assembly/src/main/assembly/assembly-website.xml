@@ -15,8 +15,8 @@
       <outputDirectory/>
     </fileSet>
     <fileSet>
-      <directory>../dashbuilder-website-docs/target/website</directory>
-      <outputDirectory/>
+      <directory>../dashbuilder-website-docs/target/docs</directory>
+      <outputDirectory>docs</outputDirectory>
     </fileSet>
   </fileSets>
 </assembly>

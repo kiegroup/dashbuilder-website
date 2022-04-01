@@ -1,0 +1,1307 @@
+[id="chap-dashbuilder-yaml-guides"]
+ifdef::context[:parent-context: {context}]
+:context: dashbuilder-guides
+
+== Dashbuilder YML Guide
+
+[role="_abstract"]
+This is a guide for creating dashboards and visualizations with YAML. You can run all examples with Dashbuilder YML Online Editor.
+
+=== Pages
+
+A dashbuilder YML file should contain at least one page, hence this is the smallest YML that you can create (it renders a white page):
+
+[source]
+----
+pages:
+    - name: Hello
+----
+
+A page can contain rows, columns and finally components. A page with a single row and column can have the rows and columns omitted. Here's a page with a single component, which renders the text **Hello**:
+
+[source]
+----
+pages:
+    - components:
+        - type: HTML
+          properties:
+            HTML_CODE: Hello
+----
+It is required to declare rows and columns for a more complex layout. Here's a page with two text in separated columns:
+[source]
+----
+pages:
+    - rows:
+        - columns:
+            - span: '6'
+              components:
+                - type: HTML
+                  properties:
+                    HTML_CODE: Row 1 Column 1
+            - span: '6'
+              components:
+                - type: HTML
+                  properties:
+                    HTML_CODE: Row 1 Column 2
+        - columns:
+            - span: '6'
+              components:
+                - type: HTML
+                  properties:
+                    HTML_CODE: Row 2 Column 1
+            - span: '6'
+              components:
+                - type: HTML
+                  properties:
+                    HTML_CODE: Row 2 Column 2
+----
+The YML renders to:
+
+.Page Layout
+image::guides/yaml/pageLayout.png[Page Layout]
+
+
+The page, rows, columns and components can have properties, including some CSS properties, such as width/height, background color, color and more.
+
+[source]
+----
+pages:
+    - rows:
+        - properties:
+            background-color: darkgray
+          columns:
+            - span: '6'
+              properties:
+                color: white
+              components:
+                - type: HTML
+                  properties:
+                    HTML_CODE: Row 1 Column 1
+            - span: '6'
+              properties:
+                color: lightblue
+              components:
+                - type: HTML
+                  properties:
+                    HTML_CODE: Row 1 Column 2
+----
+
+A column can also have rows with components, this is useful for more complex layouts:
+
+[source]
+----
+pages:
+    - rows:
+        - columns:
+            - span: 2
+              rows:
+                - columns:
+                    - components:
+                        - type: HTML
+                          properties:
+                            HTML_CODE: R1CL1R1
+                - columns:
+                    - components:
+                        - type: HTML
+                          properties:
+                            HTML_CODE: R1CL1R2
+            - span: 2
+              rows:
+                - columns:
+                    - components:
+                        - type: HTML
+                          properties:
+                            HTML_CODE: R2CL1R1
+                - columns:
+                    - components:
+                        - type: HTML
+                          properties:
+                            HTML_CODE: R2CL1R2
+            - span: 2
+              components:
+                - type: HTML
+                  properties:
+                    HTML_CODE: R2CL1R1
+----
+
+.Page Complex Layout
+image::guides/yaml/pageComplexLayout.png[Page Complex Layout]
+
+=== Datasets
+
+There's a section for datasets where you declare your source of data. Dashbuilder supports multiple datasets types, but in this document we only cover JSON datasets, which does not require a backend.
+JSON datasets can have as a source any JSON array with a reachable URL, so the simplest dataset declaration requires the uuid and the url.
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  url: /datasets/population.json
+pages:
+- name: DataSet sample
+----
+
+It is possible to declare inline JSON for testing and prototyping purposes:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+pages:
+- name: DataSet sample
+----
+
+With a pure JSON array dashbuilder will try to find the column type and give it a generic ID (Column X). You can override dashbuilder default settings using columns:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+  columns:
+    - id: Name
+      type: LABEL
+    - id: Age
+      type: NUMBER
+pages:
+- name: DataSet sample
+----
+
+Most of the cases the JSON format is not an array. For these cases it is possible to use the powerful transformation language JSONAta to transform a dataset using the `expression` attribute. In the following example the array of objects is transformed into a JSON array:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  expression: $.participants.[name, age]
+  content: >-
+            {
+              "participants": [
+                {"name": "William", "age": 33},
+                {"name": "Luanda", "age": 32},
+                {"name": "Anton", "age": 6}
+              ]
+            }
+pages:
+- name: DataSet sample
+----
+
+It is possible to use caching for non real time datasets. The cache expiration can be configured using `refreshTime`, otherwise the case is only invalidated when the YML runs again. Here's a example of a dataset cached for `10seconds`:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+  cacheEnabled: 'true'
+  refreshTime: '30second'
+pages:
+- name: DataSet sample
+----
+
+=== Datasets lookup
+
+To display a dataset dashbuilder uses the concept of `lookup`. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed. 
+The lookup is part of a special component called `displayer`, which is covered later on this guide. For now, consider only the table displayer.
+The simplest use of a lookup is by simply providing the dataset uuid:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+  columns:
+    - id: Name
+      type: LABEL
+    - id: Age
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: mydataset
+----
+
+.Basic Lookup
+image::guides/yaml/basicLookup.png[Basic Lookup]
+
+With the lookup it is possible to define  the number of rows and the row offset of a dataset:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+  columns:
+    - id: Name
+      type: LABEL
+    - id: Age
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: mydataset
+            rowCount: 1
+            rowOffset: 2
+----
+
+The field order can be used to order the dataset based on a column. It is required to provide the column id and the sort order (`ASCENDING` or `DESCENDING`):
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+  columns:
+    - id: Name
+      type: LABEL
+    - id: Age
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: mydataset
+            sort:
+                - column: Age
+                  sortOrder: ASCENDING
+----
+
+.Dataset Lookup with order
+image::guides/yaml/orderLookup.png[Lookup with order]
+
+A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the function and the args for the filter. The supported functions are (in parenthesis is the number of required parameters):
+
+* IS_NULL(0)
+* NOT_NULL(0)
+* EQUALS_TO(1)
+* NOT_EQUALS_TO(1)
+* LIKE_TO(2)
+* GREATER_THAN(1)
+* GREATER_OR_EQUALS_TO(1)
+* LOWER_THAN(1)
+* LOWER_OR_EQUALS_TO(1)
+* BETWEEN(2)
+* TIME_FRAME(1)
+* IN(1)
+* NOT_IN(1)
+
+The filters `TIME_FRAME` and `IN` are applied only for `DATE` columns and `LIKE_TO` is only for TEXT or LABEL columns.
+
+Here's a `GREATER_TO` sample:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+  columns:
+    - id: Name
+      type: LABEL
+    - id: Age
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: mydataset
+            filter:
+                - column: Age
+                  function: GREATER_THAN
+                  args:
+                    - 10
+----
+
+.Dataset Lookup with filter
+image::guides/yaml/filterLookup.png[Lookup with filter]
+
+Filters can be combined using the AND logical condition, but it is possible to use logical operators AND/OR and NOT to combine filters:
+
+[source]
+----
+datasets:
+- uuid: mydataset
+  content: >-
+            [
+              ["William", 33],
+              ["Luanda", 32],
+              ["Anton", 6]
+            ]
+  columns:
+    - id: Name
+      type: LABEL
+    - id: Age
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: mydataset
+            filter:
+                - function: OR
+                  args:
+                    - column: Name
+                      function: LIKE_TO
+                      args:
+                        - "L%"
+                    - column: Age
+                      function: LOWER_THAN
+                      args:
+                        - 10
+----
+
+.Dataset Lookup with combined filter
+image::guides/yaml/combinedFilterLookup.png[Lookup with combined filter]
+
+Dataset lookups also allow grouping. The group section is where the column group and the group functions are provided. The columnGroup is used to specify the grouping column and the “groupFunctions” is used to specify the group function for each selected column. In the example below the dataset lookup sums the number of products per section:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Name
+      type: LABEL
+    - id: Quantity
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: products
+            group:
+                - columnGroup:
+                    source: Section
+                  groupFunctions:
+                    - source: Section
+                    - source: Quantity
+                      function: SUM
+                      column: Total Products
+----
+
+.Dataset Lookup with group
+image::guides/yaml/groupLookup.png[Lookup with group]
+
+The supported group functions are `SUM`, `MAX`, `MIN` and `AVERAGE` for numbers. For label columns the supported functions are `DISTINCT` and `COUNT`.  
+By default it uses the column name itself, it is also possible to give another name to the grouped column.
+If a column is not specific in columnGroup, but used with other columns in columnFunctions, then the error  **Error during dataset lookup: No aggregation function specified for the column** is displayed.
+
+However, it is possible to omit the column group section and use no function for columns under `columnGroup`, this way the columns will just be passed to the displayer
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Name
+      type: LABEL
+    - id: Quantity
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: products
+            group:
+                - groupFunctions:
+                    - source: Name
+                    - source: Quantity
+----
+
+=== Displayers
+
+Displayers are visual components that can show data. Dashbuilder supports by default all the popular charts types, tables, metrics with customized structure and style, data selectors to filter the whole visualization and finally external displayers, which are custom applications used to display data.
+
+Dashbuilder consider as displayer every component with a settings, so when the settings is declared then the type must be declared as well:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Name
+      type: LABEL
+    - id: Quantity
+      type: Number
+pages:
+- components:
+    - settings:
+        type: TABLE
+        dataSetLookup:
+            uuid: products
+----
+
+*User data filtering*
+
+All displayers can filter itself and filter others using filter capabilities. This is done using the “filter” attribute, the filter must be enabled and components that will be filtered must have notification on. Components can filter itself, here's a table filtering itself:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+pages:
+- components:
+    - settings:
+        type: TABLE
+        filter:
+            enabled: 'true'
+            selfapply: 'true'
+        dataSetLookup:
+            uuid: products
+----
+
+.Displayer with self filtering
+image::guides/yaml/selfFilteringDisplayer.png[Displayer with self filtering]
+
+To filter other components notification must be true and other components receiving the filter should have listening as true. Here's a table filtering each other:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+pages:
+- components:
+    - settings:
+        type: TABLE
+        filter:
+            enabled: 'true'
+            notification: 'true'
+        dataSetLookup:
+            uuid: products
+    - settings:
+        type: TABLE
+        filter:
+            enabled: 'true'
+            listening: 'true'
+        dataSetLookup:
+            uuid: products
+----
+
+.Displayer with filter notification
+image::guides/yaml/filterNotificationDisplayer.png[Displayer with filter notification]
+
+*Refreshing data*
+
+It is possible to constantly refresh a Displayer with data. In this case just declare a refresh with interval and the dataset will be retrieved each X seconds.
+
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+pages:
+- components:
+    - settings:
+        type: TABLE
+        refresh:
+            interval: '30'
+        dataSetLookup:
+            uuid: products
+----
+
+NOTE: Bear in mind that smaller refresh intervals in multiple Displayers will impact the visualization performance.
+
+*Columns formatting*
+
+Displayers individually support dataset columns formatting. The field “columns” accept an array of columns where the id is provided, with it it is possible to change the column name, apply a number pattern and use Javascript to transform the column value. 
+In the following example the column 0 is transformed to be upper case and the number column is formatted to use no decimal places
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+pages:
+- components:
+    - settings:
+        type: TABLE
+        columns:
+            - id: Column 0
+              name: Section
+              expression: value.toUpperCase()
+            - id: Column 1
+              name: Product
+            - id: Column 2
+              name: Quantity
+              pattern: '#'
+        dataSetLookup:
+            uuid: products
+----
+
+.Displayer with columns configurations
+image::guides/yaml/columnsConfigurationDisplayer.png[Displayer with conlumns configuration]
+
+
+*Table Settings*
+
+When using the table displayer there are specific settings that can be used:
+
+* *pageSize*: the quantity of items displayed per page;
+* *show_column_picker*: When false the column picker is not displayed
+
+Here's an example of these two properties:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+pages:
+- components:
+    - settings:
+        type: TABLE
+        table:
+            pageSize: '3'
+            show_column_picker: 'false'
+        dataSetLookup:
+            uuid: products
+----
+
+The table sort can be configured using the sort object. Sort support the following settings:
+
+* *enabled*: if true users can sort the table by clicking on the column name;
+* *columnId*: The id of the column used to sort the table;
+* *order*: The order that can be `ASCENDING` or `DESCENDING`.
+
+Here's a table sorted by Column 2 in descending order.
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+pages:
+- components:
+    - settings:
+        type: TABLE
+        table:
+            show_column_picker: 'false'
+            sort:
+                enabled: 'false'
+                columnId: Column 2
+                order: DESCENDING
+        dataSetLookup:
+            uuid: products
+----
+.Table with order configuration
+image::guides/yaml/orderingTable.png[Table with order configuration]
+
+
+=== Using Charts
+
+In dashbuilder the following charts are supported:
+
+* *BARCHART*: with subtypes `COLUMN` (default) and `BAR`. It is also possible to use `STACKED` (`COLUMN_STACKED` and `BAR_STACKED`)
+* *LINECHART*: with subtypes `LINE` (default) and `SMOOTH`
+* *AREACHART*: with subtypes `AREA` (default) and `AREA_STACKED`
+* *PIECHART*:  with subtypes `PIE` (default) and `DONUT`
+
+All these types support one column for categories (X axis) and at least one column for Y axis. If this is respected, then simply changing the type will change the visualization. In another words, the following YAML will renders a BARCHART:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5, 3],
+              ["Computers", "Printer", 7, 4],
+              ["Computers", "Laptop", 3, 2],
+              ["Electronics", "Camera", 10, 7],
+              ["Electronics", "Headphones", 5, 9]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Product
+      type: LABEL
+    - id: Quantity
+      type: NUMBER
+pages:
+- components:
+    - settings:
+        type: BARCHART
+        dataSetLookup:
+            uuid: products
+            group:
+                - columnGroup:
+                    source: Product
+                  groupFunctions:
+                    - source: Product
+                    - source: Quantity
+                      function: SUM
+                    - source: Column 3
+                      function: SUM
+----
+
+.Bar Chart
+image::guides/yaml/barChart.png[Bar Chart]
+
+Then simply adding the `subtype` property with value `COLUMN_STACKED` it renders the following chart:
+
+.Stacked Bar Chart
+image::guides/yaml/stackedBarChart.png[Stacked Bar Chart]
+
+A line chart is simply a matter of changing the type to `LINE`:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5, 3],
+              ["Computers", "Printer", 7, 4],
+              ["Computers", "Laptop", 3, 2],
+              ["Electronics", "Camera", 10, 7],
+              ["Electronics", "Headphones", 5, 9]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Product
+      type: LABEL
+    - id: Quantity
+      type: NUMBER
+pages:
+- components:
+    - settings:
+        type: LINECHART
+        subtype: SMOOTH
+        dataSetLookup:
+            uuid: products
+            group:
+                - columnGroup:
+                    source: Product
+                  groupFunctions:
+                    - source: Product
+                    - source: Quantity
+                      function: SUM
+                    - source: Column 3
+                      function: SUM
+----
+
+The same configuration could be used with `AREACHART`, and `PIECHART` (only the first column is used for the pie values).
+
+*Chart Axis configuration*
+
+It is possible to configure charts X/Y axis using the axis configuration. 
+
+Under the axis object there are two properties, x and y. Here are the supported attributes:
+
+* *labels_show*: when true the labels will be displayed
+* *title*: A title for the axis
+* *labels_angle*: The labels angle. Only works for the X axis.
+
+
+*Chart General Settings*
+
+All charts and most of the displayers support chart general settings. These settings are part of the `chart` attribute:
+
+* *width*: A number with the chart fixed width. It is not a CSS property;
+* *height*: A number with the chart fixed height. It is not a CSS property;
+* *resizable*: A boolean property that indicates that the chart  should auto resize according to the screen resolution. This is the only chart property that is supported by the Table displayer;
+* *bgColor*: The chart background color
+* *margin*: An object that configures the chart margin, it has the attributes left, top, bottom and right. It is not a CSS property;
+* *legend*: An object that configures the chart legend. It has the attributes show, when true the legend is displayed, and position, possible values are: IN, RIGHT and BOTTOM.
+* *grid*: An object to show/hide the grid, it has the boolean attributes x and y;
+* *zoom*: When true will enable zoom on charts;
+* *general*: In attribute `general` it is possible to set a title. The title will not be displayed, for this it is required to set the attribute show as true;
+
+Here's an example using chart properties:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Printer", 7, 4],
+              ["Computers", "Laptop", 3, 2],
+              ["Electronics", "Camera", 10, 7],
+              ["Electronics", "Headphones", 5, 9]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Product
+      type: LABEL
+    - id: Quantity1
+      type: NUMBER
+    - id: Quantity2
+      type: NUMBER
+pages:
+- components:
+    - settings:
+        type: BARCHART
+        chart:
+            bgColor: DEDEDE
+            width: '800'
+            height: '400'
+            zoom: 'true'
+            margin:
+                right: '50'
+                top: '50'
+            legend:
+                show: 'true'
+                position: 'bottom'
+            grid:
+                x: 'false'
+                y: 'false'
+        dataSetLookup:
+            uuid: products
+            group:
+            - columnGroup:
+                source: Product
+              groupFunctions:
+                - source: Product
+                - source: Quantity1
+                  function: SUM
+                - source: Quantity2
+                  function: SUM
+----
+
+.Bar Chart Configuration
+image::guides/yaml/chartConfiguration.png[Chart Configuration]
+
+=== Selectors
+
+Selector is a special displayer type used to filter the visualization. It has 3 subtytpes:
+
+* `SELECTOR_LABELS`: Shows the values in selectable labels;
+* `SELECTOR_DROPDOWN`: Shows the values in a dropdown;
+* `SELECTOR_SLIDER`: Shows a slider to select values. Show be used only for number and date columns.
+The selector object has the property multiple, when true multiple values can be selected. Bear in mind that this only works with labels selectors.
+
+NOTE: Filter must be enabled, otherwise selectors will not work. 
+
+Here's an example of labels selector:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Printer", 7, 4],
+              ["Computers", "Laptop", 3, 2],
+              ["Electronics", "Camera", 10, 7],
+              ["Electronics", "Headphones", 5, 9]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Product
+      type: LABEL
+    - id: Quantity1
+      type: NUMBER
+    - id: Quantity2
+      type: NUMBER
+pages:
+- components:
+    - settings:
+        type: BARCHART
+        filter:
+            enabled: 'true'
+            listening: 'true'
+        dataSetLookup:
+            uuid: products
+            group:
+            - columnGroup:
+                source: Product
+              groupFunctions:
+                - source: Product
+                - source: Quantity1
+                  function: SUM
+                - source: Quantity2
+                  function: SUM
+    - settings:
+        type: SELECTOR
+        subtype: SELECTOR_LABELS
+        selector:
+            multiple: 'true'
+            inputs_show: 'true'
+        filter:
+            enabled: 'true'
+            notification: 'true'
+        dataSetLookup:
+            uuid: products
+            group:
+            - columnGroup:
+                source: Section
+              groupFunctions:
+                - source: Section
+----
+
+.Labels Selector
+image::guides/yaml/labelsSelector.png[Labels Selector]
+
+
+=== Metrics
+
+The metric component is a piece of HTML capable of showing a single value. It is possible to customize the HTML, but by default the value is displayed in a card:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Printer", 7],
+              ["Laptop", 3],
+              ["Camera", 10],
+              ["Headphones", 5]
+            ]
+  columns:
+    - id: Product
+      type: LABEL
+    - id: Quantity
+      type: NUMBER
+pages:
+- components:
+    - settings:
+        type: METRIC
+        chart:
+            height: '100'
+            width: '150'
+        general:
+            title: Total Products
+            visible: 'true'
+        dataSetLookup:
+            uuid: products
+            group:
+            - groupFunctions:
+                - source: Quantity
+                  function: SUM
+----
+
+.Default Metrics
+image::guides/yaml/defaultMetrics.png[Default Metrics]
+
+The HTML can be customized using the object `html` with the field html and `javascript` for javascript. Inside the HTML the variable `${value}` contains the value resulted from the dataset lookup and to refer to elements in javascript give the element the id `${this}` and refer to it in the javascript code. Be responsible for the javascript code used in the YAML!
+Here's a basic example:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Printer", 7],
+              ["Laptop", 3],
+              ["Camera", 10],
+              ["Headphones", 5]
+            ]
+  columns:
+    - id: Product
+      type: LABEL
+    - id: Quantity
+      type: NUMBER
+pages:
+- components:
+    - settings:
+        type: METRIC
+        html:
+            html: <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
+            javascript: >-
+                            ${this}.onmouseover = function() {
+                                ${this}.style.color = "red";
+                            };
+                            ${this}.onmouseout = function() {
+                                ${this}.style.color = "black";
+                            };
+        dataSetLookup:
+            uuid: products
+            group:
+            - groupFunctions:
+                - source: Quantity
+                  function: SUM
+----
+
+.Custom Metrics
+image::guides/yaml/customMetrics.png[Custom Metrics]
+
+Other variables from the displayer configuration can be used in the code (using `${variable name}` template): `title`, `width`, `height`, `marginTop`, `marginBottom`, `marginRight`, `marginLeft` and `bgColor`.
+
+=== Meter Chart
+
+A special chart is the meter chart. It compares values and shows the percent of the total. To configure the values boundaries use the property `meter`, it supports the following attributes:
+
+* *start*: a value to start the meter
+* *end*: the max value value for the meter
+* *critical*: paints the meter as red if the value is bigger than this parameter
+* *warning*: paints the meter as orange if the value is bigger than this parameter
+
+For the dataset it accepts two columns: the label and the value. Here's an example:
+
+[source]
+----
+datasets:
+- uuid: memory_usage
+  content: >-
+            [
+              ["Server 1", 2512],
+              ["Server 2", 1900],
+              ["Server 3", 3200],
+              ["Server 4", 1200]
+            ]
+  columns:
+    - id: Server
+      type: LABEL
+    - id: Usage
+      type: NUMBER
+pages:
+- components:
+    - properties:
+        font-size: xx-large
+        text-align: center
+      settings:
+        type: METERCHART
+        general:
+            title: "Memory Usage"
+            visible: 'true'
+        chart:
+            legend:
+                show: 'true'
+                position: bottom
+        meter:
+            end: '4120'
+            critical: '3000'
+            warning: '2000'
+        dataSetLookup:
+            uuid: memory_usage
+            group:
+            - columnGroup:
+                source: Server
+              groupFunctions:
+                - source: Server
+                - source: Usage
+                  function: SUM
+----
+
+.Meter
+image::guides/yaml/meter.png[Meter]
+
+=== Map
+
+Dashbuilder provides a Map component to show geographic data. It is country based, so to use it one must provide the country identification, which could be the country name, `lat, long` or the country code, and provide the value for that country. 
+It has two types: 
+* `MAP_MARKERS`: which marks the country with bubbles according to the value
+* `MAP_REGIONS`: which paints the map according to the value.
+The only specific configuration for map is `color_scheme`, which could have the values `red`, `green` or `blue` and it is an attribute of object map. Here's an example:
+ 
+[source]
+----
+datasets:
+- uuid: countries
+  content: >-
+            [
+              ["Brazil", 2512],
+              ["USA", 1900],
+              ["Italy", 3200],
+              ["Russia", 1200],
+              ["China", 100],
+              ["Australia", 1000],
+            ]
+  columns:
+    - id: Server
+      type: LABEL
+    - id: Usage
+      type: NUMBER
+pages:
+- components:
+    - settings:
+        type: MAP
+        map:
+            color_scheme: blue
+        dataSetLookup:
+            uuid: countries
+            group:
+            - columnGroup:
+                source: Server
+              groupFunctions:
+                - source: Server
+                - source: Usage
+    - settings:
+        type: MAP
+        subtype: MAP_MARKERS
+        map:
+          color_scheme: red
+        dataSetLookup:
+            uuid: countries
+            group:
+            - columnGroup:
+                source: Server
+              groupFunctions:
+                - source: Server
+                - source: Usage
+----
+
+.Map
+image::guides/yaml/map.png[Map]
+
+
+=== Navigation
+
+It is possible to have multiple pages in a single visualization. The pages can be organized in a menu using navigation. When you don't declare a navigation then a standard menu navigation is used:
+
+----
+pages:
+    - name: Cats
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1> Cats </h1>
+    - name: Dogs
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1>Dogs</h1>
+    - name: Tablets
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1>Tablets</h1>
+    - name: Laptops
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1>Laptops</h1>
+----
+
+
+The section `navTree` is responsible for declaring the navigation tree and the navigation groups for the pages is possible to organize the menus in navigation groups. Here's an example:
+
+[source]
+----
+pages:
+    - name: Cats
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1> Cats </h1>
+    - name: Dogs
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1>Dogs</h1>
+    - name: Tablets
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1>Tablets</h1>
+    - name: Laptops
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1>Laptops</h1>
+navTree:
+  root_items:
+  - type: GROUP
+    name: Animals
+    children:
+    - page: Cats
+    - page: Dogs
+  - type: GROUP
+    name: Electronics
+    children:
+    - page: Tablets
+    - page: Laptops
+----
+.Menu Navigation
+image::guides/yaml/menuNavigation.png[Menu Navigation]
+
+
+NOTE: To show a default page just name it as `index` and it will be displayed by default, otherwise the default dashbuilder page will be displayed.
+
+=== Navigation Components
+It is possible to embed pages using navigation groups. To do so dashbuilder provides navigation components. 
+
+* *TILES*: Displays the navigation group pages in tiles;
+* *CAROUSEL*: Displays the pages in a carousel;
+* *TREE*: Displays a tree with the pages. It requires a target DIV;
+* *MENU*: Displays a menu with the pages. It requires a target DIV;
+* *TABS*: Displays tabs with the pages. It requires a target DIV;
+* *DIV*: A div that shows the content for TREE, MENU and TABS components.
+
+A property called `navGroupId` should be set to point to the same `groupId` declared in navigation. For components that require a div, then a DIV component should be placed on the page and the div ID should be referenced using the property `divId`.
+Here's an example of navigation components:
+
+[source]
+----
+pages:
+    - name: Cats
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1> Cats </h1>
+    - name: Dogs
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: <h1>Dogs</h1>
+    - name: index
+      rows:
+        - columns:
+          - components:
+            - type: TILES  # try CAROUSEL
+              properties:
+                navGroupId: animals_group
+        - columns:
+          - components:
+            - type: TABS  # try MENU or TREE 
+              properties:
+                navGroupId: animals_group
+                targetDivId: animals_div
+            - type: DIV
+              properties:
+                divId: animals_div
+navTree:
+  root_items:
+  - id: animals_group
+    type: GROUP
+    name: Animals
+    children:
+    - page: Cats
+    - page: Dogs
+----
+
+.Navigation Components
+image::guides/yaml/navigationComponents.png[Navigation Components]
+
+=== Properties
+
+The goal of properties is to make it easier to reuse YAML definitions and let users only customize certain parts of the document. Properties can be declared with a value and later references using `${PROPERTY NAME}`. 
+
+NOTE: Be careful when using `${______}` to avoid conflict with Metric templates. 
+
+Properties are meant to be used only with field values. Here's an example:
+
+[source]
+----
+properties:
+    My Property: <h1>Hello Properties</h1>
+pages:
+    - name: Cats
+      components:
+        - type: HTML
+          properties:
+            HTML_CODE: ${My Property}
+----

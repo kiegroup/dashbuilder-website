@@ -1,0 +1,82 @@
+[id="chap-dashbuilder-installation"]
+ifdef::context[:parent-context: {context}]
+:context: dashbuilder-essentials
+== Installation
+In this section we cover build and installation of Dashbuilder Authoring and Dashbuilder Runtime.
+
+=== On-Premise Installation
+
+Dashbuilder is released as part of https://github.com/kiegroup/kie-tools/releases[KIE Tools]. Download the file `dashbuilder_dist_{version}.zip`
+
+*Requirements:*
+
+* Java 11+
+
+*Dashbuilder Authoring*
+
+Dashbuilder Authoring is distributed as a WAR that can run on JBoss EAP or Wildfly or a executable JAR.
+
+The JAR is a "bootable server" that can executed using the following command: `java -jar dashbuilder-authoring-bootable.jar`
+
+Dashbuilder assets are stored in the directory `.dashbuilder`. It is possible to change the directory using the system property `org.dashbuilder.project.location`.
+
+Dashbuilder Authoring can also export a ZIP whenever an asset (page, dataset or navigation) is saved. To enable it set the system property `dashbuilder.export.location` to a valid ZIP location.
+
+*Dashbuilder Runtime*
+
+Dashbuilder Runtime is a Quarkus application that can run with the following command:
+
+`java -jar dashbuilder-runtime-app.jar`
+
+To run Dashbuilder Runtime in static mode:
+
+`java -Ddashbuilder.runtime.import=/path/to/dashboard.zip -jar dashbuilder-runtime-app.jar`
+
+Or in multi mode:
+
+`java -Ddashbuilder.runtime.multi=true -jar dashbuilder-runtime-app.jar``
+
+
+=== Container Images
+
+*Runtime*
+
+**quay.io/kogito_tooling_bot/dashbuilder-runtime**
+
+You can pass Java properties using the JAVA_OPTS environment variable. For example, to run Dashbuilder Runtime in multi mode use the following command:
+
+`podman run -p 8080:8080 -e “JAVA_OPTS=-Ddashbuilder.runtime.multi=true -Ddashbuilder.runtime.allowUpload=true” -dti quay.io/kogito_tooling_bot/dashbuilder-runtime:latest`
+
+*Authoring*
+
+**quay.io/kogito_tooling_bot/dashbuilder-authoring**
+
+NOTE: Dashbuilder Authoring image uses the WAR bits and uses as base Wildfly 23.0.2 image.
+
+=== Client only
+
+YAML definitions runs on a client side installation. Currently the way to install YAML is using Javascript:
+
+* Have a HTML page where dashbuilder client bundle runs on an iframe;
+* Dashbuilder sends a message to the parent frame saying that it is ready to receive content;
+* The parent frame sends a message to dashbuilder with the YML content
+
+Here's the sample Javascript:
+
+[source]
+----
+// flag to indicate that dashbuilder is ready for content;
+var ready = false;
+window.addEventListener("message", (e) => {
+  if (e.data === "ready") {
+    ready = true;
+  }
+});
+
+// the send function
+const send = () => {
+    document.getElementById("dbFrame").contentWindow.postMessage(ymlContent, null);
+};
+----
+
+Another possible way is to open dashbuilder client bundle and import an YAML file.

@@ -11,7 +11,7 @@
   <artifactId>dashbuilder-website-docs</artifactId>
   <packaging>jar</packaging>
 
-  <name>Dashbuilder  Documentation</name>
+  <name>Dashbuilder Documentation</name>
   <description>Dashbuilder Documentation</description>
 
   <properties>
@@ -40,13 +40,12 @@
               <goal>process-asciidoc</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.build.directory}/generated-docs</outputDirectory>
+              <outputDirectory>${project.build.directory}/docs</outputDirectory>
               <attributes>
                 <imagesdir>./images</imagesdir>
                 <artifact-dir>${project.basedir}/src/main/resources/_artifacts</artifact-dir>
               </attributes>
             </configuration>
-
           </execution>
         </executions>
       </plugin>
