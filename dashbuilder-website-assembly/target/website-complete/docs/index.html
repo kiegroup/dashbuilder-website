@@ -813,7 +813,7 @@ DashboardExporter.get().export(dashboard(asList(page)),
 <p>Or in multi mode:</p>
 </div>
 <div class="paragraph">
-<p><code>java -Ddashbuilder.runtime.multi=true -jar dashbuilder-runtime-app.jar`</code></p>
+<p><code>java -Ddashbuilder.runtime.multi=true -jar dashbuilder-runtime-app.jar</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -880,9 +880,11 @@ window.addEventListener("message", (e) =&gt; {
   }
 });
 
-// the send function
+// Updates dashbuilder with the content (only if it is ready)
 const send = () =&gt; {
-    document.getElementById("dbFrame").contentWindow.postMessage(ymlContent, null);
+    if (ready) {
+        document.getElementById("dbFrame").contentWindow.postMessage(ymlContent, null);
+    }
 };</code></pre>
 </div>
 </div>

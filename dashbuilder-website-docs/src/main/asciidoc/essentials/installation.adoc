@@ -34,7 +34,7 @@ To run Dashbuilder Runtime in static mode:
 
 Or in multi mode:
 
-`java -Ddashbuilder.runtime.multi=true -jar dashbuilder-runtime-app.jar``
+`java -Ddashbuilder.runtime.multi=true -jar dashbuilder-runtime-app.jar`
 
 
 === Container Images
@@ -73,9 +73,11 @@ window.addEventListener("message", (e) => {
   }
 });
 
-// the send function
+// Updates dashbuilder with the content (only if it is ready)
 const send = () => {
-    document.getElementById("dbFrame").contentWindow.postMessage(ymlContent, null);
+    if (ready) {
+        document.getElementById("dbFrame").contentWindow.postMessage(ymlContent, null);
+    }
 };
 ----
 
