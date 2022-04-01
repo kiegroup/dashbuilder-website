@@ -17,7 +17,8 @@
                 <p>Dashboard data can be extracted from heterogeneous sources of information such as Prometheus, JDBC databases, or regular text files.</p>
                 <p>The resulting dashboard can be deployed in a cloud environment using DashBuilder Runtime.</p>
 
-                <h4><a href="/docs">DashBuilder Documentation</a></h4>
+                <!-- FIXME: Change when moving to dashbuilder.org -->
+                <h4><a href="dashbuilder-website/docs">DashBuilder Documentation</a></h4>
 
             </div>
         </div>
