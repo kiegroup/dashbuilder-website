@@ -17,7 +17,7 @@ It is possible to run Dashbuilder Runtime with a dedicated dashboard or run mult
 * *Multi*: In this https://blog.kie.org/2020/09/multi-dashboards-support-in-dashbuilder-runtime.html[multi-mode] dashbuilder looks for dashboards in the directory configured with the system property `dashbuilder.import.base.dir` (default is */tmp/dashbuilder/models*). To turn multi mode on, set `dashbuilder.runtime.multi` as true and set `dashbuilder.model.update` as true to have dynamic model updates (new and deleted dashboards are reflected during runtime).
 
 .Dashbuilder Runtime in Multi Mode
-image::essentials/yamlAuthoring.png[Dashbuilder Runtime Multi Mode]
+image::essentials/runtimeMultiple.png[Dashbuilder Runtime Multi Mode]
 
 * *Dev*: In development mode dashbuilder hot reloads dashboards based on ZIP changes. Set the property `dashbuilder.dev` to true, start dashbuilder, place ZIPs on the dashboards directory and you should see the page auto refresh with the ZIP changes.
 
