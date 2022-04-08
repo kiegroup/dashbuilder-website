@@ -23,9 +23,7 @@ A page can contain rows, columns and finally components. A page with a single ro
 ----
 pages:
     - components:
-        - type: HTML
-          properties:
-            HTML_CODE: Hello
+        - html: Hello
 ----
 It is required to declare rows and columns for a more complex layout. Here's a page with two text in separated columns:
 [source]
@@ -35,25 +33,17 @@ pages:
         - columns:
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 1
+                - html: Row 1 Column 1
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 2
+                - html: Row 1 Column 2
         - columns:
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 2 Column 1
+                - html: Row 2 Column 1
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 2 Column 2
+                - html: Row 2 Column 2
 ----
 The YML renders to:
 
@@ -74,16 +64,12 @@ pages:
               properties:
                 color: white
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 1
+                - html: Row 1 Column 1
             - span: '6'
               properties:
                 color: lightblue
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 2
+                - html: Row 1 Column 2
 ----
 
 A column can also have rows with components, this is useful for more complex layouts:
@@ -97,31 +83,21 @@ pages:
               rows:
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R1CL1R1
+                        - html: R1CL1R1
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R1CL1R2
+                        - html: R1CL1R2
             - span: 2
               rows:
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R2CL1R1
+                        - html: R2CL1R1
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R2CL1R2
+                        - html: R2CL1R2
             - span: 2
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: R2CL1R1
+                - html: R2CL1R1
 ----
 
 .Page Complex Layout
@@ -1166,24 +1142,16 @@ It is possible to have multiple pages in a single visualization. The pages can b
 pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1> Cats </h1>
+        - html: <h1> Cats </h1>
     - name: Dogs
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1>Dogs</h1>
+        - html: <h1>Dogs</h1>
     - name: Tablets
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1>Tablets</h1>
+        - html: <h1>Tablets</h1>
     - name: Laptops
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1>Laptops</h1>
+        - html: <h1>Laptops</h1>
 ----
 
 
@@ -1194,24 +1162,16 @@ The section `navTree` is responsible for declaring the navigation tree and the n
 pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1> Cats </h1>
+        - html: <h1> Cats </h1>
     - name: Dogs
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1>Dogs</h1>
+        - html: <h1>Dogs</h1>
     - name: Tablets
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1>Tablets</h1>
+        - html: <h1>Tablets</h1>
     - name: Laptops
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1>Laptops</h1>
+        - html: <h1>Laptops</h1>
 navTree:
   root_items:
   - type: GROUP
@@ -1249,14 +1209,10 @@ Here's an example of navigation components:
 pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1> Cats </h1>
+        - html: <h1> Cats </h1>
     - name: Dogs
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: <h1>Dogs</h1>
+        - html: <h1>Dogs</h1>
     - name: index
       rows:
         - columns:
@@ -1301,7 +1257,5 @@ properties:
 pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: ${My Property}
+        - html: ${My Property}
 ----
