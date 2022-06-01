@@ -215,7 +215,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset
 ----
@@ -243,7 +242,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset
             rowCount: 1
@@ -270,7 +268,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset
             sort:
@@ -352,7 +349,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset
             filter:
@@ -395,7 +391,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: products
             group:
@@ -439,7 +434,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: products
             group:
@@ -476,7 +470,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: products
 ----
@@ -500,7 +493,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         filter:
             enabled: 'true'
             selfapply: 'true'
@@ -528,14 +520,12 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         filter:
             enabled: 'true'
             notification: 'true'
         dataSetLookup:
             uuid: products
     - settings:
-        type: TABLE
         filter:
             enabled: 'true'
             listening: 'true'
@@ -564,7 +554,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         refresh:
             interval: '30'
         dataSetLookup:
@@ -593,7 +582,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         columns:
             - id: Column 0
               name: Section
@@ -635,7 +623,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         table:
             pageSize: '3'
             show_column_picker: 'false'
@@ -666,7 +653,6 @@ datasets:
 pages:
 - components:
     - settings:
-        type: TABLE
         table:
             show_column_picker: 'false'
             sort:
@@ -1133,6 +1119,239 @@ pages:
 .Map
 image::guides/yaml/map.png[Map]
 
+=== External Components
+
+Dashbuilder also support components built externally. Components have an ID and you can either add its assets to Dashbuilder server under context `/dashbuilder/component/{componentId}/` or use a property to point to a remote component:
+
+[source]
+----
+datasets:
+  - uuid: products
+    content: >-
+      [
+        ["Computers", "Scanner", 5, 3],
+        ["Computers", "Printer", 7, 4],
+        ["Computers", "Laptop", 3, 2],
+        ["Electronics", "Camera", 10, 7],
+        ["Electronics", "Headphones", 5, 9]
+      ]
+    columns:
+      - id: Section
+        type: LABEL
+      - id: Product
+        type: LABEL
+      - id: Quantity
+        type: NUMBER
+      - id: Quantity2
+        type: NUMBER
+pages:
+  - components:
+      - settings:
+          component: simplest_component
+          simplest_component:
+            name: "John"
+            age: "33"
+          external:
+            baseUrl: https://jesuino.github.io/components/
+            width: 100%
+            height: 600px
+          lookup:
+            uuid: products
+----
+
+Some components are provided for use with Dashbuilder. Check the documentation for each component to understand how to use it:
+
+* **table**: The table external component has a different look and feel and can be used with any dataset.
+[source]
+----
+datasets:
+  - uuid: products
+    content: >-
+      [
+        ["Computers", "Scanner", 5, 3],
+        ["Computers", "Printer", 7, 4],
+        ["Computers", "Laptop", 3, 2],
+        ["Electronics", "Camera", 10, 7],
+        ["Electronics", "Headphones", 5, 9]
+      ]
+pages:
+  - components:
+      - settings:
+          component: table
+          external:
+            width: 100%          
+          lookup:
+            uuid: products
+----
+
+* **echarts**: ECharts chart. In this component the dataset is transformed to a echarts dataset and the `option` parameter can be used to provide a JSON object to configure the echart. We also parse the options in YML format to JSON, so some configuration could be done using pure YML. Here's a sample echart usage:
+
+[source]
+----
+datasets:
+  - uuid: products
+    content: >-
+      [
+        ["Computers", "Scanner", 5, 3],
+        ["Computers", "Printer", 7, 4],
+        ["Computers", "Laptop", 3, 2],
+        ["Electronics", "Camera", 10, 7],
+        ["Electronics", "Headphones", 5, 9]
+      ]
+    columns:
+      - id: Section
+        type: LABEL
+      - id: Product
+        type: LABEL
+      - id: Quantity
+        type: NUMBER
+      - id: Quantity2
+        type: NUMBER
+pages:
+- components:
+    - settings:
+        component: echarts
+        echarts:
+            option: >-
+                    {
+                        "toolbox": {
+                            "feature": {
+                                "dataZoom": {},
+                                "magicType": {
+                                    "type": ["line", "bar", "stack"]
+                                },
+                                "restore": {}
+                            }   
+                        },
+                        "series": [
+           
+                            { 
+                                "type": "bar",
+                                "markLine": {
+                                    "data": [
+                                        { "type": "average" }
+
+                                    ]
+                                }
+                            },
+                            { 
+                                "type": "bar",
+                                "markLine": {
+                                    "data": [
+                                        { "type": "average" }
+                                    ]
+                                }
+                            }
+                        ]
+                        
+                    }
+            title:
+                text: Products
+        external:
+          width: 100%
+        lookup:
+          uuid: products
+          group:
+            - columnGroup:
+                source: Product
+              groupFunctions:
+                - source: Product
+                - source: Quantity
+                - source: Quantity2
+----
+
+* **svg-heatmap**: The SVG heatmap allow users to draw heat over any SVG. The provided dataset must have two columns: SVG name or id and a value for the heat. The component can have the parameters `size` and `blur` to control the heat appearance:
+
+[source]
+----
+datasets:
+  - uuid: svg-data
+    content: >-
+      [
+        ["svg_1", 1],
+        ["svg_2", 2],
+        ["svg_3", 3],
+        ["svg_4", 4],
+        ["svg_5", 5],
+        ["svg_6", 6]
+      ]
+pages:
+  - components:
+      - settings:
+          component: svg-heatmap
+          external:
+            width: 100%
+          svg-heatmap:
+            size: "3"
+            blur: "0.9"
+            svg: >-
+              <svg xmlns="http://www.w3.org/2000/svg">
+                <path id="svg_1" d="m23,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
+                <path id="svg_2" d="m133,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
+                <path id="svg_3" d="m240,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
+                <path id="svg_4" d="m350,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
+                <path id="svg_5" d="m461,24l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
+                <path id="svg_6" d="m566,26l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
+              </svg>
+          datasetlookup:
+            uuid: svg-data
+----
+
+* **timeseries**: Timeseries allow users to display timeseries information and it is based on echarts, which means that it is possible to pass an `option` parameter as well. The accepted dataset must have a column for the series, the timestamp and value.
+
+[source]
+----
+datasets:
+  - uuid: timeseries
+    url: https://raw.githubusercontent.com/jesuino/dashbuilder-data/master/samples/timeseries.json
+pages:
+  - components:
+      - settings:
+          component: timeseries
+          external:
+            width: 100%
+          datasetlookup:
+            uuid: timeseries
+----
+
+* **uniforms**: Uniforms is a component that does not use a dataset, but allow users to render forms to post data to an URL. It accepts the parameters `uniforms.url`, the form URL and the JSON schema for the form generation, `uniforms.schema`. 
+
+[source]
+----
+pages:
+  - components:
+      - type: EXTERNAL
+        properties:
+          height: 500px
+          componentId: uniforms
+          uniforms.url: http://acme.com
+          uniforms.schema: >-
+            {
+               "title":"",
+               "type":"object",
+               "properties":{
+                  "workflowdata": {
+                      "title": "Sample Form",
+                      "default": { "language": "English", "name": "John" },
+                      "type": "object",
+                      "properties": {
+                          "name":{
+                             "type":"string"
+                          },
+                          "language":{
+                             "type":"string",
+                             "allowedValues": ["English", "Spanish"]
+                          }
+                      },
+                      "required":[
+                         "name", "language"
+                      ]
+                  }
+                  
+               }
+            }
+----
+
 
 === Navigation
 
@@ -1259,3 +1478,5 @@ pages:
       components:
         - html: ${My Property}
 ----
+
+When running on Dashbuilder you can also override the properties using query parameters. In the example above `My Property` could be changed using `http://my.dashbuilder?My Property=New Property value`.

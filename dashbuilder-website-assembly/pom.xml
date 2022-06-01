@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.dashbuilder</groupId>
     <artifactId>dashbuilder-website</artifactId>
@@ -11,6 +9,10 @@
 
   <artifactId>dashbuilder-website-assembly</artifactId>
   <packaging>pom</packaging>
+
+  <properties>
+    <version.dashbuilder.runtime.client>0.0.0</version.dashbuilder.runtime.client>
+  </properties>
 
   <dependencies>
     <!-- The assembly depends on this module to be built first. -->
@@ -26,6 +28,13 @@
       <artifactId>dashbuilder-website-docs</artifactId>
       <version>${project.version}</version>
       <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.dashbuilder</groupId>
+      <artifactId>dashbuilder-runtime-client</artifactId>
+      <version>${version.dashbuilder.runtime.client}</version>
+      <type>war</type>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 
@@ -70,6 +79,59 @@
                   </includes>
                 </fileset>
               </filesets>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Unpack DashBuilder Runtime Client -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack-dashbuilder-runtime-client</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.dashbuilder</groupId>
+                  <artifactId>dashbuilder-runtime-client</artifactId>
+                  <version>${version.dashbuilder.runtime.client}</version>
+                  <type>war</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/website-complete/kitchensink</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>copy-dashbuilder-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/website-complete/kitchensink</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/dashbuilder</directory>
+                  <includes>
+                    <include>setup.js</include>
+                    <include>Kitchensink.dash.yml</include>
+                  </includes>
+                </resource>
+              </resources>
             </configuration>
           </execution>
         </executions>

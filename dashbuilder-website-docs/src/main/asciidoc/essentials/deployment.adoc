@@ -22,4 +22,9 @@ image::essentials/runtimeMultiple.png[Dashbuilder Runtime Multi Mode]
 * *Dev*: In development mode dashbuilder hot reloads dashboards based on ZIP changes. Set the property `dashbuilder.dev` to true, start dashbuilder, place ZIPs on the dashboards directory and you should see the page auto refresh with the ZIP changes.
 
 === Client Bundle
-If you have the dashboards created from YML you can transform it to JSON and load on a client bundle either using Javascript or mocking the backend to return the dashboards. It is in the roadmap a new deployment model for clients.
+
+To deploy dashboards in client:
+
+* Unzip Dashbuilder Client bundle;
+* Edit `setup.js` to list the dashboards location;
+* Host the content in some static files provider.
