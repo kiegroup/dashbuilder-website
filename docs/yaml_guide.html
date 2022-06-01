@@ -464,9 +464,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code>pages:
     - components:
-        - type: HTML
-          properties:
-            HTML_CODE: Hello</code></pre>
+        - html: Hello</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -479,25 +477,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
         - columns:
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 1
+                - html: Row 1 Column 1
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 2
+                - html: Row 1 Column 2
         - columns:
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 2 Column 1
+                - html: Row 2 Column 1
             - span: '6'
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 2 Column 2</code></pre>
+                - html: Row 2 Column 2</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -523,16 +513,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
               properties:
                 color: white
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 1
+                - html: Row 1 Column 1
             - span: '6'
               properties:
                 color: lightblue
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: Row 1 Column 2</code></pre>
+                - html: Row 1 Column 2</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -547,31 +533,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
               rows:
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R1CL1R1
+                        - html: R1CL1R1
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R1CL1R2
+                        - html: R1CL1R2
             - span: 2
               rows:
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R2CL1R1
+                        - html: R2CL1R1
                 - columns:
                     - components:
-                        - type: HTML
-                          properties:
-                            HTML_CODE: R2CL1R2
+                        - html: R2CL1R2
             - span: 2
               components:
-                - type: HTML
-                  properties:
-                    HTML_CODE: R2CL1R1</code></pre>
+                - html: R2CL1R1</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -700,7 +676,6 @@ The simplest use of a lookup is by simply providing the dataset uuid:</p>
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset</code></pre>
 </div>
@@ -732,7 +707,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset
             rowCount: 1
@@ -760,7 +734,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset
             sort:
@@ -881,7 +854,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: mydataset
             filter:
@@ -928,7 +900,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: products
             group:
@@ -977,7 +948,6 @@ If a column is not specific in columnGroup, but used with other columns in colum
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: products
             group:
@@ -1017,7 +987,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         dataSetLookup:
             uuid: products</code></pre>
 </div>
@@ -1043,7 +1012,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         filter:
             enabled: 'true'
             selfapply: 'true'
@@ -1075,14 +1043,12 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         filter:
             enabled: 'true'
             notification: 'true'
         dataSetLookup:
             uuid: products
     - settings:
-        type: TABLE
         filter:
             enabled: 'true'
             listening: 'true'
@@ -1117,7 +1083,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         refresh:
             interval: '30'
         dataSetLookup:
@@ -1158,7 +1123,6 @@ In the following example the column 0 is transformed to be upper case and the nu
 pages:
 - components:
     - settings:
-        type: TABLE
         columns:
             - id: Column 0
               name: Section
@@ -1212,7 +1176,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         table:
             pageSize: '3'
             show_column_picker: 'false'
@@ -1254,7 +1217,6 @@ pages:
 pages:
 - components:
     - settings:
-        type: TABLE
         table:
             show_column_picker: 'false'
             sort:
@@ -1843,6 +1805,268 @@ pages:
 </div>
 </div>
 <div class="sect2">
+<h3 id="_external_components">External Components</h3>
+<div class="paragraph">
+<p>Dashbuilder also support components built externally. Components have an ID and you can either add its assets to Dashbuilder server under context <code>/dashbuilder/component/{componentId}/</code> or use a property to point to a remote component:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+  - uuid: products
+    content: &gt;-
+      [
+        ["Computers", "Scanner", 5, 3],
+        ["Computers", "Printer", 7, 4],
+        ["Computers", "Laptop", 3, 2],
+        ["Electronics", "Camera", 10, 7],
+        ["Electronics", "Headphones", 5, 9]
+      ]
+    columns:
+      - id: Section
+        type: LABEL
+      - id: Product
+        type: LABEL
+      - id: Quantity
+        type: NUMBER
+      - id: Quantity2
+        type: NUMBER
+pages:
+  - components:
+      - settings:
+          component: simplest_component
+          simplest_component:
+            name: "John"
+            age: "33"
+          external:
+            baseUrl: https://jesuino.github.io/components/
+            width: 100%
+            height: 600px
+          lookup:
+            uuid: products</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some components are provided for use with Dashbuilder. Check the documentation for each component to understand how to use it:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>table</strong>: The table external component has a different look and feel and can be used with any dataset.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>datasets:
+  - uuid: products
+    content: &gt;-
+      [
+        ["Computers", "Scanner", 5, 3],
+        ["Computers", "Printer", 7, 4],
+        ["Computers", "Laptop", 3, 2],
+        ["Electronics", "Camera", 10, 7],
+        ["Electronics", "Headphones", 5, 9]
+      ]
+pages:
+  - components:
+      - settings:
+          component: table
+          external:
+            width: 100%
+          lookup:
+            uuid: products</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>echarts</strong>: ECharts chart. In this component the dataset is transformed to a echarts dataset and the <code>option</code> parameter can be used to provide a JSON object to configure the echart. We also parse the options in YML format to JSON, so some configuration could be done using pure YML. Here&#8217;s a sample echart usage:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+  - uuid: products
+    content: &gt;-
+      [
+        ["Computers", "Scanner", 5, 3],
+        ["Computers", "Printer", 7, 4],
+        ["Computers", "Laptop", 3, 2],
+        ["Electronics", "Camera", 10, 7],
+        ["Electronics", "Headphones", 5, 9]
+      ]
+    columns:
+      - id: Section
+        type: LABEL
+      - id: Product
+        type: LABEL
+      - id: Quantity
+        type: NUMBER
+      - id: Quantity2
+        type: NUMBER
+pages:
+- components:
+    - settings:
+        component: echarts
+        echarts:
+            option: &gt;-
+                    {
+                        "toolbox": {
+                            "feature": {
+                                "dataZoom": {},
+                                "magicType": {
+                                    "type": ["line", "bar", "stack"]
+                                },
+                                "restore": {}
+                            }
+                        },
+                        "series": [
+
+                            {
+                                "type": "bar",
+                                "markLine": {
+                                    "data": [
+                                        { "type": "average" }
+
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "bar",
+                                "markLine": {
+                                    "data": [
+                                        { "type": "average" }
+                                    ]
+                                }
+                            }
+                        ]
+
+                    }
+            title:
+                text: Products
+        external:
+          width: 100%
+        lookup:
+          uuid: products
+          group:
+            - columnGroup:
+                source: Product
+              groupFunctions:
+                - source: Product
+                - source: Quantity
+                - source: Quantity2</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>svg-heatmap</strong>: The SVG heatmap allow users to draw heat over any SVG. The provided dataset must have two columns: SVG name or id and a value for the heat. The component can have the parameters <code>size</code> and <code>blur</code> to control the heat appearance:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+  - uuid: svg-data
+    content: &gt;-
+      [
+        ["svg_1", 1],
+        ["svg_2", 2],
+        ["svg_3", 3],
+        ["svg_4", 4],
+        ["svg_5", 5],
+        ["svg_6", 6]
+      ]
+pages:
+  - components:
+      - settings:
+          component: svg-heatmap
+          external:
+            width: 100%
+          svg-heatmap:
+            size: "3"
+            blur: "0.9"
+            svg: &gt;-
+              &lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
+                &lt;path id="svg_1" d="m23,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
+                &lt;path id="svg_2" d="m133,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
+                &lt;path id="svg_3" d="m240,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
+                &lt;path id="svg_4" d="m350,23l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
+                &lt;path id="svg_5" d="m461,24l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
+                &lt;path id="svg_6" d="m566,26l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
+              &lt;/svg&gt;
+          datasetlookup:
+            uuid: svg-data</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>timeseries</strong>: Timeseries allow users to display timeseries information and it is based on echarts, which means that it is possible to pass an <code>option</code> parameter as well. The accepted dataset must have a column for the series, the timestamp and value.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+  - uuid: timeseries
+    url: https://raw.githubusercontent.com/jesuino/dashbuilder-data/master/samples/timeseries.json
+pages:
+  - components:
+      - settings:
+          component: timeseries
+          external:
+            width: 100%
+          datasetlookup:
+            uuid: timeseries</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>uniforms</strong>: Uniforms is a component that does not use a dataset, but allow users to render forms to post data to an URL. It accepts the parameters <code>uniforms.url</code>, the form URL and the JSON schema for the form generation, <code>uniforms.schema</code>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pages:
+  - components:
+      - type: EXTERNAL
+        properties:
+          height: 500px
+          componentId: uniforms
+          uniforms.url: http://acme.com
+          uniforms.schema: &gt;-
+            {
+               "title":"",
+               "type":"object",
+               "properties":{
+                  "workflowdata": {
+                      "title": "Sample Form",
+                      "default": { "language": "English", "name": "John" },
+                      "type": "object",
+                      "properties": {
+                          "name":{
+                             "type":"string"
+                          },
+                          "language":{
+                             "type":"string",
+                             "allowedValues": ["English", "Spanish"]
+                          }
+                      },
+                      "required":[
+                         "name", "language"
+                      ]
+                  }
+
+               }
+            }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_navigation">Navigation</h3>
 <div class="paragraph">
 <p>It is possible to have multiple pages in a single visualization. The pages can be organized in a menu using navigation. When you don&#8217;t declare a navigation then a standard menu navigation is used:</p>
@@ -1852,24 +2076,16 @@ pages:
 <pre>pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt; Cats &lt;/h1&gt;
+        - html: &lt;h1&gt; Cats &lt;/h1&gt;
     - name: Dogs
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt;Dogs&lt;/h1&gt;
+        - html: &lt;h1&gt;Dogs&lt;/h1&gt;
     - name: Tablets
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt;Tablets&lt;/h1&gt;
+        - html: &lt;h1&gt;Tablets&lt;/h1&gt;
     - name: Laptops
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt;Laptops&lt;/h1&gt;</pre>
+        - html: &lt;h1&gt;Laptops&lt;/h1&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1880,24 +2096,16 @@ pages:
 <pre class="highlight"><code>pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt; Cats &lt;/h1&gt;
+        - html: &lt;h1&gt; Cats &lt;/h1&gt;
     - name: Dogs
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt;Dogs&lt;/h1&gt;
+        - html: &lt;h1&gt;Dogs&lt;/h1&gt;
     - name: Tablets
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt;Tablets&lt;/h1&gt;
+        - html: &lt;h1&gt;Tablets&lt;/h1&gt;
     - name: Laptops
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt;Laptops&lt;/h1&gt;
+        - html: &lt;h1&gt;Laptops&lt;/h1&gt;
 navTree:
   root_items:
   - type: GROUP
@@ -1967,14 +2175,10 @@ Here&#8217;s an example of navigation components:</p>
 <pre class="highlight"><code>pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt; Cats &lt;/h1&gt;
+        - html: &lt;h1&gt; Cats &lt;/h1&gt;
     - name: Dogs
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: &lt;h1&gt;Dogs&lt;/h1&gt;
+        - html: &lt;h1&gt;Dogs&lt;/h1&gt;
     - name: index
       rows:
         - columns:
@@ -2035,10 +2239,11 @@ Be careful when using <code>${<em><em></em></em>}</code> to avoid conflict with 
 pages:
     - name: Cats
       components:
-        - type: HTML
-          properties:
-            HTML_CODE: ${My Property}</code></pre>
+        - html: ${My Property}</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>When running on Dashbuilder you can also override the properties using query parameters. In the example above <code>My Property</code> could be changed using <code><a href="http://my.dashbuilder?My" class="bare">http://my.dashbuilder?My</a> Property=New Property value</code>.</p>
 </div>
 </div>
 </div>
@@ -2046,7 +2251,7 @@ pages:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-31 23:14:27 -0300
+Last updated 2022-06-01 15:59:48 -0300
 </div>
 </div>
 </body>

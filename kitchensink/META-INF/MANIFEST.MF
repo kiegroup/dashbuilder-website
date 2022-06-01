@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.4.0
+Build-Jdk-Spec: 11
+Specification-Title: Dashbuilder Runtime - Client
+Specification-Version: 0.0
+Implementation-Title: Dashbuilder Runtime - Client
+Implementation-Version: 0.0.0
+Implementation-URL: 
+Java-Vendor: Oracle Corporation
+Java-Version: 11.0.12
+Os-Arch: amd64
+Os-Name: Linux
+Os-Version: 5.17.6-100.fc34.x86_64
+Scm-Connection: 
+Scm-Revision: 
+Scm-Url: 
+
