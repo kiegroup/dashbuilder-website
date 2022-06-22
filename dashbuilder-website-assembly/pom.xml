@@ -128,7 +128,6 @@
                   <directory>src/dashbuilder</directory>
                   <includes>
                     <include>setup.js</include>
-                    <include>Kitchensink.dash.yml</include>
                   </includes>
                 </resource>
               </resources>

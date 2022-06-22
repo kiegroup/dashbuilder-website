@@ -15,7 +15,7 @@
                 <h1>Easy dashboards and data storytelling with Dashbuilder</h1>
                 <p class="lead">A fast, easy-to-use, cloud-native and open source data visualization tool for software developers</p>
                 <div class="d-flex justify-content-center" style="width: auto;">
-                    <@macros.videoCard youtubeId="YM4OjSMqBP4" long=false/>
+                    <@macros.videoCard youtubeId="3u-2qVlm48c" long=false/>
                 </div>
             </div>
             <div class="col-md-5">

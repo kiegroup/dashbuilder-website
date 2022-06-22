@@ -1,7 +1,6 @@
 JarIndex-Version: 1.0
 
 dashbuilder-runtime-client.war
-banner
 dashbuilder
 dashbuilder/component
 dashbuilder/component/echarts
@@ -42,8 +41,6 @@ org.dashbuilder.DashbuilderRuntime/less/dependencies/c3
 org.dashbuilder.DashbuilderRuntime/less/dependencies/font-awesome
 org.dashbuilder.DashbuilderRuntime/moment-timezone
 org.dashbuilder.DashbuilderRuntime/moment
-org.dashbuilder.DashbuilderRuntime/prettify
-org.dashbuilder.DashbuilderRuntime/prettify/bin
 favicon.ico
 index.css
 index.html
