@@ -207,6 +207,17 @@
         <div class="card-body">
             <ul class="list-unstyled">
                     <li class="mb-2">
+                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#videoModal" data-youtube-id="3u-2qVlm48c" data-video-title="Exploring Dashbuilder Components">
+                            <span><i class="fas fa-play-circle"></i></span>
+                            <span class="align-text-middle link-primary">Exploring Dashbuilder Components</span>
+                        </a>
+                        <div class="small">Wed 22 June 2022</div>
+    <span>
+        <img class="rounded me-1" src="https://www.gravatar.com/avatar/2fbfd08efc6dbeb19b4532ff48a94293?s=20&d=mm"/>
+        <span class="align-middle">William Siqueira</span>
+    </span>
+                    </li>
+                    <li class="mb-2">
                         <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#videoModal" data-youtube-id="pj8or38w2eQ" data-video-title="[KieLive#37] How to work with dashboards layouts">
                             <span><i class="fas fa-play-circle"></i></span>
                             <span class="align-text-middle link-primary">[KieLive#37] How to work with dashboards layouts</span>
@@ -245,17 +256,6 @@
                             <span class="align-text-middle link-primary">KieLive#8 Authoring Dashboards in Business Central</span>
                         </a>
                         <div class="small">Wed 22 July 2020</div>
-    <span>
-        <img class="rounded me-1" src="https://www.gravatar.com/avatar/2fbfd08efc6dbeb19b4532ff48a94293?s=20&d=mm"/>
-        <span class="align-middle">William Siqueira</span>
-    </span>
-                    </li>
-                    <li class="mb-2">
-                        <a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#videoModal" data-youtube-id="5PeMJ4OWB90" data-video-title="Creating Custom Dashboards in Red Hat Process Automation (RHPAM) 7">
-                            <span><i class="fas fa-play-circle"></i></span>
-                            <span class="align-text-middle link-primary">Creating Custom Dashboards in Red Hat Process Automation (RHPAM) 7</span>
-                        </a>
-                        <div class="small">Mon 17 December 2018</div>
     <span>
         <img class="rounded me-1" src="https://www.gravatar.com/avatar/2fbfd08efc6dbeb19b4532ff48a94293?s=20&d=mm"/>
         <span class="align-middle">William Siqueira</span>
@@ -344,25 +344,49 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                            <div class="col">
                                 <div class="card h-100" >
-                                    <img class="card-img-top mt-2" src="../../../../samples/SWF_DASHBOARD.png"  alt="Serverless Workflow Real Time Dashboard">
+                                    <img class="card-img-top mt-2" src="../../../../samples/GITHUB_REPOS.png"  alt="Github Popular Repositories">
                                     <div class="card-body">
-                                        <h5 class="card-title">Serverless Workflow Real Time Dashboard</h5>
-                                        <p class="card-text">Serverless basic dashboard from Kogito Serverless Workflow metrics. Modify the URL to point to your own Prometheus with serverless metrics</p>
+                                        <h5 class="card-title">Github Popular Repositories</h5>
+                                        <p class="card-text">Github popular repositories directly from github API</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-dashboards/main/sw-monitoring/dashboard.yml" target="_blank" class="card-link">Try it!</a>
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/random/Github%20Repositories.dash.yaml" target="_blank" class="card-link">Try it!</a>
                                     </div>
                                 </div>
                             </div>
                            <div class="col">
                                 <div class="card h-100" >
-                                    <img class="card-img-top mt-2" src="../../../../samples/TIMESERIES_ZOOM.png"  alt="Time Series with Zoom">
+                                    <img class="card-img-top mt-2" src="../../../../samples/SWF_REPORT.png"  alt="Serverless Workflow Report">
                                     <div class="card-body">
-                                        <h5 class="card-title">Time Series with Zoom</h5>
-                                        <p class="card-text">A very simple time series chart with enabled zoom.</p>
+                                        <h5 class="card-title">Serverless Workflow Report</h5>
+                                        <p class="card-text">Serverless Workflow report for data generated with Data Index</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://gist.githubusercontent.com/jesuino/0f86daeeb4855965bd88f74912b0374f/raw/d282a5415b8834dd8981603120690889a29742b8/timeseries.yml" target="_blank" class="card-link">Try it!</a>
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-dashboards/main/Serverless%20Workflow%20Report/ServerlessWorkflowReport.yaml" target="_blank" class="card-link">Try it!</a>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col">
+                                <div class="card h-100" >
+                                    <img class="card-img-top mt-2" src="../../../../samples/BR_WEATHER.png"  alt="Weather in Brazil">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Weather in Brazil</h5>
+                                        <p class="card-text">Weather in Brazil using selected locations</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/random/WeatherInBrazil.dash.yaml" target="_blank" class="card-link">Try it!</a>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col">
+                                <div class="card h-100" >
+                                    <img class="card-img-top mt-2" src="../../../../samples/FORMS.png"  alt="Forms">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Forms</h5>
+                                        <p class="card-text">Generate forms to send data to applications</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/Serverless%20Workflow%20Forms/greeting.yaml" target="_blank" class="card-link">Try it!</a>
                                     </div>
                                 </div>
                             </div>
@@ -374,7 +398,31 @@
                                         <p class="card-text">World Temperature change chart consuming data from a public JSON service (may take a while to load)</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://gist.githubusercontent.com/jesuino/2f9ed1a12c9756b5f3488bdbd2bbe76b/raw/c04b99d6404867fc7b9123d48dbc1ac07fbc5bd3/temperature%2520change%2520dashboard.yml" target="_blank" class="card-link">Try it!</a>
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/random/WorldTemperature.dash.yaml" target="_blank" class="card-link">Try it!</a>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col">
+                                <div class="card h-100" >
+                                    <img class="card-img-top mt-2" src="../../../../samples/CRYPTOS.png"  alt="Cryptocurrencies">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cryptocurrencies</h5>
+                                        <p class="card-text">Main cryptoscurrencies current values</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/random/Cryptos.dash.yml" target="_blank" class="card-link">Try it!</a>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col">
+                                <div class="card h-100" >
+                                    <img class="card-img-top mt-2" src="../../../../samples/PODMAN.png"  alt="Podman">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Podman</h5>
+                                        <p class="card-text">Dashboard for Podman REST API</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/random/Podman%20Stats.dash.yaml" target="_blank" class="card-link">Try it!</a>
                                     </div>
                                 </div>
                             </div>
@@ -386,19 +434,19 @@
                                         <p class="card-text">Map sample using open API with Nobel laureates</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://gist.githubusercontent.com/jesuino/7be0712b926383326540a78bb08608c8/raw/dfbf4490fc785461f5e9341a4d2e06b4798dd3b2/NobelLaureates.yml" target="_blank" class="card-link">Try it!</a>
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/random/NobelLaureates.dash.yaml" target="_blank" class="card-link">Try it!</a>
                                     </div>
                                 </div>
                             </div>
                            <div class="col">
                                 <div class="card h-100" >
-                                    <img class="card-img-top mt-2" src="../../../../samples/GITHUB_REPOS.png"  alt="Github Popular Repositories">
+                                    <img class="card-img-top mt-2" src="../../../../samples/TIMESERIES_ZOOM.png"  alt="Time Series with Zoom">
                                     <div class="card-body">
-                                        <h5 class="card-title">Github Popular Repositories</h5>
-                                        <p class="card-text">Github popular repositories directly from github API</p>
+                                        <h5 class="card-title">Time Series with Zoom</h5>
+                                        <p class="card-text">A very simple time series chart with enabled zoom.</p>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://gist.githubusercontent.com/jesuino/10559863b683603fa81fcb51c3390869/raw/44c69c31674a1662b403a946bba7a43603b14d53/Github%2520top%2520repos%2520by%2520Star.yml" target="_blank" class="card-link">Try it!</a>
+                                        <a href="https://jesuino.github.io/dashbuilder-client?import=https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/random/TimeSeries.dash.yaml" target="_blank" class="card-link">Try it!</a>
                                     </div>
                                 </div>
                             </div>
