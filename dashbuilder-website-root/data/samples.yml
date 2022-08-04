@@ -5,7 +5,7 @@
 - title: Serverless Workflow Report
   description: Serverless Workflow report for data generated with Data Index
   image: SWF_REPORT.png
-  url: https://raw.githubusercontent.com/jesuino/dashbuilder-dashboards/main/Serverless%20Workflow%20Report/ServerlessWorkflowReport.yaml
+  url: https://raw.githubusercontent.com/jesuino/dashbuilder-dashboards/main/Serverless%20Workflow%20Report/ServerlessWorkflowReport.dash.yaml
 - title: Weather in Brazil
   description: Weather in Brazil using selected locations
   image: BR_WEATHER.png
@@ -13,7 +13,7 @@
 - title: Forms
   description: Generate forms to send data to applications
   image: FORMS.png
-  url: https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/Serverless%20Workflow%20Forms/greeting.yaml
+  url: https://raw.githubusercontent.com/jesuino/dashbuilder-yaml-samples/main/Serverless%20Workflow%20Forms/greeting.dash.yaml
 - title: World Temperature change
   description: World Temperature change chart consuming data from a public JSON service (may take a while to load)
   image: TEMPERATURE_CHANGE.png

@@ -98,8 +98,8 @@
                                         <h5 class="card-title">${sample.title}</h5>
                                         <p class="card-text">${sample.description}</p>
                                     </div>
-                                    <div class="card-footer">
-                                        <a href="${config.onlineEditorURL}?import=${sample.url}" target="_blank" class="card-link">Try it!</a>
+                                    <div class="card-footer">                                    
+                                        <a href="${config.onlineEditorURL}/#/import?url=${sample.url}" target="_blank" class="card-link">Try it!</a>
                                     </div>
                                 </div>
                             </div>
