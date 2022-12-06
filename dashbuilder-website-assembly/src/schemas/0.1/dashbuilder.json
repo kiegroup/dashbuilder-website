@@ -1,766 +1,577 @@
 {
-   "$id": "https://dashbuilder.org/schemas/0.1/dashbuilder.json",
-   "$schema": "http://json-schema.org/draft-07/schema#",
-   "description": "Schema for Dashboards",
-   "type": "object",
-   "properties": {
-      "pages": {
-         "description": "A page can contain rows, columns and components.",
-         "type": "array",
-         "items": {
-            "$ref": "#/definitions/Page"
+   "$id":"https://dashbuilder.org/schemas/0.1/dashbuilder.json",
+   "$schema":"http://json-schema.org/draft-07/schema#",
+   "description":"Schema for Dashboards",
+   "type":"object",
+   "properties":{
+      "pages":{
+         "description":"A page can contain rows, columns and components.",
+         "type":"array",
+         "items":{
+            "$ref":"#/definitions/Page"
          }
       },
-      "datasets": {
-         "type": "array",
-         "description": "Datasets are used to declare source data",
-         "items": {
-            "$ref": "#/definitions/Dataset"
+      "datasets":{
+         "type":"array",
+         "description":"Datasets are used to declare source data",
+         "items":{
+            "$ref":"#/definitions/Dataset"
          }
       },
-      "navTree": {
-         "description": "The pages can be organized in a menu using navigation",
-         "$ref": "#/definitions/NavTree"
+      "navTree":{
+         "description":"The pages can be organized in a menu using navigation",
+         "$ref":"#/definitions/NavTree"
       },
-      "properties": {
-         "description": "Allows customization in certain parts of the document.",
-         "$ref": "#/definitions/CustomProperties"
+      "properties":{
+         "description":"Allows customization in certain parts of the document.",
+         "$ref":"#/definitions/CustomProperties"
+      },
+      "global":{
+         "description":"Allows customization in global level.",
+         "$ref":"#/definitions/GlobalProperties"
       }
    },
-   "required": [
+   "required":[
       "pages"
    ],
-   "definitions": {
-      "Page": {
-         "type": "object",
-         "properties": {
-            "name": {
-               "type": "string"
+   "definitions":{
+      "GlobalProperties":{
+         "type":"object",
+         "properties":{
+            "mode":{
+               "$ref":"#/definitions/ColourModes"
             },
-            "components": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/PageComponent"
-               }
-            },
-            "rows": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/Row"
-               }
-            },
-            "properties": {
-               "$ref": "#/definitions/CustomProperties"
+            "settings":{
+               "$ref":"#/definitions/CustomProperties"
             }
          },
-         "title": "Page"
+         "title":"Global Properties"
       },
-      "PageComponent": {
-         "type": "object",
-         "properties": {
-            "html": {
-               "type": "string"
+      "Page":{
+         "type":"object",
+         "properties":{
+            "name":{
+               "type":"string"
             },
-            "settings": {
-               "type": "object",
-               "properties": {
-                  "dataSetLookup": {
-                     "$ref": "#/definitions/DataSetLookup"
-                  },
-                  "filter": {
-                     "$ref": "#/definitions/SettingsFilter"
-                  },
-                  "refresh": {
-                     "type": "object",
-                     "properties": {
-                        "interval": {
-                           "type": "string"
-                        }
-                     }
-                  },
-                  "selector": {
-                     "type": "object",
-                     "properties": {
-                        "multiple": {
-                           "type": "boolean"
-                        },
-                        "inputs_show": {
-                           "type": "boolean"
-                        }
-                     }
-                  },
-                  "echarts": {
-                     "type": "string"
-                  },
-                  "general": {
-                     "type": "object",
-                     "properties": {
-                        "title": {
-                           "type": "string"
-                        },
-                        "visible": {
-                           "type": "boolean"
-                        }
-                     },
-                     "required": [
-                        "title",
-                        "visible"
-                     ]
-                  },
-                  "columns": {
-                     "type": "array",
-                     "items": {
-                        "$ref": "#/definitions/SettingsColumn"
-                     }
-                  },
-                  "table": {
-                     "$ref": "#/definitions/SettingsTable"
-                  },
-                  "html": {
-                     "type": "string"
-                  },
-                  "javascript": {
-                     "type": "string"
-                  },
-                  "map": {
-                     "type": "object",
-                     "properties": {
-                        "color_scheme": {
-                           "$ref": "#/definitions/MapColorScheme"
-                        }
-                     }
-                  },
-                  "meter": {
-                     "$ref": "#/definitions/MeterTypes"
-                  },
-                  "component": {
-                     "oneOf": [
-                        {
-                           "type": "string"
-                        },
-                        {
-                           "$ref": "#/definitions/SettingsComponent"
-                        }
-                     ]
-                  },
-                  "external": {
-                     "$ref": "#/definitions/SettingsExternal"
-                  },
-                  "axis": {
-                     "type": "object",
-                     "properties": {
-                        "x": {
-                           "type": "object",
-                           "properties": {
-                              "labels_show": {
-                                 "type": "boolean"
-                              },
-                              "title": {
-                                 "type": "string"
-                              },
-                              "labels_angle": {
-                                 "type": "string"
-                              }
-                           },
-                           "required": [
-                              "labels_show",
-                              "title",
-                              "labels_angle"
-                           ]
-                        },
-                        "y": {
-                           "type": "object",
-                           "properties": {
-                              "labels_show": {
-                                 "type": "boolean"
-                              },
-                              "title": {
-                                 "type": "string"
-                              },
-                              "labels_angle": {
-                                 "type": "string"
-                              }
-                           },
-                           "required": [
-                              "labels_show",
-                              "title",
-                              "labels_angle"
-                           ]
-                        }
-                     }
-                  },
-                  "type": {
-                     "oneOf": [
-                        {
-                           "$ref": "#/definitions/ChartType"
-                        },
-                        {
-                           "type": "string",
-                           "enum": [
-                              "SELECTOR"
-                           ]
-                        },
-                        {
-                           "type": "string",
-                           "enum": [
-                              "METRIC"
-                           ]
-                        },
-                        {
-                           "type": "string",
-                           "enum": [
-                              "METERCHART"
-                           ]
-                        },
-                        {
-                           "type": "string",
-                           "enum": [
-                              "MAP"
-                           ]
-                        }
-                     ]
-                  },
-                  "chart": {
-                     "$ref": "#/definitions/ChartProperties"
-                  }
-               },
-               "allOf": [
-                  {
-                     "if": {
-                        "properties": {
-                           "type": {
-                              "const": "BARCHART"
-                           }
-                        }
-                     },
-                     "then": {
-                        "properties": {
-                           "subtype": {
-                              "$ref": "#/definitions/BarChartTypes"
-                           }
-                        }
-                     }
-                  },
-                  {
-                     "if": {
-                        "properties": {
-                           "type": {
-                              "const": "LINECHART"
-                           }
-                        }
-                     },
-                     "then": {
-                        "properties": {
-                           "subtype": {
-                              "$ref": "#/definitions/LineChartTypes"
-                           }
-                        }
-                     }
-                  },
-                  {
-                     "if": {
-                        "properties": {
-                           "type": {
-                              "const": "AREACHART"
-                           }
-                        }
-                     },
-                     "then": {
-                        "properties": {
-                           "subtype": {
-                              "$ref": "#/definitions/AreaChartTypes"
-                           }
-                        }
-                     }
-                  },
-                  {
-                     "if": {
-                        "properties": {
-                           "type": {
-                              "const": "PIECHART"
-                           }
-                        }
-                     },
-                     "then": {
-                        "properties": {
-                           "subtype": {
-                              "$ref": "#/definitions/PieChartTypes"
-                           }
-                        }
-                     }
-                  },
-                  {
-                     "if": {
-                        "properties": {
-                           "type": {
-                              "const": "SELECTOR"
-                           }
-                        }
-                     },
-                     "then": {
-                        "properties": {
-                           "subtype": {
-                              "$ref": "#/definitions/SelectorTypes"
-                           }
-                        }
-                     }
-                  },
-                  {
-                     "if": {
-                        "properties": {
-                           "type": {
-                              "const": "MAP"
-                           }
-                        }
-                     },
-                     "then": {
-                        "properties": {
-                           "subtype": {
-                              "$ref": "#/definitions/MapTypes"
-                           }
-                        }
-                     }
-                  }
-               ]
-            }
-         },
-         "title": "PageComponent"
-      },
-      "Row": {
-         "type": "object",
-         "properties": {
-            "columns": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/RowColumn"
+            "components":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/PageComponent"
                }
             },
-            "properties": {
-               "$ref": "#/definitions/CustomProperties"
+            "rows":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/Row"
+               }
+            },
+            "properties":{
+               "$ref":"#/definitions/CustomProperties"
             }
          },
-         "required": [
+         "title":"Page"
+      },
+      "PageComponent":{
+         "type":"object",
+         "properties":{
+            "html":{
+               "type":"string"
+            },
+            "settings":{
+               "$ref":"#/definitions/DisplayerSettings"
+            }
+         },
+         "title":"PageComponent"
+      },
+      "Row":{
+         "type":"object",
+         "properties":{
+            "columns":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/RowColumn"
+               }
+            },
+            "properties":{
+               "$ref":"#/definitions/CustomProperties"
+            }
+         },
+         "required":[
             "columns"
          ],
-         "title": "Row"
+         "title":"Row"
       },
-      "RowColumn": {
-         "type": "object",
-         "properties": {
-            "span": {
-               "type": "string",
-               "format": "integer"
+      "RowColumn":{
+         "type":"object",
+         "properties":{
+            "span":{
+               "type":"integer"
             },
-            "components": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/ColumnComponent"
+            "components":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/ColumnComponent"
                }
             },
-            "rows": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/Row"
+            "rows":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/Row"
                }
             },
-            "properties": {
-               "$ref": "#/definitions/CustomProperties"
+            "properties":{
+               "$ref":"#/definitions/CustomProperties"
             }
          },
-         "required": [
+         "required":[
             "components"
          ],
-         "title": "RowColumn"
+         "title":"RowColumn"
       },
-      "ColumnComponent": {
-         "type": "object",
-         "properties": {
-            "html": {
-               "type": "string"
+      "ColumnComponent":{
+         "type":"object",
+         "properties":{
+            "html":{
+               "type":"string"
             },
-            "type": {
-               "$ref": "#/definitions/NavComponentTypes"
+            "type":{
+               "$ref":"#/definitions/NavComponentTypes"
+            },
+            "settings":{
+               "$ref":"#/definitions/DisplayerSettings"
             }
          },
-         "title": "ColumnComponent"
+         "title":"ColumnComponent"
       },
-      "Dataset": {
-         "type": "object",
-         "properties": {
-            "uuid": {
-               "type": "string"
+      "Dataset":{
+         "type":"object",
+         "properties":{
+            "uuid":{
+               "type":"string"
             },
-            "url": {
-               "type": "string",
-               "format": "uri"
+            "url":{
+               "type":"string",
+               "format":"uri"
             },
-            "content": {
-               "type": "string"
+            "content":{
+               "type":"string"
             },
-            "columns": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/DatasetColumn"
+            "columns":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/DatasetColumn"
                }
             },
-            "expression": {
-               "type": "string",
-               "minLength": 1
+            "expression":{
+               "type":"string",
+               "minLength":1
             },
-            "cacheEnabled": {
-               "type": "boolean"
+            "cacheEnabled":{
+               "type":"boolean"
             },
-            "refreshTime": {
-               "type": "string"
+            "refreshTime":{
+               "type":"string"
             }
          },
-         "required": [
-            "uuid",
-            "url"
+         "oneOf":[
+            {
+               "properties":{
+                  "content":{
+                     "type":"string"
+                  },
+                  "url":{
+                     "type":"string",
+                     "format":"uri"
+                  }
+               },
+               "required":[
+                  "content"
+               ],
+               "not":{
+                  "required":[
+                     "url"
+                  ]
+               }
+            },
+            {
+               "properties":{
+                  "content":{
+                     "type":"string"
+                  },
+                  "url":{
+                     "type":"string",
+                     "format":"uri"
+                  }
+               },
+               "required":[
+                  "url"
+               ],
+               "not":{
+                  "required":[
+                     "content"
+                  ]
+               }
+            }
          ],
-         "title": "Dataset"
+         "required":[
+            "uuid"
+         ],
+         "title":"Dataset"
       },
-      "DatasetColumn": {
-         "type": "object",
-         "properties": {
-            "id": {
-               "type": "string"
+      "DatasetColumn":{
+         "type":"object",
+         "properties":{
+            "id":{
+               "type":"string"
             },
-            "type": {
-               "$ref": "#/definitions/DataSetType"
+            "type":{
+               "$ref":"#/definitions/DataSetType"
             }
          },
-         "required": [
+         "required":[
             "id",
             "type"
          ],
-         "title": "DatasetColumn"
+         "title":"DatasetColumn"
       },
-      "DataSetLookup": {
-         "type": "object",
-         "properties": {
-            "uuid": {
-               "type": "string"
+      "DataSetLookup":{
+         "type":"object",
+         "properties":{
+            "uuid":{
+               "type":"string"
             },
-            "rowCount": {
-               "type": "string",
-               "format": "integer"
+            "rowCount":{
+               "type":"integer"
             },
-            "rowOffset": {
-               "type": "string",
-               "format": "integer"
+            "rowOffset":{
+               "type":"integer"
             },
-            "sort": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/Sort"
+            "sort":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/Sort"
                }
             },
-            "filter": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/FilterComponent"
+            "filter":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/FilterComponent"
                }
             },
-            "group": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/DatasetlookupGroup"
+            "group":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/DatasetlookupGroup"
                }
             }
          },
-         "required": [
+         "required":[
             "uuid"
          ],
-         "title": "DataSetLookup"
+         "title":"DataSetLookup"
       },
-      "SettingsFilter": {
-         "type": "object",
-         "properties": {
-            "enabled": {
-               "type": "boolean"
+      "SettingsFilter":{
+         "type":"object",
+         "properties":{
+            "enabled":{
+               "type":"boolean"
             },
-            "listening": {
-               "type": "boolean"
+            "listening":{
+               "type":"boolean"
             },
-            "notification": {
-               "type": "boolean"
+            "notification":{
+               "type":"boolean"
             },
-            "selfapply": {
-               "type": "boolean"
+            "selfapply":{
+               "type":"boolean"
             }
          },
-         "title": "SettingsFilter"
+         "required":[
+            "enabled",
+            "listening",
+            "notification",
+            "selfapply"
+         ],
+         "title":"SettingsFilter"
       },
-      "SettingsColumn": {
-         "type": "object",
-         "properties": {
-            "id": {
-               "type": "string"
+      "SettingsColumn":{
+         "type":"object",
+         "properties":{
+            "id":{
+               "type":"string"
             },
-            "name": {
-               "type": "string"
+            "name":{
+               "type":"string"
             },
-            "expression": {
-               "type": "string"
+            "expression":{
+               "type":"string"
             },
-            "pattern": {
-               "type": "string"
+            "pattern":{
+               "type":"string"
             },
-            "required": [
+            "required":[
                "id",
-               "name"
+               "name",
+               "expression",
+               "pattern"
             ]
          },
-         "title": "SettingsColumn"
+         "title":"SettingsColumn"
       },
-      "SettingsTable": {
-         "type": "object",
-         "properties": {
-            "pageSize": {
-               "type": "string"
+      "SettingsTable":{
+         "type":"object",
+         "properties":{
+            "pageSize":{
+               "type":"integer"
             },
-            "show_column_picker": {
-               "type": "string"
+            "show_column_picker":{
+               "type":"string"
             },
-            "sort": {
-               "$ref": "#/definitions/TableSort"
+            "sort":{
+               "$ref":"#/definitions/TableSort"
             }
          },
-         "title": "SettingsTable"
+         "required":[
+            "pageSize",
+            "show_column_picker",
+            "sort"
+         ],
+         "title":"SettingsTable"
       },
-      "TableSort": {
-         "type": "object",
-         "properties": {
-            "enabled": {
-               "type": "boolean"
+      "TableSort":{
+         "type":"object",
+         "properties":{
+            "enabled":{
+               "type":"boolean"
             },
-            "columnId": {
-               "type": "string"
+            "columnId":{
+               "type":"string"
             },
-            "order": {
-               "$ref": "#/definitions/sortEnum"
+            "order":{
+               "$ref":"#/definitions/sortEnum"
             }
          },
-         "required": [
+         "required":[
             "enabled",
             "columnId",
             "order"
          ],
-         "title": "TableSort"
+         "title":"TableSort"
       },
-      "Sort": {
-         "type": "object",
-         "properties": {
-            "column": {
-               "type": "string"
+      "Sort":{
+         "type":"object",
+         "properties":{
+            "column":{
+               "type":"string"
             },
-            "sortOrder": {
-               "$ref": "#/definitions/sortEnum"
+            "sortOrder":{
+               "$ref":"#/definitions/sortEnum"
             }
          },
-         "required": [
+         "required":[
             "column",
             "sortOrder"
          ],
-         "title": "Sort"
+         "title":"Sort"
       },
-      "sortEnum": {
-         "type": "string",
-         "enum": [
+      "sortEnum":{
+         "type":"string",
+         "enum":[
             "ASCENDING",
             "DESCENDING"
          ],
-         "title": "sortEnum"
+         "title":"sortEnum"
       },
-      "FilterComponent": {
-         "type": "object",
-         "properties": {
-            "column": {
-               "type": "string"
+      "FilterComponent":{
+         "type":"object",
+         "properties":{
+            "column":{
+               "type":"string"
             },
-            "function": {
-               "$ref": "#/definitions/FunctionList"
+            "function":{
+               "$ref":"#/definitions/FunctionList"
             },
-            "args": {
-               "type": "array"
+            "args":{
+               "type":"array"
             }
          },
-         "required": [
+         "required":[
             "column",
             "function",
             "args"
          ],
-         "allOf": [
+         "allOf":[
             {
-               "if": {
-                  "properties": {
-                     "function": {
-                        "const": "OR"
+               "if":{
+                  "properties":{
+                     "function":{
+                        "const":"OR"
                      }
                   }
                },
-               "then": {
-                  "properties": {
-                     "args": {
-                        "type": "array",
-                        "items": {
-                           "$ref": "#/definitions/FilterComponent"
+               "then":{
+                  "properties":{
+                     "args":{
+                        "type":"array",
+                        "items":{
+                           "$ref":"#/definitions/FilterComponent"
                         }
                      }
                   }
                }
             },
             {
-               "if": {
-                  "properties": {
-                     "function": {
-                        "const": "AND"
+               "if":{
+                  "properties":{
+                     "function":{
+                        "const":"AND"
                      }
                   }
                },
-               "then": {
-                  "properties": {
-                     "args": {
-                        "type": "array",
-                        "items": {
-                           "$ref": "#/definitions/FilterComponent"
+               "then":{
+                  "properties":{
+                     "args":{
+                        "type":"array",
+                        "items":{
+                           "$ref":"#/definitions/FilterComponent"
                         }
                      }
                   }
                }
             },
             {
-               "if": {
-                  "properties": {
-                     "function": {
-                        "const": "NOT"
+               "if":{
+                  "properties":{
+                     "function":{
+                        "const":"NOT"
                      }
                   }
                },
-               "then": {
-                  "properties": {
-                     "args": {
-                        "type": "array",
-                        "items": {
-                           "$ref": "#/definitions/FilterComponent"
+               "then":{
+                  "properties":{
+                     "args":{
+                        "type":"array",
+                        "items":{
+                           "$ref":"#/definitions/FilterComponent"
                         }
                      }
                   }
                }
             }
          ],
-         "title": "FilterComponent"
+         "title":"FilterComponent"
       },
-      "DatasetlookupGroup": {
-         "type": "object",
-         "properties": {
-            "columnGroup": {
-               "type": "object",
-               "properties": {
-                  "source": {
-                     "type": "string"
+      "DatasetlookupGroup":{
+         "type":"object",
+         "properties":{
+            "columnGroup":{
+               "type":"object",
+               "properties":{
+                  "source":{
+                     "type":"string"
                   }
                },
-               "required": [
+               "required":[
                   "source"
                ]
             },
-            "groupFunctions": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/ColumnGroupFunctions"
+            "groupFunctions":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/ColumnGroupFunctions"
                }
             }
          },
-         "required": [
+         "required":[
             "groupFunctions"
          ],
-         "title": "DatasetlookupGroup"
+         "title":"DatasetlookupGroup"
       },
-      "ColumnGroupFunctions": {
-         "type": "object",
-         "properties": {
-            "source": {
-               "type": "string"
+      "ColumnGroupFunctions":{
+         "type":"object",
+         "properties":{
+            "source":{
+               "type":"string"
             },
-            "function": {
-               "type": "string",
-               "enum": [
+            "function":{
+               "type":"string",
+               "enum":[
                   "SUM",
                   "MAX",
                   "MIN",
                   "AVERAGE"
                ]
             },
-            "column": {
-               "type": "string"
+            "column":{
+               "type":"string"
             }
          },
-         "required": [
+         "required":[
             "source"
          ],
-         "title": "ColumnGroupFunctions"
+         "title":"ColumnGroupFunctions"
       },
-      "NavTree": {
-         "type": "object",
-         "properties": {
-            "root_items": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/RootItem"
+      "NavTree":{
+         "type":"object",
+         "properties":{
+            "root_items":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/RootItem"
                }
             }
          },
-         "required": [
+         "required":[
             "root_items"
          ],
-         "title": "NavTree"
+         "title":"NavTree"
       },
-      "RootItem": {
-         "type": "object",
-         "properties": {
-            "type": {
-               "type": "string"
+      "RootItem":{
+         "type":"object",
+         "properties":{
+            "type":{
+               "type":"string"
             },
-            "id": {
-               "type": "string"
+            "id":{
+               "type":"string"
             },
-            "name": {
-               "type": "string"
+            "name":{
+               "type":"string"
             },
-            "children": {
-               "type": "array",
-               "items": {
-                  "$ref": "#/definitions/Child"
+            "children":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/Child"
                }
             }
          },
-         "title": "RootItem"
+         "title":"RootItem"
       },
-      "Child": {
-         "type": "object",
-         "properties": {
-            "page": {
-               "type": "string"
+      "Child":{
+         "type":"object",
+         "properties":{
+            "page":{
+               "type":"string"
             }
          },
-         "required": [
+         "required":[
             "page"
          ],
-         "title": "Child"
+         "title":"Child"
       },
-      "DataSetType": {
-         "type": "string",
-         "enum": [
+      "DataSetType":{
+         "type":"string",
+         "enum":[
             "LABEL",
-            "NUMBER"
+            "NUMBER",
+            "TEXT",
+            "DATE"
          ],
-         "title": "Type"
+         "title":"Type"
       },
-      "FunctionList": {
-         "type": "string",
-         "enum": [
+      "FunctionList":{
+         "type":"string",
+         "enum":[
             "IS_NULL",
             "NOT_NULL",
             "EQUALS_TO",
@@ -778,59 +589,52 @@
             "AND",
             "NOT"
          ],
-         "title": "FunctionList"
+         "title":"FunctionList"
       },
-      "ChartProperties": {
-         "type": "object",
-         "properties": {
-            "bgColor": {
-               "type": "string"
+      "ChartProperties":{
+         "type":"object",
+         "properties":{
+            "bgColor":{
+               "type":"string"
             },
-            "width": {
-               "type": "string",
-               "format": "number"
+            "width":{
+               "type":"number"
             },
-            "height": {
-               "type": "string",
-               "format": "number"
+            "height":{
+               "type":"number"
             },
-            "zoom": {
-               "type": "boolean"
+            "zoom":{
+               "type":"boolean"
             },
-            "margin": {
-               "type": "object",
-               "properties": {
-                  "type": "string",
-                  "right": {
-                     "type": "string",
-                     "format": "number"
+            "margin":{
+               "type":"object",
+               "properties":{
+                  "right":{
+                     "type":"number"
                   },
-                  "top": {
-                     "type": "string",
-                     "format": "number"
+                  "top":{
+                     "type":"number"
                   },
-                  "bottom": {
-                     "type": "string",
-                     "format": "number"
+                  "bottom":{
+                     "type":"number"
                   },
-                  "left": {
-                     "type": "string",
-                     "format": "number"
+                  "left":{
+                     "type":"number"
                   }
                }
             },
-            "resizable": {
-               "type": "boolean"
+            "resizable":{
+               "type":"boolean"
             },
-            "legend": {
-               "type": "object",
-               "properties": {
-                  "show": {
-                     "type": "boolean"
+            "legend":{
+               "type":"object",
+               "properties":{
+                  "show":{
+                     "type":"boolean"
                   },
-                  "position": {
-                     "type": "string",
-                     "enum": [
+                  "position":{
+                     "type":"string",
+                     "enum":[
                         "in",
                         "right",
                         "bottom"
@@ -838,135 +642,483 @@
                   }
                }
             },
-            "grid": {
-               "type": "object",
-               "properties": {
-                  "x": {
-                     "type": "boolean"
+            "grid":{
+               "type":"object",
+               "properties":{
+                  "x":{
+                     "type":"boolean"
                   },
-                  "y": {
-                     "type": "boolean"
+                  "y":{
+                     "type":"boolean"
                   }
                }
             },
-            "general": {
-               "type": "object",
-               "properties": {
-                  "visible": {
-                     "type": "boolean"
+            "general":{
+               "type":"object",
+               "properties":{
+                  "visible":{
+                     "type":"boolean"
                   },
-                  "title": {
-                     "type": "string"
+                  "title":{
+                     "type":"string"
                   }
                }
             }
          }
       },
-      "CustomProperties": {
-         "type": "object",
-         "description": "The properties can be CSS properties, such as width/height, background color, color and more.",
-         "additionalProperties": {
-            "type": "string"
+      "CustomProperties":{
+         "type":"object",
+         "description":"The properties can be CSS properties, such as width/height, background color, color and more.",
+         "additionalProperties":{
+            "type":"string"
          }
       },
-      "SettingsExternal": {
-         "type": "object",
-         "properties": {
-            "baseUrl": {
-               "type": "string"
+      "DisplayerSettings":{
+         "type":"object",
+         "properties":{
+            "lookup":{
+               "$ref":"#/definitions/DataSetLookup"
             },
-            "width": {
-               "type": "string"
+            "filter":{
+               "$ref":"#/definitions/SettingsFilter"
             },
-            "height": {
-               "type": "string"
+            "refresh":{
+               "type":"object",
+               "properties":{
+                  "interval":{
+                     "type":"string"
+                  }
+               },
+               "required":[
+                  "interval"
+               ],
+               "title":"refresh"
+            },
+            "renderer":{
+               "type":"string",
+               "enum":[
+                  "c3"
+               ],
+               "title":"renderer"
+            },
+            "selector":{
+               "type":"object",
+               "properties":{
+                  "multiple":{
+                     "type":"boolean"
+                  },
+                  "inputs_show":{
+                     "type":"boolean"
+                  }
+               },
+               "required":[
+                  "multiple",
+                  "inputs_show"
+               ],
+               "title":"selector"
+            },
+            "echarts":{
+               "type":"string",
+               "title":"echarts"
+            },
+            "general":{
+               "type":"object",
+               "properties":{
+                  "title":{
+                     "type":"string"
+                  },
+                  "visible":{
+                     "type":"boolean"
+                  },
+                  "mode":{
+                     "$ref":"#/definitions/ColourModes"
+                  },
+                  "allowEdit":{
+                     "type":"boolean",
+                     "title":"allowEdit"
+                  }
+               },
+               "required":[
+                  "title",
+                  "visible",
+                  "mode",
+                  "allowEdit"
+               ],
+               "title":"general"
+            },
+            "export":{
+               "type":"object",
+               "properties":{
+                  "png":{
+                     "type":"boolean"
+                  }
+               },
+               "required":[
+                  "png"
+               ],
+               "title":"export"
+            },
+            "columns":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/SettingsColumn"
+               }
+            },
+            "table":{
+               "$ref":"#/definitions/SettingsTable"
+            },
+            "html":{
+               "type":"string"
+            },
+            "javascript":{
+               "type":"string"
+            },
+            "map":{
+               "type":"object",
+               "properties":{
+                  "color_scheme":{
+                     "$ref":"#/definitions/MapColorScheme"
+                  }
+               },
+               "required":[
+                  "color_scheme"
+               ],
+               "title":"map"
+            },
+            "meter":{
+               "$ref":"#/definitions/MeterTypes"
+            },
+            "component":{
+               "oneOf":[
+                  {
+                     "type":"string"
+                  },
+                  {
+                     "$ref":"#/definitions/SettingsComponent"
+                  }
+               ]
+            },
+            "external":{
+               "$ref":"#/definitions/SettingsExternal"
+            },
+            "bubble":{
+               "type":"object",
+               "properties":{
+                  "minSize":{
+                     "type":"number"
+                  },
+                  "maxSize":{
+                     "type":"number"
+                  },
+                  "color":{
+                     "type":"string"
+                  }
+               },
+               "required":[
+                  "minSize",
+                  "maxSize",
+                  "color"
+               ],
+               "title":"bubble"
+            },
+            "axis":{
+               "type":"object",
+               "properties":{
+                  "x":{
+                     "type":"object",
+                     "properties":{
+                        "labels_show":{
+                           "type":"boolean"
+                        },
+                        "title":{
+                           "type":"string"
+                        },
+                        "labels_angle":{
+                           "type":"number"
+                        }
+                     },
+                     "required":[
+                        "labels_show",
+                        "title",
+                        "labels_angle"
+                     ],
+                     "title":"x"
+                  },
+                  "y":{
+                     "type":"object",
+                     "properties":{
+                        "labels_show":{
+                           "type":"boolean"
+                        },
+                        "title":{
+                           "type":"string"
+                        },
+                        "labels_angle":{
+                           "type":"string"
+                        }
+                     },
+                     "required":[
+                        "labels_show",
+                        "title",
+                        "labels_angle"
+                     ],
+                     "title":"y"
+                  }
+               }
+            },
+            "type":{
+               "oneOf":[
+                  {
+                     "$ref":"#/definitions/ChartType"
+                  },
+                  {
+                     "type":"string",
+                     "enum":[
+                        "SELECTOR"
+                     ]
+                  },
+                  {
+                     "type":"string",
+                     "enum":[
+                        "METRIC"
+                     ]
+                  },
+                  {
+                     "type":"string",
+                     "enum":[
+                        "METERCHART"
+                     ]
+                  },
+                  {
+                     "type":"string",
+                     "enum":[
+                        "MAP"
+                     ]
+                  }
+               ]
+            },
+            "chart":{
+               "$ref":"#/definitions/ChartProperties"
             }
-         }
+         },
+         "allOf":[
+            {
+               "if":{
+                  "properties":{
+                     "type":{
+                        "const":"BARCHART"
+                     }
+                  }
+               },
+               "then":{
+                  "properties":{
+                     "subtype":{
+                        "$ref":"#/definitions/BarChartTypes"
+                     }
+                  }
+               }
+            },
+            {
+               "if":{
+                  "properties":{
+                     "type":{
+                        "const":"LINECHART"
+                     }
+                  }
+               },
+               "then":{
+                  "properties":{
+                     "subtype":{
+                        "$ref":"#/definitions/LineChartTypes"
+                     }
+                  }
+               }
+            },
+            {
+               "if":{
+                  "properties":{
+                     "type":{
+                        "const":"AREACHART"
+                     }
+                  }
+               },
+               "then":{
+                  "properties":{
+                     "subtype":{
+                        "$ref":"#/definitions/AreaChartTypes"
+                     }
+                  }
+               }
+            },
+            {
+               "if":{
+                  "properties":{
+                     "type":{
+                        "const":"PIECHART"
+                     }
+                  }
+               },
+               "then":{
+                  "properties":{
+                     "subtype":{
+                        "$ref":"#/definitions/PieChartTypes"
+                     }
+                  }
+               }
+            },
+            {
+               "if":{
+                  "properties":{
+                     "type":{
+                        "const":"SELECTOR"
+                     }
+                  }
+               },
+               "then":{
+                  "properties":{
+                     "subtype":{
+                        "$ref":"#/definitions/SelectorTypes"
+                     }
+                  }
+               }
+            },
+            {
+               "if":{
+                  "properties":{
+                     "type":{
+                        "const":"MAP"
+                     }
+                  }
+               },
+               "then":{
+                  "properties":{
+                     "subtype":{
+                        "$ref":"#/definitions/MapTypes"
+                     }
+                  }
+               }
+            }
+         ],
+         "required":[
+            "lookup"
+         ],
+         "title":"DisplayerSettings"
       },
-      "ChartType": {
-         "type": "string",
-         "enum": [
+      "SettingsExternal":{
+         "type":"object",
+         "properties":{
+            "baseUrl":{
+               "type":"string"
+            },
+            "width":{
+               "type":"number"
+            },
+            "height":{
+               "type":"number"
+            }
+         },
+         "required":[
+            "baseUrl",
+            "width",
+            "height"
+         ],
+         "title":"SettingsExternal"
+      },
+      "ChartType":{
+         "type":"string",
+         "enum":[
             "BARCHART",
             "LINECHART",
             "AREACHART",
-            "PIECHART"
-         ]
+            "PIECHART",
+            "BUBBLECHART",
+            "SCATTERCHART"
+         ],
+         "title":"ChartType"
       },
-      "BarChartTypes": {
-         "type": "string",
-         "enum": [
+      "BarChartTypes":{
+         "type":"string",
+         "enum":[
             "COLUMN",
             "BAR",
             "STACKED",
             "COLUMN_STACKED",
             "BAR_STACKED"
          ],
-         "default": "COLUMN",
-         "title": "BarChartTypes"
+         "default":"COLUMN",
+         "title":"BarChartTypes"
       },
-      "LineChartTypes": {
-         "type": "string",
-         "enum": [
+      "LineChartTypes":{
+         "type":"string",
+         "enum":[
             "LINE",
             "SMOOTH"
          ],
-         "default": "LINE",
-         "title": "LineChartTypes"
+         "default":"LINE",
+         "title":"LineChartTypes"
       },
-      "AreaChartTypes": {
-         "type": "string",
-         "enum": [
+      "AreaChartTypes":{
+         "type":"string",
+         "enum":[
             "AREA",
             "AREA_STACKED"
          ],
-         "default": "AREA",
-         "title": "AreaChartChartTypes"
+         "default":"AREA",
+         "title":"AreaChartChartTypes"
       },
-      "PieChartTypes": {
-         "type": "string",
-         "enum": [
+      "PieChartTypes":{
+         "type":"string",
+         "enum":[
             "PIE",
             "DONUT"
          ],
-         "default": "PIE",
-         "title": "PieChartChartTypes"
+         "default":"PIE",
+         "title":"PieChartChartTypes"
       },
-      "SelectorTypes": {
-         "type": "string",
-         "enum": [
+      "SelectorTypes":{
+         "type":"string",
+         "enum":[
             "SELECTOR_LABELS",
             "SELECTOR_DROPDOWN",
             "SELECTOR_SLIDER"
          ],
-         "title": "SelectorTypes"
+         "title":"SelectorTypes"
       },
-      "MeterTypes": {
-         "type": "string",
-         "enum": [
-            "start",
-            "end",
-            "critical",
-            "warning"
-         ]
+      "MeterTypes":{
+         "type":"object",
+         "properties":{
+            "start":{
+               "type":"string"
+            },
+            "end":{
+               "type":"string"
+            },
+            "critical":{
+               "type":"string"
+            },
+            "warning":{
+               "type":"string"
+            }
+         }
       },
-      "MapColorScheme": {
-         "type": "string",
-         "enum": [
+      "MapColorScheme":{
+         "type":"string",
+         "enum":[
             "red",
             "green",
             "blue"
          ]
       },
-      "MapTypes": {
-         "type": "string",
-         "enum": [
+      "MapTypes":{
+         "type":"string",
+         "enum":[
             "MAP_MARKERS",
             "MAP_REGIONS"
          ]
       },
-      "NavComponentTypes": {
-         "type": "string",
-         "enum": [
+      "NavComponentTypes":{
+         "type":"string",
+         "enum":[
             "TILES",
             "CAROUSEL",
             "TREE",
@@ -975,15 +1127,23 @@
             "DIV"
          ]
       },
-      "SettingsComponent": {
-         "type": "string",
-         "enum": [
+      "SettingsComponent":{
+         "type":"string",
+         "enum":[
             "table",
             "echarts",
             "svg-heatmap",
             "timeseries",
             "uniforms"
          ]
+      },
+      "ColourModes":{
+         "type":"string",
+         "enum":[
+            "dark",
+            "light"
+         ],
+         "title":"ColourModes"
       }
    }
 }
