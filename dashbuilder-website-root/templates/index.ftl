@@ -56,11 +56,11 @@
                 <div class="card h-100">
                     <img class="card-img-top" src="${content.rootpath}website/LAYOUT_EDITOR.png" height="200px" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Layout Editor</h5>
-                        <p class="card-text">Create dashboards using a visual drag and drop editor. Export the dashboard and run on Dashbuilder Runtime.</p>                        
+                        <h5 class="card-title">Quarkus Extension</h5>
+                        <p class="card-text">Bring dashboards to your Quarkus application by using the Dashbuilder extension.</p>                        
                     </div>
                     <div class="card-footer">
-                        <a href="https://blog.kie.org/2021/05/dashbuilder-getting-started-guide.html" class="card-link">Learn more</a>
+                        <a href="https://blog.kie.org/2022/12/announcing-dashbuilder-quarkus-extension.html" class="card-link">Learn more</a>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 ifdef::context[:parent-context: {context}]
 :context: dashbuilder-guides
 
-== Dashbuilder YML Guide
+== Dashbuilder YAML Guide
 
 [role="_abstract"]
 This is a guide for creating dashboards and visualizations with YAML. You can run all examples with Dashbuilder YML Online Editor.
@@ -1480,3 +1480,42 @@ pages:
 ----
 
 When running on Dashbuilder you can also override the properties using query parameters. In the example above `My Property` could be changed using `http://my.dashbuilder?My Property=New Property value`.
+
+
+=== Global
+
+Global section was added in `0.26.0` version and it allow users to change the dashboard default mode to dark and declare a global settings for all displayers on the page:
+
+
+[source]
+----
+global:
+  mode: dark
+  settings:
+    general:
+      title: Common Title
+datasets:
+  - uuid: test
+    content: >-
+      [
+          ["A", 1],
+          ["B", 2]
+      ]
+pages:
+  - rows:
+      - columns:
+          - span: 6
+            components:
+              - settings:
+                  type: BARCHART
+                  lookup:
+                    uuid: test
+          - span: 6
+            components:
+              - settings:
+                  type: LINECHART
+                  lookup:
+                    uuid: test
+----
+.Dark Mode
+image::guides/yaml/darkMode.png[Dark Mode]

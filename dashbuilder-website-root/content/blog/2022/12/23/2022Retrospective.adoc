@@ -1,0 +1,24 @@
+= 2022 Retrospective
+jesuino
+2022-12-23
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, retrospective
+
+2022 was a great year for Dashbuilder! We created this new website, made Dashbuilder run only on client, create new tools, new components and tooling.
+
+Check our 2022 Posts on Kie Blog:
+
+
+* https://blog.kie.org/2022/01/announcing-dashbuilder-0-14-1.html[ANNOUNCING DASHBUILDER 0.14.1]
+* https://blog.kie.org/2022/02/json-datasets-in-dashbuilder.html[JSON DATASETS IN DASHBUILDER]
+* https://blog.kie.org/2022/04/create-dashboards-using-yml-with-dashbuilder.html[CREATE DASHBOARDS USING YML WITH DASHBUILDER]
+* https://blog.kie.org/2022/04/support-any-json-metrics-and-csv-as-dataset-in-dashbuilder.html[SUPPORT ANY JSON, METRICS AND CSV AS DATASET IN DASHBUILDER]
+* https://blog.kie.org/2022/07/creating-prometheus-dashboards-using-dashbuilder.html[CREATING PROMETHEUS DASHBOARDS USING DASHBUILDER]
+* https://blog.kie.org/2022/08/deploying-dashbuilder-client-on-openshift-developer-sandbox.html[DEPLOYING DASHBUILDER CLIENT ON OPENSHIFT DEVELOPER SANDBOX]
+* https://blog.kie.org/2022/09/monitoring-quarkus-applications-with-dashbuilder.html[MONITORING QUARKUS APPLICATIONS WITH DASHBUILDER]
+* https://blog.kie.org/2022/10/announcing-dashbuilder-vscode-extension.html[ANNOUNCING DASHBUILDER VSCODE EXTENSION]
+* https://blog.kie.org/2022/12/qatar-world-cup-goals-statistics-dashboard.html[QATAR WORLD CUP GOALS STATISTICS DASHBOARD]
+* https://blog.kie.org/2022/12/announcing-dashbuilder-quarkus-extension.html[ANNOUNCING DASHBUILDER QUARKUS EXTENSION]
+
+Happy new year and see you in 2023!

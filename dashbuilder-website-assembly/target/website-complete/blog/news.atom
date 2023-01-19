@@ -2,11 +2,71 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.dashbuilder.org/</id>
     <title>Dashbuilder</title>
-    <updated>2022-08-04T00:00:00+00:00</updated>
+    <updated>2023-01-19T00:00:00+00:00</updated>
     <link href="https://www.dashbuilder.org/blog/news.atom" rel="self" type="application/atom+xml" />
     <link href="https://www.dashbuilder.org/" rel="alternate" type="text/html" />
     <icon>https://www.dashbuilder.org/favicon.ico</icon>
     <logo>https://www.dashbuilder.org/headerFooter/dashbuilderLogo200px.png</logo>
+        <entry>
+            <id>https://www.dashbuilder.org/blog/2022/12/23/2022Retrospective.html</id>
+            <title type="html">2022 Retrospective</title>
+            <updated>2022-12-23T00:00:00+00:00</updated>
+            <published>2022-12-23T00:00:00+00:00</published>
+            <link href="https://www.optaplanner.org/blog/2022/12/23/2022Retrospective.html" rel="alternate" type="text/html" />
+            <author>
+                <name>jesuino</name>
+            </author>
+                    <category term="dashbuilder"></category>
+                    <category term="retrospective"></category>
+            <summary type="html">
+                 2022 was a great year for Dashbuilder! We created this new website, made Dashbuilder run only on client, create new tools, new components and tooling. Check our 2022 Posts on Kie Blog: ANNOUNCING ...
+            </summary>
+            <content type="html">
+                &lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;2022 was a great year for Dashbuilder! We created this new website, made Dashbuilder run only on client, create new tools, new components and tooling.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Check our 2022 Posts on Kie Blog:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/01/announcing-dashbuilder-0-14-1.html&quot;&gt;ANNOUNCING DASHBUILDER 0.14.1&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/02/json-datasets-in-dashbuilder.html&quot;&gt;JSON DATASETS IN DASHBUILDER&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/04/create-dashboards-using-yml-with-dashbuilder.html&quot;&gt;CREATE DASHBOARDS USING YML WITH DASHBUILDER&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/04/support-any-json-metrics-and-csv-as-dataset-in-dashbuilder.html&quot;&gt;SUPPORT ANY JSON, METRICS AND CSV AS DATASET IN DASHBUILDER&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/07/creating-prometheus-dashboards-using-dashbuilder.html&quot;&gt;CREATING PROMETHEUS DASHBOARDS USING DASHBUILDER&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/08/deploying-dashbuilder-client-on-openshift-developer-sandbox.html&quot;&gt;DEPLOYING DASHBUILDER CLIENT ON OPENSHIFT DEVELOPER SANDBOX&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/09/monitoring-quarkus-applications-with-dashbuilder.html&quot;&gt;MONITORING QUARKUS APPLICATIONS WITH DASHBUILDER&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/10/announcing-dashbuilder-vscode-extension.html&quot;&gt;ANNOUNCING DASHBUILDER VSCODE EXTENSION&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/12/qatar-world-cup-goals-statistics-dashboard.html&quot;&gt;QATAR WORLD CUP GOALS STATISTICS DASHBOARD&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.kie.org/2022/12/announcing-dashbuilder-quarkus-extension.html&quot;&gt;ANNOUNCING DASHBUILDER QUARKUS EXTENSION&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Happy new year and see you in 2023!&lt;/p&gt;
+&lt;/div&gt;")
+            </content>
+        </entry>
         <entry>
             <id>https://www.dashbuilder.org/blog/2022/02/10/DashbuilderSummary.html</id>
             <title type="html">DASHBUILDER: AN APACHE LICENSED BUSINESS REPORTING AND MONITORING TOOL</title>

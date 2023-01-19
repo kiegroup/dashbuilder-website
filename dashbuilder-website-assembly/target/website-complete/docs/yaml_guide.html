@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Dashbuilder YML Guide</title>
+<title>Dashbuilder YAML Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,7 +441,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="chap-dashbuilder-yaml-guides">Dashbuilder YML Guide</h2>
+<h2 id="chap-dashbuilder-yaml-guides">Dashbuilder YAML Guide</h2>
 <div class="sectionbody">
 <div class="paragraph _abstract">
 <p>This is a guide for creating dashboards and visualizations with YAML. You can run all examples with Dashbuilder YML Online Editor.</p>
@@ -2246,12 +2246,55 @@ pages:
 <p>When running on Dashbuilder you can also override the properties using query parameters. In the example above <code>My Property</code> could be changed using <code><a href="http://my.dashbuilder?My" class="bare">http://my.dashbuilder?My</a> Property=New Property value</code>.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_global">Global</h3>
+<div class="paragraph">
+<p>Global section was added in <code>0.26.0</code> version and it allow users to change the dashboard default mode to dark and declare a global settings for all displayers on the page:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>global:
+  mode: dark
+  settings:
+    general:
+      title: Common Title
+datasets:
+  - uuid: test
+    content: &gt;-
+      [
+          ["A", 1],
+          ["B", 2]
+      ]
+pages:
+  - rows:
+      - columns:
+          - span: 6
+            components:
+              - settings:
+                  type: BARCHART
+                  lookup:
+                    uuid: test
+          - span: 6
+            components:
+              - settings:
+                  type: LINECHART
+                  lookup:
+                    uuid: test</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/guides/yaml/darkMode.png" alt="Dark Mode">
+</div>
+<div class="title">Figure 22. Dark Mode</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-06-01 15:59:48 -0300
+Last updated 2022-12-23 19:22:47 -0300
 </div>
 </div>
 </body>

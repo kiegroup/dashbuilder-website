@@ -125,9 +125,27 @@
               <outputDirectory>${project.build.directory}/website-complete/kitchensink</outputDirectory>
               <resources>
                 <resource>
-                  <directory>src/dashbuilder</directory>
+		  <directory>${basedir}/src/dashbuilder</directory>
                   <includes>
                     <include>setup.js</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-schema-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/website-complete/schemas</outputDirectory>
+              <resources>
+                <resource>
+		  <directory>${basedir}/src/schemas</directory>
+                  <includes>
+		      <include>**/*</include>
                   </includes>
                 </resource>
               </resources>
