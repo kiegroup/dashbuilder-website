@@ -308,14 +308,14 @@
             },
             "pattern": {
                "type": "string"
-            },
-            "required": [
+            }
+         },
+          "required": [
                "id",
                "name",
                "expression",
                "pattern"
-            ]
-         },
+            ],
          "title": "SettingsColumn"
       },
       "SettingsTable": {
