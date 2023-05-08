@@ -4,7 +4,7 @@ ifdef::context[:parent-context: {context}]
 :context: dashbuilder-essentials
 
 [role="_abstract"]
-Dashbuilder is a tool for creating dashboards and data visualizations for developers and non-technical users.  Dashboards can be created using Java, a drag and drop web application or pure YAML and later run on a cloud native web application or in a client bundle.
+Dashbuilder is a tool for creating dashboards and data visualizations for developers and non-technical users. Dashboards can be created using pure YAML or you can reuse some of the existing dashboards to monitor your service or application.
 
 .Sample Dashbuilder Report
 image::essentials/dashbuilderSampleDashboard.png[align="center"]

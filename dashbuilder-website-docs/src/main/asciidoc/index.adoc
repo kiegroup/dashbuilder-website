@@ -26,7 +26,6 @@ include::essentials/what_is_dashbuilder.adoc[leveloffset=+1]
 include::essentials/concepts.adoc[leveloffset=+1]
 include::essentials/authoring.adoc[leveloffset=+1]
 include::essentials/deployment.adoc[leveloffset=+1]
-include::essentials/installation.adoc[leveloffset=+1]
 
 :context: dashbuilder-guides
 

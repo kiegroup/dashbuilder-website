@@ -2,11 +2,34 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.dashbuilder.org/</id>
     <title>Dashbuilder</title>
-    <updated>2023-01-19T00:00:00+00:00</updated>
+    <updated>2023-05-08T00:00:00+00:00</updated>
     <link href="https://www.dashbuilder.org/blog/news.atom" rel="self" type="application/atom+xml" />
     <link href="https://www.dashbuilder.org/" rel="alternate" type="text/html" />
     <icon>https://www.dashbuilder.org/favicon.ico</icon>
     <logo>https://www.dashbuilder.org/headerFooter/dashbuilderLogo200px.png</logo>
+        <entry>
+            <id>https://www.dashbuilder.org/blog/2023/05/08/0280Release.html</id>
+            <title type="html">What&amp;#8217;s new in Dashbuilder 0.28.0</title>
+            <updated>2023-05-08T00:00:00+00:00</updated>
+            <published>2023-05-08T00:00:00+00:00</published>
+            <link href="https://www.optaplanner.org/blog/2023/05/08/0280Release.html" rel="alternate" type="text/html" />
+            <author>
+                <name>jesuino</name>
+            </author>
+                    <category term="dashbuilder"></category>
+                    <category term="release"></category>
+            <summary type="html">
+                 We released Dashbuilder 0.28.0! This version has improvements for datasets and error messages. We also removed the backend parts and the code that became obsolete. Check all details on KIE Blog. 
+            </summary>
+            <content type="html">
+                &lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We released Dashbuilder 0.28.0! This version has improvements for datasets and error messages. We also removed the backend parts and the code that became obsolete.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Check all details on &lt;a href=&quot;https://blog.kie.org/2023/05/whats-new-in-dashbuilder-0-28-0.html&quot;&gt;KIE Blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;")
+            </content>
+        </entry>
         <entry>
             <id>https://www.dashbuilder.org/blog/2022/12/23/2022Retrospective.html</id>
             <title type="html">2022 Retrospective</title>

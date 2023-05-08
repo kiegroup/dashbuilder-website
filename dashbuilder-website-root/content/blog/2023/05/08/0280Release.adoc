@@ -1,0 +1,11 @@
+= What's new in Dashbuilder 0.28.0
+jesuino
+2023-05-08
+:page-interpolate: true
+:jbake-type: post
+:jbake-tags: dashbuilder, release
+
+We released Dashbuilder 0.28.0! This version has improvements for datasets and error messages. We also removed the backend parts and the code that became obsolete.
+
+
+Check all details on https://blog.kie.org/2023/05/whats-new-in-dashbuilder-0-28-0.html[KIE Blog].

@@ -54,50 +54,19 @@
             </div>
             <div class="col-md-4">
                 <div class="card h-100">
-                    <img class="card-img-top" src="${content.rootpath}website/LAYOUT_EDITOR.png" height="200px" alt="Card image cap">
+                    <img class="card-img-top" src="${content.rootpath}website/DB_QUARKUS.png" height="200px" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Quarkus Extension</h5>
                         <p class="card-text">Bring dashboards to your Quarkus application by using the Dashbuilder extension.</p>                        
                     </div>
                     <div class="card-footer">
-                        <a href="https://blog.kie.org/2022/12/announcing-dashbuilder-quarkus-extension.html" class="card-link">Learn more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-top: 30px">
-            <div class="mb-2 mt-4">
-                <h3>Flexibility to work</h3>
-                <p>Consume data from different sources, export your work to edit later or run in a runtime environment</p>
-            </div>    
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-table cardTitleIcon"></i>Data Sets</h5>
-                            <p class="card-text">Consume data from different sources, including SQL databases, JSON webservice or create your own provider using Java.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-exchange-alt cardTitleIcon"></i>Import and Export</h5>
-                            <p class="card-text">The work can be exported to ZIP files and be imported in other installations or moved to production.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="fas fa-recycle cardTitleIcon"></i>Reusable Dashboards</h5>
-                            <p class="card-text">Reuse dashboards changing configuration for the target environment.</p>
+                        <a href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-dashbuilder/dev/index.html" class="card-link">Learn more</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <br />
+        <hr />
 
         <div class="row" style="margin-top: 30px">
             <div class="col-md-12">

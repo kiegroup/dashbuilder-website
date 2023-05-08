@@ -444,63 +444,109 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="chap-dashbuilder-deployment">Deployment</h2>
 <div class="sectionbody">
 <div class="paragraph _abstract">
-<p>Deploying dashbuilder content is achieved by using Dashbuilder Runtime. The ZIP files exported from the Authoring tool or from the Java DSL can be used directly with Dashbuilder and with its modes.</p>
+<p>Deploying dashboards for Dashbuilder is achieved by simply copying its static content to a web server or you can embed it in your application using an <strong>iframe</strong>.</p>
 </div>
 <div class="sect2">
-<h3 id="_cloud">Cloud</h3>
+<h3 id="_using_dashbuilder_web_application">Using Dashbuilder Web Application</h3>
 <div class="paragraph">
-<p>Dashbuilder Runtime has been part of Quarkus since version 0.14.1, which makes its starts in no more than a few seconds and it is by default cloud native.  A container image is published with each Kogito Tooling release, making it easy to run Dashbuilder Runtime on Openshift or Kubernetes.</p>
+<p>Dashbuilder static content is published on NPM package <a href="https://www.npmjs.com/package/@kie-tools/dashbuilder-client">@kie-tools/dashbuilder-client</a>. You can add it a dependency for your project and then copy the static content to your application.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_runtime_modes">Runtime Modes</h3>
 <div class="paragraph">
-<p>It is possible to run Dashbuilder Runtime with a dedicated dashboard or run multiple dashboards in a single installation:</p>
+<p>For example, the following <strong>package.json</strong> will include Dashbuilder bits when using <strong>npm run build</strong> and allow users to run dashbuilder locally using <strong>npm run server</strong></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Single</strong>: Just start Dashbuilder Runtime with no dashboards and you will be able to upload a single dashboard. Bear in mind that after restart the dashboard is lost;</p>
-</li>
-<li>
-<p><strong>Static</strong>: Use the system property <code>dashbuilder.runtime.import</code> to point to the ZIP file  in your file system. If the dashboard is remote  then you also need to set the system property <code>dashbuilder.runtime.allowExternal</code> to true.</p>
-</li>
-<li>
-<p><strong>Multi</strong>: In this <a href="https://blog.kie.org/2020/09/multi-dashboards-support-in-dashbuilder-runtime.html">multi-mode</a> dashbuilder looks for dashboards in the directory configured with the system property <code>dashbuilder.import.base.dir</code> (default is <strong>/tmp/dashbuilder/models</strong>). To turn multi mode on, set <code>dashbuilder.runtime.multi</code> as true and set <code>dashbuilder.model.update</code> as true to have dynamic model updates (new and deleted dashboards are reflected during runtime).</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
+<div class="listingblock">
+<div class="title">package.json</div>
 <div class="content">
-<img src="./images/essentials/runtimeMultiple.png" alt="Dashbuilder Runtime Multi Mode">
+<pre class="highlight"><code>{
+  "name": "dashbuilder-webapp",
+  "version": "0.0.0",
+  "description": "Dashbuilder WebApp",
+  "scripts": {
+    "bootstrap": "npm install",
+    "clean": "rm -rf dist/",
+    "copy:dashbuilder": "cp -r node_modules/@kie-tools/dashbuilder-client/dist/* dist/",
+    "copy:sources": "cp -r static/* dist",
+    "build": "npm run clean &amp;&amp; mkdir dist/ &amp;&amp; npm run copy:dashbuilder &amp;&amp; npm run copy:sources",
+    "server": "npm run build &amp;&amp; cd dist &amp;&amp; http-server -p 8000"
+  },
+  "devDependencies": {
+    "@kie-tools/dashbuilder-client": "^0.28.0",
+    "http-server": "^14.1.1"
+  }
+}</code></pre>
 </div>
-<div class="title">Figure 1. Dashbuilder Runtime in Multi Mode</div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Dev</strong>: In development mode dashbuilder hot reloads dashboards based on ZIP changes. Set the property <code>dashbuilder.dev</code> to true, start dashbuilder, place ZIPs on the dashboards directory and you should see the page auto refresh with the ZIP changes.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>In the directory <code>static</code> you should place your dashboards and the configuration file <code>setup.js</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_client_bundle">Client Bundle</h3>
+<h3 id="_configuration">Configuration</h3>
 <div class="paragraph">
-<p>To deploy dashboards in client:</p>
+<p>In Dashbuilder webapp root directory there&#8217;s a javaScript file <code>setup.js</code> where users can configure the list of dashboards, the mode (development or client) and samples.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Unzip Dashbuilder Client bundle;</p>
-</li>
-<li>
-<p>Edit <code>setup.js</code> to list the dashboards location;</p>
-</li>
-<li>
-<p>Host the content in some static files provider.</p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="title">setup.js</div>
+<div class="content">
+<pre class="highlight"><code>dashbuilder = {
+  /*
+		  // possible modes are EDITOR and CLIENT - if dashboards is set then CLIENT mode is assumed
+		  mode: "CLIENT",
+		  // The list of client dashboards - if CLIENT mode is used and no list is provided, than the dashboard "dashboard.yml" will be attempted to load. If no dashboard is found, then client opens for upload.
+		  // The dashboard can also be an URL
+		  dashboards: [ "dashboard1.yaml", "dashboard2.json"],
+
+		  // base path to look for dashboards. Default is /
+		  path: "/path",
+
+		  // if true, then model from external urls will be allowed
+		  allowExternal: true,
+
+		  // A base URL for the samples repository
+		  // if set then dashbuilder tries to retrieve samples.json from root dir and load samples from the provided URL
+		  samplesUrl: "/samples",
+
+		  // An URL to resolve sample path on disk. It will receive a GET request with a query parameter called "sampleId"
+		  samplesEditService: "edit",
+
+		  // If true then samples is used as the default page when no model is selected
+		  samplesDefaultHome: true
+	  */
+};</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cloud_deployment">Cloud Deployment</h3>
+<div class="paragraph">
+<p>From the <a href="https://start.kubesmarts.org/">online editor</a> you can deploy your dashboards to Openshift. This is explained on <a href="https://blog.kie.org/2022/08/deploying-dashbuilder-client-on-openshift-developer-sandbox.html">our blog</a>.</p>
+</div>
+<div class="paragraph">
+<p>Users can also create a <a href="https://blog.kie.org/2022/08/deploying-dashbuilder-client-on-openshift-developer-sandbox.html">custom image</a> to use with Dashbuilder static content.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_loading_content_dinamically">Loading content dinamically</h3>
+<div class="paragraph">
+<p>Dashbuilder can run as an editor by simply setting the mode as <code>EDITOR</code>, then you can send content to be rendered using a global Javascript function <code>setDashbuilderContent</code> or use <code>window.postMessage</code> to the iframe where Dashbuilder is running. Here&#8217;s a sample Javascript code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>// flag to indicate that dashbuilder is ready for content;
+var ready = false;
+window.addEventListener("message", (e) =&gt; {
+  if (e.data === "ready") {
+    ready = true;
+  }
+});
+
+// Updates dashbuilder with the content (only if it is ready)
+const send = () =&gt; {
+    if (ready) {
+        document.getElementById("dbFrame").contentWindow.postMessage(ymlContent, null);
+    }
+};</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -508,7 +554,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-06-01 16:45:52 -0300
+Last updated 2023-05-08 18:02:16 -0300
 </div>
 </div>
 </body>

@@ -1,61 +1,19 @@
 [id="chap-dashbuilder-authoring"]
-== Authoring
+== Authoring Dashboards
 ifdef::context[:parent-context: {context}]
 :context: dashbuilder-essentials
 
-[role="_abstract"]
-There are three main ways of creating dashboards and data visualizations with Dashbuilder: *Authoring Tool*, *Java*, and *YAML*.
-
-=== Dashbuilder Authoring
-Dashbuilder Authoring is a web application which allows users to create pages using the layout editor, a drag and drop tool. It is available as a container and the result can be downloaded in ZIP format. It has three screens only: *Pages*, *DataSets* and *Export/Import*.
-
-
-.Dashbuilder Authoring
-image::essentials/dashbuilderAuthoring.png[Dashbuilder Authoring]
-
-=== Java API
-There's a https://blog.kie.org/2021/04/building-dashboards-using-plain-java.html[Java API] to create and export Dashboards to ZIP format. It exposes the internal API in a DSL-ish API. The greatest advantage of using the Java API is that you can grab data to build static datasets, making high performance data visualizations integrated to Dashbuilder Runtime, which we will talk about later.
-Currently it only exports to ZIP, but it is our roadmap for a new Java DSL that will export YAML dashboards.
-
-[source]
-----
-// creates a data set with pure Java code - external sources can be used as well
-var dataSet = newDataSetBuilder().column("Country", ColumnType.LABEL)
-                                    .column("Population", ColumnType.NUMBER)
-                                    .row("China", "1439323776")
-                                    .row("India", "1380004385")
-                                    .row("United States", "331002651")
-                                    .row("Indonesia", "273523615")
-                                    .row("Pakistan", "220892340")
-                                    .row("Brazil", "212559417")
-                                    .row("Nigeria", "206139589")
-                                    .row("Bangladesh", "164689383")
-                                    .row("Russia", "145934462")
-                                    .row("Mexico", "128932753")
-                                    .buildDataSet();
-                                    
-// a bar chart configuration that is used to visualize the data set
-var popBarChart = newBarChartSettings().subType_Column()
-                                        .width(800)
-                                        .height(600)
-                                        .dataset(dataSet)
-                                        .column("Country")
-                                        .column("Population")
-                                        .buildSettings();
-// a page with a HTML header and the displayer that uses the bar chart configuration                                               
-var page = page("Countries Population",
-                row("<h3> Countries Population</h3>"),
-                row(displayer(popBarChart)));
-
-// finally exports the dashboard to a local ZIP file
-DashboardExporter.get().export(dashboard(asList(page)),
-                                "population.zip",
-                                ExportType.ZIP);
-----
-
-
 === YAML and JSON
-The most recent addition to Dashbuilder is the possibility to live load JSON and YAML dashboards. Different from the export ZIP dashboard, this new way of creating dashboards can be used in a client-only Dashbuilder installation accessing JSON datasets. You can try it in an https://jesuino.github.io/dashbuilder-client/[online editor], which is also used to visualize the dashboards. A new YAML editor based on Monaco is in the roadmap.
+Dashboards are created using YAML format where you declare datasets, pages and its blocks of visualization. Dashboards created with YAML run in client-only Dashbuilder installation accessing JSON/CSV datasets. 
+
+To get start with YAML check out the YAML Guide in this documentation and our https://github.com/kiegroup/kie-samples/tree/main/samples[online samples].
+
+The code from the YAML Guide can be tried on our https://start.kubesmarts.org/[online editor]!
+
+=== Tooling
+
+To create your dashboards you can use our https://start.kubesmarts.org/[online editor] or the  https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-dashbuilder-editor[VSCode editor extension].
+
 
 .Dashbuilder YAML Editor
 image::essentials/yamlAuthoring.png[Dashbuilder YAML Authoring]

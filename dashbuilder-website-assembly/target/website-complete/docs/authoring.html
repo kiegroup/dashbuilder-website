@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Authoring</title>
+<title>Authoring Dashboards</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,76 +441,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="chap-dashbuilder-authoring">Authoring</h2>
+<h2 id="chap-dashbuilder-authoring">Authoring Dashboards</h2>
 <div class="sectionbody">
-<div class="paragraph _abstract">
-<p>There are three main ways of creating dashboards and data visualizations with Dashbuilder: <strong>Authoring Tool</strong>, <strong>Java</strong>, and <strong>YAML</strong>.</p>
-</div>
-<div class="sect2">
-<h3 id="_dashbuilder_authoring">Dashbuilder Authoring</h3>
-<div class="paragraph">
-<p>Dashbuilder Authoring is a web application which allows users to create pages using the layout editor, a drag and drop tool. It is available as a container and the result can be downloaded in ZIP format. It has three screens only: <strong>Pages</strong>, <strong>DataSets</strong> and <strong>Export/Import</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/dashbuilderAuthoring.png" alt="Dashbuilder Authoring">
-</div>
-<div class="title">Figure 1. Dashbuilder Authoring</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_java_api">Java API</h3>
-<div class="paragraph">
-<p>There&#8217;s a <a href="https://blog.kie.org/2021/04/building-dashboards-using-plain-java.html">Java API</a> to create and export Dashboards to ZIP format. It exposes the internal API in a DSL-ish API. The greatest advantage of using the Java API is that you can grab data to build static datasets, making high performance data visualizations integrated to Dashbuilder Runtime, which we will talk about later.
-Currently it only exports to ZIP, but it is our roadmap for a new Java DSL that will export YAML dashboards.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>// creates a data set with pure Java code - external sources can be used as well
-var dataSet = newDataSetBuilder().column("Country", ColumnType.LABEL)
-                                    .column("Population", ColumnType.NUMBER)
-                                    .row("China", "1439323776")
-                                    .row("India", "1380004385")
-                                    .row("United States", "331002651")
-                                    .row("Indonesia", "273523615")
-                                    .row("Pakistan", "220892340")
-                                    .row("Brazil", "212559417")
-                                    .row("Nigeria", "206139589")
-                                    .row("Bangladesh", "164689383")
-                                    .row("Russia", "145934462")
-                                    .row("Mexico", "128932753")
-                                    .buildDataSet();
-
-// a bar chart configuration that is used to visualize the data set
-var popBarChart = newBarChartSettings().subType_Column()
-                                        .width(800)
-                                        .height(600)
-                                        .dataset(dataSet)
-                                        .column("Country")
-                                        .column("Population")
-                                        .buildSettings();
-// a page with a HTML header and the displayer that uses the bar chart configuration
-var page = page("Countries Population",
-                row("&lt;h3&gt; Countries Population&lt;/h3&gt;"),
-                row(displayer(popBarChart)));
-
-// finally exports the dashboard to a local ZIP file
-DashboardExporter.get().export(dashboard(asList(page)),
-                                "population.zip",
-                                ExportType.ZIP);</code></pre>
-</div>
-</div>
-</div>
 <div class="sect2">
 <h3 id="_yaml_and_json">YAML and JSON</h3>
 <div class="paragraph">
-<p>The most recent addition to Dashbuilder is the possibility to live load JSON and YAML dashboards. Different from the export ZIP dashboard, this new way of creating dashboards can be used in a client-only Dashbuilder installation accessing JSON datasets. You can try it in an <a href="https://jesuino.github.io/dashbuilder-client/">online editor</a>, which is also used to visualize the dashboards. A new YAML editor based on Monaco is in the roadmap.</p>
+<p>Dashboards are created using YAML format where you declare datasets, pages and its blocks of visualization. Dashboards created with YAML run in client-only Dashbuilder installation accessing JSON/CSV datasets.</p>
+</div>
+<div class="paragraph">
+<p>To get start with YAML check out the YAML Guide in this documentation and our <a href="https://github.com/kiegroup/kie-samples/tree/main/samples">online samples</a>.</p>
+</div>
+<div class="paragraph">
+<p>The code from the YAML Guide can be tried on our <a href="https://start.kubesmarts.org/">online editor</a>!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tooling">Tooling</h3>
+<div class="paragraph">
+<p>To create your dashboards you can use our <a href="https://start.kubesmarts.org/">online editor</a> or the  <a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-extension-dashbuilder-editor">VSCode editor extension</a>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="./images/essentials/yamlAuthoring.png" alt="Dashbuilder YAML Authoring">
 </div>
-<div class="title">Figure 2. Dashbuilder YAML Editor</div>
+<div class="title">Figure 1. Dashbuilder YAML Editor</div>
 </div>
 </div>
 </div>
@@ -518,7 +472,7 @@ DashboardExporter.get().export(dashboard(asList(page)),
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-31 17:10:41 -0300
+Last updated 2023-05-08 17:19:06 -0300
 </div>
 </div>
 </body>

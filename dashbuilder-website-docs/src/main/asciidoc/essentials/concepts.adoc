@@ -13,7 +13,8 @@ Pages is where the data visualization lives. It follows a grid approach for orga
 Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.
 
 === Datasets
-DataSets are the source of your data. The data can come from different sources, including https://blog.kie.org/2021/05/add-csv-datasets-for-authoring-dashboards.html[CSV], https://blog.kie.org/2021/07/add-sql-datasource-for-authoring-dashboards.html[SQL], https://blog.kie.org/2021/05/add-prometheus-datasets-for-authoring-dashboards.html[Prometheus], https://blog.kie.org/2021/05/kafka-monitoring-dashboards-from-business-central.html[Kafka Metrics] and https://blog.kie.org/2022/02/json-datasets-in-dashbuilder.html[JSON]. For the full client application only JSON is supported, but CSV on client is on the roadmap.
+DataSets are the source of your data. It can come from any JSON/CSV accessible file or you can declare it inline for a static dataset.
+
 More than loading from a source of data, dashbuilder datasets can be cached and later be spliced, filtered, ordered and grouped for a specific visualization.
 
 === Components
