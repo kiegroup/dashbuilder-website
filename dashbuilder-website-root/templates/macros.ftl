@@ -163,40 +163,15 @@
     </#if>
 </#macro>
 
-<#macro downloadButton>
-    <div class="card bg-light mb-4">
-        <div class="text-center mt-2"><a class="btn btn-lg btn-success versionedButton" href="${pom.latestFinal.distributionZip}"><img alt="Download" src="${content.rootpath}download/download.png">
-            <div>
-                <span>Download Dashbuilder</span><br/>
-                <span class="small">${pom.latestFinal.version}</span>
-            </div>
-        </a></div>
-        <div class="card-body">
-            <ol class="mb-1">
-                <li>Download and unzip.</li>
-                <li>
-                    Run <code>java -jar dashbuilder-authoring-bootable.jar</code>
-                </li>
-                <li>
-                    Create dashboards at <em>http://localhost:8080</em> <br/>
-                </li>
-            </ol>
-            <div class="text-center small">
-                Requires <a href="https://adoptium.net">JDK 11 or higher</a> to run.
-            </div>
-        </div>
-    </div>
-</#macro>
-
 <#macro tryItButton>
     <div class="card bg-light mb-4">
-        <div class="text-center mt-2" data-bs-toggle="modal" data-bs-target="#samplesModal"><a class="btn btn-lg btn-success versionedButton" style="margin-top: 5px">
+        <div class="text-center mt-2"><a class="btn btn-lg btn-success versionedButton" style="margin-top: 5px">
             <div>
-                <span>Try Samples</span><br/>
+                 <span onclick="window.open('./kitchensink/?samples', '_blank')">Try Samples</span> <br />
             </div>
         </a></div>
         <div class="card-body">
-            <p>Try some of the samples in the <a href="${config.onlineEditorURL}">Dashbuilder Online Editor</a></p>           
+            <p>Or check the samples in the <a href="${config.onlineEditorURL}">Dashbuilder Online Editor</a></p>           
         </div>
     </div>
 </#macro>

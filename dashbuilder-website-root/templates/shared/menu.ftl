@@ -18,7 +18,6 @@
                         <li><a class="dropdown-item" href="${content.rootpath}learn/slides.html">Slides</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="${content.rootpath}download/download.html">Download</a></li>
                 <li class="nav-item"><a class="nav-link" href="https://blog.kie.org/category/tools" target="_blank">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="${content.rootpath}code/sourceCode.html">Source</a></li>
             </ul>

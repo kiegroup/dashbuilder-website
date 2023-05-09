@@ -92,12 +92,6 @@
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://www.optaplanner.org/download/download.html</loc>
-        <lastmod>2022-03-11</lastmod>
-        <priority>1.0</priority>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
         <loc>https://www.optaplanner.org/learn/documentation.html</loc>
         <lastmod>2022-03-11</lastmod>
         <priority>1.0</priority>

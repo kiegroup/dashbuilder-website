@@ -1,7 +1,9 @@
 dashbuilder = {
   hideNavBar: true,
   allowExternal: true,
+  samplesUrl:
+    "https://raw.githubusercontent.com/kiegroup/kie-samples/main/samples/",
   dashboards: [
-	  "https://raw.githubusercontent.com/kiegroup/kie-tools/main/packages/serverless-logic-web-tools/static/samples/kitchensink/kitchensink.dash.yml"
-  ]
+    "https://raw.githubusercontent.com/kiegroup/kie-samples/main/samples/dashbuilder-kitchensink/dashbuilder-kitchensink.dash.yaml",
+  ],
 };

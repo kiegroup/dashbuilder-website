@@ -125,9 +125,9 @@
               <outputDirectory>${project.build.directory}/website-complete/kitchensink</outputDirectory>
               <resources>
                 <resource>
-		  <directory>${basedir}/src/dashbuilder</directory>
+                  <directory>${basedir}/src/dashbuilder</directory>
                   <includes>
-                    <include>setup.js</include>
+                    <include>*</include>
                   </includes>
                 </resource>
               </resources>
@@ -143,9 +143,9 @@
               <outputDirectory>${project.build.directory}/website-complete/schemas</outputDirectory>
               <resources>
                 <resource>
-		  <directory>${basedir}/src/schemas</directory>
+                  <directory>${basedir}/src/schemas</directory>
                   <includes>
-		      <include>**/*</include>
+                    <include>**/*</include>
                   </includes>
                 </resource>
               </resources>

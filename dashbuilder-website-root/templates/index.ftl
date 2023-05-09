@@ -67,17 +67,15 @@
         </div>
         
         <hr />
-
+    
         <div class="row" style="margin-top: 30px">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <@macros.latestBlogPosts/>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <@macros.latestVideos/>
             </div>
         </div>
+
     </@parent.layout>
 </#macro>

@@ -11,6 +11,25 @@
 #    Compatibility: "android", "kotlin", "quarkus", "scala", "spring"
 #
 # Order videos by date descending
+
+- youtubeId: sXtSxx-pwJI
+  title: "Quarkus Insights #119: Dashbuilder Quarkus Extension spotlight"
+  author: jesuino
+  date: 2023-02-27
+  tags:
+    - dashboards    
+    - dashbuilder
+    - quarkus
+
+- youtubeId: rVMQMmhpe5I
+  title: "Publishing Dashboards to Github Pages in minutes"
+  author: jesuino
+  date: 2023-01-21
+  tags:
+    - dashboards    
+    - dashbuilder
+    - quarkus
+
 - youtubeId: 3u-2qVlm48c
   title: "Exploring Dashbuilder Components"
   author: jesuino
