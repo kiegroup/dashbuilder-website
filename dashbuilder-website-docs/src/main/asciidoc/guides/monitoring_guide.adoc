@@ -1,0 +1,258 @@
+[id="chap-dashbuilder-monitoring"]
+ifdef::context[:parent-context: {context}]
+:context: dashbuilder-guides
+
+== Monitoring Services with Dashbuilder
+
+[role="_abstract"]
+In this section we will explore how Dashbuilder can be used to monitor different aspect of services.
+
+=== Prometheus
+
+https://prometheus.io/[Prometheus] is a popular monitoring and timeseries database tool. Dashbuilder can connect to its https://prometheus.io/docs/prometheus/latest/querying/api/[Query HTTP API] and execute queries to retrieve information that can be displayed in timeseries or other visual components.
+
+The requirements to consume data from Prometheus in Dashbuilder are:
+
+* Make sure that https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors[CORS] is enabled for the Dashbuilder host, otherwise it won't be able to retrieve data;
+* The dataset declaration must use the following expression to parse the response:
+
+[source]
+----
+$.data.(
+    {
+        "columns": result[0].(
+            [
+                {"id" : "timestamp", "type": "number"}, 
+                {"id" : "value", "type": "number"},
+                $keys(metric).({"id" : $, "type": "label"})
+            ];
+        ),
+        "values": (
+            resultType = "scalar" ? [result[0] * 1000, result[1]] :
+            resultType = "matrix" ? result.( $metric := metric.*; values.[ $[0] * 1000, $[1], $metric ] ) :
+            resultType = "vector" ?  result.[ value[0] * 1000, value[1],  metric.* ]
+        )
+    }
+)
+----
+
+This expression will get the response and transform in a dataset that will contain the columns *timestamp*, *value* and the additional labels. With this information you can use a *timeseries* component to monitor some metric.
+
+As an example, we can monitor a Quarkus application JVM usage by following the steps below:
+
+* Add https://quarkus.io/guides/micrometer[Micrometer] to your project
+* Download and configure Prometheus to scrap metrics from your application. Here's a sample configuration you should add to *prometheus.yml*:
+
+[source]
+----
+  - job_name: 'quarkus'
+
+    scrape_interval: 1s
+
+    metrics_path: /q/metrics
+
+    static_configs:
+      - targets: ['localhost:8080']
+----
+* Now use https://start.kubesmarts.org/[Dashbuilder online editor], create a new Dashboard. For example, the following dashboard shows a timeseries for the JVM Heap usage for the last hour. The data is updated each 5 seconds:
+
+[source]
+----
+properties:
+    prometheusUrl: http://localhost:9090
+    query: jvm_memory_used_bytes{job="quarkus",area="heap"}[1h:5s]
+datasets:
+    - uuid: prometheus
+      expression: >-
+          $.data.(
+              {
+                  "columns": result[0].(
+                      [
+                          {"id" : "timestamp", "type": "number"}, 
+                          {"id" : "value", "type": "number"},
+                          $keys(metric).({"id" : $, "type": "label"})
+                      ];
+                  ),
+                  "values": (
+                      resultType = "scalar" ? [result[0] * 1000, result[1]] :
+                      resultType = "matrix" ? result.( $metric := metric.*; values.[ $[0] * 1000, $[1], $metric ] ) :
+                      resultType = "vector" ?  result.[ value[0] * 1000, value[1],  metric.* ]
+                  )
+              }
+          )
+      url: ${prometheusUrl}/api/v1/query?query=${query}
+pages:
+    - components:
+          - settings:
+                component: timeseries
+                refresh:
+                    interval: 5
+                timeseries:
+                    title:
+                        text: JVM Memory (Used Heap)
+                lookup:
+                    uuid: prometheus
+                    group:
+                        - functions:
+                              - source: id
+                              - source: timestamp
+                              - source: value
+----
+
+.JVM Monitoring with Prometheus
+image::guides/monitoring/jvm_heap_prometheus.png[JVM Monitoring with Prometheus]
+
+=== Metrics
+
+Services monitored by Prometheus have to expose its metrics in a text format. Prometheus then read these metrics to store in its timeseries database. Dashbuilder can be used to connect directly to the `metrics` endpoint and build visualizations using it.
+
+As an example, an application Quarkus with micrometer will expose metrics on url */q/metrics* with the following format:
+
+[source]
+----
+# HELP process_start_time_seconds Start time of the process since unix epoch.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.684330722622E9
+# HELP jvm_threads_live_threads The current number of live threads including both daemon and non-daemon threads
+# TYPE jvm_threads_live_threads gauge
+jvm_threads_live_threads 26.0
+# HELP process_files_max_files The maximum file descriptor count
+# TYPE process_files_max_files gauge
+process_files_max_files 100000.0
+# HELP jvm_memory_max_bytes The maximum amount of memory in bytes that can be used for memory management
+# TYPE jvm_memory_max_bytes gauge
+jvm_memory_max_bytes{area="heap",id="G1 Survivor Space",} -1.0
+jvm_memory_max_bytes{area="heap",id="G1 Old Gen",} 8.350859264E9
+jvm_memory_max_bytes{area="nonheap",id="Metaspace",} -1.0
+jvm_memory_max_bytes{area="nonheap",id="CodeCache",} 5.0331648E7
+jvm_memory_max_bytes{area="heap",id="G1 Eden Space",} -1.0
+jvm_memory_max_bytes{area="nonheap",id="Compressed Class Space",} 1.073741824E9
+# HELP jvm_threads_states_threads The current number of threads
+# TYPE jvm_threads_states_threads gauge
+jvm_threads_states_threads{state="runnable",} 11.0
+jvm_threads_states_threads{state="blocked",} 0.0
+jvm_threads_states_threads{state="waiting",} 11.0
+jvm_threads_states_threads{state="timed-waiting",} 4.0
+jvm_threads_states_threads{state="new",} 0.0
+jvm_threads_states_threads{state="terminated",} 0.0
+# HELP process_cpu_usage The "recent cpu usage" for the Java Virtual Machine process
+----
+
+It is possible to declare a dataset pointing to this URL and Dashbuilder automatically parses it to a dataset with three columns: *metric*, *labels* and *value*:
+
+[source]
+----
+datasets:
+  - uuid: metrics
+    url: http://localhost:8080/q/metrics
+pages:
+    - components:
+        - settings:
+            lookup:
+              uuid: metrics
+----
+
+.Metrics Table
+image::guides/monitoring/metrics_table.png[Metrics Table]
+
+From this dataset you can monitor each metric you want either by filtering metrics using an *expression* or defining filters on the displayer *lookup*. In the following example we want to monitor the metric *jvm_memory_used_bytes*, but only the heap area
+[source]
+----
+datasets:
+    - uuid: metrics
+      url: http://localhost:8080/q/metrics
+pages:
+    - components:
+          - settings:
+                type: BARCHART
+                
+                general:
+                    title: Heap Memory Used Bytes (kb)
+                columns:
+                    - id: value
+                      pattern: "#"
+                      expression: value / 1024
+                    - id: labels                      
+                      expression: value.replace('area="heap",id=', "") 
+                                       .replaceAll('"', "")
+                lookup:
+                    uuid: metrics
+                    filter:
+                        - function: EQUALS_TO
+                          column: metric
+                          args:
+                              - jvm_memory_used_bytes
+                        - function: LIKE_TO
+                          column: labels
+                          args:
+                              - '%"heap"%'
+                    group:
+                        - columnGroup:
+                              source: labels
+                          functions:
+                              - source: labels
+                              - source: value
+----
+
+.Heap Memory Used Bytes
+image::guides/monitoring/heap_used_memory.png[Heap Memory Used Bytes]
+
+Finally you can make the visualization update automatically using a refresh interval and also accumulate values in memory using the *accumulate* flag in dataset declaration. This way you keep a history of the events and can use a timeseries to visualize the data, here's an example:
+
+[source]
+----
+global:
+    settings:
+        refresh:
+            interval: 2
+datasets:
+    - uuid: metrics
+      url: http://localhost:8080/q/metrics
+      accumulate: true
+      cacheMaxRows: 30000
+      expression: >-
+          $map($, function($v){
+              [$v[0], $v[1], $v[2] = 'NaN' ? -1 : $v[2], $now() ~> $toMillis()]           
+          })
+      columns:
+          - id: metric
+            type: label
+          - id: labels
+            type: label
+          - id: value
+            type: number
+          - id: register
+            type: label
+pages:
+    - components:
+          - settings:
+                component: timeseries
+                timeseries:
+                    title:
+                        text: Heap Memory Usage
+                lookup:
+                    uuid: metrics
+                    filter:
+                        - column: metric
+                          function: EQUALS_TO
+                          args:
+                              - jvm_memory_used_bytes
+                        - column: labels
+                          function: LIKE_TO
+                          args:
+                              - '%area="heap"%'
+                    group:
+                        - columnGroup:
+                              source: register
+                          groupFunctions:
+                              - source: metric
+                              - source: register
+                              - source: value
+                                function: SUM
+----
+
+.Heap Memory Used Bytes
+image::guides/monitoring/heap_used_memory.png[Heap Memory Used Bytes]
+
+
+You can check our https://github.com/kiegroup/kie-samples/tree/main/samples[samples repository] for more metrics monitoring examples.

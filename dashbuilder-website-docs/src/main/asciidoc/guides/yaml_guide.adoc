@@ -5,7 +5,7 @@ ifdef::context[:parent-context: {context}]
 == Dashbuilder YAML Guide
 
 [role="_abstract"]
-This is a guide for creating dashboards and visualizations with YAML. You can run all examples with Dashbuilder YML Online Editor.
+This is a guide for creating dashboards and visualizations with YAML. You can run all examples with https://start.kubesmarts.org/[Dashbuilder YAML Online Editor].
 
 === Pages
 

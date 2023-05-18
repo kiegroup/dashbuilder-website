@@ -30,3 +30,4 @@ include::essentials/deployment.adoc[leveloffset=+1]
 :context: dashbuilder-guides
 
 include::guides/yaml_guide.adoc[leveloffset=+1]
+include::guides/monitoring_guide.adoc[leveloffset=+1]
