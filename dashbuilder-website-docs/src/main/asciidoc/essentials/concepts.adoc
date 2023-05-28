@@ -12,10 +12,60 @@ Pages is where the data visualization lives. It follows a grid approach for orga
 === Navigation
 Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.
 
+[source]
+----
+pages:
+    - name: Embed
+      components:
+          - html: This page was embedded using <strong>screen</strong> component
+    - name: Cats
+      components:
+        - html: <h1> Cats </h1>
+    - name: Dogs
+      components:
+        - html: <h1>Dogs</h1>
+    - name: index
+      rows:
+        - columns:
+          - components:
+            - type: TILES  # try CAROUSEL
+              properties:
+                navGroupId: animals_group
+        - columns:
+          - components:
+            - type: TABS  # try MENU or TREE
+              properties:
+                navGroupId: animals_group
+                targetDivId: animals_div
+            - type: DIV
+              properties:
+                divId: animals_div
+            - screen: Embed
+navTree:
+  root_items:
+  - id: animals_group
+    type: GROUP
+    name: Animals
+    children:
+    - page: Cats
+    - page: Dogs
+----
+
+.Element screen to se any page embed on another
+image::essentials/elementScreen.png[Some of native dashbuilder components]
+
 === Datasets
 DataSets are the source of your data. It can come from any JSON/CSV accessible file or you can declare it inline for a static dataset.
 
 More than loading from a source of data, dashbuilder datasets can be cached and later be spliced, filtered, ordered and grouped for a specific visualization.
+
+Datasets contains fields as follows:-
+
+* *Accumulate:* It is a new dataset field. When it's true, the dashbuilder keeps the data on memory on each refresh. It can be limited by maxCacheRows.
+
+* *MaxCacheRows:* It determines the amount of rows kept in memory when using cache or accumulate. The default value of this field is set to 1000.
+
+* *Headers:* It is used to set headers that will be sent on the dataset HTTP request.
 
 === Components
 Components are the front ends for static content, data visualization or a navigation component:

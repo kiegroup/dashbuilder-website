@@ -406,9 +406,175 @@ pages:
 .Dataset Lookup with group
 image::guides/yaml/groupLookup.png[Lookup with group]
 
-The supported group functions are `SUM`, `MAX`, `MIN` and `AVERAGE` for numbers. For label columns the supported functions are `DISTINCT` and `COUNT`.  
+In the example below the dataset lookup gives the median of the number of products per section:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Name
+      type: LABEL
+    - id: Quantity
+      type: Number
+pages:
+- components:
+    - settings:
+        dataSetLookup:
+            uuid: products
+            group:
+                - columnGroup:
+                    source: Section
+                  groupFunctions:
+                    - source: Section
+                    - source: Quantity
+                      function: MEDIAN
+                      column: Total Products
+----
+
+.Dataset Lookup with median
+image::guides/yaml/median.png[Lookup with group]
+
+In the example below the dataset lookup joins the number of products per section:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Name
+      type: LABEL
+    - id: Quantity
+      type: Number
+pages:
+- components:
+    - settings:
+        dataSetLookup:
+            uuid: products
+            group:
+                - columnGroup:
+                    source: Section
+                  groupFunctions:
+                    - source: Section
+                    - source: Quantity
+                      function: JOIN
+                      column: Total Products
+----
+
+.Dataset Lookup with join
+image::guides/yaml/join.png[Lookup with group]
+
+In the example below the dataset lookup joins the number of products per section using comma:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Name
+      type: LABEL
+    - id: Quantity
+      type: Number
+pages:
+- components:
+    - settings:
+        dataSetLookup:
+            uuid: products
+            group:
+                - columnGroup:
+                    source: Section
+                  groupFunctions:
+                    - source: Section
+                    - source: Quantity
+                      function: JOIN_COMMA
+                      column: Total Products
+----
+
+.Dataset Lookup with join using comma
+image::guides/yaml/joinComma.png[Lookup with group]
+
+In the example below the dataset lookup joins the number of products per section using hyphen:
+
+[source]
+----
+datasets:
+- uuid: products
+  content: >-
+            [
+              ["Computers", "Scanner", 5],
+              ["Computers", "Printer", 7],
+              ["Computers", "Laptop", 3],
+              ["Electronics", "Camera", 10],
+              ["Electronics", "Headphones", 5]
+            ]
+  columns:
+    - id: Section
+      type: LABEL
+    - id: Name
+      type: LABEL
+    - id: Quantity
+      type: Number
+pages:
+- components:
+    - settings:
+        dataSetLookup:
+            uuid: products
+            group:
+                - columnGroup:
+                    source: Section
+                  groupFunctions:
+                    - source: Section
+                    - source: Quantity
+                      function: JOIN_HYPHEN
+                      column: Total Products
+----
+
+.Dataset Lookup with join using hyphen
+image::guides/yaml/joinHyphen.png[Lookup with group]
+
+The supported group functions are `SUM`, `MAX`, `MIN` , `AVERAGE` and `MEDIAN` for numbers. For label columns the supported functions are `DISTINCT` and `COUNT`.  
 By default it uses the column name itself, it is also possible to give another name to the grouped column.
 If a column is not specific in columnGroup, but used with other columns in columnFunctions, then the error  **Error during dataset lookup: No aggregation function specified for the column** is displayed.
+
+New group functions are as follows:-
+
+* *MEDIAN:* A group function for number columns and it calculates the median value.
+
+* *JOIN:* It joins text/label columns using space.
+
+* *JOIN_COMMA:* It is same as `JOIN` but uses a comma.
+
+* *JOIN_HYPHEN:* It is same as `JOIN` but uses a hyphen.
 
 However, it is possible to omit the column group section and use no function for columns under `columnGroup`, this way the columns will just be passed to the displayer
 
@@ -446,7 +612,7 @@ pages:
 
 Displayers are visual components that can show data. Dashbuilder supports by default all the popular charts types, tables, metrics with customized structure and style, data selectors to filter the whole visualization and finally external displayers, which are custom applications used to display data.
 
-Dashbuilder consider as displayer every component with a settings, so when the settings is declared then the type must be declared as well:
+Dashbuilder consider as displayer every component with a settings, so when the settings is declared then the type must be declared as well(We can also use displayer instead of settings):
 
 [source]
 ----
@@ -664,6 +830,16 @@ pages:
 ----
 .Table with order configuration
 image::guides/yaml/orderingTable.png[Table with order configuration]
+
+Displayers have the following new fields:
+
+* *PNG export:* the field png under export will allow users to export the displayer to PNG.
+
+* *extraConfiguration:* A top level displayer additional configuration sent to the renderer. It varies according to the renderer. For example, the echarts option can be used sent in json format using this field.
+
+* *subTitle:* A subtitle for the chart. It goes under general object.
+
+* *allowEdit:* Under general object and allow users to modify data displayed on the chart.
 
 
 === Using Charts
@@ -1519,3 +1695,10 @@ pages:
 ----
 .Dark Mode
 image::guides/yaml/darkMode.png[Dark Mode]
+
+There are new fields which can be added to Global properties; they are as  folows:-
+
+* *allowUrlProperties:* When true then properties can be replaced using URL query parameters.
+
+* *settings/displayer:* Allow the users to define a common configuration for all displayers in the page.
+
