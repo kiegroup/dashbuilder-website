@@ -322,10 +322,7 @@
             }
          },
          "required":[
-            "enabled",
-            "listening",
-            "notification",
-            "selfapply"
+            "enabled"
          ],
          "title":"SettingsFilter"
       },
@@ -346,10 +343,7 @@
             }
          },
          "required":[
-            "id",
-            "name",
-            "expression",
-            "pattern"
+            "id"
          ],
          "title":"SettingsColumn"
       },
@@ -366,11 +360,6 @@
                "$ref":"#/definitions/TableSort"
             }
          },
-         "required":[
-            "pageSize",
-            "show_column_picker",
-            "sort"
-         ],
          "title":"SettingsTable"
       },
       "TableSort":{
@@ -390,9 +379,7 @@
             }
          },
          "required":[
-            "enabled",
-            "columnId",
-            "order"
+            "enabled"
          ],
          "title":"TableSort"
       },
@@ -402,13 +389,13 @@
             "column":{
                "type":"string"
             },
-            "sortOrder":{
+            "order":{
                "$ref":"#/definitions/sortEnum"
             }
          },
          "required":[
             "column",
-            "sortOrder"
+            "order"
          ],
          "title":"Sort"
       },
@@ -416,7 +403,11 @@
          "type":"string",
          "enum":[
             "ASCENDING",
-            "DESCENDING"
+            "DESCENDING",
+            "ascending",
+            "descending",
+            "Ascending",
+            "descending"
          ],
          "additionalProperties":false,
          "title":"sortEnum"
@@ -653,7 +644,7 @@
             },
             "zoom":{
                "type":[
-                  "number",
+                  "boolean",
                   "string"
                ]
             },
@@ -862,9 +853,6 @@
                      "$ref":"#/definitions/MapColorScheme"
                   }
                },
-               "required":[
-                  "color_scheme"
-               ],
                "title":"map"
             },
             "meter":{
@@ -910,36 +898,42 @@
                      "type":"object",
                      "properties":{
                         "labels_show":{
-                           "type":"boolean"
+                           "type":[
+                              "boolean",
+                              "string"
+                           ]
                         },
                         "title":{
                            "type":"string"
                         },
                         "labels_angle":{
-                           "type":"number"
+                           "type":[
+                              "string",
+                              "number"
+                           ]
                         }
                      },
-                     "required":[
-                        "title"
-                     ],
                      "title":"x"
                   },
                   "y":{
                      "type":"object",
                      "properties":{
                         "labels_show":{
-                           "type":"boolean"
+                           "type":[
+                              "boolean",
+                              "string"
+                           ]
                         },
                         "title":{
                            "type":"string"
                         },
                         "labels_angle":{
-                           "type":"string"
+                           "type":[
+                              "string",
+                              "number"
+                           ]
                         }
                      },
-                     "required":[
-                        "title"
-                     ],
                      "title":"y"
                   }
                }
