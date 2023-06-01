@@ -191,6 +191,14 @@ pages:
 - name: DataSet sample
 ----
 
+Datasets contains fields as follows:-
+
+* *Accumulate:* It is a new dataset field. When it's true, the dashbuilder keeps the data on memory on each refresh. It can be limited by maxCacheRows.
+
+* *MaxCacheRows:* It determines the amount of rows kept in memory when using cache or accumulate. The default value of this field is set to 1000.
+
+* *Headers:* It is used to set headers that will be sent on the dataset HTTP request.
+
 === Datasets lookup
 
 To display a dataset dashbuilder uses the concept of `lookup`. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed. 
@@ -406,167 +414,11 @@ pages:
 .Dataset Lookup with group
 image::guides/yaml/groupLookup.png[Lookup with group]
 
-In the example below the dataset lookup gives the median of the number of products per section:
-
-[source]
-----
-datasets:
-- uuid: products
-  content: >-
-            [
-              ["Computers", "Scanner", 5],
-              ["Computers", "Printer", 7],
-              ["Computers", "Laptop", 3],
-              ["Electronics", "Camera", 10],
-              ["Electronics", "Headphones", 5]
-            ]
-  columns:
-    - id: Section
-      type: LABEL
-    - id: Name
-      type: LABEL
-    - id: Quantity
-      type: Number
-pages:
-- components:
-    - settings:
-        dataSetLookup:
-            uuid: products
-            group:
-                - columnGroup:
-                    source: Section
-                  groupFunctions:
-                    - source: Section
-                    - source: Quantity
-                      function: MEDIAN
-                      column: Total Products
-----
-
-.Dataset Lookup with median
-image::guides/yaml/median.png[Lookup with group]
-
-In the example below the dataset lookup joins the number of products per section:
-
-[source]
-----
-datasets:
-- uuid: products
-  content: >-
-            [
-              ["Computers", "Scanner", 5],
-              ["Computers", "Printer", 7],
-              ["Computers", "Laptop", 3],
-              ["Electronics", "Camera", 10],
-              ["Electronics", "Headphones", 5]
-            ]
-  columns:
-    - id: Section
-      type: LABEL
-    - id: Name
-      type: LABEL
-    - id: Quantity
-      type: Number
-pages:
-- components:
-    - settings:
-        dataSetLookup:
-            uuid: products
-            group:
-                - columnGroup:
-                    source: Section
-                  groupFunctions:
-                    - source: Section
-                    - source: Quantity
-                      function: JOIN
-                      column: Total Products
-----
-
-.Dataset Lookup with join
-image::guides/yaml/join.png[Lookup with group]
-
-In the example below the dataset lookup joins the number of products per section using comma:
-
-[source]
-----
-datasets:
-- uuid: products
-  content: >-
-            [
-              ["Computers", "Scanner", 5],
-              ["Computers", "Printer", 7],
-              ["Computers", "Laptop", 3],
-              ["Electronics", "Camera", 10],
-              ["Electronics", "Headphones", 5]
-            ]
-  columns:
-    - id: Section
-      type: LABEL
-    - id: Name
-      type: LABEL
-    - id: Quantity
-      type: Number
-pages:
-- components:
-    - settings:
-        dataSetLookup:
-            uuid: products
-            group:
-                - columnGroup:
-                    source: Section
-                  groupFunctions:
-                    - source: Section
-                    - source: Quantity
-                      function: JOIN_COMMA
-                      column: Total Products
-----
-
-.Dataset Lookup with join using comma
-image::guides/yaml/joinComma.png[Lookup with group]
-
-In the example below the dataset lookup joins the number of products per section using hyphen:
-
-[source]
-----
-datasets:
-- uuid: products
-  content: >-
-            [
-              ["Computers", "Scanner", 5],
-              ["Computers", "Printer", 7],
-              ["Computers", "Laptop", 3],
-              ["Electronics", "Camera", 10],
-              ["Electronics", "Headphones", 5]
-            ]
-  columns:
-    - id: Section
-      type: LABEL
-    - id: Name
-      type: LABEL
-    - id: Quantity
-      type: Number
-pages:
-- components:
-    - settings:
-        dataSetLookup:
-            uuid: products
-            group:
-                - columnGroup:
-                    source: Section
-                  groupFunctions:
-                    - source: Section
-                    - source: Quantity
-                      function: JOIN_HYPHEN
-                      column: Total Products
-----
-
-.Dataset Lookup with join using hyphen
-image::guides/yaml/joinHyphen.png[Lookup with group]
-
 The supported group functions are `SUM`, `MAX`, `MIN` , `AVERAGE` and `MEDIAN` for numbers. For label columns the supported functions are `DISTINCT` and `COUNT`.  
 By default it uses the column name itself, it is also possible to give another name to the grouped column.
 If a column is not specific in columnGroup, but used with other columns in columnFunctions, then the error  **Error during dataset lookup: No aggregation function specified for the column** is displayed.
 
-New group functions are as follows:-
+Here's a summary of all supported group functions:
 
 * *MEDIAN:* A group function for number columns and it calculates the median value.
 
@@ -831,7 +683,7 @@ pages:
 .Table with order configuration
 image::guides/yaml/orderingTable.png[Table with order configuration]
 
-Displayers have the following new fields:
+Displayers have the following fields:
 
 * *PNG export:* the field png under export will allow users to export the displayer to PNG.
 
@@ -1583,6 +1435,49 @@ navTree:
 .Menu Navigation
 image::guides/yaml/menuNavigation.png[Menu Navigation]
 
+Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.
+
+[source]
+----
+pages:
+    - name: Embed
+      components:
+          - html: This page was embedded using <strong>screen</strong> component
+    - name: Cats
+      components:
+        - html: <h1> Cats </h1>
+    - name: Dogs
+      components:
+        - html: <h1>Dogs</h1>
+    - name: index
+      rows:
+        - columns:
+          - components:
+            - type: TILES  # try CAROUSEL
+              properties:
+                navGroupId: animals_group
+        - columns:
+          - components:
+            - type: TABS  # try MENU or TREE
+              properties:
+                navGroupId: animals_group
+                targetDivId: animals_div
+            - type: DIV
+              properties:
+                divId: animals_div
+            - screen: Embed
+navTree:
+  root_items:
+  - id: animals_group
+    type: GROUP
+    name: Animals
+    children:
+    - page: Cats
+    - page: Dogs
+----
+
+.Element screen to see any page embed on another
+image::essentials/elementScreen.png[Some of native dashbuilder components]
 
 NOTE: To show a default page just name it as `index` and it will be displayed by default, otherwise the default dashbuilder page will be displayed.
 
@@ -1696,9 +1591,8 @@ pages:
 .Dark Mode
 image::guides/yaml/darkMode.png[Dark Mode]
 
-There are new fields which can be added to Global properties; they are as  folows:-
+The global properties are:
 
 * *allowUrlProperties:* When true then properties can be replaced using URL query parameters.
 
 * *settings/displayer:* Allow the users to define a common configuration for all displayers in the page.
-
