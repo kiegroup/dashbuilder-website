@@ -414,7 +414,7 @@ pages:
 .Dataset Lookup with group
 image::guides/yaml/groupLookup.png[Lookup with group]
 
-The supported group functions are `SUM`, `MAX`, `MIN` , `AVERAGE` and `MEDIAN` for numbers. For label columns the supported functions are `DISTINCT` and `COUNT`.  
+The supported group functions are `SUM`, `MAX`, `MIN` , `AVERAGE` and `MEDIAN` for numbers. For label columns the supported functions are `DISTINCT` and `COUNT`. For label columns the supported functions are `DISTINCT`, `COUNT`, `JOIN`, `JOIN_COMMA` and `JOIN_HYPHEN`.
 By default it uses the column name itself, it is also possible to give another name to the grouped column.
 If a column is not specific in columnGroup, but used with other columns in columnFunctions, then the error  **Error during dataset lookup: No aggregation function specified for the column** is displayed.
 

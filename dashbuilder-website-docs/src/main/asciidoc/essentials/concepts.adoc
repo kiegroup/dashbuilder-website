@@ -10,7 +10,7 @@ In this section we explore the concepts used by Dashbuilder.
 Pages is where the data visualization lives. It follows a grid approach for organizing the visualization which means that it is organized in rows, columns and components; columns can have their own rows and columns. It is also possible to modify the CSS properties of each page part.
 
 === Navigation
-
+Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.
 
 === Datasets
 DataSets are the source of your data. It can come from any JSON/CSV accessible file or you can declare it inline for a static dataset.
