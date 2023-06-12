@@ -191,7 +191,7 @@ pages:
 - name: DataSet sample
 ----
 
-Datasets contains fields as follows:-
+Datasets can have the following fields:
 
 * *Accumulate:* It is a new dataset field. When it's true, the dashbuilder keeps the data on memory on each refresh. It can be limited by maxCacheRows.
 
