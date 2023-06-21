@@ -133,7 +133,7 @@ pages:
 - name: DataSet sample
 ----
 
-With a pure JSON array dashbuilder will try to find the column type and give it a generic ID (Column X). You can override dashbuilder default settings using columns:
+With a pure JSON array Dashbuilder will try to find the column type and give it a generic ID (Column X). You can override Dashbuilder's default settings using columns:
 
 [source]
 ----
@@ -154,7 +154,7 @@ pages:
 - name: DataSet sample
 ----
 
-Most of the cases the JSON format is not an array. For these cases it is possible to use the powerful transformation language JSONAta to transform a dataset using the `expression` attribute. In the following example the array of objects is transformed into a JSON array:
+In most of the cases, the JSON format is not an array. For these cases it is possible to use the powerful transformation language https://jsonata.org/[JSONata] to transform a dataset using the `expression` attribute. In the following example the array of objects is transformed into a JSON array:
 
 [source]
 ----
@@ -173,7 +173,7 @@ pages:
 - name: DataSet sample
 ----
 
-It is possible to use caching for non real time datasets. The cache expiration can be configured using `refreshTime`, otherwise the case is only invalidated when the YML runs again. Here's a example of a dataset cached for `10seconds`:
+It is possible to use caching for non real time datasets. The cache expiration can be configured using `refreshTime`, otherwise the case is only invalidated when the YML runs again. Here's an example of a dataset cached for `10seconds`:
 
 [source]
 ----
@@ -193,15 +193,15 @@ pages:
 
 Datasets can have the following fields:
 
-* *Accumulate:* It is a new dataset field. When it's true, the dashbuilder keeps the data on memory on each refresh. It can be limited by maxCacheRows.
+* *Accumulate:* It is a new dataset field. When it's true, Dashbuilder keeps the data on memory on each refresh. It can be limited by maxCacheRows.
 
-* *MaxCacheRows:* It determines the amount of rows kept in memory when using cache or accumulate. The default value of this field is set to 1000.
+* *MaxCacheRows:* It determines the number of rows kept in memory when using cache or accumulate. The default value of this field is set to 1000.
 
 * *Headers:* It is used to set headers that will be sent on the dataset HTTP request.
 
 === Datasets lookup
 
-To display a dataset dashbuilder uses the concept of `lookup`. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed. 
+To display a dataset Dashbuilder uses the concept of `lookup`. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed.
 The lookup is part of a special component called `displayer`, which is covered later on this guide. For now, consider only the table displayer.
 The simplest use of a lookup is by simply providing the dataset uuid:
 
@@ -286,7 +286,7 @@ pages:
 .Dataset Lookup with order
 image::guides/yaml/orderLookup.png[Lookup with order]
 
-A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the function and the args for the filter. The supported functions are (in parenthesis is the number of required parameters):
+A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the function and the args for the filter. The supported functions are (in parentheses is the number of required parameters):
 
 * IS_NULL(0)
 * NOT_NULL(0)
@@ -696,14 +696,14 @@ Displayers have the following fields:
 
 === Using Charts
 
-In dashbuilder the following charts are supported:
+In Dashbuilder the following charts are supported:
 
 * *BARCHART*: with subtypes `COLUMN` (default) and `BAR`. It is also possible to use `STACKED` (`COLUMN_STACKED` and `BAR_STACKED`)
 * *LINECHART*: with subtypes `LINE` (default) and `SMOOTH`
 * *AREACHART*: with subtypes `AREA` (default) and `AREA_STACKED`
 * *PIECHART*:  with subtypes `PIE` (default) and `DONUT`
 
-All these types support one column for categories (X axis) and at least one column for Y axis. If this is respected, then simply changing the type will change the visualization. In another words, the following YAML will renders a BARCHART:
+All these types support one column for categories (X axis) and at least one column for Y axis. If this is respected, then simply changing the type will change the visualization. In other words, the following YAML will render a BARCHART:
 
 [source]
 ----
@@ -796,9 +796,9 @@ It is possible to configure charts X/Y axis using the axis configuration.
 
 Under the axis object there are two properties, x and y. Here are the supported attributes:
 
-* *labels_show*: when true the labels will be displayed
-* *title*: A title for the axis
-* *labels_angle*: The labels angle. Only works for the X axis.
+* *labels_show*: When true the labels will be displayed.
+* *title*: A title for the axis.
+* *labels_angle*: The label's angle. Only works for the X axis.
 
 
 *Chart General Settings*
@@ -985,7 +985,7 @@ pages:
 .Default Metrics
 image::guides/yaml/defaultMetrics.png[Default Metrics]
 
-The HTML can be customized using the object `html` with the field html and `javascript` for javascript. Inside the HTML the variable `${value}` contains the value resulted from the dataset lookup and to refer to elements in javascript give the element the id `${this}` and refer to it in the javascript code. Be responsible for the javascript code used in the YAML!
+The HTML can be customized using the object `html` with the field html and `javascript` for javascript. Inside the HTML the variable `+${value}+` contains the value resulted from the dataset lookup and to refer to elements in javascript give the element the id `+${this}+` and refer to it in the javascript code. Be responsible for the javascript code used in the YAML!
 Here's a basic example:
 
 [source]
@@ -1032,10 +1032,10 @@ Other variables from the displayer configuration can be used in the code (using 
 
 === Meter Chart
 
-A special chart is the meter chart. It compares values and shows the percent of the total. To configure the values boundaries use the property `meter`, it supports the following attributes:
+A special chart is the meter chart. It compares values and shows the percent of the total. To configure the value's boundaries use the property `meter`, it supports the following attributes:
 
 * *start*: a value to start the meter
-* *end*: the max value value for the meter
+* *end*: the max value for the meter
 * *critical*: paints the meter as red if the value is bigger than this parameter
 * *warning*: paints the meter as orange if the value is bigger than this parameter
 
@@ -1149,7 +1149,7 @@ image::guides/yaml/map.png[Map]
 
 === External Components
 
-Dashbuilder also support components built externally. Components have an ID and you can either add its assets to Dashbuilder server under context `/dashbuilder/component/{componentId}/` or use a property to point to a remote component:
+Dashbuilder also support components built externally. Components have an ID and you can either add its assets to Dashbuilder server under context `+/dashbuilder/component/{componentId}/+` or use a property to point to a remote component:
 
 [source]
 ----
@@ -1212,7 +1212,7 @@ pages:
             uuid: products
 ----
 
-* **echarts**: ECharts chart. In this component the dataset is transformed to a echarts dataset and the `option` parameter can be used to provide a JSON object to configure the echart. We also parse the options in YML format to JSON, so some configuration could be done using pure YML. Here's a sample echart usage:
+* **echarts**: ECharts chart. In this component the dataset is transformed to an echarts dataset and the `option` parameter can be used to provide a JSON object to configure the echart. We also parse the options in YML format to JSON, so some configuration could be done using pure YML. Here's a sample echart usage:
 
 [source]
 ----
@@ -1342,7 +1342,7 @@ pages:
             uuid: timeseries
 ----
 
-* **uniforms**: Uniforms is a component that does not use a dataset, but allow users to render forms to post data to an URL. It accepts the parameters `uniforms.url`, the form URL and the JSON schema for the form generation, `uniforms.schema`. 
+* **uniforms**: Uniforms is a component that does not use a dataset, but allow users to render forms to post data to a URL. It accepts the parameters `uniforms.url`, the form URL and the JSON schema for the form generation, `uniforms.schema`.
 
 [source]
 ----
@@ -1477,12 +1477,12 @@ navTree:
 ----
 
 .Element screen to see any page embed on another
-image::essentials/elementScreen.png[Some of native dashbuilder components]
+image::essentials/elementScreen.png[Some of native Dashbuilder components]
 
-NOTE: To show a default page just name it as `index` and it will be displayed by default, otherwise the default dashbuilder page will be displayed.
+NOTE: To show a default page just name it as `index` and it will be displayed by default, otherwise the default Dashbuilder page will be displayed.
 
 === Navigation Components
-It is possible to embed pages using navigation groups. To do so dashbuilder provides navigation components. 
+It is possible to embed pages using navigation groups. To do so Dashbuilder provides navigation components.
 
 * *TILES*: Displays the navigation group pages in tiles;
 * *CAROUSEL*: Displays the pages in a carousel;
@@ -1534,9 +1534,9 @@ image::guides/yaml/navigationComponents.png[Navigation Components]
 
 === Properties
 
-The goal of properties is to make it easier to reuse YAML definitions and let users only customize certain parts of the document. Properties can be declared with a value and later references using `${PROPERTY NAME}`. 
+The goal of properties is to make it easier to reuse YAML definitions and let users only customize certain parts of the document. Properties can be declared with a value and later references using `+${PROPERTY NAME}+`.
 
-NOTE: Be careful when using `${______}` to avoid conflict with Metric templates. 
+NOTE: Be careful when using `+${}+` to avoid conflicts with Metric templates.
 
 Properties are meant to be used only with field values. Here's an example:
 
@@ -1550,12 +1550,12 @@ pages:
         - html: ${My Property}
 ----
 
-When running on Dashbuilder you can also override the properties using query parameters. In the example above `My Property` could be changed using `http://my.dashbuilder?My Property=New Property value`.
+When running on Dashbuilder you can also override the properties using query parameters. In the example above `My Property` could be changed using `+http://my.dashbuilder?My Property=New Property value+`.
 
 
 === Global
 
-Global section was added in `0.26.0` version and it allow users to change the dashboard default mode to dark and declare a global settings for all displayers on the page:
+Global section was added in `0.26.0` version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page:
 
 
 [source]
