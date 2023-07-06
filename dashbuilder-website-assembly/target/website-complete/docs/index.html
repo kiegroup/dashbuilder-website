@@ -488,6 +488,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_global">5.14. Global</a></li>
 </ul>
 </li>
+<li><a href="#chap-dashbuilder-monitoring">6. Monitoring Services with Dashbuilder</a>
+<ul class="sectlevel3">
+<li><a href="#_prometheus">6.1. Prometheus</a></li>
+<li><a href="#_metrics_2">6.2. Metrics</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -772,7 +778,7 @@ const send = () =&gt; {
 <div class="sect2">
 <h3 id="chap-dashbuilder-yaml-guides"><a class="anchor" href="#chap-dashbuilder-yaml-guides"></a><a class="link" href="#chap-dashbuilder-yaml-guides">5. Dashbuilder YAML Guide</a></h3>
 <div class="paragraph _abstract">
-<p>This is a guide for creating dashboards and visualizations with YAML. You can run all examples with Dashbuilder YML Online Editor.</p>
+<p>This is a guide for creating dashboards and visualizations with YAML. You can run all examples with <a href="https://start.kubesmarts.org/">Dashbuilder YAML Online Editor</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_pages_2"><a class="anchor" href="#_pages_2"></a><a class="link" href="#_pages_2">5.1. Pages</a></h4>
@@ -803,17 +809,17 @@ const send = () =&gt; {
 <pre class="highlight"><code>pages:
     - rows:
         - columns:
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 1 Column 1
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 1 Column 2
         - columns:
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 2 Column 1
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 2 Column 2</code></pre>
 </div>
@@ -837,12 +843,12 @@ const send = () =&gt; {
         - properties:
             background-color: darkgray
           columns:
-            - span: '6'
+            - span: 6
               properties:
                 color: white
               components:
                 - html: Row 1 Column 1
-            - span: '6'
+            - span: 6
               properties:
                 color: lightblue
               components:
@@ -918,7 +924,7 @@ pages:
 </div>
 </div>
 <div class="paragraph">
-<p>With a pure JSON array dashbuilder will try to find the column type and give it a generic ID (Column X). You can override dashbuilder default settings using columns:</p>
+<p>With a pure JSON array Dashbuilder will try to find the column type and give it a generic ID (Column X). You can override Dashbuilder&#8217;s default settings using columns:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -932,7 +938,6 @@ pages:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
       type: NUMBER
 pages:
@@ -940,7 +945,10 @@ pages:
 </div>
 </div>
 <div class="paragraph">
-<p>Most of the cases the JSON format is not an array. For these cases it is possible to use the powerful transformation language JSONAta to transform a dataset using the <code>expression</code> attribute. In the following example the array of objects is transformed into a JSON array:</p>
+<p>The column must have a type which can be <strong>LABEL</strong>, <strong>TEXT</strong>, <strong>NUMBER</strong> or <strong>DATE</strong>. If no type is provided, then LABEL is used.</p>
+</div>
+<div class="paragraph">
+<p>In most of the cases, the JSON format is not an array. For these cases it is possible to use the powerful transformation language <a href="https://jsonata.org/">JSONata</a> to transform a dataset using the <code>expression</code> attribute. In the following example the array of objects is transformed into a JSON array:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -960,7 +968,7 @@ pages:
 </div>
 </div>
 <div class="paragraph">
-<p>It is possible to use caching for non real time datasets. The cache expiration can be configured using <code>refreshTime</code>, otherwise the case is only invalidated when the YML runs again. Here&#8217;s a example of a dataset cached for <code>10seconds</code>:</p>
+<p>It is possible to use caching for non real time datasets. The cache expiration can be configured using <code>refreshTime</code>, otherwise the case is only invalidated when the YML runs again. Here&#8217;s an example of a dataset cached for 30 seconds:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -978,11 +986,30 @@ pages:
 - name: DataSet sample</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Datasets can have the following fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Accumulate:</strong> It is a new dataset field. When it&#8217;s true, Dashbuilder keeps the data on memory on each refresh. It can be limited by maxCacheRows.</p>
+</li>
+<li>
+<p><strong>MaxCacheRows:</strong> It determines the number of rows kept in memory when using cache or accumulate. The default value of this field is set to 1000.</p>
+</li>
+<li>
+<p><strong>Headers:</strong> A map that is used to set headers that will be sent on the dataset HTTP request.</p>
+</li>
+<li>
+<p><strong>Query</strong> A map with query parameters added to the dataset URL</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_datasets_lookup"><a class="anchor" href="#_datasets_lookup"></a><a class="link" href="#_datasets_lookup">5.3. Datasets lookup</a></h4>
 <div class="paragraph">
-<p>To display a dataset dashbuilder uses the concept of <code>lookup</code>. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed.
+<p>To display a dataset Dashbuilder uses the concept of <code>lookup</code>. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed.
 The lookup is part of a special component called <code>displayer</code>, which is covered later on this guide. For now, consider only the table displayer.
 The simplest use of a lookup is by simply providing the dataset uuid:</p>
 </div>
@@ -998,13 +1025,12 @@ The simplest use of a lookup is by simply providing the dataset uuid:</p>
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: mydataset</code></pre>
 </div>
 </div>
@@ -1015,7 +1041,7 @@ pages:
 <div class="title">Figure 10. Basic Lookup</div>
 </div>
 <div class="paragraph">
-<p>With the lookup it is possible to define  the number of rows and the row offset of a dataset:</p>
+<p>With the lookup it is possible to define the number of rows and the row offset of a dataset:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1029,7 +1055,6 @@ pages:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
       type: Number
 pages:
@@ -1056,7 +1081,6 @@ pages:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
       type: Number
 pages:
@@ -1076,7 +1100,7 @@ pages:
 <div class="title">Figure 11. Dataset Lookup with order</div>
 </div>
 <div class="paragraph">
-<p>A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the function and the args for the filter. The supported functions are (in parenthesis is the number of required parameters):</p>
+<p>A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the filter function and the args for the filter. The supported functions are (in parentheses is the number of required parameters):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1139,14 +1163,12 @@ pages:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        type: TABLE
-        dataSetLookup:
+        lookup:
             uuid: mydataset
             filter:
                 - column: Age
@@ -1176,13 +1198,12 @@ pages:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: mydataset
             filter:
                 - function: OR
@@ -1220,15 +1241,13 @@ pages:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Name
-      type: LABEL
     - id: Quantity
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
                 - columnGroup:
@@ -1247,9 +1266,28 @@ pages:
 <div class="title">Figure 14. Dataset Lookup with group</div>
 </div>
 <div class="paragraph">
-<p>The supported group functions are <code>SUM</code>, <code>MAX</code>, <code>MIN</code> and <code>AVERAGE</code> for numbers. For label columns the supported functions are <code>DISTINCT</code> and <code>COUNT</code>.
+<p>The supported group functions are <code>SUM</code>, <code>MAX</code>, <code>MIN</code> , <code>AVERAGE</code> and <code>MEDIAN</code> for numbers. For label columns the supported functions are <code>DISTINCT</code>, <code>COUNT</code>, <code>JOIN</code>, <code>JOIN_COMMA</code> and <code>JOIN_HYPHEN</code>.
 By default it uses the column name itself, it is also possible to give another name to the grouped column.
 If a column is not specific in columnGroup, but used with other columns in columnFunctions, then the error  <strong>Error during dataset lookup: No aggregation function specified for the column</strong> is displayed.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a summary of all supported group functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>MEDIAN:</strong> A group function for number columns and it calculates the median value.</p>
+</li>
+<li>
+<p><strong>JOIN:</strong> It joins text/label columns using space.</p>
+</li>
+<li>
+<p><strong>JOIN_COMMA:</strong> It is same as <code>JOIN</code> but uses a comma.</p>
+</li>
+<li>
+<p><strong>JOIN_HYPHEN:</strong> It is same as <code>JOIN</code> but uses a hyphen.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>However, it is possible to omit the column group section and use no function for columns under <code>columnGroup</code>, this way the columns will just be passed to the displayer</p>
@@ -1268,18 +1306,16 @@ If a column is not specific in columnGroup, but used with other columns in colum
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Name
-      type: LABEL
     - id: Quantity
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
-                - groupFunctions:
+                - functions:
                     - source: Name
                     - source: Quantity</code></pre>
 </div>
@@ -1291,7 +1327,7 @@ pages:
 <p>Displayers are visual components that can show data. Dashbuilder supports by default all the popular charts types, tables, metrics with customized structure and style, data selectors to filter the whole visualization and finally external displayers, which are custom applications used to display data.</p>
 </div>
 <div class="paragraph">
-<p>Dashbuilder consider as displayer every component with a settings, so when the settings is declared then the type must be declared as well:</p>
+<p>Dashbuilder consider as displayer every component with a settings, so when the settings is declared then the type must be declared as well (we can also use displayer instead of settings):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1307,15 +1343,13 @@ pages:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Name
-      type: LABEL
     - id: Quantity
-      type: Number
+      type: NUMBER
 pages:
 - components:
-    - settings:
-        dataSetLookup:
+    - displayer:
+        lookup:
             uuid: products</code></pre>
 </div>
 </div>
@@ -1341,9 +1375,8 @@ pages:
 - components:
     - settings:
         filter:
-            enabled: 'true'
-            selfapply: 'true'
-        dataSetLookup:
+            selfapply: true
+        lookup:
             uuid: products</code></pre>
 </div>
 </div>
@@ -1372,16 +1405,14 @@ pages:
 - components:
     - settings:
         filter:
-            enabled: 'true'
-            notification: 'true'
-        dataSetLookup:
+            notification: true
+        lookup:
             uuid: products
     - settings:
         filter:
-            enabled: 'true'
-            listening: 'true'
-        dataSetLookup:
-            uuid: products</code></pre>
+          listening: true
+        lookup:
+          uuid: products</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1412,9 +1443,9 @@ pages:
 - components:
     - settings:
         refresh:
-            interval: '30'
-        dataSetLookup:
-            uuid: products</pre>
+          interval: 30
+        lookup:
+          uuid: products</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1452,16 +1483,16 @@ pages:
 - components:
     - settings:
         columns:
-            - id: Column 0
-              name: Section
-              expression: value.toUpperCase()
-            - id: Column 1
-              name: Product
-            - id: Column 2
-              name: Quantity
-              pattern: '#'
-        dataSetLookup:
-            uuid: products</code></pre>
+          - id: Column 0
+            name: Section
+            expression: value.toUpperCase()
+          - id: Column 1
+            name: Product
+          - id: Column 2
+            name: Quantity
+            pattern: '#'
+        lookup:
+          uuid: products</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1507,7 +1538,7 @@ pages:
         table:
             pageSize: '3'
             show_column_picker: 'false'
-        dataSetLookup:
+        lookup:
             uuid: products</code></pre>
 </div>
 </div>
@@ -1546,13 +1577,13 @@ pages:
 - components:
     - settings:
         table:
-            show_column_picker: 'false'
-            sort:
-                enabled: 'false'
-                columnId: Column 2
-                order: DESCENDING
-        dataSetLookup:
-            uuid: products</code></pre>
+          show_column_picker: 'false'
+          sort:
+              enabled: 'false'
+              columnId: Column 2
+              order: DESCENDING
+        lookup:
+          uuid: products</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1561,11 +1592,30 @@ pages:
 </div>
 <div class="title">Figure 18. Table with order configuration</div>
 </div>
+<div class="paragraph">
+<p>Displayers have the following fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>PNG export:</strong> the field png under export will allow users to export the displayer to PNG.</p>
+</li>
+<li>
+<p><strong>extraConfiguration:</strong> A top level displayer additional configuration sent to the renderer. It varies according to the renderer. For example, the echarts option can be used sent in json format using this field.</p>
+</li>
+<li>
+<p><strong>subTitle:</strong> A subtitle for the chart. It goes under general object.</p>
+</li>
+<li>
+<p><strong>allowEdit:</strong> Under general object and allow users to modify data displayed on the chart.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_using_charts"><a class="anchor" href="#_using_charts"></a><a class="link" href="#_using_charts">5.5. Using Charts</a></h4>
 <div class="paragraph">
-<p>In dashbuilder the following charts are supported:</p>
+<p>In Dashbuilder the following charts are supported:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1584,7 +1634,7 @@ pages:
 </ul>
 </div>
 <div class="paragraph">
-<p>All these types support one column for categories (X axis) and at least one column for Y axis. If this is respected, then simply changing the type will change the visualization. In another words, the following YAML will renders a BARCHART:</p>
+<p>All these types support one column for categories (X axis) and at least one column for Y axis. If this is respected, then simply changing the type will change the visualization. In other words, the following YAML will render a BARCHART:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1600,21 +1650,19 @@ pages:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
 - components:
     - settings:
         type: BARCHART
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
                 - columnGroup:
                     source: Product
-                  groupFunctions:
+                  functions:
                     - source: Product
                     - source: Quantity
                       function: SUM
@@ -1654,9 +1702,7 @@ pages:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
@@ -1664,12 +1710,12 @@ pages:
     - settings:
         type: LINECHART
         subtype: SMOOTH
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
                 - columnGroup:
                     source: Product
-                  groupFunctions:
+                  functions:
                     - source: Product
                     - source: Quantity
                       function: SUM
@@ -1692,13 +1738,13 @@ pages:
 <div class="ulist">
 <ul>
 <li>
-<p><strong>labels_show</strong>: when true the labels will be displayed</p>
+<p><strong>labels_show</strong>: When true the labels will be displayed.</p>
 </li>
 <li>
-<p><strong>title</strong>: A title for the axis</p>
+<p><strong>title</strong>: A title for the axis.</p>
 </li>
 <li>
-<p><strong>labels_angle</strong>: The labels angle. Only works for the X axis.</p>
+<p><strong>labels_angle</strong>: The label&#8217;s angle. Only works for the X axis.</p>
 </li>
 </ul>
 </div>
@@ -1755,9 +1801,7 @@ pages:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity1
       type: NUMBER
     - id: Quantity2
@@ -1780,12 +1824,12 @@ pages:
             grid:
                 x: 'false'
                 y: 'false'
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
             - columnGroup:
                 source: Product
-              groupFunctions:
+              functions:
                 - source: Product
                 - source: Quantity1
                   function: SUM
@@ -1847,9 +1891,7 @@ Filter must be enabled, otherwise selectors will not work.
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity1
       type: NUMBER
     - id: Quantity2
@@ -1859,14 +1901,13 @@ pages:
     - settings:
         type: BARCHART
         filter:
-            enabled: 'true'
-            listening: 'true'
-        dataSetLookup:
+            listening: true
+        lookup:
             uuid: products
             group:
             - columnGroup:
                 source: Product
-              groupFunctions:
+              functions:
                 - source: Product
                 - source: Quantity1
                   function: SUM
@@ -1879,14 +1920,13 @@ pages:
             multiple: 'true'
             inputs_show: 'true'
         filter:
-            enabled: 'true'
-            notification: 'true'
-        dataSetLookup:
+            notification: true
+        lookup:
             uuid: products
             group:
             - columnGroup:
                 source: Section
-              groupFunctions:
+              functions:
                 - source: Section</code></pre>
 </div>
 </div>
@@ -1915,7 +1955,6 @@ pages:
             ]
   columns:
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
@@ -1927,11 +1966,10 @@ pages:
             width: '150'
         general:
             title: Total Products
-            visible: 'true'
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
-            - groupFunctions:
+            - functions:
                 - source: Quantity
                   function: SUM</code></pre>
 </div>
@@ -1959,7 +1997,6 @@ Here&#8217;s a basic example:</p>
             ]
   columns:
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
@@ -1975,10 +2012,10 @@ pages:
                             ${this}.onmouseout = function() {
                                 ${this}.style.color = "black";
                             };
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
-            - groupFunctions:
+            - functions:
                 - source: Quantity
                   function: SUM</code></pre>
 </div>
@@ -1996,7 +2033,7 @@ pages:
 <div class="sect3">
 <h4 id="_meter_chart"><a class="anchor" href="#_meter_chart"></a><a class="link" href="#_meter_chart">5.8. Meter Chart</a></h4>
 <div class="paragraph">
-<p>A special chart is the meter chart. It compares values and shows the percent of the total. To configure the values boundaries use the property <code>meter</code>, it supports the following attributes:</p>
+<p>A special chart is the meter chart. It compares values and shows the percent of the total. To configure the value&#8217;s boundaries use the property <code>meter</code>, it supports the following attributes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2004,7 +2041,7 @@ pages:
 <p><strong>start</strong>: a value to start the meter</p>
 </li>
 <li>
-<p><strong>end</strong>: the max value value for the meter</p>
+<p><strong>end</strong>: the max value for the meter</p>
 </li>
 <li>
 <p><strong>critical</strong>: paints the meter as red if the value is bigger than this parameter</p>
@@ -2030,7 +2067,6 @@ pages:
             ]
   columns:
     - id: Server
-      type: LABEL
     - id: Usage
       type: NUMBER
 pages:
@@ -2042,7 +2078,6 @@ pages:
         type: METERCHART
         general:
             title: "Memory Usage"
-            visible: 'true'
         chart:
             legend:
                 show: 'true'
@@ -2051,12 +2086,12 @@ pages:
             end: '4120'
             critical: '3000'
             warning: '2000'
-        dataSetLookup:
+        lookup:
             uuid: memory_usage
             group:
             - columnGroup:
                 source: Server
-              groupFunctions:
+              functions:
                 - source: Server
                 - source: Usage
                   function: SUM</code></pre>
@@ -2093,7 +2128,6 @@ The only specific configuration for map is <code>color_scheme</code>, which coul
             ]
   columns:
     - id: Server
-      type: LABEL
     - id: Usage
       type: NUMBER
 pages:
@@ -2102,12 +2136,12 @@ pages:
         type: MAP
         map:
             color_scheme: blue
-        dataSetLookup:
+        lookup:
             uuid: countries
             group:
             - columnGroup:
                 source: Server
-              groupFunctions:
+              functions:
                 - source: Server
                 - source: Usage
     - settings:
@@ -2115,12 +2149,12 @@ pages:
         subtype: MAP_MARKERS
         map:
           color_scheme: red
-        dataSetLookup:
+        lookup:
             uuid: countries
             group:
             - columnGroup:
                 source: Server
-              groupFunctions:
+              functions:
                 - source: Server
                 - source: Usage</code></pre>
 </div>
@@ -2151,9 +2185,7 @@ pages:
       ]
     columns:
       - id: Section
-        type: LABEL
       - id: Product
-        type: LABEL
       - id: Quantity
         type: NUMBER
       - id: Quantity2
@@ -2208,7 +2240,7 @@ pages:
 <div class="ulist">
 <ul>
 <li>
-<p><strong>echarts</strong>: ECharts chart. In this component the dataset is transformed to a echarts dataset and the <code>option</code> parameter can be used to provide a JSON object to configure the echart. We also parse the options in YML format to JSON, so some configuration could be done using pure YML. Here&#8217;s a sample echart usage:</p>
+<p><strong>echarts</strong>: ECharts chart. In this component the dataset is transformed to an echarts dataset and the <code>option</code> parameter can be used to provide a JSON object to configure the echart. We also parse the options in YML format to JSON, so some configuration could be done using pure YML. Here&#8217;s a sample echart usage:</p>
 </li>
 </ul>
 </div>
@@ -2226,9 +2258,7 @@ pages:
       ]
     columns:
       - id: Section
-        type: LABEL
       - id: Product
-        type: LABEL
       - id: Quantity
         type: NUMBER
       - id: Quantity2
@@ -2280,7 +2310,7 @@ pages:
           group:
             - columnGroup:
                 source: Product
-              groupFunctions:
+              functions:
                 - source: Product
                 - source: Quantity
                 - source: Quantity2</code></pre>
@@ -2324,36 +2354,14 @@ pages:
                 &lt;path id="svg_5" d="m461,24l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
                 &lt;path id="svg_6" d="m566,26l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/&gt;
               &lt;/svg&gt;
-          datasetlookup:
+          lookup:
             uuid: svg-data</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>timeseries</strong>: Timeseries allow users to display timeseries information and it is based on echarts, which means that it is possible to pass an <code>option</code> parameter as well. The accepted dataset must have a column for the series, the timestamp and value.</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>datasets:
-  - uuid: timeseries
-    url: https://raw.githubusercontent.com/jesuino/dashbuilder-data/master/samples/timeseries.json
-pages:
-  - components:
-      - settings:
-          component: timeseries
-          external:
-            width: 100%
-          datasetlookup:
-            uuid: timeseries</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>uniforms</strong>: Uniforms is a component that does not use a dataset, but allow users to render forms to post data to an URL. It accepts the parameters <code>uniforms.url</code>, the form URL and the JSON schema for the form generation, <code>uniforms.schema</code>.</p>
+<p><strong>uniforms</strong>: Uniforms is a component that does not use a dataset, but allow users to render forms to post data to a URL. It accepts the parameters <code>uniforms.url</code>, the form URL and the JSON schema for the form generation, <code>uniforms.schema</code>.</p>
 </li>
 </ul>
 </div>
@@ -2391,6 +2399,59 @@ pages:
 
                }
             }</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>map</strong>: Map is a component to show geographic information. It is based on react-simple-map library and accepts different configuration related to the map aspect. The dataset can be the geo name/some key for the geo and a value or three number columns with the latitute, longitude and the value. It can show the data in bubbles or fill the matched geo.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+    - uuid: data
+      content: &gt;-
+                [
+                    ["SP", 1],
+                    ["RJ", 90],
+                    ["MG", 5],
+                    ["PA", 50],
+                    ["AM", 2],
+                    ["RS", 100]
+                ]
+      columns:
+          - id: name
+          - id: value
+            type: NUMBER
+pages:
+    - components:
+          - settings:
+                component: map
+                map:
+                    geoUrl: https://raw.githubusercontent.com/sjcdigital/geo-json/main/Brasil.json
+                    enableZoom: "true"
+                    minZoom: "1"
+                    maxZoom: "20"
+                    zoom: "2"
+                    fill: white
+                    background: lightgray
+                    strokeWidth: "0.2"
+                    zoomCenterLat: "-28.749997"
+                    zoomCenterLong: "-47.9499962"
+                    fillBegin: lightgreen
+                    fillEnd: darkgreen
+                    geoKey: "UF"
+                external:
+                    width: 100%
+                    height: 800px
+                lookup:
+                    uuid: data
+                    group:
+                        - functions:
+                              - source: name
+                              - source: value</code></pre>
 </div>
 </div>
 </div>
@@ -2454,6 +2515,54 @@ navTree:
 </div>
 <div class="title">Figure 27. Menu Navigation</div>
 </div>
+<div class="paragraph">
+<p>Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pages:
+    - name: Embed
+      components:
+          - html: This page was embedded using &lt;strong&gt;screen&lt;/strong&gt; component
+    - name: Cats
+      components:
+        - html: &lt;h1&gt; Cats &lt;/h1&gt;
+    - name: Dogs
+      components:
+        - html: &lt;h1&gt;Dogs&lt;/h1&gt;
+    - name: index
+      rows:
+        - columns:
+          - components:
+            - type: TILES  # try CAROUSEL
+              properties:
+                navGroupId: animals_group
+        - columns:
+          - components:
+            - type: TABS  # try MENU or TREE
+              properties:
+                navGroupId: animals_group
+                targetDivId: animals_div
+            - type: DIV
+              properties:
+                divId: animals_div
+            - screen: Embed
+navTree:
+  root_items:
+  - id: animals_group
+    type: GROUP
+    name: Animals
+    children:
+    - page: Cats
+    - page: Dogs</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/essentials/elementScreen.png" alt="Some of native Dashbuilder components">
+</div>
+<div class="title">Figure 28. Element screen to see any page embed on another</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2461,7 +2570,7 @@ navTree:
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To show a default page just name it as <code>index</code> and it will be displayed by default, otherwise the default dashbuilder page will be displayed.
+To show a default page just name it as <code>index</code> and it will be displayed by default, otherwise the default Dashbuilder page will be displayed.
 </td>
 </tr>
 </table>
@@ -2470,7 +2579,7 @@ To show a default page just name it as <code>index</code> and it will be display
 <div class="sect3">
 <h4 id="_navigation_components"><a class="anchor" href="#_navigation_components"></a><a class="link" href="#_navigation_components">5.12. Navigation Components</a></h4>
 <div class="paragraph">
-<p>It is possible to embed pages using navigation groups. To do so dashbuilder provides navigation components.</p>
+<p>It is possible to embed pages using navigation groups. To do so Dashbuilder provides navigation components.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2537,7 +2646,7 @@ navTree:
 <div class="content">
 <img src="./images/guides/yaml/navigationComponents.png" alt="Navigation Components">
 </div>
-<div class="title">Figure 28. Navigation Components</div>
+<div class="title">Figure 29. Navigation Components</div>
 </div>
 </div>
 <div class="sect3">
@@ -2552,7 +2661,7 @@ navTree:
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Be careful when using <code>${<em><em></em></em>}</code> to avoid conflict with Metric templates.
+Be careful when using <code>${}</code> to avoid conflicts with Metric templates.
 </td>
 </tr>
 </table>
@@ -2571,28 +2680,30 @@ pages:
 </div>
 </div>
 <div class="paragraph">
-<p>When running on Dashbuilder you can also override the properties using query parameters. In the example above <code>My Property</code> could be changed using <code><a href="http://my.dashbuilder?My" class="bare">http://my.dashbuilder?My</a> Property=New Property value</code>.</p>
+<p>When running on Dashbuilder you can also override the properties using query parameters. In the example above <code>My Property</code> could be changed using <code>http://my.dashbuilder?My Property=New Property value</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_global"><a class="anchor" href="#_global"></a><a class="link" href="#_global">5.14. Global</a></h4>
 <div class="paragraph">
-<p>Global section was added in <code>0.26.0</code> version and it allow users to change the dashboard default mode to dark and declare a global settings for all displayers on the page:</p>
+<p>Global section was added in <code>0.26.0</code> version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page or a global setting for all dataset:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>global:
   mode: dark
-  settings:
-    general:
-      title: Common Title
-datasets:
-  - uuid: test
+  dataset:
     content: &gt;-
       [
           ["A", 1],
           ["B", 2]
       ]
+  settings:
+    general:
+      title: Common Title
+datasets:
+  - uuid: test
+
 pages:
   - rows:
       - columns:
@@ -2614,14 +2725,310 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/darkMode.png" alt="Dark Mode">
 </div>
-<div class="title">Figure 29. Dark Mode</div>
+<div class="title">Figure 30. Dark Mode</div>
+</div>
+<div class="paragraph">
+<p>The supported global properties are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>allowUrlProperties:</strong> When true then properties can be replaced using URL query parameters.</p>
+</li>
+<li>
+<p><strong>mode:</strong> Changes the dashboard style. Can be <strong>dark</strong> or <strong>light</strong>. Default value is <strong>light</strong>.</p>
+</li>
+<li>
+<p><strong>settings/displayer:</strong> Allow the users to define a common configuration for all displayers in the page.</p>
+</li>
+<li>
+<p><strong>dataset:</strong> Allow the users to define a common configuration for all displayers in the page.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="chap-dashbuilder-monitoring"><a class="anchor" href="#chap-dashbuilder-monitoring"></a><a class="link" href="#chap-dashbuilder-monitoring">6. Monitoring Services with Dashbuilder</a></h3>
+<div class="paragraph _abstract">
+<p>In this section we will explore how Dashbuilder can be used to monitor different aspect of services.</p>
+</div>
+<div class="sect3">
+<h4 id="_prometheus"><a class="anchor" href="#_prometheus"></a><a class="link" href="#_prometheus">6.1. Prometheus</a></h4>
+<div class="paragraph">
+<p><a href="https://prometheus.io/">Prometheus</a> is a popular monitoring and timeseries database tool. Dashbuilder can connect to its <a href="https://prometheus.io/docs/prometheus/latest/querying/api/">Query HTTP API</a> and execute queries to retrieve information that can be displayed in timeseries or other visual components.</p>
+</div>
+<div class="paragraph">
+<p>The requirements to consume data from Prometheus in Dashbuilder are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Make sure that <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors">CORS</a> is enabled for the Dashbuilder host, otherwise it won&#8217;t be able to retrieve data;</p>
+</li>
+<li>
+<p>Use a dataset with type <strong>prometheus</strong> for Dashbuilder 0.29.0 and later versions. See an example:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+    - uuid: prometheus
+      type: prometheus
+      url: http://localhost:9090/api/v1/query?query=up
+
+pages:
+    - components:
+          - settings:
+                lookup:
+                    uuid: prometheus</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This expression will get the response and transform in a dataset that will contain the columns <strong>timestamp</strong>, <strong>value</strong> and the additional labels. With this information you can use a <strong>timeseries</strong> component to monitor some metric.</p>
+</div>
+<div class="paragraph">
+<p>As an example, we can monitor a Quarkus application JVM usage by following the steps below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add <a href="https://quarkus.io/guides/micrometer">Micrometer</a> to your project</p>
+</li>
+<li>
+<p>Download and configure Prometheus to scrap metrics from your application. Here&#8217;s a sample configuration you should add to <strong>prometheus.yml</strong>:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>  - job_name: 'quarkus'
+    scrape_interval: 1s
+    metrics_path: /q/metrics
+    static_configs:
+      - targets: ['localhost:8080']</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Now use <a href="https://start.kubesmarts.org/">Dashbuilder online editor</a>, create a new Dashboard. For example, the following dashboard shows a timeseries for the JVM Heap usage for the last hour. The data is updated each 5 seconds:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>properties:
+    prometheusUrl: http://localhost:9090
+datasets:
+    - uuid: prometheus
+      type: prometheus
+      url: ${prometheusUrl}/api/v1/query
+      query:
+          query: jvm_memory_used_bytes{area="heap"}[1h:5s]
+pages:
+    - components:
+          - settings:
+                type: TIMESERIES
+                chart:
+                    resizable: true
+                refresh:
+                    interval: 5
+                general:
+                    title: JVM Memory (Used Heap)
+                lookup:
+                    uuid: prometheus
+                    group:
+                        - functions:
+                              - source: id
+                              - source: timestamp
+                              - source: value</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/guides/monitoring/jvm_heap_prometheus.png" alt="JVM Monitoring with Prometheus">
+</div>
+<div class="title">Figure 31. JVM Monitoring with Prometheus</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_metrics_2"><a class="anchor" href="#_metrics_2"></a><a class="link" href="#_metrics_2">6.2. Metrics</a></h4>
+<div class="paragraph">
+<p>Services monitored by Prometheus have to expose its metrics in a text format. Prometheus then read these metrics to store in its timeseries database. Dashbuilder can be used to connect directly to the <code>metrics</code> endpoint and build visualizations using it.</p>
+</div>
+<div class="paragraph">
+<p>As an example, an application Quarkus with micrometer will expose metrics on url <strong>/q/metrics</strong> with the following format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># HELP process_start_time_seconds Start time of the process since unix epoch.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.684330722622E9
+# HELP jvm_threads_live_threads The current number of live threads including both daemon and non-daemon threads
+# TYPE jvm_threads_live_threads gauge
+jvm_threads_live_threads 26.0
+# HELP process_files_max_files The maximum file descriptor count
+# TYPE process_files_max_files gauge
+process_files_max_files 100000.0
+# HELP jvm_memory_max_bytes The maximum amount of memory in bytes that can be used for memory management
+# TYPE jvm_memory_max_bytes gauge
+jvm_memory_max_bytes{area="heap",id="G1 Survivor Space",} -1.0
+jvm_memory_max_bytes{area="heap",id="G1 Old Gen",} 8.350859264E9
+jvm_memory_max_bytes{area="nonheap",id="Metaspace",} -1.0
+jvm_memory_max_bytes{area="nonheap",id="CodeCache",} 5.0331648E7
+jvm_memory_max_bytes{area="heap",id="G1 Eden Space",} -1.0
+jvm_memory_max_bytes{area="nonheap",id="Compressed Class Space",} 1.073741824E9
+# HELP jvm_threads_states_threads The current number of threads
+# TYPE jvm_threads_states_threads gauge
+jvm_threads_states_threads{state="runnable",} 11.0
+jvm_threads_states_threads{state="blocked",} 0.0
+jvm_threads_states_threads{state="waiting",} 11.0
+jvm_threads_states_threads{state="timed-waiting",} 4.0
+jvm_threads_states_threads{state="new",} 0.0
+jvm_threads_states_threads{state="terminated",} 0.0
+# HELP process_cpu_usage The "recent cpu usage" for the Java Virtual Machine process</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is possible to declare a dataset pointing to this URL and Dashbuilder automatically parses it to a dataset with three columns: <strong>metric</strong>, <strong>labels</strong> and <strong>value</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+  - uuid: metrics
+    url: http://localhost:8080/q/metrics
+pages:
+    - components:
+        - settings:
+            lookup:
+              uuid: metrics</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/guides/monitoring/metrics_table.png" alt="Metrics Table">
+</div>
+<div class="title">Figure 32. Metrics Table</div>
+</div>
+<div class="paragraph">
+<p>From this dataset you can monitor each metric you want either by filtering metrics using an <strong>expression</strong> or defining filters on the displayer <strong>lookup</strong>. In the following example we want to monitor the metric <strong>jvm_memory_used_bytes</strong>, but only the heap area</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>datasets:
+    - uuid: metrics
+      url: http://localhost:8080/q/metrics
+pages:
+    - components:
+          - settings:
+                type: BARCHART
+
+                general:
+                    title: Heap Memory Used Bytes (kb)
+                columns:
+                    - id: value
+                      pattern: "#"
+                      expression: value / 1024
+                    - id: labels
+                      expression: value.replace('area="heap",id=', "")
+                                       .replaceAll('"', "")
+                lookup:
+                    uuid: metrics
+                    filter:
+                        - function: EQUALS_TO
+                          column: metric
+                          args:
+                              - jvm_memory_used_bytes
+                        - function: LIKE_TO
+                          column: labels
+                          args:
+                              - '%"heap"%'
+                    group:
+                        - columnGroup:
+                              source: labels
+                          functions:
+                              - source: labels
+                              - source: value</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/guides/monitoring/heap_used_memory.png" alt="Heap Memory Used Bytes">
+</div>
+<div class="title">Figure 33. Heap Memory Used Bytes</div>
+</div>
+<div class="paragraph">
+<p>Finally you can make the visualization update automatically using a refresh interval and also accumulate values in memory using the <strong>accumulate</strong> flag in dataset declaration. This way you keep a history of the events and can use a timeseries to visualize the data, here&#8217;s an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>global:
+    settings:
+        refresh:
+            interval: 2
+datasets:
+    - uuid: metrics
+      url: http://localhost:8080/q/metrics
+      accumulate: true
+      cacheMaxRows: 30000
+      expression: &gt;-
+          $map($, function($v){
+              [$v[0], $v[1], $v[2] = 'NaN' ? -1 : $v[2], $now() ~&gt; $toMillis()]
+          })
+      columns:
+          - id: metric
+            type: label
+          - id: labels
+            type: label
+          - id: value
+            type: number
+          - id: register
+            type: label
+pages:
+    - components:
+          - settings:
+                component: timeseries
+                timeseries:
+                    title:
+                        text: Heap Memory Usage
+                lookup:
+                    uuid: metrics
+                    filter:
+                        - column: metric
+                          function: EQUALS_TO
+                          args:
+                              - jvm_memory_used_bytes
+                        - column: labels
+                          function: LIKE_TO
+                          args:
+                              - '%area="heap"%'
+                    group:
+                        - columnGroup:
+                              source: register
+                          groupFunctions:
+                              - source: metric
+                              - source: register
+                              - source: value
+                                function: SUM</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/guides/monitoring/heap_used_memory.png" alt="Heap Memory Used Bytes">
+</div>
+<div class="title">Figure 34. Heap Memory Used Bytes</div>
+</div>
+<div class="paragraph">
+<p>You can check our <a href="https://github.com/kiegroup/kie-samples/tree/main/samples">samples repository</a> for more metrics monitoring examples.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-08 18:02:41 -0300
+Last updated 2023-05-17 10:31:16 -0300
 </div>
 </div>
 <!-- Collapsed Table of Content -->

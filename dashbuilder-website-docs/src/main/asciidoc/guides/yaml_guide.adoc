@@ -31,17 +31,17 @@ It is required to declare rows and columns for a more complex layout. Here's a p
 pages:
     - rows:
         - columns:
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 1 Column 1
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 1 Column 2
         - columns:
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 2 Column 1
-            - span: '6'
+            - span: 6
               components:
                 - html: Row 2 Column 2
 ----
@@ -60,12 +60,12 @@ pages:
         - properties:
             background-color: darkgray
           columns:
-            - span: '6'
+            - span: 6
               properties:
                 color: white
               components:
                 - html: Row 1 Column 1
-            - span: '6'
+            - span: 6
               properties:
                 color: lightblue
               components:
@@ -147,12 +147,12 @@ datasets:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
       type: NUMBER
 pages:
 - name: DataSet sample
 ----
+The column must have a type which can be *LABEL*, *TEXT*, *NUMBER* or *DATE*. If no type is provided, then LABEL is used.
 
 In most of the cases, the JSON format is not an array. For these cases it is possible to use the powerful transformation language https://jsonata.org/[JSONata] to transform a dataset using the `expression` attribute. In the following example the array of objects is transformed into a JSON array:
 
@@ -173,7 +173,7 @@ pages:
 - name: DataSet sample
 ----
 
-It is possible to use caching for non real time datasets. The cache expiration can be configured using `refreshTime`, otherwise the case is only invalidated when the YML runs again. Here's an example of a dataset cached for `10seconds`:
+It is possible to use caching for non real time datasets. The cache expiration can be configured using `refreshTime`, otherwise the case is only invalidated when the YML runs again. Here's an example of a dataset cached for 30 seconds:
 
 [source]
 ----
@@ -197,7 +197,9 @@ Datasets can have the following fields:
 
 * *MaxCacheRows:* It determines the number of rows kept in memory when using cache or accumulate. The default value of this field is set to 1000.
 
-* *Headers:* It is used to set headers that will be sent on the dataset HTTP request.
+* *Headers:* A map that is used to set headers that will be sent on the dataset HTTP request.
+
+* *Query* A map with query parameters added to the dataset URL
 
 === Datasets lookup
 
@@ -217,20 +219,19 @@ datasets:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: mydataset
 ----
 
 .Basic Lookup
 image::guides/yaml/basicLookup.png[Basic Lookup]
 
-With the lookup it is possible to define  the number of rows and the row offset of a dataset:
+With the lookup it is possible to define the number of rows and the row offset of a dataset:
 
 [source]
 ----
@@ -244,7 +245,6 @@ datasets:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
       type: Number
 pages:
@@ -269,8 +269,7 @@ datasets:
               ["Anton", 6]
             ]
   columns:
-    - id: Name
-      type: LABEL
+    - id: Name      
     - id: Age
       type: Number
 pages:
@@ -286,7 +285,7 @@ pages:
 .Dataset Lookup with order
 image::guides/yaml/orderLookup.png[Lookup with order]
 
-A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the function and the args for the filter. The supported functions are (in parentheses is the number of required parameters):
+A powerful dataset lookup feature is filtering. To use this capability it is necessary to provide the column, the filter function and the args for the filter. The supported functions are (in parentheses is the number of required parameters):
 
 * IS_NULL(0)
 * NOT_NULL(0)
@@ -318,14 +317,12 @@ datasets:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
-      type: Number
+      type: NUMBER
 pages:
 - components:
-    - settings:
-        type: TABLE
-        dataSetLookup:
+    - settings:        
+        lookup:
             uuid: mydataset
             filter:
                 - column: Age
@@ -351,13 +348,12 @@ datasets:
             ]
   columns:
     - id: Name
-      type: LABEL
     - id: Age
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: mydataset
             filter:
                 - function: OR
@@ -391,15 +387,13 @@ datasets:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Name
-      type: LABEL
     - id: Quantity
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
                 - columnGroup:
@@ -414,7 +408,7 @@ pages:
 .Dataset Lookup with group
 image::guides/yaml/groupLookup.png[Lookup with group]
 
-The supported group functions are `SUM`, `MAX`, `MIN` , `AVERAGE` and `MEDIAN` for numbers. For label columns the supported functions are `DISTINCT` and `COUNT`. For label columns the supported functions are `DISTINCT`, `COUNT`, `JOIN`, `JOIN_COMMA` and `JOIN_HYPHEN`.
+The supported group functions are `SUM`, `MAX`, `MIN` , `AVERAGE` and `MEDIAN` for numbers. For label columns the supported functions are `DISTINCT`, `COUNT`, `JOIN`, `JOIN_COMMA` and `JOIN_HYPHEN`.
 By default it uses the column name itself, it is also possible to give another name to the grouped column.
 If a column is not specific in columnGroup, but used with other columns in columnFunctions, then the error  **Error during dataset lookup: No aggregation function specified for the column** is displayed.
 
@@ -444,18 +438,16 @@ datasets:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Name
-      type: LABEL
     - id: Quantity
-      type: Number
+      type: NUMBER
 pages:
 - components:
     - settings:
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
-                - groupFunctions:
+                - functions:
                     - source: Name
                     - source: Quantity
 ----
@@ -464,7 +456,7 @@ pages:
 
 Displayers are visual components that can show data. Dashbuilder supports by default all the popular charts types, tables, metrics with customized structure and style, data selectors to filter the whole visualization and finally external displayers, which are custom applications used to display data.
 
-Dashbuilder consider as displayer every component with a settings, so when the settings is declared then the type must be declared as well(We can also use displayer instead of settings):
+Dashbuilder consider as displayer every component with a settings, so when the settings is declared then the type must be declared as well (we can also use displayer instead of settings):
 
 [source]
 ----
@@ -480,15 +472,13 @@ datasets:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Name
-      type: LABEL
     - id: Quantity
-      type: Number
+      type: NUMBER
 pages:
 - components:
-    - settings:
-        dataSetLookup:
+    - displayer:
+        lookup:
             uuid: products
 ----
 
@@ -511,10 +501,9 @@ datasets:
 pages:
 - components:
     - settings:
-        filter:
-            enabled: 'true'
-            selfapply: 'true'
-        dataSetLookup:
+        filter:         
+            selfapply: true
+        lookup:
             uuid: products
 ----
 
@@ -539,16 +528,14 @@ pages:
 - components:
     - settings:
         filter:
-            enabled: 'true'
-            notification: 'true'
-        dataSetLookup:
+            notification: true
+        lookup:
             uuid: products
     - settings:
-        filter:
-            enabled: 'true'
-            listening: 'true'
-        dataSetLookup:
-            uuid: products
+        filter:         
+          listening: true
+        lookup:
+          uuid: products
 ----
 
 .Displayer with filter notification
@@ -573,9 +560,9 @@ pages:
 - components:
     - settings:
         refresh:
-            interval: '30'
-        dataSetLookup:
-            uuid: products
+          interval: 30
+        lookup:
+          uuid: products
 ----
 
 NOTE: Bear in mind that smaller refresh intervals in multiple Displayers will impact the visualization performance.
@@ -601,16 +588,16 @@ pages:
 - components:
     - settings:
         columns:
-            - id: Column 0
-              name: Section
-              expression: value.toUpperCase()
-            - id: Column 1
-              name: Product
-            - id: Column 2
-              name: Quantity
-              pattern: '#'
-        dataSetLookup:
-            uuid: products
+          - id: Column 0
+            name: Section
+            expression: value.toUpperCase()
+          - id: Column 1
+            name: Product
+          - id: Column 2
+            name: Quantity
+            pattern: '#'
+        lookup:
+          uuid: products
 ----
 
 .Displayer with columns configurations
@@ -644,7 +631,7 @@ pages:
         table:
             pageSize: '3'
             show_column_picker: 'false'
-        dataSetLookup:
+        lookup:
             uuid: products
 ----
 
@@ -672,13 +659,13 @@ pages:
 - components:
     - settings:
         table:
-            show_column_picker: 'false'
-            sort:
-                enabled: 'false'
-                columnId: Column 2
-                order: DESCENDING
-        dataSetLookup:
-            uuid: products
+          show_column_picker: 'false'
+          sort:
+              enabled: 'false'
+              columnId: Column 2
+              order: DESCENDING
+        lookup:
+          uuid: products
 ----
 .Table with order configuration
 image::guides/yaml/orderingTable.png[Table with order configuration]
@@ -719,21 +706,19 @@ datasets:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
 - components:
     - settings:
         type: BARCHART
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
                 - columnGroup:
                     source: Product
-                  groupFunctions:
+                  functions:
                     - source: Product
                     - source: Quantity
                       function: SUM
@@ -765,9 +750,7 @@ datasets:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
@@ -775,12 +758,12 @@ pages:
     - settings:
         type: LINECHART
         subtype: SMOOTH
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
                 - columnGroup:
                     source: Product
-                  groupFunctions:
+                  functions:
                     - source: Product
                     - source: Quantity
                       function: SUM
@@ -830,9 +813,7 @@ datasets:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity1
       type: NUMBER
     - id: Quantity2
@@ -855,12 +836,12 @@ pages:
             grid:
                 x: 'false'
                 y: 'false'
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
             - columnGroup:
                 source: Product
-              groupFunctions:
+              functions:
                 - source: Product
                 - source: Quantity1
                   function: SUM
@@ -897,9 +878,7 @@ datasets:
             ]
   columns:
     - id: Section
-      type: LABEL
     - id: Product
-      type: LABEL
     - id: Quantity1
       type: NUMBER
     - id: Quantity2
@@ -909,14 +888,13 @@ pages:
     - settings:
         type: BARCHART
         filter:
-            enabled: 'true'
-            listening: 'true'
-        dataSetLookup:
+            listening: true
+        lookup:
             uuid: products
             group:
             - columnGroup:
                 source: Product
-              groupFunctions:
+              functions:
                 - source: Product
                 - source: Quantity1
                   function: SUM
@@ -929,14 +907,13 @@ pages:
             multiple: 'true'
             inputs_show: 'true'
         filter:
-            enabled: 'true'
-            notification: 'true'
-        dataSetLookup:
+            notification: true
+        lookup:
             uuid: products
             group:
             - columnGroup:
                 source: Section
-              groupFunctions:
+              functions:
                 - source: Section
 ----
 
@@ -961,7 +938,6 @@ datasets:
             ]
   columns:
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
@@ -973,11 +949,10 @@ pages:
             width: '150'
         general:
             title: Total Products
-            visible: 'true'
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
-            - groupFunctions:
+            - functions:
                 - source: Quantity
                   function: SUM
 ----
@@ -1001,7 +976,6 @@ datasets:
             ]
   columns:
     - id: Product
-      type: LABEL
     - id: Quantity
       type: NUMBER
 pages:
@@ -1017,10 +991,10 @@ pages:
                             ${this}.onmouseout = function() {
                                 ${this}.style.color = "black";
                             };
-        dataSetLookup:
+        lookup:
             uuid: products
             group:
-            - groupFunctions:
+            - functions:
                 - source: Quantity
                   function: SUM
 ----
@@ -1054,7 +1028,6 @@ datasets:
             ]
   columns:
     - id: Server
-      type: LABEL
     - id: Usage
       type: NUMBER
 pages:
@@ -1066,7 +1039,6 @@ pages:
         type: METERCHART
         general:
             title: "Memory Usage"
-            visible: 'true'
         chart:
             legend:
                 show: 'true'
@@ -1075,12 +1047,12 @@ pages:
             end: '4120'
             critical: '3000'
             warning: '2000'
-        dataSetLookup:
+        lookup:
             uuid: memory_usage
             group:
             - columnGroup:
                 source: Server
-              groupFunctions:
+              functions:
                 - source: Server
                 - source: Usage
                   function: SUM
@@ -1112,7 +1084,6 @@ datasets:
             ]
   columns:
     - id: Server
-      type: LABEL
     - id: Usage
       type: NUMBER
 pages:
@@ -1121,12 +1092,12 @@ pages:
         type: MAP
         map:
             color_scheme: blue
-        dataSetLookup:
+        lookup:
             uuid: countries
             group:
             - columnGroup:
                 source: Server
-              groupFunctions:
+              functions:
                 - source: Server
                 - source: Usage
     - settings:
@@ -1134,12 +1105,12 @@ pages:
         subtype: MAP_MARKERS
         map:
           color_scheme: red
-        dataSetLookup:
+        lookup:
             uuid: countries
             group:
             - columnGroup:
                 source: Server
-              groupFunctions:
+              functions:
                 - source: Server
                 - source: Usage
 ----
@@ -1165,9 +1136,7 @@ datasets:
       ]
     columns:
       - id: Section
-        type: LABEL
       - id: Product
-        type: LABEL
       - id: Quantity
         type: NUMBER
       - id: Quantity2
@@ -1228,9 +1197,7 @@ datasets:
       ]
     columns:
       - id: Section
-        type: LABEL
       - id: Product
-        type: LABEL
       - id: Quantity
         type: NUMBER
       - id: Quantity2
@@ -1282,7 +1249,7 @@ pages:
           group:
             - columnGroup:
                 source: Product
-              groupFunctions:
+              functions:
                 - source: Product
                 - source: Quantity
                 - source: Quantity2
@@ -1321,25 +1288,8 @@ pages:
                 <path id="svg_5" d="m461,24l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
                 <path id="svg_6" d="m566,26l82,0l0,51l-82,0l0,-51z" stroke-width="0" fill="#999999"/>
               </svg>
-          datasetlookup:
+          lookup:
             uuid: svg-data
-----
-
-* **timeseries**: Timeseries allow users to display timeseries information and it is based on echarts, which means that it is possible to pass an `option` parameter as well. The accepted dataset must have a column for the series, the timestamp and value.
-
-[source]
-----
-datasets:
-  - uuid: timeseries
-    url: https://raw.githubusercontent.com/jesuino/dashbuilder-data/master/samples/timeseries.json
-pages:
-  - components:
-      - settings:
-          component: timeseries
-          external:
-            width: 100%
-          datasetlookup:
-            uuid: timeseries
 ----
 
 * **uniforms**: Uniforms is a component that does not use a dataset, but allow users to render forms to post data to a URL. It accepts the parameters `uniforms.url`, the form URL and the JSON schema for the form generation, `uniforms.schema`.
@@ -1378,6 +1328,54 @@ pages:
                   
                }
             }
+----
+
+* **map**: Map is a component to show geographic information. It is based on react-simple-map library and accepts different configuration related to the map aspect. The dataset can be the geo name/some key for the geo and a value or three number columns with the latitute, longitude and the value. It can show the data in bubbles or fill the matched geo.
+
+[source]
+----
+datasets:
+    - uuid: data      
+      content: >-
+                [
+                    ["SP", 1], 
+                    ["RJ", 90],
+                    ["MG", 5],
+                    ["PA", 50],
+                    ["AM", 2],
+                    ["RS", 100]
+                ]
+      columns:
+          - id: name
+          - id: value
+            type: NUMBER
+pages:
+    - components:
+          - settings:
+                component: map
+                map:
+                    geoUrl: https://raw.githubusercontent.com/sjcdigital/geo-json/main/Brasil.json
+                    enableZoom: "true"
+                    minZoom: "1"
+                    maxZoom: "20"
+                    zoom: "2"
+                    fill: white
+                    background: lightgray
+                    strokeWidth: "0.2"
+                    zoomCenterLat: "-28.749997"
+                    zoomCenterLong: "-47.9499962"
+                    fillBegin: lightgreen
+                    fillEnd: darkgreen
+                    geoKey: "UF"
+                external:
+                    width: 100%
+                    height: 800px
+                lookup:
+                    uuid: data
+                    group:
+                        - functions:
+                              - source: name
+                              - source: value
 ----
 
 
@@ -1555,23 +1553,25 @@ When running on Dashbuilder you can also override the properties using query par
 
 === Global
 
-Global section was added in `0.26.0` version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page:
+Global section was added in `0.26.0` version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page or a global setting for all dataset:
 
 
 [source]
 ----
 global:
   mode: dark
-  settings:
-    general:
-      title: Common Title
-datasets:
-  - uuid: test
+  dataset:
     content: >-
       [
           ["A", 1],
           ["B", 2]
       ]
+  settings:
+    general:
+      title: Common Title
+datasets:
+  - uuid: test
+
 pages:
   - rows:
       - columns:
@@ -1591,8 +1591,12 @@ pages:
 .Dark Mode
 image::guides/yaml/darkMode.png[Dark Mode]
 
-The global properties are:
+The supported global properties are:
 
 * *allowUrlProperties:* When true then properties can be replaced using URL query parameters.
 
+* *mode:* Changes the dashboard style. Can be *dark* or *light*. Default value is *light*.
+
 * *settings/displayer:* Allow the users to define a common configuration for all displayers in the page.
+
+* *dataset:* Allow the users to define a common configuration for all displayers in the page.

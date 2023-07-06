@@ -14,26 +14,20 @@ https://prometheus.io/[Prometheus] is a popular monitoring and timeseries databa
 The requirements to consume data from Prometheus in Dashbuilder are:
 
 * Make sure that https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors[CORS] is enabled for the Dashbuilder host, otherwise it won't be able to retrieve data;
-* The dataset declaration must use the following expression to parse the response:
+* Use a dataset with type *prometheus* for Dashbuilder 0.29.0 and later versions. See an example:
 
 [source]
 ----
-$.data.(
-    {
-        "columns": result[0].(
-            [
-                {"id" : "timestamp", "type": "number"}, 
-                {"id" : "value", "type": "number"},
-                $keys(metric).({"id" : $, "type": "label"})
-            ];
-        ),
-        "values": (
-            resultType = "scalar" ? [result[0] * 1000, result[1]] :
-            resultType = "matrix" ? result.( $metric := metric.*; values.[ $[0] * 1000, $[1], $metric ] ) :
-            resultType = "vector" ?  result.[ value[0] * 1000, value[1],  metric.* ]
-        )
-    }
-)
+datasets:
+    - uuid: prometheus
+      type: prometheus
+      url: http://localhost:9090/api/v1/query?query=up
+       
+pages:
+    - components:
+          - settings:
+                lookup:
+                    uuid: prometheus
 ----
 
 This expression will get the response and transform in a dataset that will contain the columns *timestamp*, *value* and the additional labels. With this information you can use a *timeseries* component to monitor some metric.
@@ -46,11 +40,8 @@ As an example, we can monitor a Quarkus application JVM usage by following the s
 [source]
 ----
   - job_name: 'quarkus'
-
     scrape_interval: 1s
-
     metrics_path: /q/metrics
-
     static_configs:
       - targets: ['localhost:8080']
 ----
@@ -59,37 +50,23 @@ As an example, we can monitor a Quarkus application JVM usage by following the s
 [source]
 ----
 properties:
-    prometheusUrl: http://localhost:9090
-    query: jvm_memory_used_bytes{job="quarkus",area="heap"}[1h:5s]
+    prometheusUrl: http://localhost:9090    
 datasets:
     - uuid: prometheus
-      expression: >-
-          $.data.(
-              {
-                  "columns": result[0].(
-                      [
-                          {"id" : "timestamp", "type": "number"}, 
-                          {"id" : "value", "type": "number"},
-                          $keys(metric).({"id" : $, "type": "label"})
-                      ];
-                  ),
-                  "values": (
-                      resultType = "scalar" ? [result[0] * 1000, result[1]] :
-                      resultType = "matrix" ? result.( $metric := metric.*; values.[ $[0] * 1000, $[1], $metric ] ) :
-                      resultType = "vector" ?  result.[ value[0] * 1000, value[1],  metric.* ]
-                  )
-              }
-          )
-      url: ${prometheusUrl}/api/v1/query?query=${query}
+      type: prometheus
+      url: ${prometheusUrl}/api/v1/query
+      query:
+          query: jvm_memory_used_bytes{area="heap"}[1h:5s]
 pages:
     - components:
           - settings:
-                component: timeseries
+                type: TIMESERIES                
+                chart:
+                    resizable: true
                 refresh:
                     interval: 5
-                timeseries:
-                    title:
-                        text: JVM Memory (Used Heap)
+                general:
+                    title: JVM Memory (Used Heap)
                 lookup:
                     uuid: prometheus
                     group:

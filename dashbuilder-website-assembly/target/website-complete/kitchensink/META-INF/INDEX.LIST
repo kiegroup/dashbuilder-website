@@ -1,6 +1,35 @@
 JarIndex-Version: 1.0
 
 dashbuilder-runtime-client.war
+WEB-INF
+WEB-INF/classes
+WEB-INF/classes/META-INF
+WEB-INF/classes/org
+WEB-INF/classes/org/dashbuilder
+WEB-INF/classes/org/dashbuilder/client
+WEB-INF/classes/org/dashbuilder/client/error
+WEB-INF/classes/org/dashbuilder/client/external
+WEB-INF/classes/org/dashbuilder/client/external/csv
+WEB-INF/classes/org/dashbuilder/client/external/metrics
+WEB-INF/classes/org/dashbuilder/client/external/transformer
+WEB-INF/classes/org/dashbuilder/client/parser
+WEB-INF/classes/org/dashbuilder/client/parser/yaml
+WEB-INF/classes/org/dashbuilder/client/perspective
+WEB-INF/classes/org/dashbuilder/client/perspective/generator
+WEB-INF/classes/org/dashbuilder/client/plugins
+WEB-INF/classes/org/dashbuilder/client/resources
+WEB-INF/classes/org/dashbuilder/client/resources/css
+WEB-INF/classes/org/dashbuilder/client/resources/i18n
+WEB-INF/classes/org/dashbuilder/client/resources/js
+WEB-INF/classes/org/dashbuilder/client/screens
+WEB-INF/classes/org/dashbuilder/client/screens/view
+WEB-INF/classes/org/dashbuilder/client/services
+WEB-INF/classes/org/dashbuilder/client/setup
+WEB-INF/classes/org/dashbuilder/client/widgets
+WEB-INF/classes/org/dashbuilder/client/widgets/view
+WEB-INF/classes/org/jboss
+WEB-INF/classes/org/jboss/errai
+WEB-INF/classes/org/jboss/errai/cdi
 dashbuilder
 dashbuilder/component
 dashbuilder/component/echarts
