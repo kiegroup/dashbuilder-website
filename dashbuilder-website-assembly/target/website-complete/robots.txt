@@ -1,8 +1,0 @@
-User-agent: *
-Disallow: /website/javascriptLibraries.txt
-
-User-agent: *
-Disallow: /learn/slides/optaplanner-presentation/website/javascriptLibraries.txt
-
-User-agent: *
-Disallow: /404.html
