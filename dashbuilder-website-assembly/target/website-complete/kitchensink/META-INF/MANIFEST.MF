@@ -10,7 +10,7 @@ Java-Vendor: Oracle Corporation
 Java-Version: 11.0.12
 Os-Arch: amd64
 Os-Name: Linux
-Os-Version: 6.0.12-200.fc36.x86_64
+Os-Version: 6.4.7-200.fc38.x86_64
 Scm-Connection: 
 Scm-Revision: 
 Scm-Url: 

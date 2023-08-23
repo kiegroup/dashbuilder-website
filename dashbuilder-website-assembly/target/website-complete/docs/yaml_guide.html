@@ -669,6 +669,9 @@ pages:
 <li>
 <p><strong>Query</strong> A map with query parameters added to the dataset URL</p>
 </li>
+<li>
+<p><strong>Path</strong> A path that is used on the dataset URL</p>
+</li>
 </ul>
 </div>
 </div>
@@ -695,7 +698,7 @@ The simplest use of a lookup is by simply providing the dataset uuid:</p>
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: mydataset</code></pre>
 </div>
@@ -725,8 +728,8 @@ pages:
       type: Number
 pages:
 - components:
-    - settings:
-        dataSetLookup:
+    - displayer:
+        lookup:
             uuid: mydataset
             rowCount: 1
             rowOffset: 2</code></pre>
@@ -751,8 +754,8 @@ pages:
       type: Number
 pages:
 - components:
-    - settings:
-        dataSetLookup:
+    - displayer:
+        lookup:
             uuid: mydataset
             sort:
                 - column: Age
@@ -833,7 +836,7 @@ pages:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: mydataset
             filter:
@@ -868,7 +871,7 @@ pages:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: mydataset
             filter:
@@ -912,7 +915,7 @@ pages:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: products
             group:
@@ -977,7 +980,7 @@ If a column is not specific in columnGroup, but used with other columns in colum
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: products
             group:
@@ -1039,7 +1042,7 @@ pages:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         filter:
             selfapply: true
         lookup:
@@ -1069,12 +1072,12 @@ pages:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         filter:
             notification: true
         lookup:
             uuid: products
-    - settings:
+    - displayer:
         filter:
           listening: true
         lookup:
@@ -1107,7 +1110,7 @@ pages:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         refresh:
           interval: 30
         lookup:
@@ -1147,7 +1150,7 @@ In the following example the column 0 is transformed to be upper case and the nu
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         columns:
           - id: Column 0
             name: Section
@@ -1178,9 +1181,6 @@ pages:
 <li>
 <p><strong>pageSize</strong>: the quantity of items displayed per page;</p>
 </li>
-<li>
-<p><strong>show_column_picker</strong>: When false the column picker is not displayed</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -1200,63 +1200,12 @@ pages:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         table:
-            pageSize: '3'
-            show_column_picker: 'false'
+            pageSize: 3
         lookup:
             uuid: products</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The table sort can be configured using the sort object. Sort support the following settings:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>enabled</strong>: if true users can sort the table by clicking on the column name;</p>
-</li>
-<li>
-<p><strong>columnId</strong>: The id of the column used to sort the table;</p>
-</li>
-<li>
-<p><strong>order</strong>: The order that can be <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s a table sorted by Column 2 in descending order.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>datasets:
-- uuid: products
-  content: &gt;-
-            [
-              ["Computers", "Scanner", 5],
-              ["Computers", "Printer", 7],
-              ["Computers", "Laptop", 3],
-              ["Electronics", "Camera", 10],
-              ["Electronics", "Headphones", 5]
-            ]
-pages:
-- components:
-    - settings:
-        table:
-          show_column_picker: 'false'
-          sort:
-              enabled: 'false'
-              columnId: Column 2
-              order: DESCENDING
-        lookup:
-          uuid: products</code></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/guides/yaml/orderingTable.png" alt="Table with order configuration">
-</div>
-<div class="title">Figure 11. Table with order configuration</div>
 </div>
 <div class="paragraph">
 <p>Displayers have the following fields:</p>
@@ -1321,7 +1270,7 @@ pages:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: BARCHART
         lookup:
             uuid: products
@@ -1340,7 +1289,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/barChart.png" alt="Bar Chart">
 </div>
-<div class="title">Figure 12. Bar Chart</div>
+<div class="title">Figure 11. Bar Chart</div>
 </div>
 <div class="paragraph">
 <p>Then simply adding the <code>subtype</code> property with value <code>COLUMN_STACKED</code> it renders the following chart:</p>
@@ -1349,7 +1298,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/stackedBarChart.png" alt="Stacked Bar Chart">
 </div>
-<div class="title">Figure 13. Stacked Bar Chart</div>
+<div class="title">Figure 12. Stacked Bar Chart</div>
 </div>
 <div class="paragraph">
 <p>A line chart is simply a matter of changing the type to <code>LINE</code>:</p>
@@ -1373,7 +1322,7 @@ pages:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: LINECHART
         subtype: SMOOTH
         lookup:
@@ -1474,22 +1423,22 @@ pages:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: BARCHART
         chart:
             bgColor: DEDEDE
-            width: '800'
-            height: '400'
-            zoom: 'true'
+            width: 800
+            height: 400
+            zoom: true
             margin:
-                right: '50'
-                top: '50'
+                right: 50
+                top: 50
             legend:
-                show: 'true'
-                position: 'bottom'
+                show: true
+                position: bottom
             grid:
-                x: 'false'
-                y: 'false'
+                x: false
+                y: false
         lookup:
             uuid: products
             group:
@@ -1507,7 +1456,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/chartConfiguration.png" alt="Chart Configuration">
 </div>
-<div class="title">Figure 14. Bar Chart Configuration</div>
+<div class="title">Figure 13. Bar Chart Configuration</div>
 </div>
 </div>
 <div class="sect2">
@@ -1524,8 +1473,7 @@ pages:
 <p><code>SELECTOR_DROPDOWN</code>: Shows the values in a dropdown;</p>
 </li>
 <li>
-<p><code>SELECTOR_SLIDER</code>: Shows a slider to select values. Show be used only for number and date columns.
-The selector object has the property multiple, when true multiple values can be selected. Bear in mind that this only works with labels selectors.</p>
+<p>The default subtype is a select</p>
 </li>
 </ul>
 </div>
@@ -1564,7 +1512,7 @@ Filter must be enabled, otherwise selectors will not work.
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: BARCHART
         filter:
             listening: true
@@ -1579,12 +1527,11 @@ pages:
                   function: SUM
                 - source: Quantity2
                   function: SUM
-    - settings:
+    - displayer:
         type: SELECTOR
         subtype: SELECTOR_LABELS
         selector:
-            multiple: 'true'
-            inputs_show: 'true'
+            multiple: true
         filter:
             notification: true
         lookup:
@@ -1600,7 +1547,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/labelsSelector.png" alt="Labels Selector">
 </div>
-<div class="title">Figure 15. Labels Selector</div>
+<div class="title">Figure 14. Labels Selector</div>
 </div>
 </div>
 <div class="sect2">
@@ -1625,11 +1572,11 @@ pages:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: METRIC
         chart:
-            height: '100'
-            width: '150'
+            height: 100
+            width: 150
         general:
             title: Total Products
         lookup:
@@ -1644,7 +1591,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/defaultMetrics.png" alt="Default Metrics">
 </div>
-<div class="title">Figure 16. Default Metrics</div>
+<div class="title">Figure 15. Default Metrics</div>
 </div>
 <div class="paragraph">
 <p>The HTML can be customized using the object <code>html</code> with the field html and <code>javascript</code> for javascript. Inside the HTML the variable <code>${value}</code> contains the value resulted from the dataset lookup and to refer to elements in javascript give the element the id <code>${this}</code> and refer to it in the javascript code. Be responsible for the javascript code used in the YAML!
@@ -1667,7 +1614,7 @@ Here&#8217;s a basic example:</p>
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: METRIC
         html:
             html: &lt;h2&gt;&lt;strong&gt;&amp;#10026; Total Products:&lt;/strong&gt;&amp;nbsp;&lt;span id="${this}"&gt;${value}&lt;/span&gt;&lt;/h2&gt;
@@ -1690,7 +1637,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/customMetrics.png" alt="Custom Metrics">
 </div>
-<div class="title">Figure 17. Custom Metrics</div>
+<div class="title">Figure 16. Custom Metrics</div>
 </div>
 <div class="paragraph">
 <p>Other variables from the displayer configuration can be used in the code (using <code>${variable name}</code> template): <code>title</code>, <code>width</code>, <code>height</code>, <code>marginTop</code>, <code>marginBottom</code>, <code>marginRight</code>, <code>marginLeft</code> and <code>bgColor</code>.</p>
@@ -1746,12 +1693,12 @@ pages:
             title: "Memory Usage"
         chart:
             legend:
-                show: 'true'
+                show: true
                 position: bottom
         meter:
-            end: '4120'
-            critical: '3000'
-            warning: '2000'
+            end: 4120
+            critical: 3000
+            warning: 2000
         lookup:
             uuid: memory_usage
             group:
@@ -1767,11 +1714,23 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/meter.png" alt="Meter">
 </div>
-<div class="title">Figure 18. Meter</div>
+<div class="title">Figure 17. Meter</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_map">Map</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Map is disabled for ECharts renderer and may be available in later versions.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Dashbuilder provides a Map component to show geographic data. It is country based, so to use it one must provide the country identification, which could be the country name, <code>lat, long</code> or the country code, and provide the value for that country.
 It has two types:
@@ -1798,7 +1757,7 @@ The only specific configuration for map is <code>color_scheme</code>, which coul
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: MAP
         map:
             color_scheme: blue
@@ -1810,7 +1769,7 @@ pages:
               functions:
                 - source: Server
                 - source: Usage
-    - settings:
+    - displayer:
         type: MAP
         subtype: MAP_MARKERS
         map:
@@ -1829,7 +1788,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/map.png" alt="Map">
 </div>
-<div class="title">Figure 19. Map</div>
+<div class="title">Figure 18. Map</div>
 </div>
 </div>
 <div class="sect2">
@@ -1858,7 +1817,7 @@ pages:
         type: NUMBER
 pages:
   - components:
-      - settings:
+      - displayer:
           component: simplest_component
           simplest_component:
             name: "John"
@@ -1895,7 +1854,7 @@ pages:
       ]
 pages:
   - components:
-      - settings:
+      - displayer:
           component: table
           external:
             width: 100%
@@ -1931,7 +1890,7 @@ pages:
         type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         component: echarts
         echarts:
             option: &gt;-
@@ -2004,7 +1963,7 @@ pages:
       ]
 pages:
   - components:
-      - settings:
+      - displayer:
           component: svg-heatmap
           external:
             width: 100%
@@ -2093,7 +2052,7 @@ pages:
             type: NUMBER
 pages:
     - components:
-          - settings:
+          - displayer:
                 component: map
                 map:
                     geoUrl: https://raw.githubusercontent.com/sjcdigital/geo-json/main/Brasil.json
@@ -2175,59 +2134,8 @@ navTree:
     - page: Laptops</code></pre>
 </div>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/guides/yaml/menuNavigation.png" alt="Menu Navigation">
-</div>
-<div class="title">Figure 20. Menu Navigation</div>
-</div>
 <div class="paragraph">
 <p>Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pages:
-    - name: Embed
-      components:
-          - html: This page was embedded using &lt;strong&gt;screen&lt;/strong&gt; component
-    - name: Cats
-      components:
-        - html: &lt;h1&gt; Cats &lt;/h1&gt;
-    - name: Dogs
-      components:
-        - html: &lt;h1&gt;Dogs&lt;/h1&gt;
-    - name: index
-      rows:
-        - columns:
-          - components:
-            - type: TILES  # try CAROUSEL
-              properties:
-                navGroupId: animals_group
-        - columns:
-          - components:
-            - type: TABS  # try MENU or TREE
-              properties:
-                navGroupId: animals_group
-                targetDivId: animals_div
-            - type: DIV
-              properties:
-                divId: animals_div
-            - screen: Embed
-navTree:
-  root_items:
-  - id: animals_group
-    type: GROUP
-    name: Animals
-    children:
-    - page: Cats
-    - page: Dogs</code></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/essentials/elementScreen.png" alt="Some of native Dashbuilder components">
-</div>
-<div class="title">Figure 21. Element screen to see any page embed on another</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2265,6 +2173,12 @@ To show a default page just name it as <code>index</code> and it will be display
 <p><strong>TABS</strong>: Displays tabs with the pages. It requires a target DIV;</p>
 </li>
 <li>
+<p><strong>SCREEN</strong>: A component that shows other page. Uses it with: <code>screen: embedPageName</code>;</p>
+</li>
+<li>
+<p><strong>PANEL</strong>: A component that shows other page in a collapsible panel. Uses it with: <code>panel: embedPageName</code></p>
+</li>
+<li>
 <p><strong>DIV</strong>: A div that shows the content for TREE, MENU and TABS components.</p>
 </li>
 </ul>
@@ -2276,6 +2190,12 @@ Here&#8217;s an example of navigation components:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>pages:
+    - name: Embed
+      components:
+          - html: This page was embedded using &lt;strong&gt;screen&lt;/strong&gt; component
+    - name: Panel
+      components:
+          - html: This page was embedded using &lt;strong&gt;panel&lt;/strong&gt; component
     - name: Cats
       components:
         - html: &lt;h1&gt; Cats &lt;/h1&gt;
@@ -2283,6 +2203,8 @@ Here&#8217;s an example of navigation components:</p>
       components:
         - html: &lt;h1&gt;Dogs&lt;/h1&gt;
     - name: index
+      properties:
+        margin-left: 10px
       rows:
         - columns:
           - components:
@@ -2298,6 +2220,8 @@ Here&#8217;s an example of navigation components:</p>
             - type: DIV
               properties:
                 divId: animals_div
+            - screen: Embed
+            - panel: Panel
 navTree:
   root_items:
   - id: animals_group
@@ -2312,7 +2236,7 @@ navTree:
 <div class="content">
 <img src="./images/guides/yaml/navigationComponents.png" alt="Navigation Components">
 </div>
-<div class="title">Figure 22. Navigation Components</div>
+<div class="title">Figure 19. Navigation Components</div>
 </div>
 </div>
 <div class="sect2">
@@ -2352,7 +2276,7 @@ pages:
 <div class="sect2">
 <h3 id="_global">Global</h3>
 <div class="paragraph">
-<p>Global section was added in <code>0.26.0</code> version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page or a global setting for all dataset:</p>
+<p>Global section was added in <code>0.26.0</code> version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page or a global setting for all dataset or a global dataset:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2375,13 +2299,13 @@ pages:
       - columns:
           - span: 6
             components:
-              - settings:
+              - displayer:
                   type: BARCHART
                   lookup:
                     uuid: test
           - span: 6
             components:
-              - settings:
+              - displayer:
                   type: LINECHART
                   lookup:
                     uuid: test</code></pre>
@@ -2391,7 +2315,7 @@ pages:
 <div class="content">
 <img src="./images/guides/yaml/darkMode.png" alt="Dark Mode">
 </div>
-<div class="title">Figure 23. Dark Mode</div>
+<div class="title">Figure 20. Dark Mode</div>
 </div>
 <div class="paragraph">
 <p>The supported global properties are:</p>
@@ -2418,7 +2342,7 @@ pages:
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-07-05 19:11:38 -0300
+Last updated 2023-08-23 15:03:41 -0300
 </div>
 </div>
 </body>

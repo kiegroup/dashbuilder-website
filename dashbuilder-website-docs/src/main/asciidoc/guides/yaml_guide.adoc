@@ -201,6 +201,8 @@ Datasets can have the following fields:
 
 * *Query* A map with query parameters added to the dataset URL
 
+* *Path* A path that is used on the dataset URL
+
 === Datasets lookup
 
 To display a dataset Dashbuilder uses the concept of `lookup`. Imagine the dataset as a pie and lookups as a piece of the pie. With lookup it is possible to select which part of a dataset will be displayed.
@@ -223,7 +225,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: mydataset
 ----
@@ -249,8 +251,8 @@ datasets:
       type: Number
 pages:
 - components:
-    - settings:
-        dataSetLookup:
+    - displayer:
+        lookup:
             uuid: mydataset
             rowCount: 1
             rowOffset: 2
@@ -274,8 +276,8 @@ datasets:
       type: Number
 pages:
 - components:
-    - settings:
-        dataSetLookup:
+    - displayer:
+        lookup:
             uuid: mydataset
             sort:
                 - column: Age
@@ -321,7 +323,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:        
+    - displayer:        
         lookup:
             uuid: mydataset
             filter:
@@ -352,7 +354,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: mydataset
             filter:
@@ -392,7 +394,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: products
             group:
@@ -443,7 +445,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         lookup:
             uuid: products
             group:
@@ -500,7 +502,7 @@ datasets:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         filter:         
             selfapply: true
         lookup:
@@ -526,12 +528,12 @@ datasets:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         filter:
             notification: true
         lookup:
             uuid: products
-    - settings:
+    - displayer:
         filter:         
           listening: true
         lookup:
@@ -558,7 +560,7 @@ datasets:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         refresh:
           interval: 30
         lookup:
@@ -586,7 +588,7 @@ datasets:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         columns:
           - id: Column 0
             name: Section
@@ -609,7 +611,6 @@ image::guides/yaml/columnsConfigurationDisplayer.png[Displayer with conlumns con
 When using the table displayer there are specific settings that can be used:
 
 * *pageSize*: the quantity of items displayed per page;
-* *show_column_picker*: When false the column picker is not displayed
 
 Here's an example of these two properties:
 
@@ -627,48 +628,12 @@ datasets:
             ]
 pages:
 - components:
-    - settings:
+    - displayer:
         table:
-            pageSize: '3'
-            show_column_picker: 'false'
+            pageSize: 3
         lookup:
             uuid: products
 ----
-
-The table sort can be configured using the sort object. Sort support the following settings:
-
-* *enabled*: if true users can sort the table by clicking on the column name;
-* *columnId*: The id of the column used to sort the table;
-* *order*: The order that can be `ASCENDING` or `DESCENDING`.
-
-Here's a table sorted by Column 2 in descending order.
-
-[source]
-----
-datasets:
-- uuid: products
-  content: >-
-            [
-              ["Computers", "Scanner", 5],
-              ["Computers", "Printer", 7],
-              ["Computers", "Laptop", 3],
-              ["Electronics", "Camera", 10],
-              ["Electronics", "Headphones", 5]
-            ]
-pages:
-- components:
-    - settings:
-        table:
-          show_column_picker: 'false'
-          sort:
-              enabled: 'false'
-              columnId: Column 2
-              order: DESCENDING
-        lookup:
-          uuid: products
-----
-.Table with order configuration
-image::guides/yaml/orderingTable.png[Table with order configuration]
 
 Displayers have the following fields:
 
@@ -711,7 +676,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: BARCHART
         lookup:
             uuid: products
@@ -755,7 +720,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: LINECHART
         subtype: SMOOTH
         lookup:
@@ -782,7 +747,6 @@ Under the axis object there are two properties, x and y. Here are the supported 
 * *labels_show*: When true the labels will be displayed.
 * *title*: A title for the axis.
 * *labels_angle*: The label's angle. Only works for the X axis.
-
 
 *Chart General Settings*
 
@@ -820,22 +784,22 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: BARCHART
         chart:
             bgColor: DEDEDE
-            width: '800'
-            height: '400'
-            zoom: 'true'
+            width: 800
+            height: 400
+            zoom: true
             margin:
-                right: '50'
-                top: '50'
+                right: 50
+                top: 50
             legend:
-                show: 'true'
-                position: 'bottom'
+                show: true
+                position: bottom
             grid:
-                x: 'false'
-                y: 'false'
+                x: false
+                y: false
         lookup:
             uuid: products
             group:
@@ -858,8 +822,7 @@ Selector is a special displayer type used to filter the visualization. It has 3 
 
 * `SELECTOR_LABELS`: Shows the values in selectable labels;
 * `SELECTOR_DROPDOWN`: Shows the values in a dropdown;
-* `SELECTOR_SLIDER`: Shows a slider to select values. Show be used only for number and date columns.
-The selector object has the property multiple, when true multiple values can be selected. Bear in mind that this only works with labels selectors.
+* The default subtype is a select
 
 NOTE: Filter must be enabled, otherwise selectors will not work. 
 
@@ -885,7 +848,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: BARCHART
         filter:
             listening: true
@@ -900,12 +863,11 @@ pages:
                   function: SUM
                 - source: Quantity2
                   function: SUM
-    - settings:
+    - displayer:
         type: SELECTOR
         subtype: SELECTOR_LABELS
         selector:
-            multiple: 'true'
-            inputs_show: 'true'
+            multiple: true            
         filter:
             notification: true
         lookup:
@@ -942,11 +904,11 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: METRIC
         chart:
-            height: '100'
-            width: '150'
+            height: 100
+            width: 150
         general:
             title: Total Products
         lookup:
@@ -980,7 +942,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: METRIC
         html:
             html: <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
@@ -1041,12 +1003,12 @@ pages:
             title: "Memory Usage"
         chart:
             legend:
-                show: 'true'
+                show: true
                 position: bottom
         meter:
-            end: '4120'
-            critical: '3000'
-            warning: '2000'
+            end: 4120
+            critical: 3000
+            warning: 2000
         lookup:
             uuid: memory_usage
             group:
@@ -1062,6 +1024,8 @@ pages:
 image::guides/yaml/meter.png[Meter]
 
 === Map
+
+NOTE: Map is disabled for ECharts renderer and may be available in later versions.
 
 Dashbuilder provides a Map component to show geographic data. It is country based, so to use it one must provide the country identification, which could be the country name, `lat, long` or the country code, and provide the value for that country. 
 It has two types: 
@@ -1088,7 +1052,7 @@ datasets:
       type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         type: MAP
         map:
             color_scheme: blue
@@ -1100,7 +1064,7 @@ pages:
               functions:
                 - source: Server
                 - source: Usage
-    - settings:
+    - displayer:
         type: MAP
         subtype: MAP_MARKERS
         map:
@@ -1143,7 +1107,7 @@ datasets:
         type: NUMBER
 pages:
   - components:
-      - settings:
+      - displayer:
           component: simplest_component
           simplest_component:
             name: "John"
@@ -1173,7 +1137,7 @@ datasets:
       ]
 pages:
   - components:
-      - settings:
+      - displayer:
           component: table
           external:
             width: 100%          
@@ -1204,7 +1168,7 @@ datasets:
         type: NUMBER
 pages:
 - components:
-    - settings:
+    - displayer:
         component: echarts
         echarts:
             option: >-
@@ -1272,7 +1236,7 @@ datasets:
       ]
 pages:
   - components:
-      - settings:
+      - displayer:
           component: svg-heatmap
           external:
             width: 100%
@@ -1351,7 +1315,7 @@ datasets:
             type: NUMBER
 pages:
     - components:
-          - settings:
+          - displayer:
                 component: map
                 map:
                     geoUrl: https://raw.githubusercontent.com/sjcdigital/geo-json/main/Brasil.json
@@ -1430,10 +1394,25 @@ navTree:
     - page: Tablets
     - page: Laptops
 ----
-.Menu Navigation
-image::guides/yaml/menuNavigation.png[Menu Navigation]
 
 Navigation is an optional component and it is about the relationship between pages. When you have more than one page then a menu is displayed with all pages, you can organize this menu. Furthermore, navigation is the key for embedding pages inside each other.
+
+NOTE: To show a default page just name it as `index` and it will be displayed by default, otherwise the default Dashbuilder page will be displayed.
+
+=== Navigation Components
+It is possible to embed pages using navigation groups. To do so Dashbuilder provides navigation components.
+
+* *TILES*: Displays the navigation group pages in tiles;
+* *CAROUSEL*: Displays the pages in a carousel;
+* *TREE*: Displays a tree with the pages. It requires a target DIV;
+* *MENU*: Displays a menu with the pages. It requires a target DIV;
+* *TABS*: Displays tabs with the pages. It requires a target DIV;
+* *SCREEN*: A component that shows other page. Uses it with: `screen: embedPageName`;
+* *PANEL*: A component that shows other page in a collapsible panel. Uses it with: `panel: embedPageName`
+* *DIV*: A div that shows the content for TREE, MENU and TABS components.
+
+A property called `navGroupId` should be set to point to the same `groupId` declared in navigation. For components that require a div, then a DIV component should be placed on the page and the div ID should be referenced using the property `divId`.
+Here's an example of navigation components:
 
 [source]
 ----
@@ -1441,6 +1420,9 @@ pages:
     - name: Embed
       components:
           - html: This page was embedded using <strong>screen</strong> component
+    - name: Panel
+      components:
+          - html: This page was embedded using <strong>panel</strong> component
     - name: Cats
       components:
         - html: <h1> Cats </h1>
@@ -1448,6 +1430,8 @@ pages:
       components:
         - html: <h1>Dogs</h1>
     - name: index
+      properties:
+        margin-left: 10px
       rows:
         - columns:
           - components:
@@ -1464,59 +1448,7 @@ pages:
               properties:
                 divId: animals_div
             - screen: Embed
-navTree:
-  root_items:
-  - id: animals_group
-    type: GROUP
-    name: Animals
-    children:
-    - page: Cats
-    - page: Dogs
-----
-
-.Element screen to see any page embed on another
-image::essentials/elementScreen.png[Some of native Dashbuilder components]
-
-NOTE: To show a default page just name it as `index` and it will be displayed by default, otherwise the default Dashbuilder page will be displayed.
-
-=== Navigation Components
-It is possible to embed pages using navigation groups. To do so Dashbuilder provides navigation components.
-
-* *TILES*: Displays the navigation group pages in tiles;
-* *CAROUSEL*: Displays the pages in a carousel;
-* *TREE*: Displays a tree with the pages. It requires a target DIV;
-* *MENU*: Displays a menu with the pages. It requires a target DIV;
-* *TABS*: Displays tabs with the pages. It requires a target DIV;
-* *DIV*: A div that shows the content for TREE, MENU and TABS components.
-
-A property called `navGroupId` should be set to point to the same `groupId` declared in navigation. For components that require a div, then a DIV component should be placed on the page and the div ID should be referenced using the property `divId`.
-Here's an example of navigation components:
-
-[source]
-----
-pages:
-    - name: Cats
-      components:
-        - html: <h1> Cats </h1>
-    - name: Dogs
-      components:
-        - html: <h1>Dogs</h1>
-    - name: index
-      rows:
-        - columns:
-          - components:
-            - type: TILES  # try CAROUSEL
-              properties:
-                navGroupId: animals_group
-        - columns:
-          - components:
-            - type: TABS  # try MENU or TREE 
-              properties:
-                navGroupId: animals_group
-                targetDivId: animals_div
-            - type: DIV
-              properties:
-                divId: animals_div
+            - panel: Panel
 navTree:
   root_items:
   - id: animals_group
@@ -1553,7 +1485,7 @@ When running on Dashbuilder you can also override the properties using query par
 
 === Global
 
-Global section was added in `0.26.0` version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page or a global setting for all dataset:
+Global section was added in `0.26.0` version and it allows users to change the dashboard default mode to dark and declare a global settings for all displayers on the page or a global setting for all dataset or a global dataset:
 
 
 [source]
@@ -1577,13 +1509,13 @@ pages:
       - columns:
           - span: 6
             components:
-              - settings:
+              - displayer:
                   type: BARCHART
                   lookup:
                     uuid: test
           - span: 6
             components:
-              - settings:
+              - displayer:
                   type: LINECHART
                   lookup:
                     uuid: test
